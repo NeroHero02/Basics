@@ -14,7 +14,7 @@ Information : Global Temperature is raising.
 Data + Meaning = Information
 ```
 The difference between data and information.
-- Data : 
+Data : 
 -  Raw facts
 -  Unstructured/Unorganized
 -  Unanalyzed
