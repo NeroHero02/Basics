@@ -14,10 +14,10 @@ Information : Global Temperature is raising.
 Data + Meaning = Information
 ```
 The difference between data and information.
-Data : 
--  Raw facts
--  Unstructured/Unorganized
--  Unanalyzed
--  Unprocessed
--  Has no meaning
+- Data : 
+  - Raw facts
+  - Unstructured/Unorganized
+  - Unanalyzed
+  - Unprocessed
+  - Has no meaning
 
