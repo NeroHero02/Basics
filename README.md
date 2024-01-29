@@ -4,16 +4,16 @@
 -Computer Basics
   -A+
 -Programming
-  -C++
-  -Algorithms
-  -OOP
-  -DataStructure
-  -C#
+  - C++
+  - Algorithms
+  - OOP
+  - DataStructure
+  - C#
 -Networks
-  -CCNA
-  -CCNP
-  -Microsoft Server 2016
+  - CCNA
+  - CCNP
+  - Microsoft Server 2016
 -Databases
-  -Database Basics
-  -SQL
-  -T-SQL
+  - Database Basics
+  - SQL
+  - T-SQL
