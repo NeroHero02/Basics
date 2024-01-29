@@ -1,2 +1,3 @@
-# In this section, I will summarize the basics that programmers need to know.
+# Started
+In this section, I will summarize the basics that programmers need to know.
 
