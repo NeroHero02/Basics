@@ -113,3 +113,6 @@ Controls all previous steps
  Cashe Memory &rarr; Simi Instantly available data.  
  Registers &rarr; Instantly Avalible data.  
 
+## Graphics Processing Unit
+GPU stands for Graphics Processing Unit.  
+you'll also see GPUs commonly referred to as graphics cards or video cards and it's only one part from graphic card.
