@@ -30,6 +30,7 @@ The difference between data and information.
 
  ## Knowledge vs Wisdom
 
-Data&rarr;<sup>Input</sup> Processing &rarr;<sup>Output</sup> Information &rarr;<sup>With Time</sup> Knowledge &rarr;<sup>Applied</sup> Wisdom
+Data&rarr;<sup>Input</sup> Processing &rarr;<sup>Output</sup> Information &rarr;<sup>With Time</sup> Knowledge &rarr;<sup>Applied</sup> Wisdom;
 
+Data is the foundation, and when processed are performed on it, it transforms into information. Over time, this information evolves into knowledge, and when applied, it becomes expertise. Therefore, having knowledge doesn't necessarily mean you are an expert; applying that knowledge is crucial to becoming an expert.
 
