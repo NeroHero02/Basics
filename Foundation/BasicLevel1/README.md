@@ -63,4 +63,14 @@ Controls all previous steps
   * Processes Data according to certain rules.
   * Produces Information (Output).
   * Stores Information for future use.
-  
+
+**Computer Components:**
+
+  1. Software  
+  Computer Programs, instructions and Data. (Intangible)  
+  * System Software : Operating Systems  
+     Windows, Linux, Mac , ... etc.  
+  * Application Software :  
+     MsOffice, Photoshop , ... etc.
+
+  2. Hardware  
