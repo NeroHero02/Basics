@@ -64,13 +64,20 @@ Controls all previous steps
   * Produces Information (Output).
   * Stores Information for future use.
 
-**Computer Components:**
+## Computer Components:
 
-  1. Software  
+  1. **Software**  
   Computer Programs, instructions and Data. (Intangible)  
   * System Software : Operating Systems  
      Windows, Linux, Mac , ... etc.  
   * Application Software :  
      MsOffice, Photoshop , ... etc.
 
-  2. Hardware  
+  2. **Hardware**  
+  Collection of physical elements. (Tangible)
+  * Computer case
+  * Moniter
+  * CPU
+  * RAM
+  * Motherboard
+  * Keybaord
