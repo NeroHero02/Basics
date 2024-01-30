@@ -21,6 +21,10 @@ The difference between data and information.
  - Unprocessed
  - Has no meaning
 
-  Item Zed
-
+2. Information
+ - Driven from data
+ - Structured/Organized
+ - Analyzed
+ - Processed
+ - Has meaning
 
