@@ -146,8 +146,8 @@ Byte : Every 8 bits equal 1 byte.
 128    64    32    16    8     4     2      1 
 
 Base2  
-2^0 ---> LSB  
-2^7 ---> MSB  
+2^0 ---> Lowest Significant Bit(LSB).
+2^7 ---> Most Significant Bit (MSB).
 
 Examples : 
 1- Represent this in Binary : 
@@ -370,4 +370,15 @@ how can convert from Binary to Hexa?
   2. Convert Decimal to Hexa.
 
 ```
+
+## Byte Parts
+
+* 1 Byte ---> 8 Bits.
+* 2 Bits ---> Crumb.
+* 4 Bits ---> Nibble
+* Nibble is a group of 4 bits together.
+* Nibble is 1/4 Byte.
+* First 4 Bits in Byte Called Lower Nibble.
+* Last 4 Bits in Byte Called Upper Nibble.
+
 
