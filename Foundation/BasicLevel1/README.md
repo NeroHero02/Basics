@@ -144,4 +144,8 @@ Byte : Every 8 bits equal 1 byte.
 0      1     0     0     0     0     0     1  
 2^7   2^6   2^5   2^4   2^3   2^2   2^1   2^0  
 128    64    32    16    8     4     2     1 
+
+Base2  
+2^0 &rarr; LSB  
+2^7 &rarr; MSB  
 ```
