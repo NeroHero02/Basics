@@ -363,11 +363,22 @@ We have two steps :
   1. Convert Hexa to Decimal.  
   2. Convert Decimal to Binary.
 
+OR 
+  1- We divide it into several parts, each digit is a part
+  2- We convert each digit to Binary
+  3- We merge all the binary digit you obtained from each part, from right to left
+
 how can convert from Binary to Hexa?
  
   We have two steps : 
   1. Convert Binary to Decimal.
   2. Convert Decimal to Hexa.
+  
+OR
+ 1- We divide it into Nibble from right to left, which is a part
+ 2- Convert each part to Decimal
+ 3- We make adjustments according to what each Nibble in Decimal represents in Hexa
+ 4- We merge them from right to left
 
 ```
 
