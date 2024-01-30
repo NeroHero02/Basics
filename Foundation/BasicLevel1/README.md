@@ -28,8 +28,8 @@ The difference between data and information.
  - Processed
  - Has meaning
 
- ## Data vs Wisdom
+ ## Knowledge vs Wisdom
 
-Data &rarr;<sup>Input</sup>
+Data &rarr;<sup>Input</sup> Processing &rarr;<sup>Output</sup> Information &rarr;<sup>With Time</sup> Knowledge
 
 
