@@ -81,3 +81,20 @@ Controls all previous steps
   * RAM
   * Motherboard
   * Keybaord
+
+## Computer Units :*
+
+1. **Input:**  
+  Any device that provides data or signal to computer.
+  Examples : Keybaord, Mouse , Camera , Mic.
+2. **Output:**  
+  Any device used to communicate results.
+  Examples : Printer, Moniter , Speaker.
+3. **Primary Memory:**  
+    * Random Access Memory (RAM)  
+       Temporary.  
+    Read Only Memory (ROM)  
+      Permanent.  
+      Examples : It stores the instructions for the computer to start up.
+4. **Secondary Storage:**  
+5. **Central Processing:**  
