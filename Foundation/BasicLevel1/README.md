@@ -30,6 +30,6 @@ The difference between data and information.
 
  ## Knowledge vs Wisdom
 
-Data&rarr;<sup>Input</sup> Processing &rarr;<sup>Output</sup> Information &rarr;<sup>With Time</sup> Knowledge &rarr;<sup>Applied</sup>
+Data&rarr;<sup>Input</sup> Processing &rarr;<sup>Output</sup> Information &rarr;<sup>With Time</sup> Knowledge &rarr;<sup>Applied</sup> Wisdom
 
 
