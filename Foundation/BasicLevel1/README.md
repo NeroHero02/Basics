@@ -125,3 +125,19 @@ you'll also see GPUs commonly referred to as graphics cards or video cards and i
 * It only understands 0's (Off) and 1's (On).  
 * Everything you see, hear and read on the screen reaches you as the result of "on" or "off" billions of times.
 * Computer uses Binary System to represent numbers, letters, commands, images and sounds.
+
+## Decimal vs Binary
+
+1. Decimal  
+<div style="display: flex; flex-wrap: wrap; gap: 5px;">
+    <div style="border: 1px solid #555; padding: 10px; text-align: center; width: 20px;">9</div>
+    <div style="border: 1px solid #555; padding: 10px; text-align: center; width: 20px;">8</div>
+    <div style="border: 1px solid #555; padding: 10px; text-align: center; width: 20px;">7</div>
+    <div style="border: 1px solid #555; padding: 10px; text-align: center; width: 20px;">6</div>
+    <div style="border: 1px solid #555; padding: 10px; text-align: center; width: 20px;">5</div>
+    <div style="border: 1px solid #555; padding: 10px; text-align: center; width: 20px;">4</div>
+    <div style="border: 1px solid #555; padding: 10px; text-align: center; width: 20px;">3</div>
+    <div style="border: 1px solid #555; padding: 10px; text-align: center; width: 20px;">2</div>
+    <div style="border: 1px solid #555; padding: 10px; text-align: center; width: 20px;">1</div>
+    <div style="border: 1px solid #555; padding: 10px; text-align: center; width: 20px;">0</div>
+</div>
