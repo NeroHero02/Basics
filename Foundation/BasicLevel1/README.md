@@ -107,12 +107,14 @@ Controls all previous steps
         Controls the inputs and outputs.  
      3. Cache & Registers.  
 
+
+## Graphics Processing Unit
+GPU stands for Graphics Processing Unit.  
+you'll also see GPUs commonly referred to as graphics cards or video cards and it's only one part from graphic card. 
+
+
  ## In terms of speed in accessing data.
  Secondary Storage &rarr; Slow Access to Data.  
  Primary Storage &rarr; Makes Access to data much faster.  
  Cashe Memory &rarr; Simi Instantly available data.  
  Registers &rarr; Instantly Avalible data.  
-
-## Graphics Processing Unit
-GPU stands for Graphics Processing Unit.  
-you'll also see GPUs commonly referred to as graphics cards or video cards and it's only one part from graphic card.
