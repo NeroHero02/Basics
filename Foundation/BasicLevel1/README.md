@@ -131,6 +131,6 @@ you'll also see GPUs commonly referred to as graphics cards or video cards and i
 1. Decimal  
   9 8 7 6 5 4 3 2 1 0  
 
-2. Binary 
+2. Binary  
   0 1
   
