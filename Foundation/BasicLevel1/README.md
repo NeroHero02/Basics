@@ -45,7 +45,7 @@ It is an electronic device that receives data and processes it according to rule
 
 ## Functionalities of Computer
 
-1. Input Data
+1. Input Data.
 Takes Data as Input.
 2. Stores Data
 Stores the data/instructions in its memory and use them when required.
