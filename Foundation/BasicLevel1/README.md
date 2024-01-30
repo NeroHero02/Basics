@@ -357,5 +357,17 @@ Solution steps:
    16^2 = 1 = 256*1 = 256.
   Then 1D5 in Decimal Equals 5+208+256 = 469.  
 
+Ok, now how can convert from Hexa To Binary ? 
+
+We have two steps : 
+  1. Convert Hexa to Decimal.  
+  2. Convert Decimal to Binary.
+
+how can convert from Binary to Hexa?
+ 
+  We have two steps : 
+  1. Convert Binary to Decimal.
+  2. Convert Decimal to Hexa.
+
 ```
 
