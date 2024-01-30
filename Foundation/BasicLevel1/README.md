@@ -55,3 +55,12 @@ Processes data and convert it to useful information
 Generates Information as output.
 5. **Control**  
 Controls all previous steps
+
+**Computer is :**  
+  * Electronic Device.  
+  * Operating under the control of instructions.
+  * Accepts Data(Input).
+  * Processes Data according to certain rules.
+  * Produces Information (Output).
+  * Stores Information for future use.
+  
