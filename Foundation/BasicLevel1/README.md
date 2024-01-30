@@ -97,4 +97,19 @@ Controls all previous steps
       Permanent.  
       Examples : It stores the instructions for the computer to start up.
 4. **Secondary Storage:**  
+    * Stores data parentally (Hard Drive, CD, Memory Card, Flash Memory).
 5. **Central Processing:**  
+    * It is responsible for all functions and processes. (CPU)  
+    Know as microprocessor or processor And it is divided into 3 parts :  
+     1. ALU (Arithmetic Logic Unit). 
+        Responsible for arithmetic and logical operations.   
+     2. Control Unit.  
+        Controls the inputs and outputs.  
+     3. Cache & Registers.  
+
+ ## In terms of speed in accessing data.
+ Secondary Storage &rarr; Slow Access to Data.  
+ Primary Storage &rarr; Makes Access to data much faster.  
+ Cashe Memory &rarr; Simi Instantly available data.  
+ Registers &rarr; Instantly Avalible data.  
+
