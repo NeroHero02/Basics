@@ -118,3 +118,10 @@ you'll also see GPUs commonly referred to as graphics cards or video cards and i
  Primary Storage &rarr; Makes Access to data much faster.  
  Cashe Memory &rarr; Simi Instantly available data.  
  Registers &rarr; Instantly Avalible data.  
+
+## How Computers Works?
+* Computer is an electronic device.  
+* It deals with electricity On/Off.  
+* It only understands 0's (Off) and 1's (On).  
+* Everything you see, hear and read on the screen reaches you as the result of "on" or "off" billions of times.
+* Computer uses Binary System to represent numbers, letters, commands, images and sounds.
