@@ -93,7 +93,7 @@ Controls all previous steps
 3. **Primary Memory:**  
     * Random Access Memory (RAM)  
        Temporary.  
-    Read Only Memory (ROM)  
+    * Read Only Memory (ROM)  
       Permanent.  
       Examples : It stores the instructions for the computer to start up.
 4. **Secondary Storage:**  
