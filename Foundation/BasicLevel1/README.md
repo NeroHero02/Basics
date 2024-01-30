@@ -215,4 +215,43 @@ Then 257 Equals in Binary --->100000001 (256+1).
 What is the Largest Number in 2 Byte ? 
 1111111111111111 (32768+16384+8192+4096+2048+1024+512+256+128+64+32+16+8+4+2+1 = 65,535).  
 ```
+We've learned how to convert numbers, like converting from decimal to binary and vice versa. Now, how is the conversion of characters done?  
+```
+ASCII Code : American Standard Code for Information Interchange
+A ---> 01000001 --->65.  
+B ---> 01000010 --->66.  
+..........etc.........  
+a --->01100001 --->97.  
+b --->01100010 --->98.  
+This Website will help you ---> https://www.ascii-code.com/
+How to represents My Name ?  
+Solution steps:  
+We convert letter by letter to binary.   
+Osama Sbeih  
+01001111 01110011 01100001 01101101 01100001 00100000 01010011 01100010 01100101 01101001 01101000  
 
+```
+
+Now, we can convert numbers and English letters to decimal and binary systems. But what about Arabic or other languages? How can computers handle them?  
+
+```h
+Unicode : a Universal character encoding standard that assigns a code to every character and symbol in every language in the world.
+```
+
+## Differences Between ASCII and UNICODE  
+
+1. ASCII  
+  - American Standard Code for Information Interchange.  
+  - Supports specific characters (less space).  
+  - Has 2 standards:  
+    - 7-bit ASCII - 128 characters.  
+    - 8-bit ASCII - 256 characters.  
+  - Only one language.  
+2. UNICODE  
+  - Universal Coding System.  
+  - Large number of characters (large space).  
+  - It has 3 standards:  
+    - UTF 8 - 256 characters.  
+    - UTF 16 - 65,535 characters.  
+    - UTF 32 - 4,294,967,296 characters.  
+  - Any combination of languages.  
