@@ -28,3 +28,18 @@ The difference between data and information.
  - Processed
  - Has meaning
 
+ ## Data vs Wisdom
+
+\dot
+digraph G {
+  rankdir="LR";
+  node[shape=none, fontsize=56]
+
+  1 -> 2 [label="a"]
+  2 -> 1 [label="b"]
+
+  3 -> 4 [label="d"]
+  4 -> 3 [label="e"]
+}
+\enddot
+
