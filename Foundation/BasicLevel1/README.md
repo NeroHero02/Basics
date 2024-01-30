@@ -317,11 +317,34 @@ Provides a human-friendly representation.
 ```h
 Color Picker ---> Code Hexadecimal.   
 Prefix For Hexadecimal : 
-Technology/Language         Prefix           Example    
-   HTML&CSS                 #Code            #FFFFFF
-  C,C++,Java,...etc         0xCode           0xC2A4
-      XML                   &#Code           &#C2A4
-     Unicode                U+Code           U+C2A4
-  
+Technology/Language         Prefix           Example     
+   HTML&CSS                 #Code            #FFFFFF  
+  C,C++,Java,...etc         0xCode           0xC2A4  
+      XML                   &#Code           &#C2A4  
+     Unicode                U+Code           U+C2A4  
+
+Ok , now how can we convert Decimal to Hexadecimal.  
+
+Example :  
+* Convert 469 To Hex  
+  Number/16          Result          Integer          Fraction          Remainder          Hex
+  469/16=            29.3125          29               0.3125           16*0.3125=5         5
+  29/16=             1.8125           1                0.08125          16*0.08125=13       D
+  1/16=               --              --                --                  1               1
+
+469 in Decimal Equals 1D5 in Hexadecimal.  
+
+Ok, now how can we convert Hexadecimal To Decimal.  
+
+*Convert 1D5 to Decimal.
+
+    1         D         5
+   16^2     16^1      16^0
+
+   16^0 * 5 = 1 * 5 = 5.
+   16^1 * 13 = 16 * 13 = 208.
+   16^2 = 1 = 256*1 = 256.
+  Then 1D5 in Decimal Equals 5+208+256 = 469.  
+
 ```
 
