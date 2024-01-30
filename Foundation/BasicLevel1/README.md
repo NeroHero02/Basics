@@ -141,7 +141,7 @@ One : Electronic.
 Byte : Every 8 bits equal 1 byte.
 
 ```html
-0 1 0 0 0 0 0 1  
-2 &sup7;  2<sup>6</sub> 2<sup>5</sub> 2<sup>4</sub> 2<sup>3</sub> 2<sup>2</sub> 2<sup>1</sub> 2<sup>0</sub>  
-128 64 32 16 8 4 2 1 
+0     1      0      0      0      0      0      1  
+2^7  2^6    2^5    2^4    2^3    2^2    2^1    2^0  
+128  64     32     16      8      4      2      1 
 ```
