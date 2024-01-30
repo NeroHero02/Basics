@@ -212,8 +212,7 @@ Here, we add another byte
 From 1 To 128 This First Byte.  
 From 256 To 32,768 This Second Byte.  
 Then 257 Equals in Binary --->100000001 (256+1).  
+What is the Largest Number in 2 Byte ? 
+1111111111111111 (32768+16384+8192+4096+2048+1024+512+256+128+64+32+16+8+4+2+1 = 65,535).  
 ```
 
-1      1     1     1     1     1     1     1   
-                                                  2^7   2^6   2^5   2^4   2^3   2^2   2^1   2^0   
-                                                  128    64    32    16    8     4     2     1  
