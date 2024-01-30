@@ -150,7 +150,7 @@ Base2
 2^7 ---> MSB  
 
 Examples : 
-1- Represent this in binary : 
+1- Represent this in Binary : 
 * 3
 0      0     0     0     0     0     1     1  
 2^7   2^6   2^5   2^4   2^3   2^2   2^1   2^0  
@@ -174,4 +174,46 @@ Note : Only one way to represent data.
 ```
 
 *Binary To Decimal.
-**
+```h
+
+Solution steps:
+1- We make the table.  
+2- We sum all the numbers that have the digit 1.
+
+Represent this in Decimal :  
+* 00000101  
+* 3
+0      0     0     0     0     1     0     1   
+2^7   2^6   2^5   2^4   2^3   2^2   2^1   2^0   
+128    64    32    16    8     4     2     1  
+
+4+1 = 5.  
+
+* 00010100
+16+4 = 20.
+
+* 00010101
+16+4+1 = 21.
+
+Larges number in a byte  
+1      1     1     1     1     1     1     1   
+2^7   2^6   2^5   2^4   2^3   2^2   2^1   2^0   
+128    64    32    16    8     4     2     1  
+
+128+64+32+16+8+4+2+1 = 255  
+
+If the largest number representable in 1 byte is 255, how can the number 257 be represented?  
+Here, we add another byte  
+
+ 0        0         0          0         0          0         0        1        0      0     0     0     0     0     0     1   
+2^15     2^14      2^13       2^12      2^11       2^10      2^9      2^8      2^7    2^6   2^5   2^4   2^3   2^2   2^1   2^0   
+32,768  16,384     8,192      4,096     2,048      1,024     512      256      128     64    32    16    8     4     2     1  
+
+From 1 To 128 This First Byte.  
+From 256 To 32,768 This Second Byte.  
+Then 257 Equals in Binary --->100000001 (256+1).  
+```
+
+1      1     1     1     1     1     1     1   
+                                                  2^7   2^6   2^5   2^4   2^3   2^2   2^1   2^0   
+                                                  128    64    32    16    8     4     2     1  
