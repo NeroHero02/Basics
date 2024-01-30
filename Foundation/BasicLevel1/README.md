@@ -327,6 +327,12 @@ Ok , now how can we convert Decimal to Hexadecimal.
 
 Example :  
 * Convert 469 To Hex  
+Solution steps:
+1- We make a table.
+2- We process the coupon every time by 16 and put the correct number and decimals, and the rest of the coupon we represent in Hexadecimal.
+3- We write the number in order from bottom to top.
+
+
   Number/16          Result          Integer          Fraction          Remainder          Hex
   469/16=            29.3125          29               0.3125           16*0.3125=5         5
   29/16=             1.8125           1                0.08125          16*0.08125=13       D
@@ -337,6 +343,11 @@ Example :
 Ok, now how can we convert Hexadecimal To Decimal.  
 
 *Convert 1D5 to Decimal.
+
+Solution steps:
+1- From right to left, we multiply each number according to its hexadecimal representation by 16.
+2- We calculate the result for each digit in the number.
+3- We collect the result of each number and this is its representation in Decimal.
 
     1         D         5
    16^2     16^1      16^0
