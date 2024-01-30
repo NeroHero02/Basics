@@ -280,3 +280,31 @@ Zettabyte (ZB) 10^21 (whole data in the world just a few ZB).
 Yottabyte (YB) 10^24 (Huge, No practical use).  
 
  ```
+
+ ## CPU Speed
+
+ * Higher clock speed means a faster CPU (within the same generation).  
+ * Clock speed (also "clock rate" or "frequency") is one of the most significant.  
+ * A CPU with a clock speed of 3.2 GHz executes 3.2 billion cycles per second.  
+ Note : Hertz HZ --> Cycles per second (Colck Cycle).
+
+
+ ## What is the Different Between32-Bit vs 64-Bit
+
+1. 32-Bit  
+   - Less Processing power, older , slower , and less secure.  
+   - 2^32 (or 4,294,967,296) bytes.  
+   - Can allocate only 4GB of memory (RAM).  
+   - Referred to as x86 or x86-32.  
+   - Can only run a 32-bit operating system and 32-bit software.  
+
+2. 64-Bit
+  
+   - More processing power, newer , faster , and more secure.  
+   - 2^64 (or 18,446,744,073,709,551,616) Bytes.  
+   - Can allocate much more RAM.  
+   - Referred to as x64 or x86-64.  
+   - Can run both 64-bit 32-bit operating systems and software.  
+
+  Note : if you have installed 32-bit operating system on a 64-bit computer, then it can run 32-bit software only.
+
