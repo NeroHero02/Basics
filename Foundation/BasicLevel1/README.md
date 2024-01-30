@@ -139,7 +139,7 @@ Zero : No Electronic.
 One : Electronic.  
 
 Byte : Every 8 bits equal 1 byte.
-
+* Decimal To Binary.  
 ```html
  0      1     0     0     0     0     0     1  
 2^7    2^6   2^5   2^4   2^3   2^2   2^1   2^0  
@@ -148,4 +148,27 @@ Byte : Every 8 bits equal 1 byte.
 Base2  
 2^0 ---> LSB  
 2^7 ---> MSB  
+
+Examples : 
+1- Represent this in binary : 
+* 3
+0      0     0     0     0     0     1     1  
+2^7   2^6   2^5   2^4   2^3   2^2   2^1   2^0  
+128    64    32    16    8     4     2     1 
+Solution steps:
+1- We make the table.  
+2- We put 1 in the bits whose sum equals the number we want to convert.  
+2+1 = 3  
+Then 3 in binary equal 00000011.  
+*8  
+00001000.  
+*5  
+00000101 (4+1).  
+*20  
+00010100 (16+4).  
+*21  
+00010101 (16+4+1).  
+
+Note : Only one way to represent data.  
+
 ```
