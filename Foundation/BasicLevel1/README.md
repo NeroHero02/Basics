@@ -410,13 +410,10 @@ Octal Prefix:
 ```
 
 ```
-
 Convert Decimal to Octal
 The same method of converting from Hexadecimal to Decimal But we divide by 8, not 16.  
 Convert Octal to Binary
 The same method of converting from Hexadecimal to Binary But we convert to 3 digit every part not 4 digit.
 Convert Binary to Octal
 We take every 3 bits together from right to left and convert them to octal
-
-
 ```
