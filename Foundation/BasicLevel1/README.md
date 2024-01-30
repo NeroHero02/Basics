@@ -40,3 +40,18 @@ Information : Newborn are dubling every year
 Knowledge : It is happening in my country!
 Wisdom : I better be ready for the future and build a good infrastructure
 
+## What is Computer
+It is an electronic device that receives data and processes it according to rules, laws, and commands. After processing, it transforms the data into information.
+
+## Functionalities of Computer
+
+1. Input Data
+Takes Data as Input.
+2. Stores Data
+Stores the data/instructions in its memory and use them when required.
+3. Process Data
+Processes data and convert it to useful information
+4. Output Info
+Generates Information as output.
+5. Control
+Controls all previous steps
