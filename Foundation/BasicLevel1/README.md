@@ -34,3 +34,9 @@ Data&rarr;<sup>Input</sup> Processing &rarr;<sup>Output</sup> Information &rarr;
 
 Data is the foundation, and when processed are performed on it, it transforms into information. Over time, this information evolves into knowledge, and when applied, it becomes expertise. Therefore, having knowledge doesn't necessarily mean you are an expert; applying that knowledge is crucial to becoming an expert.
 
+Example : 
+Data : 10,000 newborn every day
+Information : Newborn are dubling every year 
+Knowledge : It is happening in my country!
+Wisdom : I better be ready for the future and build a good infrastructure
+
