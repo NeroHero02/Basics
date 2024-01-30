@@ -308,3 +308,20 @@ Yottabyte (YB) 10^24 (Huge, No practical use).
 
   Note : if you have installed 32-bit operating system on a 64-bit computer, then it can run 32-bit software only.
 
+
+
+## What is Hexadecimal System?
+Hexadecimal (Base 16)   
+0 1 2 3 4 5 6 7 8 9 A B C D E F  
+Provides a human-friendly representation.  
+```h
+Color Picker ---> Code Hexadecimal.   
+Prefix For Hexadecimal : 
+Technology/Language         Prefix           Example    
+   HTML&CSS                 #Code            #FFFFFF
+  C,C++,Java,...etc         0xCode           0xC2A4
+      XML                   &#Code           &#C2A4
+     Unicode                U+Code           U+C2A4
+  
+```
+
