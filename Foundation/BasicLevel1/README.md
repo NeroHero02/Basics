@@ -32,13 +32,13 @@ The difference between data and information.
 
 Data&rarr;<sup>Input</sup> Processing &rarr;<sup>Output</sup> Information &rarr;<sup>With Time</sup> Knowledge &rarr;<sup>Applied</sup> Wisdom
 
-Data is the foundation, and when processed are performed on it, it transforms into information. Over time, this information evolves into knowledge, and when applied, it becomes expertise. Therefore, having knowledge doesn't necessarily mean you are an expert; applying that knowledge is crucial to becoming an expert.
+Data is the foundation, and when processed are performed on it, it transforms into information. Over time, this information evolves into knowledge, and when applied, it becomes expertise. Therefore, having knowledge doesn't necessarily mean you are an expert; applying that knowledge is crucial to becoming an expert.  
 
-Example : 
-Data : 10,000 newborn every day
-Information : Newborn are dubling every year 
-Knowledge : It is happening in my country!
-Wisdom : I better be ready for the future and build a good infrastructure
+Example :  
+Data : 10,000 newborn every day  
+Information : Newborn are dubling every year   
+Knowledge : It is happening in my country!  
+Wisdom : I better be ready for the future and build a good infrastructure  
 
 ## What is Computer
 It is an electronic device that receives data and processes it according to rules, laws, and commands. After processing, it transforms the data into information.
