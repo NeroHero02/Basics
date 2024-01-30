@@ -15,13 +15,12 @@ Data + Meaning = Information
 ```
 The difference between data and information.
 1. Data : 
-i. Raw facts
-  ii. Unstructured/Unorganized
-  iii. Unanalyzed
-  iv. Unprocessed
-  v. Has no meaning
+ Raw facts
+ Unstructured/Unorganized
+ Unanalyzed
+ Unprocessed
+ Has no meaning
 
   Item Zed
-Nested Numeric
-Nested Numeric
+
 
