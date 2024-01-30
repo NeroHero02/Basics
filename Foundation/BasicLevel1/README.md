@@ -399,12 +399,24 @@ OR
 Note : Each octal digit represents 3 bits, so a 6-bit byte is two octal digits
 
 *Why Octal ?*
-- Previously in old computers the byte was only 6 digits not 8 digits.
-- In octal a binary number is divided up into groups of only 3 bits, with each group or set of bits having a distinct value of between 000 and 111.
-- The use of octal numbers has declined now, why?!
-  Because most modern computers (use Nibbles) no longer base their word length on multiples of three bits, (they are based on multiples of four bits, so hexadecimal is more widely used).
-
-Octal Prefix:
+- Previously in old computers the byte was only 6 digits not 8 digits.  
+- In octal a binary number is divided up into groups of only 3 bits, with each group or set of bits having a distinct value of between 000 and 111.  
+- The use of octal numbers has declined now, why?!  
+  Because most modern computers (use Nibbles) no longer base their word length on multiples of three bits, (they are based on multiples of four bits, so hexadecimal is more widely used).  
+- Octal System is base 8.  
+Octal Prefix:  
 ```bash
-OoCode ---> Oo725
+0oCode ---> 0o725
+```
+
+```
+
+Convert Decimal to Octal
+The same method of converting from Hexadecimal to Decimal But we divide by 8, not 16.  
+Convert Octal to Binary
+The same method of converting from Hexadecimal to Binary But we convert to 3 digit every part not 4 digit.
+Convert Binary to Octal
+We take every 3 bits together from right to left and convert them to octal
+
+
 ```
