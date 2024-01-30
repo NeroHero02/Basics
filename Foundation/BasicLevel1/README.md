@@ -261,14 +261,22 @@ Unicode : a Universal character encoding standard that assigns a code to every c
  ```h
  
  8 bits ---> 1 Byte.  (Text Document)  
+
  1024 Kilobyte (KB) --->1 Byte * 1024.  (Image, Song)  
+
  1,048,576 Megabyte (MB) ---> 1024 Kilobyte * 1024.  (Movie, Flash Memory)  
+
  1,073,741,824 Gigabyte (GB) ---> 1,048,576 Megabyte * 1024.  (Large Storge HDD)  
+
  1,099,511,627,776 Terabyte (TB) ---> 1,073,741,824 Gigabyte * 1024.  (HardDisk)  
+
 There are more :
 Petabyte (PB) 10 ^ 15 (Facebook Servers 10+ PBs).  
+
 Exabyte (EB) 10^18 (Amount of data transfer over the internet).  
+
 Zettabyte (ZB) 10^21 (whole data in the world just a few ZB).  
+
 Yottabyte (YB) 10^24 (Huge, No practical use).  
 
  ```
