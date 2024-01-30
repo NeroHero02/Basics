@@ -388,7 +388,7 @@ OR
 * 2 Bits ---> Crumb.
 * 4 Bits ---> Nibble
 * Nibble is a group of 4 bits together.
-* Nibble is 1/4 Byte.
+* Nibble is 1/2 Byte.
 * First 4 Bits in Byte Called Lower Nibble.
 * Last 4 Bits in Byte Called Upper Nibble.
 
