@@ -393,3 +393,18 @@ OR
 * Last 4 Bits in Byte Called Upper Nibble.
 
 
+## Octal Systems
+
+**The Octal Numbering System is very similar in principle to the previous hexadecimal numbering system except that in Octal.**
+Note : Each octal digit represents 3 bits, so a 6-bit byte is two octal digits
+
+*Why Octal ?*
+- Previously in old computers the byte was only 6 digits not 8 digits.
+- In octal a binary number is divided up into groups of only 3 bits, with each group or set of bits having a distinct value of between 000 and 111.
+- The use of octal numbers has declined now, why?!
+  Because most modern computers (use Nibbles) no longer base their word length on multiples of three bits, (they are based on multiples of four bits, so hexadecimal is more widely used).
+
+Octal Prefix:
+```bash
+OoCode ---> Oo725
+```
