@@ -82,7 +82,7 @@ Controls all previous steps
   * Motherboard
   * Keybaord
 
-## Computer Units :*
+## Computer Units :
 
 1. **Input:**  
   Any device that provides data or signal to computer.
