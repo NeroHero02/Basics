@@ -30,5 +30,6 @@ The difference between data and information.
 
  ## Data vs Wisdom
 
-Data &rarr;
+Data &rarr;<sup>Input</sup>
+
 
