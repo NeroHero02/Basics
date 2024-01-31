@@ -241,3 +241,33 @@ Note : In C++ programming , `Octal` starts with a `0` , and `Hexadecimal` starts
 
 ## Variables
 
+**Data Types in C++**
+Different types of varaibles (defined with different keywords).  
+
+1. Fundamentals
+  - Integral Type 
+    - `int`  (Whole Numer : `712`).
+    - `char` (Single Character : `A`).
+  - Floating Type
+    - `float` (Floating Point : `14.5`).
+    - `double` (Floating Point : `14.5`).
+  - Bolean Type 
+    - `bool` (`True` or `False`).
+  - String Type
+    - string (Text:`"Osama"`).
+  - Void Type
+    - void (`Empty`).
+  - Wide Character 
+    - wchar_t (`Unicode`).
+
+2. Derived
+  - `Function`.
+  - `Array`.
+  - `Pointer`.
+  - `Refrence`.
+3. User-Defined
+  - `Class`.
+  - `Structure`.
+  - `Union`.
+  - `Enum`.
+  - `Type Def`.
