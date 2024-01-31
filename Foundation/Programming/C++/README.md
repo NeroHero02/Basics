@@ -472,6 +472,49 @@ return;
 30
 ```
 
+**Declare Many Variables**  
+To add a variable to another variable, you can use the + operator
+
+Example : 
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+int _Num1 = 10;
+int _Num2 = 20;
+int _Sum = _Num1 + _Num2;
+cout << _Sum;
+
+return;
+} 
+```
+
+**Output**
+```
+30
+```
+
+
+**Or**
+
+Example : 
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+int _Num1 = 10;
+int _Num2 = 20;
+cout << _Num1 + _Num2;
+
+return;
+} 
+```
 
 
 
