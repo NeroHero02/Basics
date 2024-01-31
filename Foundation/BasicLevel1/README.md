@@ -568,3 +568,23 @@ From Left to Right :
 2. Order $\sqrt{x}*x^2$.   
 3. Divide / or Multiply *.   
 4. Add + or Subtract -.  
+
+
+## Varaible & Constants
+
+- Variables are containers for storing data values.
+- Variables are used to store data.
+- Storing information : is useful when you want to reuse that information many times or use it at different times while running a program.
+
+**Varaibles Types:**
+
+1. Numbers  
+  - Integers (10, 20).  
+  - Floats  (5.2 , 2.3).  
+
+2. Strings  
+  - "Osama Sbeih"  
+
+3. Boolean  
+   - True  
+   - False  
