@@ -455,3 +455,46 @@ WANs connect thousands or even millions of devices.
 Note : This part is sufficient to understand what networks are. As for the details, I will address them in the networking section.  
 
 ## What is Programming Language?
+
+**Programming Language : is only a tool to help you write instructions to computer to perform certain operation/task.**  
+
+- Instructions are called code.  
+- Machine Language : Computer programming language consisting of binary or hexadecimal instructions which a computer can respond to directly.
+- Assembly Language :  is a type of low-level programming language that is intended to communicate directly with a computer's hardware.  
+- Low Level Language : Like Machine Language and Assembly Language.  
+
+Example For Machine Language and Assembly Language
+
+```h
+Print "Osama, Sbeih" 
+if i will do this line in Machine Language i need to write : 
+0x50 0x72 0x69 0x6e 0x74 0x20 0x22 0x4f 0x73 0x61 0x6d 0x61 0x2c 0x20 0x53 0x62 0x65 0x69 0x68 0x22
+if i will do this line in Assembly Language i need to write : 
+section .data
+    output_msg db "Osama, Sbeih", 0
+
+section .text
+    global _start
+
+_start:
+    ; write the string to stdout
+    mov eax, 4          ; syscall: write
+    mov ebx, 1          ; file descriptor: stdout
+    mov ecx, output_msg ; pointer to the message
+    mov edx, 13         ; length of the message
+    int 0x80            ; make the system call
+
+    ; exit the program
+    mov eax, 1          ; syscall: exit
+    xor ebx, ebx        ; exit code 0
+    int 0x80            ; make the system call
+```
+- Middle Level Language : Like C,C++.  
+- High Level Language : Like Java,C# ,...etc.    
+- Translator Software : Its function is to convert from high-level languages to low-level languages so that the computer can understand Like Interpreter or Compiler.   
+- High Level Language Code Called Code or Source Code.  
+- Low Level Language Code Called Object Code.   
+- Scripting/Interpreted Languages : Python , JavaScript.  
+
+Note : In terms of speed, the higher the language, the slower it is, but the easier it is to deal with, and the lower it is, the faster it is, but the more difficult it is to deal with.  
+
