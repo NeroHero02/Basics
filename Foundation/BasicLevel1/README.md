@@ -516,3 +516,45 @@ Note : In terms of speed, the higher the language, the slower it is, but the eas
 - Does not store any machine code on HDD.   
 - No exe file generated  
 - Ruby, Python, Javascript.  
+
+## Computers Operators  
+
+1. Mathematical  
+
+```h
+Addition + (3.0+4.2=7.2).  
+
+Subtraction - (8.5-4.0=4.5).  
+
+Multiplication * (5*5=25).  
+
+Integer Division / (10/5=2).  
+
+Modulo Division Mod (9 Mod 4 = 1).
+
+Power ^ (3^2=9).  
+```
+
+2. Relational  
+```h
+Equal to = (5=7 False)
+
+Less than < (5>7 True)
+
+Grater than > (5>7 False)
+
+Less than or equal to <= (5<=7 True)
+
+Grater than or equal to >= (5>=7 False)
+
+Not equal to <> (5<>7 True)
+```
+
+3. Logical   
+```h
+And AND (True AND True = True)
+
+Or OR  (True OR False = True)
+
+Not NOT (NOT True = False)
+```
