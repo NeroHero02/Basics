@@ -129,10 +129,10 @@ you'll also see GPUs commonly referred to as graphics cards or video cards and i
 ## Decimal vs Binary
 
 1. Decimal  
-  9 8 7 6 5 4 3 2 1 0  
+ - `9 8 7 6 5 4 3 2 1 0`
 
 2. Binary  
-  0 1
+ - `0 1`
 
 Bit : It is a cell that stores either zero or one.  
 Zero : No Electronic.  
@@ -218,17 +218,17 @@ What is the Largest Number in 2 Byte ?
 We've learned how to convert numbers, like converting from decimal to binary and vice versa. Now, how is the conversion of characters done?  
 ```
 ASCII Code : American Standard Code for Information Interchange
-A ---> 01000001 --->65.  
-B ---> 01000010 --->66.  
+`A` ---> `01000001` --->`65`.  
+`B` ---> `01000010` --->`66`.  
 ..........etc.........  
-a --->01100001 --->97.  
-b --->01100010 --->98.  
+`a` --->`01100001` --->`97`.  
+b --->01100010 --->`98`.  
 This Website will help you ---> https://www.ascii-code.com/
 How to represents My Name ?  
 Solution steps:  
 We convert letter by letter to binary.   
 Osama Sbeih  
-01001111 01110011 01100001 01101101 01100001 00100000 01010011 01100010 01100101 01101001 01101000  
+`01001111 01110011 01100001 01101101 01100001 00100000 01010011 01100010 01100101 01101001 01101000`
 
 ```
 
