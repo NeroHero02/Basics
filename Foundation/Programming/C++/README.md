@@ -231,9 +231,9 @@ Note : In C++ programming , `Octal` starts with a `0` , and `Hexadecimal` starts
 
 **Escape Sequences:**
 
-- \\ (Blackslash)
-- \t (Tab)
-- \n (Newline)
-- \" (Double quote)
-- \' (Single quote)
-- \a (Audio bell)
+- `\\` (Blackslash)
+- `\t` (Tab)
+- `\n` (Newline)
+- `\"` (Double quote)
+- `\'` (Single quote)
+- `\a` (Audio bell)
