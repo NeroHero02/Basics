@@ -766,3 +766,44 @@ X = 11
 Y = 19
 ```
 
+## Postfix vs Prefix (++A vs A++ , --A vs A--)
+
+- Postfix  
+  - `X++` (X will take value , then X will increase by 1)
+  - `X--` (X will take value , then X will decrease by 1)
+
+- Prefix  
+  - `++X` (X will increase by 1 and become new value)
+  - `--X` (X will decrease by 1 and become new value)
+
+**Example:**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+int X = 10;
+int Y = X++; // Y will take the old value of A , then X will increase by 1
+
+cout << " Y = " << Y << endl;
+cout << " X = " << X << endl;
+
+Y = ++X; // X will increase by 1 , then Y will take the new value
+cout << " Y = " << Y << endl;
+cout << " X = " << X << endl;
+
+return 0;
+}
+
+**Output**
+```
+Y = 10
+X = 11
+Y = 12
+X = 12
+
+```
+
