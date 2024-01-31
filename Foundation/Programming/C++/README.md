@@ -7,9 +7,7 @@
 # include <iostream>
 
 int main()
-
 {
-
 std::cout << "Osama Sbeih";
 return 0;
 }
