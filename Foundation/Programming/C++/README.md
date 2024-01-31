@@ -516,5 +516,40 @@ return;
 } 
 ```
 
+## Identifiers Variables
+
+- All C++ variables must be identified with unique names.
+- The Identifers is the name of the varaible.
+- These unique names are called identifiers
+- Identifers can be short names (Like x and y) or more descriptive names (_Age , _Sum , TotalSales).
+Note : It is recommended to use descriptive names in order to create understandable and maintainable code.  
+
+
+## Naming Rules (Rules to name variables)
+
+- Names can contain letters, digits and underscores.  
+- Names must begin with a letter or an underscore (_).  
+- Names are case sensitive (x and X are different variables)
+- Names cannot contain whitespaces or special characters like !,#,%,etc.
+- Reserved words (like C++ keywords, such as int) cannot be used as names.
+
+
+**Example For Correct Identifiers Variables : **
+```
+int _MyAge;
+int MyAge;
+int My1Age;
+int Age1;
+int My_Age;
+```
+
+**Example For Wrong Identifiers Variables : **
+```
+int 1MyAge;
+int ^MyAge;
+int #MyAge;
+int MyAge#;
+int 16Age;
+```
 
 
