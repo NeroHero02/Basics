@@ -713,11 +713,11 @@ int main()
 
 int _Num1 = 10, _Num2 = 20;
 
-cout << "_Num1 + _Num2=" << _Num1 + _Num2 << endl;
-cout << "_Num1 - _Num2=" << _Num1 - _Num2 << endl;
-cout << "_Num1 * _Num2=" << _Num1 * _Num2 << endl;
-cout << "_Num1 / _Num2=" << _Num1 / _Num2 << endl;
-cout << "_Num1 % _Num2=" << _Num1 % _Num2 << endl;
+cout << "_Num1 + _Num2 = " << _Num1 + _Num2 << endl;
+cout << "_Num1 - _Num2 = " << _Num1 - _Num2 << endl;
+cout << "_Num1 * _Num2 = " << _Num1 * _Num2 << endl;
+cout << "_Num1 / _Num2 = " << _Num1 / _Num2 << endl;
+cout << "_Num1 % _Num2 = " << _Num1 % _Num2 << endl;
 
 return 0;
 }
@@ -726,9 +726,9 @@ return 0;
 **Output**
 
 ```
-_Num1 + _Num2=30
-_Num1 - _Num2=-10
-_Num1 * _Num2=200
-_Num1 / _Num2=0
-_Num1 % _Num2=10
+_Num1 + _Num2 = 30
+_Num1 - _Num2 = -10
+_Num1 * _Num2 = 200
+_Num1 / _Num2 = 0
+_Num1 % _Num2 = 10
 ```
