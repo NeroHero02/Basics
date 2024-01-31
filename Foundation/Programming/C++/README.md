@@ -201,7 +201,7 @@ cout << "Osama Sbeih" << endl;
 
 **Literals : Literals are data used for representing fixed values. They can be used directly in the code.**  
 
-  - Example : `5`, `3.5`, `b` , `"OsamaSbeih`, ...etc.  
+  - Example : `5`, `3.5`, `b` , `"OsamaSbeih"`, ...etc.  
   - You cannot assign different values to these terms.  
 
 Literals Types:  
