@@ -417,3 +417,20 @@ The same method of converting from Hexadecimal to Binary But we convert to 3 dig
 Convert Binary to Octal
 We take every 3 bits together from right to left and convert them to octal
 ```
+
+
+## What is Network?
+**Network : is a group of connected computer and devices.**  
+Example: The Computer , Phones , and other Devices.  
+
+## Network Types
+
+1. Local Area Network (LAN).  
+
+**LAN : Local Area Network that has a group of connected devices.**  
+LAN is a type of network made up of <font color="red">nearby computers</font> .  
+
+
+
+
+2. Wide Area Network (WAN).  
