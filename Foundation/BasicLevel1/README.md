@@ -600,3 +600,12 @@ X : Identifier
 21 : Value  
 Address : Memory Location
 ```
+**What are Constants?**  
+Constants are containers for storing data values , but they are read only.  
+For Example : 
+PI in Math Its value is fixed and does not change, which is 3.14.  
+
+# The End  
+
+**alhamdulillah we have completed the first level of the basics. I hope you have benefited.**
+
