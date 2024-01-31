@@ -167,7 +167,7 @@ My Age is : 21
 - It represents a newline character and also flushes the output buffer. Flushing means forcing the system to immediately write the output to the console or file.
 - Useful when you want to ensure that the output is immediately visible, for example, in situations where you need real-time feedback.
 
-**Therefore, each of them has a place to use. If I have a large program that I divide, I use `endl` with some statemnts and with other statements `\n`.**
+**Therefore, each of them has a place to use. If I have a large program that I divide, I use `endl` with some statemnts and other statements `\n`.**
 
 ## C++ Comments
 
