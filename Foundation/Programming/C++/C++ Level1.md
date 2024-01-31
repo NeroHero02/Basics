@@ -606,13 +606,13 @@ int main()
 {
 string _YouName;
 int _MyAge;
-cout << “Please Enter You’r Name : “ << endl;
+cout << "Please Enter You’r Name : " << endl;
 cin >> _YouName;
 
-cout << “Please Enter You’r Age : “ << endl;
+cout << "Please Enter You’r Age : " << endl;
 cin >> _YouAge;
 
-cout << “You’r Name is : “ << _YouName << “\n You’r Age is : “ << _YouAge << endl;
+cout << "You’r Name is : " << _YouName << "\n You’r Age is : " << _YouAge << endl;
 return 0;
 }
 ```
@@ -691,3 +691,44 @@ cout << USHRT_MIN << USHRT_MAX << endl;
 // sizeof(datatypes) this function give you size of datatypes 
 // _MIN && _MAX this give you range max and min of datatypes
 }
+```
+
+## Arithmetic Operators
+
+- + Adds two operands
+- - Substracts second operand from the first
+- * Multiplies both operands
+- / Divides numerator by de-numerator
+- % This gives remainder of an integer division
+
+
+**Example:**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+int _Num1 = 10, _Num2 = 20;
+
+cout << "_Num1 + _Num2=" << _Num1 + _Num2 << endl;
+cout << "_Num1 - _Num2=" << _Num1 - _Num2 << endl;
+cout << "_Num1 * _Num2=" << _Num1 * _Num2 << endl;
+cout << "_Num1 / _Num2=" << _Num1 / _Num2 << endl;
+cout << "_Num1 % _Num2=" << _Num1 % _Num2 << endl;
+
+return 0;
+}
+```
+
+**Output**
+
+```
+_Num1 + _Num2=30
+_Num1 - _Num2=-10
+_Num1 * _Num2=200
+_Num1 / _Num2=0
+_Num1 % _Num2=10
+```
