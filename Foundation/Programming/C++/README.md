@@ -197,3 +197,33 @@ Comments
 cout << "Osama Sbeih" << endl;
 ```
 
+## Literals and Escape Sequences
+
+**Literals : Literals are data used for representing fixed values. They can be used directly in the code.**  
+
+  - Example : `5`, `3.5`, `b` , `"OsamaSbeih`, ...etc.  
+  - You cannot assign different values to these terms.  
+
+Literals Types:  
+
+1. Integer Literals : 
+  - Decimal (base 10).  
+  - Octal (Base 8).  
+  - Hexadecimal (Base 16).  
+
+Note : In C++ programming , `Octal` starts with a `0` , and `Hexadecimal` starts with a `0x`.  
+
+2. Floating-Point Literals: 
+  - `13.5`.  
+  - `1.99`.  
+  - `-8.07`.  
+
+3. Characters Literals: 
+  - `A`.  
+  - `b`.  
+  - `z`.  
+  - `$`.  
+  - `#`.  
+  
+4. Escape Sequences Literals:
+  - `\n`
