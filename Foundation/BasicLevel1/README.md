@@ -586,5 +586,5 @@ From Left to Right :
   - "Osama Sbeih"  
 
 3. Boolean  
-   - True  
-   - False  
+  - True  
+  - False  
