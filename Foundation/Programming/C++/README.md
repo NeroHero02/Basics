@@ -207,9 +207,9 @@ cout << "Osama Sbeih" << endl;
 Literals Types:  
 
 1. Integer Literals : 
-  - Decimal (base 10).  
-  - Octal (Base 8).  
-  - Hexadecimal (Base 16).  
+  - `Decimal (base 10)`.  
+  - `Octal (Base 8)`.  
+  - `Hexadecimal (Base 16)`.  
 
 Note : In C++ programming , `Octal` starts with a `0` , and `Hexadecimal` starts with a `0x`.  
 
@@ -226,4 +226,4 @@ Note : In C++ programming , `Octal` starts with a `0` , and `Hexadecimal` starts
   - `#`.  
   
 4. Escape Sequences Literals:
-  - `\n`
+  - `\n`.  
