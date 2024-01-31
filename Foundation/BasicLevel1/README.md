@@ -224,7 +224,7 @@ ASCII Code : American Standard Code for Information Interchange
 `B` ---> `01000010` --->`66`.  
 ..........etc.........  
 `a` --->`01100001` --->`97`.  
-b --->01100010 --->`98`.  
+`b` --->`01100010` --->`98`.  
 This Website will help you ---> https://www.ascii-code.com/
 How to represents My Name ?  
 Solution steps:  
