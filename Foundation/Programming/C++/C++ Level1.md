@@ -732,3 +732,37 @@ _Num1 * _Num2 = 200
 _Num1 / _Num2 = 0
 _Num1 % _Num2 = 10
 ```
+
+
+## Increment Decrement Operators
+
+- `++` (X++ ---> X = X + 1 , ++X ---> X = X + 1)
+- `--` (X-- ---> X = X - 1 , --X ---> X = X - 1)
+
+**Example:**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+int X = 10;
+int Y = 20;
+
+X++;
+Y--;
+
+cout << "X = " << X << endl;
+cout << "Y = " << Y << endl;
+
+
+return 0;
+}
+```
+
+**Output**
+```
+X = 11
+Y = 19
+```
+
