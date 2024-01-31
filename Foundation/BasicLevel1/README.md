@@ -558,3 +558,13 @@ Or OR  (True OR False = True)
 
 Not NOT (NOT True = False)
 ```
+
+
+## Calculation Priorities
+
+Order of Operations : 
+
+1. Bracket ()  
+2. Order $\sqrt{x}*(x)^2$  
+3. Divide / or Multiply *  
+4. Add + or Subtract -
