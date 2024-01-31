@@ -450,4 +450,8 @@ Protocol : is a standard set of rules for how devices communicate through wires 
 WAN : is made of connected LANs that are far from each other (like in different parts of the country or world).  
 WANs connect thousands or even millions of devices.  
 
-![WAN Network](https://github.com/NeroHero02/Basics/blob/main/Foundation/BasicLevel1/Images/WAN%20network.png)
+![WAN Network](https://github.com/NeroHero02/Basics/blob/main/Foundation/BasicLevel1/Images/WAN%20network.png)  
+
+Note : This part is sufficient to understand what networks are. As for the details, I will address them in the networking section.  
+
+# What is Programming Language?
