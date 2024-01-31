@@ -808,3 +808,49 @@ X = 12
 
 ```
 
+## Assignment Operators
+
+- `=` (X=5)
+- `+=` (X+=5 equal X = X + 5)
+- `-=` (X-=5 equal X = X - 5)
+- `*=` (X*=5 equal X = X * 5)
+- `/=` (X/=5 equal X = X / 5)
+- `%=` (X%=5 equal X = X % 5)
+
+**Example:**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() 
+{
+int X = 10 , Y = 20;
+
+X +=Y; // X = X + Y
+cout << " X = "  << X << endl;
+
+X -=Y; // X = X - Y
+cout << " X = "  << X << endl;
+
+X *=Y; // X = X * Y
+cout << " X = "  << X << endl;
+
+X /=Y; // X = X / Y
+cout << " X = "  << X << endl;
+
+X %=Y; // X = X % Y
+cout << " X = "  << X << endl;
+
+return 0;
+}
+```
+
+**Output**
+```
+ X = 30
+ X = 10
+ X = 200
+ X = 10
+ X = 10
+```
