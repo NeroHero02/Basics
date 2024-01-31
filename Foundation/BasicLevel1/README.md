@@ -495,6 +495,24 @@ _start:
 - High Level Language Code Called Code or Source Code.  
 - Low Level Language Code Called Object Code.   
 - Scripting/Interpreted Languages : Python , JavaScript.  
+- Assembler : is the program that translate the assembly code to Machine code.  
 
 Note : In terms of speed, the higher the language, the slower it is, but the easier it is to deal with, and the lower it is, the faster it is, but the more difficult it is to deal with.  
 
+## What is the different between Compiled and Interpreted
+
+1. Compiled 
+
+- Reads the Entier Code at once.  
+- Execute the process is much faster.  
+- Machine Code is stored in HDD.  
+- Generates exe file.  
+- C,C++.  
+
+2. Interpreted
+
+- Reads one instruction at a time.  
+- Execute the process is much slower.   
+- Does not store any machine code on HDD.   
+- No exe file generated  
+- Ruby, Python, Javascript.  
