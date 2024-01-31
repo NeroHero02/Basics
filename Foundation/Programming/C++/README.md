@@ -27,6 +27,15 @@ Osama Sbeih
 - `return 0;` : Every function needs a return value, and we will discuss it later.  
 
 
+## Output (Print)  
+
+**The cout object, together with the << operator, is used to output values/print test**
+- `std::cout` : Monitor (Destination).  
+- `<<` : Write (Verb).  
+- `"Message To Be Shown."` : Message (Object).  
+- `;` : End (Terminator).  
+
+
 
 
 
