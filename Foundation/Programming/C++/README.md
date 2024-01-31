@@ -407,3 +407,71 @@ return 0;
 My Age is : 21
 My Age is : 30
 ```
+
+**All Other Types**
+
+Examples :  
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+string _MyName = "OsamaSbeih";
+int _MyAge = 21;
+char _MyGender = 'M';
+bool _Marrid = false;
+double _MySalary = 40.53241;
+float _MyGPA = 3.72;
+
+cout << "My Name is : " << _MyName << endl;
+cout << "My Age is : " << _MyAge << endl;
+cout << "My Gender is : " << _MyGender << endl;
+cout << "If I Marrid or No : " << _Marrid << endl;
+cout << "My GPA is : " << _MyGPA << endl;
+cout << "My Salary is : " << _MySalary << "\n" << endl;
+return 0;
+}
+```
+
+**Output**
+```
+My Name is : OsamaSbeih
+My Age is : 21
+My Gender is : M
+If I Marrid or No : 0
+My GPA is : 3.72
+My Salary is : 40.5324
+```
+
+Note : 0 Means False , 1 Means True.
+
+**Declare Many Variables**  
+To add a variable to another variable, you can use the + operator
+
+Example : 
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+int _Num1 = 10;
+int _Num2 = 20;
+int _Sum = _Num1 + _Num2;
+cout << _Sum;
+
+return;
+} 
+```
+
+**Output**
+```
+30
+```
+
+
+
+
