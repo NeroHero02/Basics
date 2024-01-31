@@ -428,9 +428,7 @@ Example: The Computer , Phones , and other Devices.
 1. Local Area Network (LAN).  
 
 **LAN : Local Area Network that has a group of connected devices.**  
-LAN is a type of network made up of <style color="red">nearby computers</font> .   
-- ![#f03c15](nearby computers) `#f03c15`
-
+LAN is a type of network made up of <span style="color:red;">nearby computers</span>.  
 
 
 
