@@ -7,8 +7,11 @@
 #include <iostream>
 
 int main()
+
 {
+
 std::cout << "Osama Sbeih";
+
 return 0;
 }
 ```
@@ -35,7 +38,46 @@ Osama Sbeih
 - `"Message To Be Shown."` : Message (Object).  
 - `;` : End (Terminator).  
 
+Example 1 :
 
+```cpp
+#include <iostream>
+
+int main()
+{
+std::cout << "Osama Sbeih";
+return 0;
+}
+```
+
+Example 2 : 
+
+```cpp
+#include <iostream>
+
+int main()
+{
+std::cout << "My Name is : Osama Sbeih";
+std::cout << "My Age is : 21";
+return 0;
+}
+```
+
+Note : To insert a new line, you can use the \n character.  
+
+Example 3 :  
+```cpp
+#include <iostream>
+
+int main()
+
+{
+
+std::cout << "My Name is : Osama Sbeih\n";
+std::cout << "My Age is : 21\n";
+return 0;
+}
+```  
 
 
 
