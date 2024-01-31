@@ -175,8 +175,8 @@ My Age is : 21
 - Comemnts can be single-lined or multi-lined.  
 
 1. Single-lined  
-  - Start with two forward slashes (//).   
-  - Example 1 :   
+   - Start with two forward slashes (//).   
+   - Example 1 :   
  ```cpp
 // This is Comments
 cout<< "OsamaSbeih" << endl;
@@ -186,9 +186,9 @@ cout<< "OsamaSbeih" << endl;
 cout << "OsamaSbeih" << endl; // This is Comments
 ```
 2. Multi-Line Comments  
-  - Multi-line comments start with /* and ends with */.  
-  - Any test between /* and */ will be ignored by the compiler.  
-  - Example :
+   - Multi-line comments start with /* and ends with */.  
+   - Any test between /* and */ will be ignored by the compiler.  
+   - Example :
 ```cpp
 /*This
 is
