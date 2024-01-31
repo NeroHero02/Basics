@@ -109,4 +109,29 @@ My Age is : 21
 
 ```
 
+Print Multiple Messages in One Line.  
+
+Example 5 : 
+```cpp
+#include <iostream>
+
+int main()
+{
+std::cout << "My Name is : " << "Osama Sbeih" << std::endl;
+std::cout << "My Age is : " << "21" << std::endl;
+return 0;
+}
+```  
+**Output:**  
+```
+My Name is : Osama Sbeih 
+My Age is : 21
+
+```
+
+## Omitting Namespace
+
+**Using `std::` every time when `cout` and `endl` is annoying, so there is a way to get rid of that and not write it every time.**
+
+
 
