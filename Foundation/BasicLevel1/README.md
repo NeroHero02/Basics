@@ -588,3 +588,15 @@ From Left to Right :
 3. Boolean  
   - True  
   - False  
+
+
+**How Variables are Stored in Memory?**
+For Example:  
+create a variable named X, and its value is 21, the computer allocates a location in memory called a Memory Cell and names this location after the variable, which is X. It then stores the value 21 in this Memory Cell. Each Memory Cell has a unique address associated with it.  
+```h
+Int X = 21  
+Int : Type  
+X : Identifier  
+21 : Value  
+Address : Memory Location
+```
