@@ -69,16 +69,14 @@ return 0;
 ```
 My Name is : Osama Sbeih My Age is : 21
 ```
-Note : To insert a new line, you can use the \n character.  
+Note : To insert a new line, you can use the `\n` character.  
 
 Example 3 :  
 ```cpp
 #include <iostream>
 
 int main()
-
 {
-
 std::cout << "My Name is : Osama Sbeih\n";
 std::cout << "My Age is : 21\n";
 return 0;
@@ -88,9 +86,27 @@ return 0;
 ```
 My Name is : Osama Sbeih 
 My Age is : 21
+
 ```
 
+Another way to insert a new line, is with the `std::endl` manipulator.  
 
+Example 4 :
+```cpp
+#include <iostream>
 
+int main()
+{
+std::cout << "My Name is : Osama Sbeih" << std::endl;
+std::cout << "My Age is : 21" << std::endl;
+return 0;
+}
+```  
+**Output:**  
+```
+My Name is : Osama Sbeih 
+My Age is : 21
+
+```
 
 
