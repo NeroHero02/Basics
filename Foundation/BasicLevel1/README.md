@@ -428,8 +428,26 @@ Example: The Computer , Phones , and other Devices.
 1. Local Area Network (LAN).  
 
 **LAN : Local Area Network that has a group of connected devices.**  
-LAN is a type of network made up of <span style="color:red;">nearby computers</span>.  
+LAN is a type of network made up of nearby computers.  
+- A LAN can have anywhere from a few devices (like a home network) to hundreds of devices (like a school or hospital).  
+- Large organizations like colleges can have multiple LANs - maybe one per building.  
 
+**Communicating on LAN**
+```h
+1.  Wired
+Using wires or cables With Ethernet.  
+2. Wireless
+Without wires using Wi-Fi.
 
+Ethernet : Rules that computers follow for communicating on a wired network.  
+Wireless : Rules that computers follow for communicating through a radio signals.  
 
+Wireless Fidelity (Wi-Fi)  : is a popular way to connect wirelessly to a network.  
+
+Protocol : is a standard set of rules for how devices communicate through wires or wireless.  
+```
 2. Wide Area Network (WAN).  
+WAN : is made of connected LANs that are far from each other (like in different parts of the country or world).  
+WANs connect thousands or even millions of devices.  
+
+![WAN Network] ()
