@@ -650,3 +650,44 @@ We can modify the following data types with the above modifiers
 
 ![SizeModifiers](../C++/Images/SizeModifiers.png)  
 
+**Example:**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+int _Varaible1;
+signed int _Variable2;
+unsigned int _Varaible3;
+short int _Varaible4;
+unsigned short int _Varaible5;
+unsigned short _Variable6
+short _Varaible7;
+signed long int _Variable8;
+long int _Variable9;
+long _Variable10;
+unsigned long _Variable11;
+long long int _Variable12;
+unsigned long long _Variable13;
+double distance = 56E12; // 56E12 is equal to 56 * 10^12
+short d = 3434233; // Error out of range
+unsigned int a = -10; // Error! can only store positive number
+cout << sizeof(bool);
+cout << sizeof(char);
+cout << sizeof(short int);
+cout << sizeof(float);
+cout << sizeof(double);
+cout << sizeof(long long);
+cout << sizeof(long);
+cout << CHAR_MIN << CHAR_MAX << endl;
+cout << SHRT_MIN << SHRT_MAX << endl;
+cout << LONG_MIN << LONG_MAX << endl;
+cout << FLT_MIN << FLT_MAX << endl;
+cout << DBL_MIN << DBL_MAX << endl;
+cout << INT_MIN << INT_MAX << endl;
+cout << USHRT_MIN << USHRT_MAX << endl;
+// sizeof(datatypes) this function give you size of datatypes 
+// _MIN && _MAX this give you range max and min of datatypes
+}
