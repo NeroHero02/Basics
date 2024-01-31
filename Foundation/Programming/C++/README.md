@@ -534,7 +534,7 @@ Note : It is recommended to use descriptive names in order to create understanda
 - Reserved words (like C++ keywords, such as int) cannot be used as names.
 
 
-**Example For Correct Identifiers Variables : **
+**Example For Correct Identifiers Variables :**
 ```
 int _MyAge;
 int MyAge;
@@ -543,7 +543,7 @@ int Age1;
 int My_Age;
 ```
 
-**Example For Wrong Identifiers Variables : **
+**Example For Wrong Identifiers Variables :**
 ```
 int 1MyAge;
 int ^MyAge;
