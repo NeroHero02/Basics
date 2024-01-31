@@ -275,6 +275,5 @@ Different types of varaibles (defined with different keywords).
 ## Declaring (Creating) Variables
 
 To create a varaible, specify the type and assign it a value:  
-
 Syntax:  
 ```type VaraibleName = value;```
