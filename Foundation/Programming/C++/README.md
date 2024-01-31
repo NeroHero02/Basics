@@ -254,11 +254,11 @@ Different types of varaibles (defined with different keywords).
   - Bolean Type 
     - `bool` (`True` or `False`).
   - String Type
-    - string (Text:`"Osama"`).
+    - `string` (Text:`"Osama"`).
   - Void Type
-    - void (`Empty`).
+    - `void` (`Empty`).
   - Wide Character 
-    - wchar_t (`Unicode`).
+    - `wchar_t` (`Unicode`).
 
 2. Derived
   - `Function`.
