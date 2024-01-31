@@ -565,6 +565,6 @@ Not NOT (NOT True = False)
 Order of Operations : 
 
 1. Bracket ()  
-2. Order $\sqrt{x}*(x)^2$  
+2. Order $\sqrt{x}*x^2$  
 3. Divide / or Multiply *  
 4. Add + or Subtract -
