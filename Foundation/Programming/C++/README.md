@@ -185,4 +185,15 @@ cout<< "OsamaSbeih" << endl;
 ```cpp
 cout << "OsamaSbeih" << endl; // This is Comments
 ```
+2. Multi-Line Comments  
+  - Multi-line comments start with /* and ends with */.  
+  - Any test between /* and */ will be ignored by the compiler.  
+  - Example :
+```cpp
+/*This
+is
+Comments
+*/
+cout << "Osama Sbeih" << endl;
+```
 
