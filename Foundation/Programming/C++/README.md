@@ -581,12 +581,50 @@ Input Syntax :
 int main()
 
 {
-string _MyName;
-int _MyAge;
+string _YouName;
+int _YouAge_;
 
-std::cin >> _MyName;
-std::cin >> _MyAge;
+std::cin >> _YouName_;
+std::cin >> _YouAge_;
 
 return 0;
 }
+```
+**Output**
+
+```
+Osama Sbeih //input from user
+21 // input from user
+```
+
+**Example 2:**
+```cpp
+#include <iostream>
+using namespace std;
+int main()
+
+{
+string _YouName;
+int _MyAge;
+cout << “Please Enter You’r Name : “ << endl;
+cin >> _YouName;
+
+cout << “Please Enter You’r Age : “ << endl;
+cin >> _YouAge;
+
+cout << “You’r Name is : “ << _YouName << “\n You’r Age is : “ << _YouAge << endl;
+return 0;
+}
+```
+
+**Output**
+
+```
+Please Enter You’r Name : 
+Osama Sbeih //input from user
+Please Enter You’r Age : 
+21 // input from user
+You’r Name is : Osama Sbeih
+You’r Age is : 21
+
 ```
