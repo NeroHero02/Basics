@@ -219,7 +219,7 @@ What is the Largest Number in 2 Byte ?
 ```
 We've learned how to convert numbers, like converting from decimal to binary and vice versa. Now, how is the conversion of characters done?  
 ```
-ASCII Code : American Standard Code for Information Interchange
+ASCII Code : American Standard Code for Information Interchange  
 `A` ---> `01000001` --->`65`.  
 `B` ---> `01000010` --->`66`.  
 ..........etc.........  
@@ -408,7 +408,7 @@ Note : Each octal digit represents 3 bits, so a 6-bit byte is two octal digits
 - Octal System is base 8.  
 Octal Prefix:  
 ```bash
-`0oCode` ---> `0o725`
+0oCode ---> 0o725 
 ```
 
 ```
