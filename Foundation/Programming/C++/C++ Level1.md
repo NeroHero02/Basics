@@ -632,3 +632,21 @@ You’r Age is : 21
 ## Datatypes Sizes & Ranges
 
 ![Datatypes Size](../C++/Images/Datatypes%20Size.png)  
+
+## Type Modifiers
+
+We can modify some of the fundamental data types by using type modifiers. There are 4 type modifiers in C++.  
+
+1. Signed
+2. Unsigned
+3. Short
+4. Long
+
+We can modify the following data types with the above modifiers  
+
+1. int
+2. double
+3. char
+
+![SizeModifiers](../C++/Images/SizeModifiers.png)  
+
