@@ -628,3 +628,7 @@ You’r Name is : Osama Sbeih
 You’r Age is : 21
 
 ```
+
+## Datatypes Sizes & Ranges
+
+![Datatypes Size](../C++/Images/Datatypes%20Size.png)  
