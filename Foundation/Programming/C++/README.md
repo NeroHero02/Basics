@@ -32,7 +32,7 @@ Osama Sbeih
 
 ## Output (Print)  
 
-**The cout object, together with the << operator, is used to output values/print test**
+**The `cout` object, together with the `<<` operator, is used to output values/print test**
 - `std::cout` : Monitor (Destination).  
 - `<<` : Write (Verb).  
 - `"Message To Be Shown."` : Message (Object).  
@@ -564,4 +564,29 @@ _MyAge = 30; // error : assignment of read-only variable “_MyAge”
 ```
 
 
+## User Input
 
+Input Syntax : 
+
+**The `cin` object, together with the `>>` operator, is used to output values/print test**
+- `std::cin` : Monitor (Destination).  
+- `<<` : Read (Verb).  
+- `Variable` : Variable to store input (Object).  
+- `;` : End (Terminator).  
+
+**Example 1:**
+```cpp
+#include <iostream>
+
+int main()
+
+{
+string _MyName;
+int _MyAge;
+
+std::cin >> _MyName;
+std::cin >> _MyAge;
+
+return 0;
+}
+```
