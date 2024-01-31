@@ -49,7 +49,10 @@ std::cout << "Osama Sbeih";
 return 0;
 }
 ```
-
+**Output:**  
+```
+Osama Sbeih
+```
 Example 2 : 
 
 ```cpp
@@ -58,11 +61,14 @@ Example 2 :
 int main()
 {
 std::cout << "My Name is : Osama Sbeih";
-std::cout << "My Age is : 21";
+std::cout << " My Age is : 21";
 return 0;
 }
 ```
-
+**Output:**  
+```
+My Name is : Osama Sbeih My Age is : 21
+```
 Note : To insert a new line, you can use the \n character.  
 
 Example 3 :  
@@ -78,7 +84,11 @@ std::cout << "My Age is : 21\n";
 return 0;
 }
 ```  
-
+**Output:**  
+```
+My Name is : Osama Sbeih 
+My Age is : 21
+```
 
 
 
