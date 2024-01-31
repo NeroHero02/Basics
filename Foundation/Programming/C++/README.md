@@ -552,4 +552,16 @@ int MyAge#;
 int 16Age;
 ```
 
+## Constants in C++
+
+When you do not want others (or yourself) to override existing variable values, use the `const` keyword (this will declare the variable as “constant”, which means `unchangeable` and `read-only`)
+
+**Example:**
+
+```cpp
+const int _MyAge = 21; // _MyAge will always be 21
+_MyAge = 30; \\ error : assignment of read-only variable “_MyAge”
+```
+
+
 
