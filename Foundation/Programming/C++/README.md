@@ -276,4 +276,42 @@ Different types of varaibles (defined with different keywords).
 
 To create a varaible, specify the type and assign it a value:  
 Syntax:  
-```type VaraibleName = value;```
+```type VaraibleName = value;```  
+
+Example 1 :
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+string _MyName = "OsamaSbeih";
+cout << "My Name is : " << _MyName <<endl;
+return 0;
+}
+```
+
+**Output**
+```
+My Name is : OsamaSbeih
+```
+
+Example 2 :
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+int _MyAge = 21;
+cout << "My Age is : " << _MyAge;
+return 0;
+}
+```
+
+**Output**
+```
+My Age is : 21
+```
