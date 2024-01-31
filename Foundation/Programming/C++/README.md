@@ -133,5 +133,24 @@ My Age is : 21
 
 **Using `std::` every time when `cout` and `endl` is annoying, so there is a way to get rid of that and not write it every time.**
 
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+cout << "My Name is : Osama Sbeih" <<endl;
+cout << "My Age is : 21" << endl;
+return 0;
+}
+```  
+**Output:**  
+```
+My Name is : Osama Sbeih 
+My Age is : 21
+
+```
+`using namespace std;` : allows you to access elements from the C++ standard library without specifying the namespace each time.  
+
 
 
