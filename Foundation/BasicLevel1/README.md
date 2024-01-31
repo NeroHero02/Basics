@@ -173,7 +173,7 @@ Note : Only one way to represent data.
 
 ```
 
-*Binary To Decimal.
+**Binary To Decimal.**
 ```h
 
 Solution steps:
@@ -395,7 +395,7 @@ OR
 
 ## Octal Systems
 
-**The Octal Numbering System is very similar in principle to the previous hexadecimal numbering system except that in Octal.**
+**The Octal Numbering System is very similar in principle to the previous hexadecimal numbering system except that in Octal.**  
 Note : Each octal digit represents 3 bits, so a 6-bit byte is two octal digits
 
 *Why Octal ?*
