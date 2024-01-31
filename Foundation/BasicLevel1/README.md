@@ -215,6 +215,8 @@ Then 257 Equals in Binary --->100000001 (256+1).
 What is the Largest Number in 2 Byte ? 
 1111111111111111 (32768+16384+8192+4096+2048+1024+512+256+128+64+32+16+8+4+2+1 = 65,535).  
 ```
+
+```
 We've learned how to convert numbers, like converting from decimal to binary and vice versa. Now, how is the conversion of characters done?  
 ```
 ASCII Code : American Standard Code for Information Interchange
@@ -406,7 +408,7 @@ Note : Each octal digit represents 3 bits, so a 6-bit byte is two octal digits
 - Octal System is base 8.  
 Octal Prefix:  
 ```bash
-0oCode ---> 0o725
+`0oCode` ---> `0o725`
 ```
 
 ```
