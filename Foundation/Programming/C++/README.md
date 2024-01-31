@@ -237,3 +237,7 @@ Note : In C++ programming , `Octal` starts with a `0` , and `Hexadecimal` starts
 - `\"` (Double quote)
 - `\'` (Single quote)
 - `\a` (Audio bell)
+
+
+## Variables
+
