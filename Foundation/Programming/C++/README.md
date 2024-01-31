@@ -4,7 +4,7 @@
 ## C++ Code Structure  
 
 ```cpp
-# include <iostream>
+#include <iostream>
 
 int main()
 {
