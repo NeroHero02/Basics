@@ -695,11 +695,11 @@ cout << USHRT_MIN << USHRT_MAX << endl;
 
 ## Arithmetic Operators
 
-- + Adds two operands
-- - Substracts second operand from the first
-- * Multiplies both operands
-- / Divides numerator by de-numerator
-- % This gives remainder of an integer division
+- `+` Adds two operands
+- `-` Substracts second operand from the first
+- `*` Multiplies both operands
+- `/` Divides numerator by de-numerator
+- `%` This gives remainder of an integer division
 
 
 **Example:**
