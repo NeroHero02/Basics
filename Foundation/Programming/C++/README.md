@@ -560,7 +560,7 @@ When you do not want others (or yourself) to override existing variable values, 
 
 ```cpp
 const int _MyAge = 21; // _MyAge will always be 21
-_MyAge = 30; \\ error : assignment of read-only variable “_MyAge”
+_MyAge = 30; // error : assignment of read-only variable “_MyAge”
 ```
 
 
