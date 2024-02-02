@@ -1396,7 +1396,7 @@ struct stPerson
     stContactInfo ContactInfo;
     
     enMaritalStatus MaritalStatues;
-    enGender Gendor;
+    enGender Gender;
     enColor FavourateColor;
 };
 
@@ -1415,23 +1415,26 @@ int main()
   Person1.ContactInfo.Address.StreetName = "Omar Ibn Alkhatab";
   Person1.ContactInfo.Address.BuildingNo = "115";
  
-  Person1.Gender = enGendor::Male;
-  Person1.MaritalStatus = enMaritalStatus::Married;
+  Person1.Gender = enGender::Male;
+  Person1.MaritalStatues = enMaritalStatus::Married;
   Person1.FavourateColor = enColor::Green;
  
 
   cout << Person1.FirstName << " " << Person1.LastName << endl;
 
-  cout << Person1.Email << endl;
-  cout << Person1.Phone << endl;
+  cout << Person1.ContactInfo.Email << endl;
+  cout << Person1.ContactInfo.Phone << endl;
   cout << Person1.ContactInfo.Address.POBox << endl;
   cout << Person1.ContactInfo.Address.ZipCode << endl;
   cout << Person1.ContactInfo.Address.StreetName << endl;
   cout << Person1.ContactInfo.Address.BuildingNo << endl;
 
   cout << Person1.Gender << endl;
-  cout << Person1.MaritalStatus << endl;
+  cout << Person1.MaritalStatues << endl;
   cout << Person1.FavourateColor << endl;
+
+return 0;
+}
 ```
 **Output:**
 ```
@@ -1450,6 +1453,186 @@ Omar Ibn Alkhatab
 ## Casting Data
 
 ![DataTypeConversion](../C++/Images/DataTypeConversion.png)
+
+- Convert Double to Integer
+
+**Example:**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+int Num1;
+double Num2 = 18.99;
+
+Num1 = Num2; // Implicit conversion from double to int
+
+Num1 = (int) Num2; // Explicit Conversion
+
+Num1 = int(Num2); // Explicit Conversion
+
+cout << Num1 << endl;
+
+return 0;
+}
+```
+**Output:**
+```
+18
+```
+
+- Convert String to Int,Float,Double
+
+**Example:**
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+string str = "123.456";
+
+// convert string to Integer
+int num_int = stoi(str);
+
+// convert string to float
+float num_float = stof(str);
+
+// convert string to double
+double num_double = stod(str);
+
+cout << "num_int = " << num_int << endl;
+cout << "num_float = " << num_float << endl;
+cout << "num_double = " << num_double << endl;
+return 0;
+}
+```
+**Output:**
+```
+num_int = 123
+num_float = 123.456
+num_double = 123.456
+```
+
+Note : Did'nt Forget Include string library.  
+
+- Convert Number to String
+
+**Example:**
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+
+ int Num1=123;
+ double Num2 = 18.99;
+
+ string St1, St2;
+ St1 = to_string(Num1);
+ St2 = to_string(Num2);
+
+ cout << St1 << endl;
+ cout << St2 << endl;
+
+ return 0;
+}
+```
+**Output:**
+```
+123
+18.990000
+```
+
+# Strings
+
+- A string variable contains a collection of characters surrounded by double quotes.
+
+- String is Array of Characters.
+
+- The character count inside starts from zero. 
+
+- When two String variables are combined, they are combined and called `Concatenation`
+
+- If I want to combine two String numbers, I first need to convert them to a number and then add them together
+
+- 
+**Example:**
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+
+  string MyString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  cout << "The length of the MyString is: " << MyString.length() << endl;
+
+  cout << MyString[2] << endl; // will print C
+
+  string S1 = "10" , S2 = "20";
+
+  string S3 = S1 + S2;
+  cout << S3 << endl; // Will print 1020
+
+  int Sum = stoi(S1) + stoi(S2);
+  cout << Sum << endl; // Will print 30
+
+return 0;
+}
+```
+
+**Output**
+```
+C
+1020
+30
+```
+
+## Read String With Spaces
+
+- you need to use `getline(cin, NameVariable)`.
+
+**Example:**
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+
+ string FullName;
+
+ getline(cin, FullName);
+
+ cout << FullName << endl;
+
+return 0;
+}
+```
+**Output**
+```
+Osama Sbeih // Input From User
+Osama Sbeih
+
+```
+
+
+
+
+
+
+
+
+
 
 
 
