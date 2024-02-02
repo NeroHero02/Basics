@@ -924,7 +924,7 @@ cout << !(X || Y) << endl;
 
 return 0;
 }
-
+```
 **Output**
 ```
 0
