@@ -1759,8 +1759,64 @@ This is my first function, it got executed :-)
 Osama Sbeih
 ```
 
-Note : Void Function this specifies that the function doesn't return a value.  
+Note1 : Void Function this specifies that the function doesn't return a value.   
 
+Note2 : We can Derived Function return value (String , Integer , Double , Float , Char , Boolean).  
+
+**Example 5:**
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+string myFunction1()
+{
+
+return "Hi";
+}
+
+int myFunction2()
+{
+
+return 10;
+}
+
+char myFunction3()
+{
+
+return 'N';
+}
+
+
+double myFunction4()
+{
+
+return 5.17;
+}
+
+int main()
+{
+
+int x = myFunction2();
+
+cout << myFunction1() << endl;
+cout << x << endl;
+cout << myFunction2() << endl;
+cout << myFunction3() << endl;
+cout << myFunction4() << endl;
+
+return 0;
+}
+```
+**Output**
+```
+Hi
+10
+10
+N
+5.17
+```
 
 
 
