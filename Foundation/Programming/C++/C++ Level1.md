@@ -1818,6 +1818,46 @@ N
 5.17
 ```
 
+- Parameters && Arguments :​​ Information can be passed to functions as a parameter. 
+
+**Example 6:**
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+
+int myFunctionSum(int Num1, int Num2)
+{
+int Sum = Num1 + Num2;
+return Sum;
+}
+
+
+
+int main()
+{
+int X, Y;
+
+cout << myFunctionSum(10,20); << endl;
+
+cin >> X;
+cin >> Y;
+
+cout << myFunctionSum(X,Y) << endl;
+
+return 0;
+}
+```
+**Output**
+```
+30
+10 // Input from user
+20 // Input from user
+30
+```
 
 
 
