@@ -1291,8 +1291,6 @@ Phone : 0787878782
 ## Enum
 - An enumeration is a distinct type whose value is restricted to a range of values.  
 
-- An enumeration is a distinct type whose value is restricted to a range of values
-
 *Syntax:*
 ```
 enum NameEnum { value1,value2,value3,...etc};
