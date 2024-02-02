@@ -934,3 +934,152 @@ return 0;
 1
 0
 ```
+
+## Math Functions
+
+- Squair Root
+  - Gives you the root of the number.
+**Example:**
+```cpp
+#include <iostream>
+#include <cmath> 
+
+using namespace std;
+
+int main()
+{
+
+double X = 64;
+cout << sqrt(X) << endl; // 8
+cout << sqrt(50) << endl; // 7.07107
+
+return 0;
+}
+```
+**Output**
+```
+8
+7.07107
+```
+
+Note : You need to include cmath library to use any function in cmath.  
+
+- Rounding Numbers
+  - Round to the nearest integer.
+**Example:**
+```cpp
+#include <iostream>
+#include <cmath> 
+
+using namespace std;
+
+int main()
+{
+
+cout << round(2.4) << endl; // 2
+cout << round(2.5) << endl; // 3
+cout << round(2.7) << endl; // 3
+
+cout << sqrt(50) << endl; // 7.07107
+cout << round(sqrt(50)) << endl; // 7
+
+return 0;
+}
+```
+**Output**
+```
+2
+3
+3
+7.07107
+7
+```
+
+- Power Function
+  - Calculate the power of a number
+
+**Example:**
+```cpp
+#include <iostream>
+#include <cmath> 
+
+using namespace std;
+
+int main()
+{
+
+int x = 2;
+int y = 4;
+
+cout << pow(x,y) << endl; // x^y = 2^4 = 16
+cout << pow(4,3) << endl; // 4^3 = 64
+return 0;
+}
+```
+**Output**
+```
+16
+64
+```
+
+- Ceil & Floor Function
+  - Ceil : Celling value of the number passed as the parameter.  
+  - Floor : Return integer value that is less than or equal to the argument.  
+
+**Example:**
+```cpp
+#include <iostream>
+#include <cmath> 
+
+using namespace std;
+
+int main()
+{
+
+cout << ceil(2.9) << endl; // 3
+cout << floor(2.9) << endl; // 2
+
+cout << ceil(-2.9) << endl; // -2
+cout << floor(-2.9) << endl; // -3
+
+return 0;
+}
+```
+**Output**
+```
+3
+2
+-2
+-3
+```
+
+- Absolute Function
+  - Absolute value of an integer argument n.
+**Example:**
+```cpp
+#include <iostream>
+#include <cmath> 
+
+using namespace std;
+
+int main()
+{
+
+cout << abs(-10) << endl; // 10
+cout << abs(10) << endl; // 10
+
+return 0;
+}
+```
+**Output**
+```
+10
+10
+```
+
+There are many you can learn about through the [link](https://en.cppreference.com/w/cpp/header/cmath).
+
+
+
+
+
