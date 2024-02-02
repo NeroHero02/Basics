@@ -1624,6 +1624,8 @@ Osama Sbeih
 
 ```
 
+Note : to solve problem in `getline()` before 1 line write `cin.ignore(1, '\n')` It means ignore the Enter.
+
 ## Functions
 
 - A function is a block of code which only runs when it is called.
