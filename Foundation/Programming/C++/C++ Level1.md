@@ -1447,6 +1447,9 @@ Omar Ibn Alkhatab
 1
 ```
 
+## Casting Data
+
+[DataTypeConversion](../C++/Images/DataTypeConversion.png)
 
 
 
