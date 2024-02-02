@@ -1859,6 +1859,83 @@ return 0;
 30
 ```
 
+## Variable Scope
+
+- Local 
+**Example 1:**
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+
+void MyFunction1()
+{
+  int x = 500;
+
+  cout << "The value of x inside function is: " << x << endl;
+}
+
+
+
+int main()
+{
+ int x = 10;
+ 
+ cout << "The local value of x inside Main is : " << x << endl;
+
+ MyFunction1();
+
+
+return 0;
+}
+```
+**Output**
+```
+The value of x inside function is: 10
+The value of x inside function is: 500
+```
+- Global 
+**Example 2:**
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int x = 300;
+
+
+void MyFunction1()
+{
+  int x = 500;
+
+  cout << "The value of x inside function is: " << x << endl;
+}
+
+
+
+int main()
+{
+ int x = 10;
+ 
+ cout << "The local value of x inside Main is : " << x << endl;
+
+ MyFunction1();
+
+ cout << "The Global Value of x is: " << ::x << endl;
+
+return 0;
+}
+```
+**Output**
+```
+The value of x inside function is: 10
+The value of x inside function is: 500
+The Global Value of x is: 300
+```
 
 
 
