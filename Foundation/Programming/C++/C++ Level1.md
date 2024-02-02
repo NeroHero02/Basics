@@ -1624,8 +1624,140 @@ Osama Sbeih
 
 ```
 
+## Functions
+
+- A function is a block of code which only runs when it is called.
+
+- You can pass data, known as parameters, into a function.
+
+- Functions are used to perform certain actions, and they are important for reusing code: Define the code once ,and use it many times.
+
+**Example1:**
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void myFunction()
+{
+
+  cout << "This is my first function, it got executed :-)" << endl;
+}
 
 
+int main()
+{
+
+
+
+  return 0;
+}
+```
+
+**Output**
+```
+
+```
+
+**Example2:**
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void myFunction()
+{
+
+  cout << "This is my first function, it got executed :-)" << endl;
+}
+
+
+int main()
+{
+
+myFunction();
+
+  return 0;
+}
+```
+**Output**
+```
+This is my first function, it got executed :-)
+```
+
+**Example3:**
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void myFunction()
+{
+
+  cout << "This is my first function, it got executed :-)" << endl;
+}
+
+
+int main()
+{
+
+myFunction();
+myFunction();
+myFunction();
+myFunction();
+
+  return 0;
+}
+```
+**Output**
+```
+This is my first function, it got executed :-)
+This is my first function, it got executed :-)
+This is my first function, it got executed :-)
+This is my first function, it got executed :-)
+```
+**Example4:**
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void myFunction()
+{
+
+  cout << "This is my first function, it got executed :-)" << endl;
+}
+
+void myFunction2()
+{
+
+  cout << "OsamaSbeih" << endl;
+}
+
+int main()
+{
+
+myFunction();
+myFunction2();
+myFunction();
+myFunction2();
+
+  return 0;
+}
+```
+**Output**
+```
+This is my first function, it got executed :-)
+Osama Sbeih
+This is my first function, it got executed :-)
+Osama Sbeih
+```
+
+Note : Void Function this specifies that the function doesn't return a value.  
 
 
 
