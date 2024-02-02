@@ -1560,7 +1560,6 @@ int main()
 
 - If I want to combine two String numbers, I first need to convert them to a number and then add them together
 
-- 
 **Example:**
 ```cpp
 #include <iostream>
