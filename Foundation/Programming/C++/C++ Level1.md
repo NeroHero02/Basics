@@ -1359,6 +1359,95 @@ int main()
 Note : `Yellow` and `Blue` got value 151 and 152 because last value before `Yellow` is 150.  
 
 
+## Nested Structures and Enums
+
+**Example:**
+```cpp
+#include <iostream>
+using namespace std;
+
+enum enColor {Red, Green, Yellow, Blue};
+enum enGender { Male, Female };
+enum enMaritalStatus { Single, Married};
+
+struct stAddress
+{
+   string StreetName;
+   string BuildingNo;
+   string POBox;
+   string ZipCode;
+   
+};
+
+struct stContactInfo
+{
+    string Phone;
+    string Email;
+
+    stAddress Address;
+};
+
+struct stPerson
+{
+
+    string FirstName;
+    string LastName;
+    
+    stContactInfo ContactInfo;
+    
+    enMaritalStatus MaritalStatues;
+    enGender Gendor;
+    enColor FavourateColor;
+};
+
+int main()
+{
+
+  stPerson Person1;
+
+  Person1.FirstName = "Osama";
+  Person1.LastName = "Sbeih";
+  
+  Person1.ContactInfo.Email = "kher3431@gmail.com";
+  Person1.ContactInfo.Phone = "0787833842";
+  Person1.ContactInfo.Address.POBox = "1111";
+  Person1.ContactInfo.Address.ZipCode = "121212";
+  Person1.ContactInfo.Address.StreetName = "Omar Ibn Alkhatab";
+  Person1.ContactInfo.Address.BuildingNo = "115";
+ 
+  Person1.Gender = enGendor::Male;
+  Person1.MaritalStatus = enMaritalStatus::Married;
+  Person1.FavourateColor = enColor::Green;
+ 
+
+  cout << Person1.FirstName << " " << Person1.LastName << endl;
+
+  cout << Person1.Email << endl;
+  cout << Person1.Phone << endl;
+  cout << Person1.ContactInfo.Address.POBox << endl;
+  cout << Person1.ContactInfo.Address.ZipCode << endl;
+  cout << Person1.ContactInfo.Address.StreetName << endl;
+  cout << Person1.ContactInfo.Address.BuildingNo << endl;
+
+  cout << Person1.Gender << endl;
+  cout << Person1.MaritalStatus << endl;
+  cout << Person1.FavourateColor << endl;
+```
+**Output:**
+```
+0787833842
+1111
+121212
+Omar Ibn Alkhatab
+115
+0
+1
+1
+```
+
+
+
+
 
 
 
