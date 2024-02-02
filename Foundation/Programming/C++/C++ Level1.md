@@ -1358,7 +1358,7 @@ int main()
 152
 ```
 
-Note : `Yellow` and `Blue` got value 151 and 152 bcz last value before `Yellow` is 150.  
+Note : `Yellow` and `Blue` got value 151 and 152 because last value before `Yellow` is 150.  
 
 
 
