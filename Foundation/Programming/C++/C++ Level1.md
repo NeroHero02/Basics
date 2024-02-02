@@ -1079,6 +1079,60 @@ return 0;
 
 There are many you can learn about through the [link](https://en.cppreference.com/w/cpp/header/cmath).
 
+## Structures
+
+- Structures (also called structs) are a way to group several related variables into one place.
+- Each variable in the structure is known as a member of the structure.
+
+Syntax :
+```
+struct NameStructure
+{
+
+
+};
+
+```
+How i can called ?  
+Syntax  
+```
+NameStrcutre NameVariable;
+```
+```cpp
+#include <iostream>
+using namespace std;
+
+struct Person
+{
+     string _FirstName;
+     string _LastName;
+     int _Age;
+     string _Email;
+     string _Phone;
+
+};
+
+int main()
+{
+
+  Person Person1;
+  
+  Person1._FirstName = "Osama";
+  Person1._LastName =  "Sbeih";
+  Person1._Age = 21;
+  Person1._Email = "Kher3431@gmail.com";
+  Person1._Phone = "0787833842";
+
+  cout << Person1._FirstName << " " << Person1._LastName << " " << Person1._Age << " " << Person1._Email << " " << Person1._Phone << "\n";
+
+  return 0;
+}
+```
+**Output**
+```
+Osama Sbeih 21 kher3431@gmail.com 0787833842
+```
+
 
 
 
