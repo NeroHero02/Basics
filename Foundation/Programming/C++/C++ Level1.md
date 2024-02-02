@@ -1861,7 +1861,7 @@ return 0;
 
 ## Variable Scope
 
-- Local 
+- Local   
 **Example 1:**
 ```cpp
 #include <iostream>
@@ -1897,7 +1897,7 @@ return 0;
 The value of x inside function is: 10
 The value of x inside function is: 500
 ```
-- Global 
+- Global   
 **Example 2:**
 ```cpp
 #include <iostream>
