@@ -1288,6 +1288,77 @@ Phone : 0787878782
 ******************************
 ```
 
+## Enum
+- An enumeration is a distinct type whose value is restricted to a range of values.  
+
+- An enumeration is a distinct type whose value is restricted to a range of values
+
+*Syntax:*
+```
+enum NameEnum { value1,value2,value3,...etc};
+```
+How i can Called?  
+
+*Syntax:*
+```
+NameEnum::ValueEnum
+```
+**Example:**
+```cpp
+#include <iostream>
+using namespace std;
+
+enum Color {Red, Green, Yellow, Blue};
+
+int main()
+{
+
+   Color _MyColor;
+
+   _MyColor = Color::Yellow;
+   
+   cout << "Color is: " << _MyColor << endl;
+
+  return 0;
+}
+```
+**Output:**
+```
+2
+```
+
+Note1 : `First` Value in Enum return `0` `Second` return `1` `Third` return `2` ... etc.  
+
+Note2 : You can edit value or every value in enum like `First` return `100` and `Second` return `150` ... etc.
+
+**Example:**
+```cpp
+#include <iostream>
+using namespace std;
+
+enum Color {Red=100, Green=150, Yellow, Blue};
+
+int main()
+{
+
+   Color _MyColor;
+
+   cout << Color::Red << endl;
+   cout << Color::Green << endl;
+   cout << Color::Yellow << endl;
+   cout << Color::Blue << endl;
+  return 0;
+}
+```
+**Output:**
+```
+100
+150
+151
+152
+```
+
+Note : `Yellow` and `Blue` got value 151 and 152 bcz last value before `Yellow` is 150.  
 
 
 
