@@ -897,3 +897,40 @@ return 0;
 ```
 
 Note : Did'nt Forget `1` Means `True` , `0` Means `False`.  
+
+## Logical Operators
+
+- `&&` (Called Logical AND operator. If both the operands are non-zero, then condition becomes true).
+- `||` (Called Logical OR Operator. If any of the two operands is non-zero, then condition becomes true).
+- `! ` (Called Logical NOT operator. Use to reverse the logical state of its operand. If a condition is true then Logical NOT operator will make false).
+
+
+**Example:**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+bool X=1, Y=0;
+
+cout << (X && Y) << endl;
+cout << (X || Y) << endl;
+cout << !X << endl;
+cout << !Y << endl;
+cout << !(X && Y) << endl;
+cout << !(X || Y) << endl;
+
+return 0;
+}
+
+**Output**
+```
+0
+1
+0
+1
+1
+0
+```
