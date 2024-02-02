@@ -1632,7 +1632,7 @@ Osama Sbeih
 
 - Functions are used to perform certain actions, and they are important for reusing code: Define the code once ,and use it many times.
 
-**Example1:**
+**Example 1:**
 ```cpp
 #include <iostream>
 #include <string>
@@ -1660,7 +1660,7 @@ int main()
 
 ```
 
-**Example2:**
+**Example 2:**
 ```cpp
 #include <iostream>
 #include <string>
@@ -1687,7 +1687,7 @@ myFunction();
 This is my first function, it got executed :-)
 ```
 
-**Example3:**
+**Example 3:**
 ```cpp
 #include <iostream>
 #include <string>
@@ -1719,7 +1719,7 @@ This is my first function, it got executed :-)
 This is my first function, it got executed :-)
 This is my first function, it got executed :-)
 ```
-**Example4:**
+**Example 4:**
 ```cpp
 #include <iostream>
 #include <string>
