@@ -1133,6 +1133,162 @@ int main()
 Osama Sbeih 21 kher3431@gmail.com 0787833842
 ```
 
+*Let's create a simple project. We have 5 people and we want to print their data*  
+
+```cpp
+#include <iostream>
+using namespace std;
+
+struct Person
+{
+     string _FirstName;
+     string _LastName;
+     int _Age;
+     string _Email;
+     string _Phone;
+
+};
+
+int main()
+{
+
+  Person Person1;
+  Person Person2;
+  Person Person3;
+  Person Person4;
+  Person Person5;
+
+  Person1._FirstName = "Osama";
+  Person1._LastName =  "Sbeih";
+  Person1._Age = 21;
+  Person1._Email = "Kher3431@gmail.com";
+  Person1._Phone = "0787833842";
+ 
+  Person2._FirstName = "Hamza";
+  Person2._LastName =  "Sbeih";
+  Person2._Age = 17;
+  Person2._Email = "HamzaSbeih@gmail.com";
+  Person2._Phone = "0777777777";
+
+  Person3._FirstName = "Mohammed";
+  Person3._LastName =  "Sbeih";
+  Person3._Age = 28;
+  Person3._Email = "MohammedSbeih@gmail.com";
+  Person3._Phone = "0777777770";
+
+  Person4._FirstName = "Nero";
+  Person4._LastName =  "Hero";
+  Person4._Age = 21;
+  Person4._Email = "NeroHero@gmail.com";
+  Person4._Phone = "0787878787";
+
+  Person5._FirstName = "Zero";
+  Person5._LastName =  "Hero";
+  Person5._Age = 18;
+  Person5._Email = "ZeroHero@gmail.com";
+  Person5._Phone = "0787878782";
+  
+
+  cout << "\nPerson1\n";
+  cout << "First Name : " << Person1._FirstName << endl;
+  cout << "Last Name : " << Person1._LastName << endl;
+  cout << "Age : " << Person1._Age << endl;
+  cout << "Email : " << Person1._Email << endl;
+  cout << "Phone : " << Person1._Phone << endl;
+
+  cout << "\n******************************\n"; 
+
+  cout << "\nPerson2\n";
+  cout << "First Name : " << Person2._FirstName << endl;
+  cout << "Last Name : " << Person2._LastName << endl;
+  cout << "Age : " << Person2._Age << endl;
+  cout << "Email : " << Person2._Email << endl;
+  cout << "Phone : " << Person2._Phone << endl;
+
+  cout << "\n******************************\n";
+
+  cout << "\nPerson3\n";
+  cout << "First Name : " << Person3._FirstName << endl;
+  cout << "Last Name : " << Person3._LastName << endl;
+  cout << "Age : " << Person3._Age << endl;
+  cout << "Email : " << Person3._Email << endl;
+  cout << "Phone : " << Person3._Phone << endl;
+
+  cout << "\n******************************\n";
+
+
+  cout << "\nPerson4\n";
+  cout << "First Name : " << Person4._FirstName << endl;
+  cout << "Last Name : " << Person4._LastName << endl;
+  cout << "Age : " << Person4._Age << endl;
+  cout << "Email : " << Person4._Email << endl;
+  cout << "Phone : " << Person4._Phone << endl;
+
+  cout << "\n******************************\n";
+
+
+  cout << "\nPerson5\n";
+  cout << "First Name : " << Person5._FirstName << endl;
+  cout << "Last Name : " << Person5._LastName << endl;
+  cout << "Age : " << Person5._Age << endl;
+  cout << "Email : " << Person5._Email << endl;
+  cout << "Phone : " << Person5._Phone << endl;
+
+  cout << "\n******************************\n"; 
+
+  return 0;
+}
+```
+**Output**
+```
+
+Person1
+First Name : Osama
+Last Name : Sbeih
+Age : 21
+Email : Kher3431@gmail.com
+Phone : 0787833842
+
+******************************
+
+Person2
+First Name : Hamza
+Last Name : Sbeih
+Age : 17
+Email : HamzaSbeih@gmail.com
+Phone : 0777777777
+
+******************************
+
+Person3
+First Name : Mohammed
+Last Name : Sbeih
+Age : 28
+Email : MohammedSbeih@gmail.com
+Phone : 0777777770
+
+******************************
+
+Person4
+First Name : Nero
+Last Name : Hero
+Age : 21
+Email : NeroHero@gmail.com
+Phone : 0787878787
+
+******************************
+
+Person5
+First Name : Zero
+Last Name : Hero
+Age : 18
+Email : ZeroHero@gmail.com
+Phone : 0787878782
+
+******************************
+```
+
+
 
 
 
