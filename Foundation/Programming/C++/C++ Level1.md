@@ -938,7 +938,7 @@ return 0;
 ## Math Functions
 
 - Squair Root
-  - Gives you the root of the number.
+ - Gives you the root of the number.
 **Example:**
 ```cpp
 #include <iostream>
@@ -965,7 +965,7 @@ return 0;
 Note : You need to include cmath library to use any function in cmath.  
 
 - Rounding Numbers
-  - Round to the nearest integer.
+ - Round to the nearest integer.
 **Example:**
 ```cpp
 #include <iostream>
@@ -996,7 +996,7 @@ return 0;
 ```
 
 - Power Function
-  - Calculate the power of a number
+ - Calculate the power of a number
 
 **Example:**
 ```cpp
@@ -1023,8 +1023,8 @@ return 0;
 ```
 
 - Ceil & Floor Function
-  - Ceil : Celling value of the number passed as the parameter.  
-  - Floor : Return integer value that is less than or equal to the argument.  
+ - Ceil : Celling value of the number passed as the parameter.  
+ - Floor : Return integer value that is less than or equal to the argument.  
 
 **Example:**
 ```cpp
@@ -1054,7 +1054,7 @@ return 0;
 ```
 
 - Absolute Function
-  - Absolute value of an integer argument n.
+ - Absolute value of an integer argument n.
 **Example:**
 ```cpp
 #include <iostream>
