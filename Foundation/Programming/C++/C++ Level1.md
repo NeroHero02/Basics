@@ -863,3 +863,38 @@ return 0;
 - `< `  (Checks if the value of left operand is less than the value of right operand, if yes then condition becomes true).
 - `>=` (Checks if the value of left operand is grater than or equal to the value of right operand, if yes then condition becomes true).
 - `<=` (Checks if the value of left operand is less than or equal to the value of right operand, if yes then condition becomes true).
+
+
+**Example:**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+int X = 10, Y = 20;
+
+cout << (X == Y) << endl; // 0
+cout << (X != Y) << endl; // 1
+cout << (X > Y) << endl; // 0
+cout << (X < Y) << endl; // 1
+cout << (X >= Y) << endl; // 0
+cout << (X <= Y) << endl; // 1
+
+return 0;
+
+}
+```
+
+**Output**
+```
+0
+1
+0
+1
+0
+1
+```
+
+Note : Did'nt Forget `1` Means `True` , `0` Means `False`.  
