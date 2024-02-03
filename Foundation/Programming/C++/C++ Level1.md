@@ -2045,8 +2045,74 @@ By-Ref : 000000C6987EF934
 
 *Note : `000000C6987EF934` this mean `Reference` for the variable If you try it on your device, it will be different.  
 
+## Arrays
 
+- An array is a variable that can store multiple values of the same type.  
+  - Example : String is an array that stores multiple characters.
 
+**Example For String:**
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+
+string _Name = "Osama Sbeih";
+
+ cout << _Name[0] << endl; // O
+ cout << _Name[2] << endl; // a 
+ cout << _Name[7] << endl; // b
+
+ return 0;
+}
+```
+
+**Output**
+```
+O
+a
+b
+```
+
+Note : Start counting from Zero then `O` is `0` `s` is `1` `a` is `2` ...etc.  
+
+*Syntax For Array:*
+```
+DataType nameVariable[] = {value1,value2,value3,...etc};
+```
+
+**Example For Array of Integers:**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+int x[6] = {20,21,25,28,35,345};
+
+cout << x[0] << endl; // 20
+cout << x[1] << endl; // 21
+cout << x[3] << endl; // 28
+cout << x[2] << endl; // 25
+cout << x[4] << endl; // 35
+cout << x[5] << endl; // 345
+ return 0;
+}
+```
+
+**Output**
+```
+20
+21
+28
+25
+35
+345
+```
 
 
 
