@@ -2248,4 +2248,4 @@ Phone : 0787833842
 
 ```
 
-Note : So, from this example, we can see the benefit of the Array. Instead of defining more than one variable, Person1, Person2, ...etc, I just create an array from datatype struct.
+Note : So, from this example, we can see the benefit of the Array. Instead of defining more than one variable, Person1, Person2, ...etc, I just create an array from datatype struct.  
