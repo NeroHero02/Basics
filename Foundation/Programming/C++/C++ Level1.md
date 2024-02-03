@@ -2207,7 +2207,7 @@ int main()
 
 	cout << "******************************" << endl;
 	cout << "Person1" << endl;
-	cout << "Full Name : " << Persons[0]._FirstName + " " << Persons[1]._LastName << endl;
+	cout << "Full Name : " << Persons[0]._FirstName + " " << Persons[0]._LastName << endl;
 	cout << "Age : " << Persons[0]._Age << endl;
 	cout << "Phone : " << Persons[0]._Phone << endl;
 
@@ -2220,7 +2220,7 @@ int main()
 
 	cout << "******************************" << endl;
 	cout << "Person3" << endl;
-	cout << "Full Name : " << Persons[2]._FirstName + " " << Persons[1]._LastName << endl;
+	cout << "Full Name : " << Persons[2]._FirstName + " " << Persons[2]._LastName << endl;
 	cout << "Age : " << Persons[2]._Age << endl;
 	cout << "Phone : " << Persons[2]._Phone << endl;
 
@@ -2232,7 +2232,7 @@ int main()
 ```
 ******************************
 Person1
-Full Name : Osama Hero
+Full Name : Osama Sbeih
 Age : 21
 Phone : 0787833842
 ******************************
@@ -2242,10 +2242,14 @@ Age : 22
 Phone : 0787833842
 ******************************
 Person3
-Full Name : Hamza Hero
+Full Name : Hamza Sbeih
 Age : 17
 Phone : 0787833842
 
 ```
 
 Note : So, from this example, we can see the benefit of the Array. Instead of defining more than one variable, Person1, Person2, ...etc, I just create an array from datatype struct.  
+
+## Conditional Statements
+
+
