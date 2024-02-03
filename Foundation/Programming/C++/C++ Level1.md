@@ -2755,7 +2755,7 @@ Wednesday
 
 Note : Did'nt Forget `break` If you do not set it, all statements under case 4 will be executed.  
 
-**Example1 :**
+**Example2 :**
 
 ```cpp
 #include <iostream>
