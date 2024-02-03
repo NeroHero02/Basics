@@ -2120,6 +2120,132 @@ cout << x[5] << endl; // 345
 
 ## Arrays with Functions
 
+**Example:**
+```cpp
+#include <iostream>
+using namespace std;
+
+void ReadArrayData(int x[3]) 
+{
+	cout << "Please enter number1?\n";
+	cin >> x[0];
+
+	cout << "Please enter number2?\n";
+	cin >> x[1];
+
+	cout << "Please enter number3?\n";
+	cin >> x[2];
+
+}
+
+void PrintArrayData(int x[3]) {
+
+	cout << "*******************\n";
+
+	cout << x[0] << endl;
+	cout << x[1] << endl;
+	cout << x[2] << endl;
+        
+}
+int main()
+{
+
+	int x[3];
+
+	ReadArrayData(x);
+	PrintArrayData(x);
+  
+  return 0;
+}
+```
+
+**Output**
+```
+10 // input from user
+20 // input from user
+30 // input from user
+*******************
+10
+20
+30
+```
+
+## Arrays of Structure
+
+**Example:**
+```cpp
+#include <iostream>
+using namespace std;
+
+struct strInfo
+{
+	string _FirstName;
+	string _LastName;
+	int _Age;
+	string _Phone;
+
+};
+int main()
+{
+
+	strInfo Persons[3];
+
+	Persons[0]._FirstName = "Osama";
+	Persons[0]._LastName = "Sbeih";
+	Persons[0]._Age = 21;
+	Persons[0]._Phone = "0787833842";
+
+	Persons[1]._FirstName = "Nero";
+	Persons[1]._LastName = "Hero";
+	Persons[1]._Age = 22;
+	Persons[1]._Phone = "0787833842";
+
+	Persons[2]._FirstName = "Hamza";
+	Persons[2]._LastName = "Sbeih";
+	Persons[2]._Age = 17;
+	Persons[2]._Phone = "0787833842";
+
+	cout << "******************************" << endl;
+	cout << "Person1" << endl;
+	cout << "Full Name : " << Persons[0]._FirstName + " " << Persons[1]._LastName << endl;
+	cout << "Age : " << Persons[0]._Age << endl;
+	cout << "Phone : " << Persons[0]._Phone << endl;
+
+	cout << "******************************" << endl;
+	cout << "Person2" << endl;
+	cout << "Full Name : " << Persons[1]._FirstName + " " << Persons[1]._LastName << endl;
+	cout << "Age : " << Persons[1]._Age << endl;
+	cout << "Phone : " << Persons[1]._Phone << endl;
 
 
+	cout << "******************************" << endl;
+	cout << "Person3" << endl;
+	cout << "Full Name : " << Persons[2]._FirstName + " " << Persons[1]._LastName << endl;
+	cout << "Age : " << Persons[2]._Age << endl;
+	cout << "Phone : " << Persons[2]._Phone << endl;
 
+	return 0;
+}
+```
+
+**Output**
+```
+******************************
+Person1
+Full Name : Osama Hero
+Age : 21
+Phone : 0787833842
+******************************
+Person2
+Full Name : Nero Hero
+Age : 22
+Phone : 0787833842
+******************************
+Person3
+Full Name : Hamza Hero
+Age : 17
+Phone : 0787833842
+
+```
+
+Note : So, from this example, we can see the benefit of the Array. Instead of defining more than one variable, Person1, Person2, ...etc, I just create an array from datatype struct.
