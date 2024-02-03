@@ -1937,8 +1937,113 @@ The value of x inside function is: 500
 The Global Value of x is: 300
 ```
 
+## By-Val vs By-Ref
+
+- By-Val
+
+**Example:**
+```cpp
+#include <iostream>
+using namespace std;
+
+void MyFunction(int Num1) {
+
+	Num1 = 7000;
+
+	cout << "Number inside function became= " << Num1 << endl; // 7000
+}
+int main()
+{
+	int Num1;
+
+	Num1 = 1000;
+
+	MyFunction(Num1);
+
+	cout << "Number After Calling the Function became= " << Num1 << endl; // 1000
+
+  return 0;
+}
+```
+**Output**
+```
+Number inside function became= 7000
+Number After Calling the Function became= 1000
+```
+
+Note : When we send the parameter in this way, it sends a copy of this value, and when the function finishes, it deletes the new copy that it created.  
 
 
+- By-Ref 
+  - Just Use & before name variable in parameter function.  
+
+**Example:**
+```cpp
+#include <iostream>
+using namespace std;
+
+void MyFunction(int &Num1) {
+
+	Num1 = 7000;
+
+	cout << "Number inside function became= " << Num1 << endl; // 7000
+}
+int main()
+{
+	int Num1;
+
+	Num1 = 1000;
+
+	MyFunction(Num1);
+
+	cout << "Number After Calling the Function became= " << Num1 << endl; // 1000
+
+  return 0;
+}
+```
+**Output**
+```
+Number inside function became= 7000
+Number After Calling the Function became= 7000
+```
+
+Note : When you write with the variable &, this means that you are sending the Reference of the variable and not something like before making a copy of it, and any change that happens to the variable changes to the original variable as well.  
+
+**Example:**
+```cpp
+
+
+#include <iostream>
+using namespace std;
+
+void MyFunction(int &Num1) {
+
+	Num1 = 7000;
+
+	cout << "Number inside function became= " << Num1 << endl; // 7000
+}
+int main()
+{
+	int Num1;
+
+	Num1 = 1000;
+
+	MyFunction(Num1);
+
+	cout << "By-Val : " << Num1 << endl;
+	cout << "By-Ref : " << &Num1 << endl;
+  
+  return 0;
+}
+```
+**Output**
+```
+Number inside function became= 7000
+By-Val : 7000
+By-Ref : 000000C6987EF934
+```
+
+*Note : `000000C6987EF934` this mean `Reference` for the variable If you try it on your device, it will be different.  
 
 
 
