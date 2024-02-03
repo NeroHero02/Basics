@@ -2113,6 +2113,13 @@ cout << x[5] << endl; // 345
 35
 345
 ```
+- Array Members (x[0], x[1], x[2], x[3], x[4], x[5]).  
+- Index starts from `zero` (0, 1, 2, 3, 4, 5).  
+- Index Values (20, 21, 25, 28, 35, 345).
+- Memory Address (1000, 1004, 1008, 1012, 1016, 1020).
+
+## Arrays with Functions
+
 
 
 
