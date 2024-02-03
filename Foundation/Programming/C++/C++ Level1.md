@@ -2637,3 +2637,174 @@ int main()
 Good evening.
 ```
 
+## Enums with IF Statements
+
+**Example**
+```cpp
+#include <iostream>
+using namespace std;
+
+enum enScreenColor { Red=1, Blue=2, Green=3, Yellow=4 };
+
+int main()
+{
+    cout << "****************************\n";
+    cout << "Please Chose the number of your color?\n";
+    cout << "(1) Red\n";
+    cout << "(2) Blue\n";
+    cout << "(3) Green\n";
+    cout << "(4) Yellow\n";
+    cout << "****************************\n\n";
+    cout << "Your Choice? ";
+    
+    int c;
+    enScreenColor Color;
+
+    cin >> c;
+    Color = (enScreenColor) c;
+
+    if (Color == enScreenColor::Red)
+    {
+        system("color 4F");
+
+    }
+    else if (Color == enScreenColor::Blue)
+    {
+        system("color 1F");
+    }
+    else if (Color == enScreenColor::Green)
+    {
+        system("color 2F");
+    }
+    else if (Color == enScreenColor::Yellow)
+    {
+        system("color 6F");
+    }
+    
+    else
+        
+    {
+        system("color 4F");
+    };
+
+    return 0;
+}
+```
+
+## Switch
+
+*Syntax*
+```cpp
+switch (expression)
+{
+  case x:
+     // code block
+     break;
+
+  case y:
+     // code block
+     break;
+
+   default:
+   // code block
+}
+```
+
+**Example1 :**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int day = 4;
+
+	switch (day) {
+	case 1:
+		cout << "Sunday";
+		break;
+	case 2:
+		cout << "Monday";
+		break;
+	case 3:
+		cout << "Tuesday";
+		break;
+	case 4:
+		cout << "Wednesday";
+		break;
+	case 5:
+		cout << "Thursday";
+		break;
+	case 6:
+		cout << "Friday";
+		break;
+	case 7:
+		cout << "Saturday";
+		break;
+	default:
+		cout << "Not a week day!\n";
+	}
+	return 0;
+}
+```
+**Output**
+```
+Wednesday
+```
+
+Note : Did'nt Forget `break` If you do not set it, all statements under case 4 will be executed.  
+
+**Example1 :**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int day = 4;
+
+	switch (day) {
+	case 1:
+		cout << "Sunday";
+		
+	case 2:
+		cout << "Monday";
+		
+	case 3:
+		cout << "Tuesday";
+
+	case 4:
+		cout << "Wednesday";
+		
+	case 5:
+		cout << "Thursday";
+		
+	case 6:
+		cout << "Friday";
+		
+	case 7:
+		cout << "Saturday";
+		
+	default:
+		cout << "Not a week day!\n";
+	}
+	return 0;
+}
+```
+**Output**
+```
+WednesdayThursdayFridaySaturdayNot a week day!
+
+```
+
+## For Loops
+
+*Syntax*
+```cpp
+for (initialization; condition; update)
+{
+   // body of-loop
+}
+```
