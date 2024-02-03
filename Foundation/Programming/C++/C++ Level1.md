@@ -2522,3 +2522,118 @@ int main()
 No
 The code after if body always executed.
 ```
+
+**Else IF Statement**
+
+*Syntax*
+```cpp
+if (condition1)
+{
+ // condition1 is true
+}
+else if (condition2)
+{
+ // condition1 is false and condition2 is true
+}
+else
+{
+// condition1 is false and condition2 is false
+}
+```
+
+**Example9 :**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int time = 7;
+
+	if (time < 10) 
+	{
+		cout << "Good morning." << endl;
+	}
+	else if (time < 20)
+	{
+		cout << "Good day." << endl;
+	}
+
+	else
+	{
+		cout << "Good evening." << endl;
+	}
+	return 0;
+}
+
+```
+
+**Output**
+```
+Good morning.
+```
+
+**Example10 :**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int time = 12;
+
+	if (time < 10) 
+	{
+		cout << "Good morning." << endl;
+	}
+	else if (time < 20)
+	{
+		cout << "Good day." << endl;
+	}
+
+	else
+	{
+		cout << "Good evening." << endl;
+	}
+	return 0;
+}
+
+```
+
+**Output**
+```
+Good day.
+```
+
+**Example11 :**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int time = 23;
+
+	if (time < 10) 
+	{
+		cout << "Good morning." << endl;
+	}
+	else if (time < 20)
+	{
+		cout << "Good day." << endl;
+	}
+
+	else
+	{
+		cout << "Good evening." << endl;
+	}
+	return 0;
+}
+
+```
+
+**Output**
+```
+Good evening.
+```
+
