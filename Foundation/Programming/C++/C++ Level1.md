@@ -2252,4 +2252,273 @@ Note : So, from this example, we can see the benefit of the Array. Instead of de
 
 ## Conditional Statements
 
+*Syntax*
+```
+if (Condition==True)
+{
+    // Body of if code...
+}
+// Rest of program
+```
+- Condition is True
 
+```cpp
+int x = 10;
+
+if (x > 5)
+{
+  
+   // Code to be executed...
+}
+
+// Code after if..
+```
+Note : The condition will be implemented.  
+- Condition is False
+
+```cpp
+int x = 10;
+
+if (x > 20)
+{
+   // Code to be executed..
+}
+
+// Code after if..
+```
+
+- Note : The condition will not be implemented.  
+
+**Example1 :**
+```cpp
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+	int x = 10;
+
+	if (x > 5)
+	{
+		cout << "The code of if body has executed." << endl;
+	}
+	
+	cout << "The code after if body always executed." << endl;
+
+
+	return 0;
+}
+```
+**Output**
+```
+The code of if body has executed.
+The code after if body always executed.
+```
+
+**Example2 :**
+```cpp
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+	int x = 10;
+
+	if (x > 5 && x <= 20)
+	{
+		cout << "The code of if body has executed." << endl;
+	}
+	
+	cout << "The code after if body always executed." << endl;
+
+
+	return 0;
+}
+```
+**Output**
+```
+The code of if body has executed.
+The code after if body always executed.
+```
+
+**Example3 :**
+```cpp
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+	int x = 10;
+
+	if (x > 5 && x == 10)
+	{
+		cout << "The code of if body has executed." << endl;
+	}
+	
+	cout << "The code after if body always executed." << endl;
+
+
+	return 0;
+}
+```
+**Output**
+```
+The code of if body has executed.
+The code after if body always executed.
+```
+
+**Example4 :**
+```cpp
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+	int x = 10;
+
+	if (x < 5)
+	{
+		cout << "The code of if body has executed." << endl;
+	}
+	
+	cout << "The code after if body always executed." << endl;
+
+
+	return 0;
+}
+```
+**Output**
+```
+The code after if body always executed.
+```
+
+**Example5 :**
+```cpp
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+	int x = 10;
+
+	if (x > 5 && x > 20)
+	{
+		cout << "The code of if body has executed." << endl;
+	}
+	
+	cout << "The code after if body always executed." << endl;
+
+
+	return 0;
+}
+```
+**Output**
+```
+The code after if body always executed.
+```
+
+**Example6 :**
+```cpp
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+	int x = 10;
+
+	if (x < 5 || x == 10)
+	{
+		cout << "The code of if body has executed." << endl;
+	}
+	
+	cout << "The code after if body always executed." << endl;
+
+
+	return 0;
+}
+```
+**Output**
+```
+The code of if body has executed.
+The code after if body always executed.
+```
+
+**IF .. Else**
+
+*Syntax*
+```cpp
+if (Condition == True)
+{
+
+ // if body executes only if true
+
+}
+else
+{
+// else body executes only if false
+}
+```
+
+**Example7 :**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int x = 10;
+
+	if (x > 5)
+	{
+		cout << "Yes" << endl;
+	}
+	else
+	{
+		cout << "No" << endl;
+	}
+
+	cout << "The code after if body always executed." << endl;
+	return 0;
+}
+```
+
+**Output**
+```
+Yes
+The code after if body always executed.
+```
+
+**Example8 :**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int x = 10;
+
+	if (x < 5)
+	{
+		cout << "Yes" << endl;
+	}
+	else
+	{
+		cout << "No" << endl;
+	}
+
+	cout << "The code after if body always executed." << endl;
+	return 0;
+}
+```
+
+**Output**
+```
+No
+The code after if body always executed.
+```
