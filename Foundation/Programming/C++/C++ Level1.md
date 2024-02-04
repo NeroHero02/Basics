@@ -2937,3 +2937,194 @@ while (condition)
 }
 ```
 
+**Example1 :**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+	// Read Positive Number
+	int Number;
+	cout << "Please Enter a positive number?\n";
+	cin >> Number;
+
+	while (Number < 0)
+	{
+		cout << "Wrong Number, Plz Enter a positive Number ?\n" << endl;
+		cin >> Number;
+	}
+
+	cout << "\n The number you entered is : " << Number << endl;
+
+  return 0;
+}
+```
+
+**Example2 :**
+```cpp
+int ReadIntNumberInRange(int From, int To)
+{
+	// Read Number in Range
+	int Number;
+	cout << "Please Enter a positive number?\n";
+	cin >> Number;
+
+	while (Number < From || Number > To)
+	{
+		cout << "Wrong Number\n" << endl;
+		cout << "Please enter a number between " << From << " And " << To << endl;
+		cin >> Number;
+	}
+
+	return Number;
+}
+```
+
+## Do-While Loop
+
+- Here the first time it is executed and then the condition is checked.
+
+- Therefore, if you use do-while, it will be executed at least once.  
+
+*Syntax*
+```cpp
+do
+  {
+       // body of do-while loop
+  }while (condition);
+```
+
+**Example:**
+```cpp
+int ReadIntNumberInRangeUsingDoWhile(int From, int To)
+{
+	// Read Number in Range
+	int Number;
+	
+
+	do
+	{
+		cout << "Please enter a number between " << From << " And " << To << endl;
+		cin >> Number;
+	} while (Number < From || Number > To);
+
+	return Number;
+}
+```
+
+## Break Statement
+
+*Syntax*
+```cpp
+for (init; condition; update) 
+{
+  if (condition to break){
+        break;
+    }
+      // code
+}
+```
+
+```cpp
+while (condition) {
+   // code
+   if (condition to break) {
+       break;
+     }
+     // code
+}
+```
+
+
+**Example :**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+	for (int i = 1; i <= 10; i++)
+	{
+		if (i == 3)
+		{
+			break;
+		}
+		
+		cout << i << endl;
+	}
+}
+```
+**Output**
+```
+1
+2
+```
+
+- The break command allows you to terminate and exit a loop (that is, do , for , and while ) or switch command from any point other than the logical end.  
+
+
+## Continue Statement 
+
+*Syntax*
+```cpp
+for (init; condition; update) 
+{
+  if (condition to continue){
+        continue;
+    }
+      // code
+}
+```
+
+```cpp
+while (condition) {
+   // code
+   if (condition to continue) {
+       continue;
+     }
+     // code
+}
+```
+
+**Example :**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+	for (int i = 1; i <= 10; i++)
+	{
+		if (i == 3)
+		{
+			continue;
+		}
+		
+		cout << i << endl;
+	}
+}
+```
+**Output**
+```
+1
+2
+4
+5
+6
+7
+8
+9
+10
+```
+
+- Continue statement is a loop control statement that forces the program control to execute the next iteration of the loop.    
+
+
+## The End
+**alhamdulillah we have completed the first level C++. I hope you have benefited.**
+
+
