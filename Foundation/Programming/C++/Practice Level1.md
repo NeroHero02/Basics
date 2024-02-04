@@ -127,4 +127,13 @@ int main()
 }
 ```
 
+## Problem 4
+**Write a program to ask the user to enter his/her:
+1- Age
+2- Driver license
+Then Print "Hired" if his/her age is grater than 21 and s/he has a driver license, otherwise Print "Rejected"
+**
+```cpp
+
+```
 
