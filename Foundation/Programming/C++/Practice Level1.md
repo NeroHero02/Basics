@@ -19,7 +19,7 @@ int main()
 ```
 
 ## Problem 2
-**Write a program to ask the user to enter his/her name and print it on screen**
+**Write a program to ask the user to enter his/her name and print it on screen**    
 *The first method*
 ```cpp
 #include <iostream>
@@ -65,7 +65,7 @@ int main()
 ```
 
 ## Problem 3
-**Write a program to ask the user to enter a number , then Print "ODD" if its odd, Or "Even" if its even**
+**Write a program to ask the user to enter a number , then Print "ODD" if its odd, Or "Even" if its even**   
 *The first method*
 ```cpp
 #include <iostream>
