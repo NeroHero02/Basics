@@ -564,7 +564,7 @@ Not NOT (NOT True = False)
 
 ## Calculation Priorities
 
-**Order of Operations : **
+**Order of Operations :**  
 From Left to Right :   
 1. Bracket ().    
 2. Order $\sqrt{x}*x^2$.   
