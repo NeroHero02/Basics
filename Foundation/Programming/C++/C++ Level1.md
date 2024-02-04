@@ -2800,7 +2800,6 @@ WednesdayThursdayFridaySaturdayNot a week day!
 ```
 
 ## For Loops
-
 *Syntax*
 ```cpp
 for (initialization; condition; update)
@@ -2808,3 +2807,133 @@ for (initialization; condition; update)
    // body of-loop
 }
 ```
+
+**Example1 :**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	for (int i = 1; i <= 5; i++)
+	{ 
+		cout << i << endl;
+  }
+
+  return 0;
+}
+```
+**Output**
+```
+1
+2
+3
+4
+5
+```
+
+**Example2 :**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	for (int i = 1; i <= 5; i++)
+	{
+		cout << "Osama" << endl;
+	}
+  return 0;
+}
+```
+**Output**
+```
+Osama
+Osama
+Osama
+Osama
+Osama
+```
+
+**Example3 :**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	for (int i = 5; i >= 1; i--)
+ {
+	 cout << i << endl;
+ }
+   return 0;
+}
+```
+**Output**
+```
+5
+4
+3
+2
+1
+```
+
+
+**Example4 :**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	for (int i = 1; i <= 10; i = i + 2)
+ {
+	 cout << i << endl;
+ }
+
+  return 0;
+}
+```
+**Output**
+```
+1
+3
+5
+7
+9
+```
+
+**Example5 :**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	for (int i = 2; i <= 10; i = i + 2)
+ {
+	 cout << i << endl;
+ }
+
+  return 0;
+}
+```
+**Output**
+```
+2
+4
+6
+8
+10
+```
+
+## While Loop
+
+*Syntax*
+```
+while (condition)
+{
+    // body of while-loop
+}
+```
+
