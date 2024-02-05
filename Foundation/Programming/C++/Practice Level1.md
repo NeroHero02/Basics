@@ -536,3 +536,153 @@ int main()
 	PrintResults(CalculateAverage(Mark1,Mark2,Mark3));
 }
 ```
+
+## Problem 12
+**Write a program to ask the user to enter:**  
+**- Number1, Number2**
+**Then Print the Max Number**
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void ReadNumbers(int& Number1, int& Number2)
+{
+	cout << "\nPlease Enter First Number :\n";
+	cin >> Number1;
+
+	cout << "\nPlease Enter Second Number :\n";
+	cin >> Number2;
+
+}
+
+int MaxOf2Number(int Number1, int Number2)
+{
+	if (Number1 > Number2)
+		return Number1;
+	return Number2;
+}
+
+void PrintResults(int Max)
+{
+	cout << "\n The Maximum Number is : " << Max << endl;
+}
+int main()
+{
+	int Number1, Number2;
+	ReadNumbers(Number1, Number2);
+	PrintResults(MaxOf2Number(Number1, Number2));
+}
+```
+
+## Problem 13
+**Write a program to ask the user to enter 3 Numbers:**  
+**- A, B, C**
+**Then Print the Max Number**
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void ReadNumbers(int& Number1, int& Number2, int &Number3)
+{
+	cout << "\nPlease Enter First Number :\n";
+	cin >> Number1;
+
+	cout << "\nPlease Enter Second Number :\n";
+	cin >> Number2;
+
+	cout << "\nPlease Enter Third Number :\n";
+	cin >> Number3;
+
+}
+
+int MaxOf2Number(int Number1, int Number2)
+{
+	if (Number1 > Number2)
+		return Number1;
+	return Number2;
+}
+int MaxOf3Number(int Number1, int Number2 , int Number3)
+{
+	if (Number1 > Number2 && Number1 > Number3)
+		return Number1;
+
+	else if (Number2>Number1 && Number2 > Number3)
+	    return Number2;
+
+	return Number3;
+
+}
+
+
+void PrintResults(int Max)
+{
+	cout << "\n The Maximum Number is : " << Max << endl;
+}
+int main()
+{
+	int Number1, Number2, Number3;
+	ReadNumbers(Number1, Number2, Number3);
+	PrintResults(MaxOf3Number(Number1, Number2, Number3));
+}
+```
+
+## Problem 14
+**Write a program to ask the user to enter:**  
+**- Number1, Number2**
+**Then Print the two numbers , then Swap the two numbers and print them**
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void ReadNumbers(int& Number1, int& Number2)
+{
+	cout << "\nPlease Enter First Number :\n";
+	cin >> Number1;
+
+	cout << "\nPlease Enter Second Number :\n";
+	cin >> Number2;
+
+}
+
+void Swap(int& Number1, int& Number2)
+{
+	int Temp = Number1;
+	Number1 = Number2;
+	Number2 = Temp;
+}
+
+void PrintNumbers (int Number1 , int Number2)
+{
+	cout << "Number1 = " << Number1 << endl;
+	cout << "Number2 = " << Number2 << endl;
+}
+int main()
+{
+	int Number1, Number2, Number3;
+
+	ReadNumbers(Number1, Number2);
+	PrintNumbers(Number1,Number2);
+
+	Swap(Number1, Number2);
+	PrintNumbers(Number1, Number2);
+
+	
+	
+}
+```
+
+## Problem 15
+**Write a program to calculate rectangle area and print it on the screen**
+
+```cpp
+
+```
