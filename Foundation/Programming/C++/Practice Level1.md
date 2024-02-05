@@ -953,6 +953,44 @@ int main()
 
 **Write a program to calculate circle area Inscribed in an Isosecles Triangle,then print it on the screen.**   
 Area = &#960; * ($b^2$ &frasl; 4) * ($2 * A - B$) &frasl; ($2 * A + B$)
-```cpp
 
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+void ReadTriangleData(float &A , float &B)
+{
+	
+	cout << "\nPlease Enter triangle side A ? :\n";
+	cin >> A;
+
+	cout << "\nPlease Enter triangle base B ? :\n";
+	cin >> B;
+}
+
+float CalculateAreaByITriangle(float A , float B)
+{
+	const float _PI = 3.141592653589793238;
+
+	float Area = _PI * (pow(B,2) / 4) * ((2 * A - B)/(2 * A + B));
+
+	return Area;
+}
+
+void PrintResults(float Area)
+{
+	cout << "The Circle Area  = " << Area << endl;
+}
+
+int main()
+{	
+	float A, B;
+	ReadTriangleData(A, B);
+	PrintResults(CalculateAreaByITriangle(A,B));
+}
 ```
+
+## Problem 23
+
+\[ \text{Area} = \pi \times \left( \frac{A \times B \times C}{4 \times \sqrt{p \times (p-a) \times (p-b) \times (p-c)}} \right)^2 \]
