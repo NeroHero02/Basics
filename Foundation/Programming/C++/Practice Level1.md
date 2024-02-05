@@ -128,12 +128,316 @@ int main()
 ```
 
 ## Problem 4
-**Write a program to ask the user to enter his/her:
-1- Age
-2- Driver license
-Then Print "Hired" if his/her age is grater than 21 and s/he has a driver license, otherwise Print "Rejected"
-**
-```cpp
+**Write a program to ask the user to enter his/her:**
+**1- Age**
+**2- Driver license**
+**Then Print "Hired" if his/her age is grater than 21 and s/he has a driver license, otherwise Print "Rejected"**
 
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct stInfo {
+	int Age;
+	bool HasDriveLicense;
+};
+
+stInfo ReadInfo()
+{
+	stInfo Info;
+	cout << "Please Enter You'r Age : \n";
+	cin >> Info.Age;
+	
+	cout << "Do you have driver License?" << endl;
+	cin >> Info.HasDriveLicense;
+
+	return Info;
+}
+
+bool isAccepted(stInfo Info)
+{
+	return (Info.Age > 21 && Info.HasDriveLicense);
+}
+
+void PrintResult(stInfo Info)
+{
+	if (isAccepted(Info))
+		cout << "\nHired\n";
+	else
+		cout << "\nRejected\n";
+}
+
+int main()
+{
+	PrintResult(ReadInfo());
+}
 ```
 
+## Problem 5
+**Write a program to ask the user to enter his/her:**
+**1- Age**
+**2- Driver license**
+**3- Has Recommendation!**
+**Then Print "Hired" if his/her age is grater than 21 and s/he has a driver license, otherwise Print "Rejected" Or Hire him/her without condition.**
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct stInfo {
+	int Age;
+	bool HasDriveLicense;
+	bool HasRecommendation;
+};
+
+stInfo ReadInfo()
+{
+	stInfo Info;
+	cout << "Please Enter You'r Age : \n";
+	cin >> Info.Age;
+	
+	cout << "Do you have driver License?" << endl;
+	cin >> Info.HasDriveLicense;
+
+	cout << "Do you have Recommendation?" << endl;
+	cin >> Info.HasRecommendation;
+	return Info;
+}
+
+bool isAccepted(stInfo Info)
+{
+	if (Info.HasRecommendation)
+	{
+		return true;
+	}
+		
+	return (Info.Age > 21 && Info.HasDriveLicense);
+}
+
+void PrintResult(stInfo Info)
+{
+	if (isAccepted(Info))
+		cout << "\nHired\n";
+	else
+		cout << "\nRejected\n";
+}
+
+int main()
+{
+	PrintResult(ReadInfo());
+}
+```
+
+## Problem 6
+**Write a program to ask the user to enter :**
+**- First Name**
+**- Last Name**
+**Then Print Full Name on screen.**
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct stInfo
+{
+	string _FirstName;
+	string _LastName;
+};
+
+string GetFullName(stInfo Info)
+{
+	return Info._FirstName + " " + Info._LastName;
+}
+stInfo ReadName()
+{
+	stInfo FullName;
+	cout << "Please Enter First Name : " << endl;
+	cin >> FullName._FirstName;
+
+	cout << "Please Enter Last Name : " << endl;
+	cin >> FullName._LastName;
+
+	return FullName;
+
+}
+
+void PrintName(string FullName)
+{
+	cout << "You'r Name is : " << FullName;
+}
+
+int main()
+{
+	PrintName(GetFullName(ReadName()));
+}
+```
+
+## Problem 7
+**Write a program to ask the user to enter:**
+**-Number**
+**Then Print the "Half of the <Number> is <???>".**
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int ReadNumber()
+{
+	int Num;
+
+	cout << "Please Enter The Number : " << endl;
+	cin >> Num;
+
+	return Num;
+}
+
+float CalculateHalfNumber(int Num) 
+{
+	return (float) Num / 2;
+}
+
+void PrintResult(int Num)
+{
+	string Result = "Half of " + to_string(Num) + " is " + to_string(CalculateHalfNumber(Num));
+	cout << endl << Result;
+}
+int main()
+{
+	PrintResult(CalculateHalfNumber(ReadNumber()));
+}
+```
+## Problem 8
+**Write a program to ask the user to enter:**
+**-Mark**
+**Then Print the "PASS" if mark >=50 , otherwise print "Fail"**
+
+
+*The first method*
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int ReadMark()
+{
+	int _Mark;
+
+	cout << "Please Enter You'r Mark : \n";
+	cin >> _Mark;
+
+	return _Mark;
+}
+
+string CheckMark(int _Mark)
+{
+	if (_Mark >= 50)
+		return "PASS";
+	return "Fail";
+}
+
+void PrintResults(string Mark)
+{
+	cout << "You'r Finall Mark is : " << Mark << endl;
+}
+int main()
+{
+	PrintResults(CheckMark(ReadMark()));
+}
+```
+
+*The Second method*
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+enum enPassFail {Pass = 1 , Fail = 2};
+int ReadMark()
+{
+	int _Mark;
+
+	cout << "Please Enter you'r Mark? : \n";
+	cin >> _Mark;
+
+	return _Mark;
+}
+
+enPassFail CheckMark(int Mark)
+{
+	if (Mark >= 50)
+		return enPassFail::Pass;
+	return enPassFail::Fail;
+}
+
+void PrintResult(enPassFail Mark)
+{
+	if (CheckMark(Mark) == enPassFail::Pass)
+		cout << "\nPass\n";
+	else
+		cout << "\nFail\n";
+}
+int main()
+{
+	PrintResult(CheckMark(ReadMark()));
+}
+```
+
+## Problem 9
+**Write a program to ask the user to enter:**
+**- Number1, Number2, Number3**
+**Then Print the Sum of entered numbers**
+
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void ReadNumbers(int &Num1, int &Num2, int &Num3)
+{
+	cout << "Please Enter First Number :\n";
+	cin >> Num1;
+
+	cout << "Please Enter Second Number :\n";
+	cin >> Num2;
+
+	cout << "Please Enter Third Number :\n";
+	cin >> Num3;
+
+}
+
+int Sumof3Numbers(int Num1, int Num2, int Num3)
+{ 
+	return Num1 + Num2 + Num3;
+}
+
+void PrintResults(int Total)
+{
+	cout << "Summation Three Number is : " << Total << endl;
+}
+int main()
+{
+	int Num1, Num2, Num3;
+	ReadNumbers(Num1, Num2, Num3);
+	PrintResults(Sumof3Numbers(Num1,Num2,Num3));
+}
+```
+
+## Problem 10
+**Write a program to ask the user to enter:**
+**-Mark1, Mark2, Mark3**
+**Then Print the Average of entered Marks**
+
+```cpp
+```
