@@ -993,4 +993,6 @@ int main()
 
 ## Problem 23
 
-\[ \text{Area} = \pi \times \left( \frac{A \times B \times C}{4 \times \sqrt{p \times (p-a) \times (p-b) \times (p-c)}} \right)^2 \]
+$$
+\text{Area} = \pi \left( \frac{A \times B \times C}{4 \sqrt{p \times (p-a) \times (p-b) \times (p-c)}} \right)^2
+$$
