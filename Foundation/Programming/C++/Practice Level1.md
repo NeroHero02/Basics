@@ -716,4 +716,39 @@ int main()
 
 ## Problem 16
 **Write a program to calculate rectangle area through diagonal and side are of rectangle and print it on the screen**  
-- Area = a * $\sqrt{d^2-a^2}$
+- Area = a * $\sqrt{d^2-a^2}$  
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void ReadNumbers(float& A, float& D)
+{
+	cout << "\nPlease Enter Length of Area :\n";
+	cin >> A;
+
+	cout << "\nPlease Enter Width of Area :\n";
+	cin >> D;
+
+}
+
+float CalculateRectangleAreabySideAndDiagonal(int A, int D)
+{
+	float Area = A * sqrt(pow(D, 2) - pow(A, 2));
+	return Area;
+}
+
+void PrintResults(float Area)
+{
+	cout << "The Area of Rectangle is : " << Area << endl;
+}
+
+int main()
+{
+	float A, D;
+	ReadNumbers(A, D);
+	PrintResults(CalculateRectangleAreabySideAndDiagonal(A, D));
+}
+```
