@@ -481,3 +481,58 @@ int main()
 ```
 
 ## Problem 11
+**Write a program to ask the user to enter:**  
+**- Mark1,Mark2,Mark3**
+**Then Print the Average of entered Marks, and print "Pass" if average>=50, otherwise print "FAIL"**
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+enum enPassFail {Pass = 1 , Fail = 2};
+void ReadNumbers(int &Mark1, int &Mark2, int &Mark3)
+{
+	cout << "Please Enter First Number :\n";
+	cin >> Mark1;
+
+	cout << "Please Enter Second Number :\n";
+	cin >> Mark2;
+
+	cout << "Please Enter Third Number :\n";
+	cin >> Mark3;
+
+}
+
+int Sumof3Numbers(int Mark1, int Mark2, int Mark3)
+{ 
+	return Mark1 + Mark2 + Mark3;
+}
+
+float CalculateAverage(int Mark1, int Mark2, int Mark3)
+{
+	return (float)Sumof3Numbers(Mark1, Mark2, Mark3) / 3;
+}
+
+enPassFail CheckAverage(float Average)
+{
+	if (Average >= 50)
+		return enPassFail::Pass;
+	return enPassFail::Fail;
+}
+
+void PrintResults(float Average)
+{
+	cout << "The Average is : " << Average << endl;
+	if (CheckAverage(Average) == enPassFail::Pass)
+		cout << "\n You Passed";
+	else
+		cout << "\n You Failed";
+}
+int main()
+{
+	int Mark1,	Mark2, Mark3;
+	ReadNumbers(Mark1, Mark2, Mark3);
+	PrintResults(CalculateAverage(Mark1,Mark2,Mark3));
+}
+```
