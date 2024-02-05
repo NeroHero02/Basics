@@ -716,4 +716,4 @@ int main()
 
 ## Problem 16
 **Write a program to calculate rectangle area through diagonal and side are of rectangle and print it on the screen**
--`Area = a * $\sqrt{d^2-a^2}$`
+-Area = a * $\sqrt{d^2-a^2}$
