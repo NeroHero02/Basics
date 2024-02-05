@@ -674,9 +674,6 @@ int main()
 
 	Swap(Number1, Number2);
 	PrintNumbers(Number1, Number2);
-
-	
-	
 }
 ```
 
@@ -684,5 +681,35 @@ int main()
 **Write a program to calculate rectangle area and print it on the screen**
 
 ```cpp
+#include <iostream>
+#include <string>
 
+using namespace std;
+
+void ReadNumbers(float& Length, float& Width)
+{
+	cout << "\nPlease Enter Length of Area :\n";
+	cin >> Length;
+
+	cout << "\nPlease Enter Width of Area :\n";
+	cin >> Width;
+
+}
+
+float CalculateRectangleArea(int Length, int Width)
+{
+	return Length * Width;
+}
+
+void PrintResults(float Area)
+{
+	cout << "The Area of Rectangle is : " << Area << endl;
+}
+
+int main()
+{
+	float Length, Width;
+	ReadNumbers(Length, Width);
+	PrintResults(CalculateRectangleArea(Length, Width));
+}
 ```
