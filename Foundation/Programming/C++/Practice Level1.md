@@ -716,7 +716,7 @@ int main()
 
 ## Problem 16
 **Write a program to calculate rectangle area through diagonal and side are of rectangle and print it on the screen**  
-- Area = a * $\sqrt{d^2-a^2}$  
+- Area = A * $\sqrt{D^2-A^2}$  
 
 ```cpp
 #include <iostream>
@@ -755,7 +755,7 @@ int main()
 
 ## Problem 17
 **Write a program to calculate triangle area then print it on the screen**  
-<sup>1</sup>&frasl;<sub>2</sub> a * h;
+<sup>1</sup>&frasl;<sub>2</sub> A * H;
 
 ```cpp
 #include <iostream>
@@ -795,4 +795,4 @@ int main()
 ## Problem 18
 
 **Write a program to calculate circle area then print it on the screen**
-- Area = &#960; * $r^2$
+- Area = &#960; * $R^2$
