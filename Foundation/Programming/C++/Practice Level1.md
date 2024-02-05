@@ -756,3 +756,38 @@ int main()
 ## Problem 17
 **Write a program to calculate triangle area then print it on the screen**  
 <sup>1</sup>&frasl;<sub>2</sub> a * h;
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void ReadNumbers(float& A, float& H)
+{
+	cout << "\nPlease Enter Length of Area :\n";
+	cin >> A;
+
+	cout << "\nPlease Enter Width of Area :\n";
+	cin >> H;
+
+}
+
+float CalculateTriangleArea(int A, int H)
+{
+	float Area = 0.5 * A * H;
+	return Area;
+}
+
+void PrintResults(float Area)
+{
+	cout << "The Area of Rectangle is : " << Area << endl;
+}
+
+int main()
+{
+	float A, H;
+	ReadNumbers(A, H);
+	PrintResults(CalculateTriangleArea(A, H));
+}
+```
