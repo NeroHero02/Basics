@@ -795,4 +795,4 @@ int main()
 ## Problem 18
 
 **Write a program to calculate circle area then print it on the screen**
-- Area = &#960; * $\r^2$
+- Area = &#960; * $r^2$
