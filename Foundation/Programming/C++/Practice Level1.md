@@ -128,10 +128,10 @@ int main()
 ```
 
 ## Problem 4
-**Write a program to ask the user to enter his/her:**
-**1- Age**
-**2- Driver license**
-**Then Print "Hired" if his/her age is grater than 21 and s/he has a driver license, otherwise Print "Rejected"**
+**Write a program to ask the user to enter his/her:**  
+**1- Age**  
+**2- Driver license**  
+**Then Print "Hired" if his/her age is grater than 21 and s/he has a driver license, otherwise Print "Rejected"**  
 
 ```cpp
 #include <iostream>
@@ -176,11 +176,11 @@ int main()
 ```
 
 ## Problem 5
-**Write a program to ask the user to enter his/her:**
-**1- Age**
-**2- Driver license**
-**3- Has Recommendation!**
-**Then Print "Hired" if his/her age is grater than 21 and s/he has a driver license, otherwise Print "Rejected" Or Hire him/her without condition.**
+**Write a program to ask the user to enter his/her:**  
+**1- Age**  
+**2- Driver license**  
+**3- Has Recommendation!**  
+**Then Print "Hired" if his/her age is grater than 21 and s/he has a driver license, otherwise Print "Rejected" Or Hire him/her without condition.**  
 
 ```cpp
 #include <iostream>
@@ -233,10 +233,10 @@ int main()
 ```
 
 ## Problem 6
-**Write a program to ask the user to enter :**
-**- First Name**
-**- Last Name**
-**Then Print Full Name on screen.**
+**Write a program to ask the user to enter :**  
+**- First Name**  
+**- Last Name**  
+**Then Print Full Name on screen.**  
 
 ```cpp
 #include <iostream>
@@ -279,9 +279,9 @@ int main()
 ```
 
 ## Problem 7
-**Write a program to ask the user to enter:**
-**-Number**
-**Then Print the "Half of the <Number> is <???>".**
+**Write a program to ask the user to enter:**  
+**-Number**  
+**Then Print the "Half of the <Number> is <???>".**  
 
 ```cpp
 #include <iostream>
@@ -315,9 +315,9 @@ int main()
 }
 ```
 ## Problem 8
-**Write a program to ask the user to enter:**
-**-Mark**
-**Then Print the "PASS" if mark >=50 , otherwise print "Fail"**
+**Write a program to ask the user to enter:**  
+**-Mark**  
+**Then Print the "PASS" if mark >=50 , otherwise print "Fail"**  
 
 
 *The first method*
@@ -393,9 +393,9 @@ int main()
 ```
 
 ## Problem 9
-**Write a program to ask the user to enter:**
-**- Number1, Number2, Number3**
-**Then Print the Sum of entered numbers**
+**Write a program to ask the user to enter:**  
+**- Number1, Number2, Number3**  
+**Then Print the Sum of entered numbers**  
 
 
 ```cpp
@@ -435,9 +435,9 @@ int main()
 ```
 
 ## Problem 10
-**Write a program to ask the user to enter:**
-**-Mark1, Mark2, Mark3**
-**Then Print the Average of entered Marks**
+**Write a program to ask the user to enter:**  
+**-Mark1, Mark2, Mark3**  
+**Then Print the Average of entered Marks**  
 
 ```cpp
 ```
