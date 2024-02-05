@@ -440,4 +440,44 @@ int main()
 **Then Print the Average of entered Marks**  
 
 ```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void ReadNumbers(int &Mark1, int &Mark2, int &Mark3)
+{
+	cout << "Please Enter First Number :\n";
+	cin >> Mark1;
+
+	cout << "Please Enter Second Number :\n";
+	cin >> Mark2;
+
+	cout << "Please Enter Third Number :\n";
+	cin >> Mark3;
+
+}
+
+int Sumof3Numbers(int Mark1, int Mark2, int Mark3)
+{ 
+	return Mark1 + Mark2 + Mark3;
+}
+
+float CalculateAverage(int Mark1, int Mark2, int Mark3)
+{
+	return (float)Sumof3Numbers(Mark1, Mark2, Mark3) / 3;
+}
+
+void PrintResults(float Average)
+{
+	cout << "The Average is : " << Average << endl;
+}
+int main()
+{
+	int Mark1,	Mark2, Mark3;
+	ReadNumbers(Mark1, Mark2, Mark3);
+	PrintResults(CalculateAverage(Mark1,Mark2,Mark3));
+}
 ```
+
+## Problem 11
