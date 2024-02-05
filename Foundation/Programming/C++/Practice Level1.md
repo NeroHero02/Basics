@@ -1005,5 +1005,139 @@ P = \frac{A + B + C}{2}
 $$
 
 ```cpp
+#include <iostream>
+#include <string>
+using namespace std;
 
+void ReadTriangleData(float &A , float &B, float &C)
+{
+	
+	cout << "\nPlease Enter triangle side A ? :\n";
+	cin >> A;
+
+	cout << "\nPlease Enter triangle base B ? :\n";
+	cin >> B;
+
+	cout << "\nPlease Enter triangle side C ? :\n";
+	cin >> C;
+}
+
+float CalculateAreaByATriangle(float A , float B, float C)
+{
+	const float _PI = 3.141592653589793238;
+	float P = (A + B + C) / 2;
+
+	float T;
+	T = (A * B * C) / (4 * sqrt(P * (P - A) * (P - B) * (P - C)));
+
+	float Area = _PI * pow(T, 2);
+
+	return Area;
+}
+
+void PrintResults(float Area)
+{
+	cout << "The Circle Area  = " << Area << endl;
+}
+
+int main()
+{	
+	float A, B, C;
+	ReadTriangleData(A, B, C);
+	PrintResults(CalculateAreaByATriangle(A,B,C));
+}
 ```
+
+## Problem 24
+
+**Write a program to ask the user to enter :**  
+**- Age**  
+**If age is between 18 and 45 print "Valid Age" otherwise print "Invalid Age"**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int ReadAge()
+{
+	int _Age;
+	cout << "Please Enter You'r Age : \n";
+	cin >> _Age;
+
+	return _Age;
+}
+
+bool ValidateNumberInRande(int _Age , int From, int To)
+{
+	return (_Age >= From && _Age <= To);
+}
+
+void PrintResults(int _Age)
+{
+	if (ValidateNumberInRande(_Age, 18, 45))
+		cout << " is a Valid Age" << endl;
+	else
+		cout << " is Invalid Age" << endl;
+
+}
+
+int main()
+{	
+	PrintResults(ReadAge());
+}
+```
+
+## Problem 25
+
+**Write a program to ask the user to enter :**  
+**- Age**  
+**If age is between 18 and 45 print "Valid Age" otherwise print "Invalid Age" and re-ask user to enter a valid age**  
+**Note : You shold keep asking user to enter a vlid age until he/she enters it.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int ReadAge()
+{
+	int _Age;
+	cout << "Please Enter You'r Age : \n";
+	cin >> _Age;
+
+	return _Age;
+}
+
+bool ValidateNumberInRande(int _Age , int From, int To)
+{
+	return (_Age >= From && _Age <= To);
+}
+
+void PrintResults(int _Age)
+{
+	if (ValidateNumberInRande(_Age, 18, 45))
+		cout << " is a Valid Age" << endl;
+	else
+		cout << " is Invalid Age" << endl;
+
+}
+
+int ReadUntilAgeBetween(int From, int To)
+{
+	int _Age = 0;
+	do
+	{
+		_Age = ReadAge();
+	} while (!ValidateNumberInRande(_Age, From, To));
+
+	return _Age;
+}
+
+int main()
+{	
+	PrintResults(ReadUntilAgeBetween(18,45));
+}
+```
+
+
