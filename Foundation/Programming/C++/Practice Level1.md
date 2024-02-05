@@ -696,7 +696,7 @@ void ReadNumbers(float& Length, float& Width)
 
 }
 
-float CalculateRectangleArea(int Length, int Width)
+float CalculateRectangleArea(float Length, float Width)
 {
 	return Length * Width;
 }
@@ -726,15 +726,15 @@ using namespace std;
 
 void ReadNumbers(float& A, float& D)
 {
-	cout << "\nPlease Enter Length of Area :\n";
+	cout << "\nPlease Enter A of Area :\n";
 	cin >> A;
 
-	cout << "\nPlease Enter Width of Area :\n";
+	cout << "\nPlease Enter D of Area :\n";
 	cin >> D;
 
 }
 
-float CalculateRectangleAreabySideAndDiagonal(int A, int D)
+float CalculateRectangleAreabySideAndDiagonal(float A, float D)
 {
 	float Area = A * sqrt(pow(D, 2) - pow(A, 2));
 	return Area;
@@ -742,7 +742,7 @@ float CalculateRectangleAreabySideAndDiagonal(int A, int D)
 
 void PrintResults(float Area)
 {
-	cout << "The Area of Rectangle is : " << Area << endl;
+	cout << "The Area of Rectangle by  Side and Diagonal is : " << Area << endl;
 }
 
 int main()
@@ -765,15 +765,15 @@ using namespace std;
 
 void ReadNumbers(float& A, float& H)
 {
-	cout << "\nPlease Enter Length of Area :\n";
+	cout << "\nPlease Enter A of Area :\n";
 	cin >> A;
 
-	cout << "\nPlease Enter Width of Area :\n";
+	cout << "\nPlease Enter H of Area :\n";
 	cin >> H;
 
 }
 
-float CalculateTriangleArea(int A, int H)
+float CalculateTriangleArea(float A, float H)
 {
 	float Area = 0.5 * A * H;
 	return Area;
@@ -781,7 +781,7 @@ float CalculateTriangleArea(int A, int H)
 
 void PrintResults(float Area)
 {
-	cout << "The Area of Rectangle is : " << Area << endl;
+	cout << "The Area of Triangle is : " << Area << endl;
 }
 
 int main()
@@ -796,3 +796,39 @@ int main()
 
 **Write a program to calculate circle area then print it on the screen**
 - Area = &#960; * $R^2$
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+float ReadRadious()
+{
+	float R;
+	cout << "\nPlease Enter Radious :\n";
+	cin >> R;
+
+	return R;
+}
+
+float CalculateCricleArea(float R)
+{
+	const float _PI = 3.141592653589793238;
+
+	float Area = _PI * pow(R,2);
+
+	return Area;
+}
+
+void PrintResults(float Area)
+{
+	cout << "The Area of Circle is : " << Area << endl;
+}
+
+int main()
+{
+	
+	
+	PrintResults(CalculateCricleArea(ReadRadious()));
+}
+```
