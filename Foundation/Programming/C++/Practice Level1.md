@@ -914,3 +914,37 @@ int main()
 
 **Write a program to calculate circle area along the circumferenc, then print it on the screen.**
 - Area = $L^2$ &frasl; (4* &#960;)
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+float ReadCricumference()
+{
+	float L;
+	cout << "\nPlease Enter Circumference Side A ? :\n";
+	cin >> L;
+
+	return L;
+}
+
+float CalculateCircleAreaByCircumference(float L)
+{
+	const float _PI = 3.141592653589793238;
+
+	float Area = pow(L,2) / (4 * _PI);
+
+	return Area;
+}
+
+void PrintResults(float Area)
+{
+	cout << "The Circle Area  = " << Area << endl;
+}
+
+int main()
+{	
+	PrintResults(CalculateCircleAreaByCircumference(ReadCricumference()));
+}
+```
