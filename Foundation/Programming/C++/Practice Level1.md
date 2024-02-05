@@ -874,4 +874,4 @@ int main()
 ## Problem 20
 
 **Write a program to calculate Circle area inscribed in a square, then print it on the screen.**
-- Area = &#960; * ($\D^2 &frasl; 2$) = &#960; * $\A^2 &frasl 4$
+- Area =  &#960; * $A^2$ &frasl; 4
