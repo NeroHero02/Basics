@@ -827,8 +827,6 @@ void PrintResults(float Area)
 
 int main()
 {
-	
-	
 	PrintResults(CalculateCricleArea(ReadRadious()));
 }
 ```
