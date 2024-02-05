@@ -948,3 +948,11 @@ int main()
 	PrintResults(CalculateCircleAreaByCircumference(ReadCricumference()));
 }
 ```
+
+## Problem 22
+
+**Write a program to calculate circle area Inscribed in an Isosecles Triangle,then print it on the screen.**
+Area = &#960; * $b^2$ &frasl; 4 * ($2 * A - B$) &frasl; ($2 * A + B$)
+```cpp
+
+```
