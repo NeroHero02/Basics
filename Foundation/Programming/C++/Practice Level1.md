@@ -830,3 +830,7 @@ int main()
 	PrintResults(CalculateCricleArea(ReadRadious()));
 }
 ```
+## Problem 19
+
+**Write a program to calculate circle area through diameter, then print it on the screen.**
+- Area = &#960; * $\D^2$ &frasl; <sub>4</sub>
