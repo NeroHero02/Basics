@@ -754,5 +754,5 @@ int main()
 ```
 
 ## Problem 17
-**Write a program to calculate triangle area then print it on the screen**
-<sup>1</sup>&frasl;<sub>2</sub>
+**Write a program to calculate triangle area then print it on the screen**  
+<sup>1</sup>&frasl;<sub>2</sub> a * h;
