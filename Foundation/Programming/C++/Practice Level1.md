@@ -834,3 +834,44 @@ int main()
 
 **Write a program to calculate circle area through diameter, then print it on the screen.**
 - Area = &#960; * $D^2$ &frasl; <sub>4</sub>
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+float ReadDiameter()
+{
+	float D;
+	cout << "\nPlease Enter Diameter :\n";
+	cin >> D;
+
+	return D;
+}
+
+float CalculateCirecleAreaByDiameter(float D)
+{
+	const float _PI = 3.141592653589793238;
+
+	float Area = (_PI * pow(D,2))/4;
+
+	return Area;
+}
+
+void PrintResults(float Area)
+{
+	cout << "The Area of Circle by Diameter is : " << Area << endl;
+}
+
+int main()
+{
+	
+	
+	PrintResults(CalculateCirecleAreaByDiameter(ReadDiameter()));
+}
+```
+
+## Problem 20
+
+**Write a program to calculate Circle area inscribed in a square, then print it on the screen.**
+- Area = &#960; * ($\D^2 &frasl; 2$) = &#960; * $\A^2 &frasl 4$
