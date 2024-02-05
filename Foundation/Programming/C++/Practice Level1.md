@@ -993,6 +993,8 @@ int main()
 
 ## Problem 23
 **Write a program to calculate circle area Inscribed in an Isosceles Triangle,then print it on the screen.**    
+
+
 $$
 \text{Area} = \pi \left( \frac{A \times B \times C}{4 \sqrt{p \times (p-a) \times (p-b) \times (p-c)}} \right)^2
 $$
