@@ -1140,4 +1140,292 @@ int main()
 }
 ```
 
+## Problem 26
 
+**Write a program to print numbers from 1 to N.**
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int ReadNumber()
+{
+	int N;
+	cout << "Please Enter Number: \n";
+	cin >> N;
+
+	return N;
+}
+
+void PrintNumberFrom1ToN(int N)
+{
+	for (int i = 1; i <= N; i++)
+	{
+		cout << i << endl;
+	}
+}
+
+int main()
+{	
+	PrintNumberFrom1ToN(ReadNumber());
+}
+```
+
+## Problem 27
+
+**Write a program to print numbers from N to 1.**
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int ReadNumber()
+{
+	int N;
+	cout << "Please Enter Number : \n";
+	cin >> N;
+
+	return N;
+}
+
+void PrintNumberFromNTo1(int N)
+{
+	for (int i = N; i >= 1; i--)
+	{
+		cout << i << endl;
+	}
+}
+
+int main()
+{	
+	PrintNumberFromNTo1(ReadNumber());
+}
+```
+
+## Problem 28
+
+**Write a program to Sum odd numbers from 1 to N**
+
+*The first method*
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int ReadNumber()
+{
+	int N;
+	cout << "Please Enter Number : \n";
+	cin >> N;
+
+	return N;
+}
+
+bool OddNumber(int Number)
+{
+	if (Number % 2 != 0)
+		return true;
+	return false;
+}
+
+int SumOddNumber(int N)
+{
+	int Sum = 0;
+	for (int i = 1; i <= N; i++)
+	{
+		if (OddNumber(i))
+			Sum += i;
+	}
+	
+	return Sum;
+}
+void PrintSumOdd(int Sum)
+{
+	cout << "Sum Odd Number is : " << Sum << endl;
+}
+
+int main()
+{	
+	PrintSumOdd(SumOddNumber(ReadNumber()));
+}
+```
+
+*The second method*
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+enum enOddOrEven{ Odd = 1 , Even = 2};
+int ReadNumber()
+{
+	int N;
+	cout << "Please Enter Number : \n";
+	cin >> N;
+
+	return N;
+}
+
+enOddOrEven CheckOddOrEven(int Number)
+{
+	if (Number % 2 != 0)
+		return enOddOrEven::Odd;
+	return enOddOrEven::Even;
+}
+int SumOddNumber(int N)
+{
+	int Sum = 0;
+	for (int i = 1; i <= N; i++)
+	{
+		if (CheckOddOrEven(i) == enOddOrEven::Odd)
+			Sum += i;
+	}
+	
+	return Sum;
+}
+void PrintSumOdd(int Sum)
+{
+	cout << "Sum Odd Number is : " << Sum << endl;
+}
+
+int main()
+{	
+	PrintSumOdd(SumOddNumber(ReadNumber()));
+}
+```
+
+## Problem 29
+
+**Write a program to Sum even numbers from 1 to N**
+
+*The first method*
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int ReadNumber()
+{
+	int N;
+	cout << "Please Enter Number : \n";
+	cin >> N;
+
+	return N;
+}
+
+bool EvenNumber(int Number)
+{
+	if (Number % 2 == 0)
+		return true;
+	return false;
+}
+
+int SumEvenNumber(int N)
+{
+	int Sum = 0;
+	for (int i = 1; i <= N; i++)
+	{
+		if (EvenNumber(i))
+			Sum += i;
+	}
+	
+	return Sum;
+}
+void PrintSumEven(int Sum)
+{
+	cout << "Sum Even Number is : " << Sum << endl;
+}
+
+int main()
+{	
+	PrintSumEven(SumEvenNumber(ReadNumber()));
+}
+```
+
+*The second method*
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+enum enOddOrEven{ Odd = 1 , Even = 2};
+int ReadNumber()
+{
+	int N;
+	cout << "Please Enter Number : \n";
+	cin >> N;
+
+	return N;
+}
+
+enOddOrEven CheckOddOrEven(int Number)
+{
+	if (Number % 2 == 0)
+		return enOddOrEven::Even;
+	return enOddOrEven::Odd;
+}
+int SumEvenNumber(int N)
+{
+	int Sum = 0;
+	for (int i = 1; i <= N; i++)
+	{
+		if (CheckOddOrEven(i) == enOddOrEven::Even)
+			Sum += i;
+	}
+	
+	return Sum;
+}
+void PrintSumEven(int Sum)
+{
+	cout << "Sum Even Number is : " << Sum << endl;
+}
+
+int main()
+{	
+	PrintSumEven(SumEvenNumber(ReadNumber()));
+}
+```
+
+## Problem 30
+
+**Write a program to calculate factorial of N!**
+**Note: User should only enter positive number, other wise reject it and ask to enter again**
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+	do
+	{
+		cout << Message << endl;
+		cin >> Number;
+	} while (Number < 0);
+
+	return Number;
+}
+
+int FactorialNumber(int Number)
+{
+	int Fact = 1;
+	for (int Counter = 1; Counter <= Number; Counter++)
+	{
+		Fact *= Counter;
+	}
+	return Fact;
+}
+
+void PrintResults(int Number)
+{
+	cout << "Factorial Number " << Number << " is :" << FactorialNumber(Number) << endl;
+}
+int main()
+{
+	PrintResults(ReadPositiveNumber("Enter a Positive Number : "));
+}
+```
