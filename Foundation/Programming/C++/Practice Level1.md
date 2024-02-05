@@ -875,3 +875,37 @@ int main()
 
 **Write a program to calculate Circle area inscribed in a square, then print it on the screen.**
 - Area =  &#960; * $A^2$ &frasl; 4
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+float ReadSquareSide()
+{
+	float A;
+	cout << "\nPlease Enter Square Side A ? :\n";
+	cin >> A;
+
+	return A;
+}
+
+float CalculateAreaInscribedInSqaure(float A)
+{
+	const float _PI = 3.141592653589793238;
+
+	float Area = (_PI * pow(A,2))/4;
+
+	return Area;
+}
+
+void PrintResults(float Area)
+{
+	cout << "The Circle Area = " << Area << endl;
+}
+
+int main()
+{	
+	PrintResults(CalculateAreaInscribedInSqaure(ReadSquareSide()));
+}
+```
