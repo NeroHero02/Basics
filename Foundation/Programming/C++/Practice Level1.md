@@ -909,3 +909,8 @@ int main()
 	PrintResults(CalculateAreaInscribedInSqaure(ReadSquareSide()));
 }
 ```
+
+## Problem 21
+
+**Write a program to calculate circle area along the circumferenc, then print it on the screen.**
+- Area = $L^2$ &frasl; 4* &#960;
