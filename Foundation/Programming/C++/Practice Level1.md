@@ -1388,10 +1388,10 @@ int main()
 }
 ```
 
-## Problem 30
+## Problem 30  
 
-**Write a program to calculate factorial of N!**
-**Note: User should only enter positive number, other wise reject it and ask to enter again**
+**Write a program to calculate factorial of N!**  
+**Note: User should only enter positive number, other   wise reject it and ask to enter again**  
 
 ```cpp
 #include <iostream>
@@ -1428,4 +1428,198 @@ int main()
 {
 	PrintResults(ReadPositiveNumber("Enter a Positive Number : "));
 }
+```
+
+## Problem 31  
+**Write a program to ask the user to enter:**  
+**- Number**  
+**Then Print the Number^2 ,Number^3 ,Number^4**  
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+int ReadNumber()
+{
+	int Number;
+	cout << "Please Enter Number : " << endl;
+	cin >> Number;
+	
+	return Number;
+}
+
+void Powerof2_3_4(int Number)
+{
+	int A, B, C;
+	A = Number * Number;
+	B = Number * Number * Number;
+	C = Number * Number * Number;
+
+	cout << A << "\n" << B << "\n" << C << endl;
+}
+int main()
+{
+	Powerof2_3_4(ReadNumber());
+}
+```
+
+## Problem 32  
+**Write a program to ask the user to enter:**  
+**- Number**  
+**- M**  
+**Then Print the Number^M**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+int ReadNumber()
+{
+	int Number;
+	cout << "Please Enter Number : " << endl;
+	cin >> Number;
+	
+	return Number;
+}
+
+int ReadPower()
+{
+	int Power;
+	cout << "Please Enter Power : " << endl;
+	cin >> Power;
+	
+	return Power;
+}
+
+int PowerofM(int Number, int M)
+{
+	if (M == 0)
+	{
+		return 1;
+	}
+	int Power = 1;
+	for (int i = 1; i <= M; i++)
+	{
+		Power = Power * Number;
+	}
+	return Power;
+}
+
+
+int main()
+{
+	cout << "\nResult = " << PowerofM(ReadNumber(), ReadPower());
+}
+```
+## Problem 33  
+
+**Write a program to ask the user to enter:**    
+**- Grade**  
+**Then Print the grade as follows:**  
+**- 90-100 Print A**  
+**- 80-89 Print B**  
+**- 70-79 Print C**  
+**- 60-69 Print D**  
+**- 50-59 Print E**  
+**Otherwise Print F**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+int ReadNumberInRange(int From, int To)
+{
+	int Number;
+	do
+	{
+		cout << "Please Enter a Grade between " << From << " and " << To << endl;
+		cin >> Number;
+	} while (Number < From && Number > To);
+	return Number;
+}
+
+char GetGradeLetter(int Mark)
+{
+	switch (Mark / 10)
+	{
+	case 10:
+	case 9:
+		return 'A';
+	case 8:
+		return 'B';
+	case 7:
+		return 'C';
+	case 6:
+		return 'D';
+	case 5:
+		return 'E';
+	default:
+		return 'F';
+	}
+}
+
+void PrintResults(int Mark)
+{
+	cout << "\nYou'r Finall Grade is : " << GetGradeLetter(Mark) << endl;
+}
+int main()
+{
+	PrintResults(ReadNumberInRange(0,100));
+}
+```
+
+## Problem 34
+
+**Write a program to ask the user to enter:**  
+**TotalSales**  
+**The commission is calculated as one percentage * the total sales amount, all you need is to decide which percentage to use of the following:**
+**- >1000,000 --> Percentage is 1%**
+**- >500K to 1M --> Percentage is 2%**  
+**- >100K - 500K --> Percentage is 3%**  
+**- >50K to 100K --> Percentage is 5%**  
+**- Otherwise --> Percentage is 0%**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+float ReadTotalSales()
+{
+	float TotalSales;
+	cout << "Please Enter total sales : " << endl;
+	cin >> TotalSales;
+
+	return TotalSales;
+}
+
+float GetCommissionPercentage(float TotalSales)
+{
+	if (TotalSales > 1000000)
+		return 0.01;
+	else if (TotalSales > 500000 && TotalSales < 1000000)
+		return 0.02;
+	else if (TotalSales > 100000 && TotalSales < 500000)
+		return 0.03;
+	else if (TotalSales > 50000 && TotalSales < 100000)
+		return 0.00;
+	return 0.00;
+}  
+
+float CalculateTotalComission(float TotalSales)
+{
+	return GetCommissionPercentage(TotalSales) * TotalSales;
+}
+int main()
+{
+	float TotalSales = ReadTotalSales();
+	cout << "\nComission Percentage = : " << GetCommissionPercentage(TotalSales) << endl;
+	cout << "\nTotal Comission = : " << CalculateTotalComission(TotalSales) << endl;
+ }
 ```
