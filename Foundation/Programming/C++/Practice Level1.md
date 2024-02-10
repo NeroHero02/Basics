@@ -1904,5 +1904,81 @@ int main()
 **Note: Prime Number can only divide on one and on itself.**  
 
 ```cpp
+#include <iostream>
+#include <string>
+using namespace std;
 
+enum enPrimeNotPrime { Prime = 1, NotPrime = 2 };
+
+int ReadNumber(string Message)
+{
+	int Number;
+
+	cout << Message;
+	cin >> Number;
+
+	return Number;
+}
+
+// First Method
+enPrimeNotPrime CheckPrimeNumber(int Number)
+{
+	int Count = 0;
+
+	for (int Counter = 2; Counter < Number; Counter++)
+	{
+		if (Number % Counter == 0)
+		{
+			return enPrimeNotPrime::NotPrime;
+		}
+	}
+		return enPrimeNotPrime::Prime;
+}
+
+// Second Method
+
+enPrimeNotPrime CheckPrimeNumber1(int Number)
+{
+	int M = round(Number / 2);
+
+	for (int Counter = 2; Counter <=M; Counter++)
+	{
+		if (Number % Counter == 0)
+		{
+			return enPrimeNotPrime::NotPrime;
+		}
+	}
+	return enPrimeNotPrime::Prime;
+}
+
+// First Method
+void PrintNumberType(int Number)
+{
+	enPrimeNotPrime Check = CheckPrimeNumber(Number);
+
+	if (Check == enPrimeNotPrime::Prime)
+		cout << "The Number is Prime";
+	else
+		cout << "The Number is Not Prime";
+}
+
+// Second Method
+void PrintNumberType1(int Number)
+{
+	switch (CheckPrimeNumber1(Number))
+	{
+	case enPrimeNotPrime::Prime:
+		cout << "The Number is Prime";
+		break;
+
+	case enPrimeNotPrime::NotPrime:
+		cout << "The Number is Not Prime";
+		break;
+	}
+}
+
+int main()
+{
+	PrintNumberType(ReadNumber("Please Enter a Number : "));
+}
 ```
