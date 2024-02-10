@@ -1624,15 +1624,15 @@ int main()
  }
 ```
 
-## Problem 35
-**Write a program to ask the user to enter:**
-**- Pennies, Nickels, Dimes, Quarters, Dollars**
-**Then calculate the totala pennies , total dollars and print them on screen giving that:**
-**- Penny = 1**
-**- Nickel = 5**
-**- Dime = 10**
-**- Quarter = 25**
-**- Dollar = 100**
+## Problem 35  
+**Write a program to ask the user to enter:**  
+**- Pennies, Nickels, Dimes, Quarters, Dollars**  
+**Then calculate the totala pennies , total dollars and print them on screen giving that:**  
+**- Penny = 1**  
+**- Nickel = 5**  
+**- Dime = 10**  
+**- Quarter = 25**  
+**- Dollar = 100**  
 *The First Method*
 ```cpp
 #include <iostream>
@@ -1750,13 +1750,13 @@ int main()
 ```
 
 ## Problem 36
-**Write a program to ask the user to enter:**
-**- Number1 , Number2 ,OperationType**
-**Then Perform the calculation according to the Operation Type as follows:**
-**`+`: add the two numbers.**
-**`-`: Subtract the two numbers.**
-**`*`: Multiply the two numbers.**
-**`/`: Divide the two numbers.**
+**Write a program to ask the user to enter:**  
+**- Number1 , Number2 ,OperationType**  
+**Then Perform the calculation according to the Operation Type as follows:**  
+**`+`: add the two numbers.**  
+**`-`: Subtract the two numbers.**  
+**`*`: Multiply the two numbers.**  
+**`/`: Divide the two numbers.**  
 
 *The First Method*
 ```cpp
