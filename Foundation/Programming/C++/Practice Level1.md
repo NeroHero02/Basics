@@ -2064,4 +2064,52 @@ int main()
 }
 ```
 
+## Problem 41
+
+**Write a program to read a NumberOfHours and calculates the number of weeks, and days included in that number.**  
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+float ReadPositiveNumber(string Message)
+{
+	float Number;
+
+	do 
+	{
+	  cout << Message;
+	  cin >> Number;
+
+	}while (Number <= 0);
+
+	return Number;
+}
+
+float HourstoDays(float Hours)
+{
+	return (float)Hours / 24;
+}
+
+float DaystoHours(float NumberofDays)
+{
+	return (float)NumberofDays / 7;
+}
+float HourstoWeek(float NumberofHours)
+{
+	return (float)NumberofHours / 24 / 7;
+}
+int main()
+{
+	int Hours = ReadPositiveNumber("Please Enter Number of Hours ?\n");
+	cout << "Hours : " << Hours << "\n";
+
+	cout << HourstoWeek(Hours) << "Weeks\n";
+	cout << HourstoDays(Hours) << "Hours\n";
+}
+```
+      
+
+
+
 
