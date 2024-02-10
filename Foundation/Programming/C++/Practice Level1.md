@@ -1623,3 +1623,233 @@ int main()
 	cout << "\nTotal Comission = : " << CalculateTotalComission(TotalSales) << endl;
  }
 ```
+
+## Problem 35
+**Write a program to ask the user to enter:**
+**- Pennies, Nickels, Dimes, Quarters, Dollars**
+**Then calculate the totala pennies , total dollars and print them on screen giving that:**
+**- Penny = 1**
+**- Nickel = 5**
+**- Dime = 10**
+**- Quarter = 25**
+**- Dollar = 100**
+*The First Method*
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+const int Penny = 1;
+const int Nickel = 5;
+const int Dime = 10;
+const int Quarter = 25;
+const int Dollar = 100;
+
+void ReadNumbers(int& Pennies, int& Nickels, int& Dimes, int& Quarters, int& Dollars)
+{
+	cout << "Please Enter Pennies : \n";
+	cin >> Pennies;
+
+	cout << "Please Enter Nickels : \n";
+	cin >> Nickels;
+
+	cout << "Please Enter Dimes : \n";
+	cin >> Dimes;
+
+	cout << "Please Enter Quarters : \n";
+	cin >> Quarters;
+
+	cout << "Please Enter Dollars : \n";
+	cin >> Dollars;
+}
+
+int CalculateTotalPennies(int Pennies, int Nickels, int Dimes, int Quarters, int Dollars)
+{
+	Pennies = Pennies * Penny;
+
+	Nickels = Nickels * Nickel;
+
+	Dimes = Dimes * Dime;
+
+	Quarters = Quarters * Quarter;
+
+	Dollars = Dollars * 100;
+	
+	return Pennies + Nickels + Dimes + Quarters + Dollars;
+}
+
+void PrintResults(int _TotalPennies)
+{
+	cout << "Total Pennies : " << _TotalPennies << endl;
+	cout << "Total Dollars : " << (_TotalPennies / 100.0) << endl;
+}
+
+int main()
+{
+	int Pennies, Nickels, Dimes, Quarters, Dollars;
+	ReadNumbers(Pennies, Nickels, Dimes, Quarters, Dollars);
+	PrintResults(CalculateTotalPennies(Pennies, Nickels, Dimes, Quarters, Dollars));
+}
+```
+
+*The Second Method*
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+const int Penny = 1;
+const int Nickel = 5;
+const int Dime = 10;
+const int Quarter = 25;
+const int Dollar = 100;
+
+struct stPiggyBankContent
+{
+	int Pennies, Nickels, Dimes, Quarters, Dollars;
+};
+stPiggyBankContent ReadPiggyBankContent()
+{
+	stPiggyBankContent PiggyBankContenet;
+	cout << "Please Enter Pennies : \n";
+	cin >> PiggyBankContenet.Pennies;
+
+	cout << "Please Enter Nickels : \n";
+	cin >> PiggyBankContenet.Nickels;
+
+	cout << "Please Enter Dimes : \n";
+	cin >> PiggyBankContenet.Dimes;
+
+	cout << "Please Enter Quarters : \n";
+	cin >> PiggyBankContenet.Quarters;
+
+	cout << "Please Enter Dollars : \n";
+	cin >> PiggyBankContenet.Dollars;
+
+	return PiggyBankContenet;
+}
+
+int CalculateTotalPennies(stPiggyBankContent PiggyBankContenet)
+{
+	PiggyBankContenet.Pennies = PiggyBankContenet.Pennies * Penny;
+	PiggyBankContenet.Nickels = PiggyBankContenet.Nickels * Nickel;
+	PiggyBankContenet.Dimes = PiggyBankContenet.Dimes * Dime;
+	PiggyBankContenet.Quarters = PiggyBankContenet.Quarters * Quarter;
+	PiggyBankContenet.Dollars = PiggyBankContenet.Dollars * 100;
+	
+	return PiggyBankContenet.Pennies + PiggyBankContenet.Nickels + PiggyBankContenet.Dimes + PiggyBankContenet.Quarters + PiggyBankContenet.Dollars;
+}
+
+
+int main()
+{
+	int TotalPennies = CalculateTotalPennies(ReadPiggyBankContent());
+	cout << "\nTotal Pennies = " << TotalPennies << endl;
+	cout << "\nTotal Dollars = " << (float)TotalPennies / 100 << endl;
+ }
+```
+
+## Problem 36
+**Write a program to ask the user to enter:**
+**- Number1 , Number2 ,OperationType**
+**Then Perform the calculation according to the Operation Type as follows:**
+**`+`: add the two numbers.**
+**`-`: Subtract the two numbers.**
+**`*`: Multiply the two numbers.**
+**`/`: Divide the two numbers.**
+
+*The First Method*
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+enum enOperationType { Add = '+', Subtract = '-', Multiply = '*', Divide = '/' };
+
+void ReadNumbers(float& Number1, float& Number2)
+{
+	cout << "Please Enter First Number:\n";
+	cin >> Number1;
+
+	cout << "Please Enter Second Number:\n";
+	cin >> Number2;
+}
+
+enOperationType ReadOpType()
+{
+	char OperationType = '+';
+	cout << "Please Enter Operation Type( +, -, *, /): \n" << endl;
+	cin >> OperationType;
+
+	return (enOperationType)OperationType;
+}
+
+
+float Calculation(float Number1, float Number2, enOperationType OperationType)
+{
+	if (OperationType == enOperationType::Add)
+		return Number1 + Number2;
+	else if (OperationType == enOperationType::Subtract)
+		return Number1 - Number2;
+	else if (OperationType == enOperationType::Multiply)
+		return Number1 * Number2;
+	return Number1 / Number2;
+	
+}
+int main()
+{
+	float Number1, Number2;
+	ReadNumbers(Number1, Number2);
+	enOperationType OperationType = ReadOpType();
+	cout << "\nResult = " << Calculation(Number1, Number2, OperationType);
+}
+```
+*The Second Method*
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+enum enOperationType { Add = '+', Subtract = '-', Multiply = '*', Divide = '/' };
+
+void ReadNumbers(float& Number1, float& Number2)
+{
+	cout << "Please Enter First Number:\n";
+	cin >> Number1;
+
+	cout << "Please Enter Second Number:\n";
+	cin >> Number2;
+}
+
+enOperationType ReadOpType()
+{
+	char OperationType = '+';
+	cout << "Please Enter Operation Type( +, -, *, /): \n" << endl;
+	cin >> OperationType;
+
+	return (enOperationType)OperationType;
+}
+
+
+float Calculation(float Number1, float Number2, enOperationType OperationType)
+{
+	switch (OperationType)
+	{
+	case enOperationType::Add:
+		return Number1 + Number2;
+	case enOperationType::Subtract:
+		return Number1 - Number2;
+	case enOperationType::Multiply:
+		return Number1 * Number2;
+	case enOperationType::Divide:
+		return Number1 / Number2;
+	}
+}
+int main()
+{
+	float Number1, Number2;
+	ReadNumbers(Number1, Number2);
+	enOperationType OperationType = ReadOpType();
+	cout << "\nResult = " << Calculation(Number1, Number2, OperationType);
+}
+```
