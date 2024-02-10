@@ -1982,3 +1982,43 @@ int main()
 	PrintNumberType(ReadNumber("Please Enter a Number : "));
 }
 ```
+
+## Problem 39
+
+**Write a program to read a TotalBill and CashPaid and calculate the remainder to be paid back.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+float ReadPositiveNumber(string Message)
+{
+	float Number;
+	do
+	{
+		cout << Message;
+		cin >> Number;
+	} while (Number <= 0);
+
+	return Number;
+}
+
+float CalculateRemainder(float TotalBill , float TotalCashPaid)
+{
+	return TotalCashPaid - TotalBill;
+}
+
+
+int main()
+{
+	float TotalBill = ReadPositiveNumber("Please Enter Total Bill?");
+	float TotalCashPaid = ReadPositiveNumber("Please Enter Total Cash Paid?");
+	
+	cout << "Total Bill = " << TotalBill << endl;
+	cout << "TotalCashPaid = " << TotalCashPaid << endl;
+
+	cout << "******************************\n";
+	cout << "Remainder = " << CalculateRemainder(TotalBill, TotalCashPaid);
+}
+```
