@@ -2109,7 +2109,182 @@ int main()
 }
 ```
       
+## Problem 42
 
+**Write a program to calculate the task duration in seconds and print it on screen**  
+**Given the time duration of a task in the number of days,hours,minutes,and seconds.**
 
+*The First Method*
 
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+float ReadPositiveNumber(string Message)
+{
+	float Number;
+
+	do 
+	{
+	  cout << Message;
+	  cin >> Number;
+
+	}while (Number <= 0);
+
+	return Number;
+}
+
+float MintoSec(float Min)
+{
+	return Min * 60;
+}
+
+float HourstoSec(float Hours)
+{
+	return Hours * 60 * 60;
+}
+
+float DaystoSec(float Days)
+{
+	return Days * 24 * 60 * 60;
+}
+
+int main()
+{
+	int Days = ReadPositiveNumber("Please Enter Number of Days:\n");
+	int Hours = ReadPositiveNumber("Please Enter Number of Hours:\n");
+	int Minutes = ReadPositiveNumber("Please Enter Number of Minutes:\n");
+	int Seconds = ReadPositiveNumber("Please Enter Number of Seconds:\n");
+
+	cout << "Number of Days : " << Days << endl;
+	cout << "Number of Hours : " << Hours << endl;
+	cout << "Number of Minutes : " << Minutes << endl;
+	cout << "Number of Seconds : " << Seconds << endl;
+
+	cout << "\n***Convert To Seconds***\n";
+	cout << DaystoSec(Days) + MintoSec(Minutes) + HourstoSec(Hours) + Seconds << endl;
+	
+}
+```
+
+*The Second Method*
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct strTaskDuration
+{
+	int NumberOfDays, NumberOfHours, NumberOfMinutes, NumberOfSeconds;
+};
+
+float ReadPositiveNumber(string Message)
+{
+	float Number;
+
+	do 
+	{
+	  cout << Message;
+	  cin >> Number;
+
+	}while (Number <= 0);
+
+	return Number;
+}
+
+strTaskDuration ReadTaskDuration()
+{
+	strTaskDuration TaskDuration;
+
+	TaskDuration.NumberOfDays = ReadPositiveNumber("Please Enter a Number of Days?\n");
+	TaskDuration.NumberOfHours = ReadPositiveNumber("Please Enter Number of Hours?\n");
+	TaskDuration.NumberOfMinutes = ReadPositiveNumber("Please Enter Number of Minutes?\n");
+	TaskDuration.NumberOfSeconds = ReadPositiveNumber("Please Enter Number of Seconds?\n");
+
+	return TaskDuration;
+}
+
+int TaskDurationInSeconds(strTaskDuration TaskDuration)
+{
+	int DurationInSeconds = 0;
+
+	DurationInSeconds = TaskDuration.NumberOfSeconds;
+	DurationInSeconds += TaskDuration.NumberOfMinutes * 60;
+	DurationInSeconds += TaskDuration.NumberOfHours * 60 * 60;
+	DurationInSeconds += TaskDuration.NumberOfDays * 24 * 60 * 60;
+
+	return DurationInSeconds;
+}
+
+int main()
+{
+	cout << "\nTask Duration In Seconds : " << TaskDurationInSeconds(ReadTaskDuration());
+}
+```
+
+## Problem 43 
+
+**Write a program that inputs the NumberofSeconds and changes it to days,hours,minutes, and seconds**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct strTaskDuration
+{
+	int NumberOfDays, NumberOfHours, NumberOfMinutes, NumberOfSeconds;
+};
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+
+	do 
+	{
+	  cout << Message;
+	  cin >> Number;
+
+	}while (Number <= 0);
+
+	return Number;
+}
+
+strTaskDuration SecondToTaskDuration(int TotalSeconds)
+{
+	strTaskDuration TaskDuration;
+
+	const int SecondsPerDay = 60 * 60 * 24;
+	const int SecondsPerHours = 60 * 60;
+	const int SecondsPerMinute = 60;
+
+	int Remainder = 0;
+
+	TaskDuration.NumberOfDays = floor(TotalSeconds / SecondsPerDay);
+	Remainder = TotalSeconds % SecondsPerDay;
+
+	TaskDuration.NumberOfHours = floor(Remainder / SecondsPerHours);
+	Remainder %= SecondsPerHours;
+
+	TaskDuration.NumberOfMinutes = floor(Remainder / SecondsPerMinute);
+	Remainder %= SecondsPerMinute;
+
+	TaskDuration.NumberOfSeconds = Remainder;
+
+	return TaskDuration;
+}
+
+void PrintTaskDurationDetails(strTaskDuration TaskDuration)
+{
+	cout << TaskDuration.NumberOfDays << ":" << TaskDuration.NumberOfHours << ":" << TaskDuration.NumberOfMinutes << ":" << TaskDuration.NumberOfSeconds << endl;
+}
+
+int main()
+{
+	int TotalSeconds = ReadPositiveNumber("Please Enter Total Seconds :?\n");
+	PrintTaskDurationDetails(SecondToTaskDuration(TotalSeconds));
+}
+```
 
