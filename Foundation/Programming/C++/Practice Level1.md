@@ -3174,5 +3174,51 @@ int main()
 **Write a program to read a number and print it in order from left to right.**  
 
 ```cpp
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
 
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+
+	do
+	{
+		cout << Message;
+		cin >> Number;
+
+	} while (Number <= 0);
+
+	return Number;
+}
+
+int ReverseNumber(int Number)
+{
+	int Remainder = 0, Reversed = 0;
+
+	while (Number > 0)
+	{
+		Remainder = Number % 10; // 1234 --> 2
+		Number = Number / 10; // 1234 --> 12
+		Reversed = Reversed * 10 + Remainder; // 124
+	}
+
+	return Reversed;
+}
+
+void PrintNumber(int Number)
+{
+	while (Number > 0)
+	{
+		cout << Number % 10 << endl;;
+		Number = Number / 10; 
+	}
+}
+
+int main()
+{
+	PrintNumber(ReverseNumber(ReadPositiveNumber("Please Enter a Positive Number?\n")));
+	return 0;
+}
 ```
