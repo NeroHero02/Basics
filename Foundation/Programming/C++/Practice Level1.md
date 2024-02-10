@@ -2484,7 +2484,7 @@ float ReadPositiveNumber(string Message)
 	return Number;
 }
 
-int TotalMonths(float LoanAmount, float MonthlyPayment)
+float TotalMonths(float LoanAmount, float MonthlyPayment)
 {
 	return LoanAmount / MonthlyPayment;
 }
@@ -2497,5 +2497,96 @@ int main()
 
 	cout << "\nTotal Months to pay = " << TotalMonths(LoanAmount, MonthlyPayment) << " Months" << endl;
 	
+}
+```
+
+## Problem 48
+
+**Write a program to read a LoanAmount and ask you how many months you need to settle the loan, then calculate the monthly installment amount.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+float ReadPositiveNumber(string Message)
+{
+	float Number;
+
+	do
+	{
+		cout << Message;
+		cin >> Number;
+
+	} while (Number <= 0);
+
+	return Number;
+}
+
+float MonthlyInstallment(float LoanAmount, float HowManyMonths)
+{
+	return LoanAmount / HowManyMonths;
+}
+
+
+int main()
+{
+	float LoanAmount = ReadPositiveNumber("Please Enter Loan Amount?\n");
+	float HowManyMonths = ReadPositiveNumber("Please Enter Total Months?\n");
+
+	cout << "\nMonthly Payment to pay = " << MonthlyInstallment(LoanAmount, HowManyMonths) << endl;
+	
+}
+```
+
+## Problem 49
+
+**Write a program to read the ATM PIN code from the user, then check if PIN Code = 1234, then show the balance to user, otherwise print "Wrong PIN" and ask the user to enter the PIN again.**  
+**Asume User Balance is 7500**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+string ReadPinCode()
+{
+	string PIN;
+
+	cout << "Please Enter The Correct PIN?\n";
+	cin >> PIN;
+
+	return PIN;
+}
+
+bool Login()
+{
+	string PinCode;
+
+	do
+	{
+		PinCode = ReadPinCode();
+
+		if (PinCode == "1234")
+		{
+			return 1;
+		}
+		else
+		{
+			cout << "\nWrong PIN\n";
+			system("color 4F"); // turn screen to red
+		}
+	} while (PinCode != "1234");
+
+	return 0;
+}
+int main()
+{
+	if (Login())
+	{
+		system("color 2F"); // turn screen to green
+		cout << "\nYour account balance is : " << 7500 << '\n';
+    }
+	return 0;
 }
 ```
