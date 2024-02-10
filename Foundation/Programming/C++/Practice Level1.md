@@ -2355,3 +2355,147 @@ int main()
 	cout << GetDayOfWeek(ReadDayOfWeek());
 }
 ```
+
+## Problem 45
+
+**Write a program to ask the user to enter:**  
+**Month**  
+**Then Print the day as follows:**  
+**1 Print January**  
+**2 Print February**  
+**3 Print March**  
+**4 Print April**  
+**5 Print May**  
+**6 Print June**  
+**7 Print July**  
+**8 Print Augues**  
+**9 Print September**  
+**10 Print October**  
+**11 Print November**  
+**12 Print December**  
+**Otherwise print "Wrong Month" and ask the use to enter the Month again.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+enum enMonthsOfYears { January = 1, February = 2, March = 3, April = 4, May = 5, June = 6, July = 7, Augues = 8, September = 9, October = 10, November = 11, December = 12 };
+int ReadNumberInRange(string Message, int From, int To)
+{
+	int Number;
+
+	do
+	{
+		cout << Message;
+		cin >> Number;
+
+	} while (Number < From || Number > To);
+
+	return Number;
+}
+
+enMonthsOfYears ReadMonthsOfYears()
+{
+	return (enMonthsOfYears)ReadNumberInRange("Please Enter Number Months of Years From 1 to 12?\n", 1, 12);
+}
+
+string GetMonthsOfYears(enMonthsOfYears Day)
+{
+	switch (Day)
+	{
+	case enMonthsOfYears::January:
+		return "January";
+	case enMonthsOfYears::February:
+		return "February";
+	case enMonthsOfYears::March:
+		return "March";
+	case  enMonthsOfYears::April:
+		return "April";
+	case enMonthsOfYears::May:
+		return "May";
+	case enMonthsOfYears::June:
+		return "June";
+	case enMonthsOfYears::July:
+		return "July";
+	case enMonthsOfYears::Augues:
+		return "Augues";
+	case enMonthsOfYears::September:
+		return "September";
+	case enMonthsOfYears::October:
+		return "October";
+	case enMonthsOfYears::November:
+		return "November";
+	case enMonthsOfYears::December:
+		return "December";
+	default:
+		return "Wrong Week";
+	}
+}
+
+int main()
+{
+	cout << GetMonthsOfYears(ReadMonthsOfYears());
+}
+```
+
+## Problem 46
+
+**Write a program to print all letters from A to Z**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+void PrintLettersAtoZ()
+{
+	for (int i = 65; i <= 90; i++)
+	{
+		cout << char(i) << endl;
+	}
+}
+int main()
+{
+	PrintLettersAtoZ();
+}
+```
+
+## Problem 47
+
+**Write a program to read a LoanAmount and MonthlyPayment and calculate how many months you need to settle the loan.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+float ReadPositiveNumber(string Message)
+{
+	float Number;
+
+	do
+	{
+		cout << Message;
+		cin >> Number;
+
+	} while (Number <= 0);
+
+	return Number;
+}
+
+int TotalMonths(float LoanAmount, float MonthlyPayment)
+{
+	return LoanAmount / MonthlyPayment;
+}
+
+
+int main()
+{
+	float LoanAmount = ReadPositiveNumber("Please Enter Loan Amount?\n");
+	float MonthlyPayment = ReadPositiveNumber("Please Enter MonthlyPayment?\n");
+
+	cout << "\nTotal Months to pay = " << TotalMonths(LoanAmount, MonthlyPayment) << " Months" << endl;
+	
+}
+```
