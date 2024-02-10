@@ -2752,3 +2752,427 @@ int main()
 }
 ```
 
+## Problem 53
+
+**Write a program to check if the number is Perfect or not?**  
+**Note: Perfect Number = Sum (all divisors)**  
+
+*The First Method*
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+enum enPerfectNumber { Perfect = 1, NotPerfect = 2 };
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+
+	do
+	{
+		cout << Message;
+		cin >> Number;
+
+	} while (Number <= 0);
+
+	return Number;
+}
+
+enPerfectNumber CheckPerfectNumber(int Number)
+{
+	int Sum = 0;
+
+	for (int i = 1; i < Number; i++)
+	{
+		if (Number % i == 0)
+		{
+			Sum += i;
+		}
+	}
+
+	if (Sum == Number)
+		return enPerfectNumber::Perfect;
+	return enPerfectNumber::NotPerfect;
+}
+
+void PrintPerfectNumber(enPerfectNumber Number)
+{
+	if (Number == enPerfectNumber::Perfect)
+		cout << "Number is Perfect\n";
+	else
+		cout << "Number Not Perfect\n";
+}
+int main()
+{
+
+	PrintPerfectNumber(CheckPerfectNumber(ReadPositiveNumber("Please Enter Positive Number?\n")));
+	return 0;
+}
+```
+
+*The Second Method*
+
+```cpp
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+
+	do
+	{
+		cout << Message;
+		cin >> Number;
+
+	} while (Number <= 0);
+
+	return Number;
+}
+
+bool isPerfectNumber(int Number)
+{
+	int Sum = 0;
+
+	for (int i = 1; i < Number; i++)
+	{
+		if (Number % i == 0)
+		{
+			Sum += i;
+		}
+	}
+
+	return Number == Sum;
+}
+
+void PrintResults(int Number)
+{
+	if (isPerfectNumber(Number))
+		cout << " Is Perfect Number.\n";
+	else
+		cout << " Is NOT Perfect Number.\n";
+}
+int main()
+{
+
+	PrintResults(ReadPositiveNumber("Please Enter Positive Number?\n"));
+	return 0;
+}
+```
+
+## Problem 54
+
+**Write a program to print all perfect Number from 1 to N**  
+
+```cpp
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+
+	do
+	{
+		cout << Message;
+		cin >> Number;
+
+	} while (Number <= 0);
+
+	return Number;
+}
+
+bool isPerfectNumber(int Number)
+{
+	int Sum = 0;
+
+	for (int i = 1; i < Number; i++)
+	{
+		if (Number % i == 0)
+		{
+			Sum += i;
+		}
+	}
+
+	return Number == Sum;
+}
+
+void PrintallPerfectNumberFrom1toN(int N)
+{
+	for (int i = 1; i <= N; i++)
+	{
+		if (isPerfectNumber(i))
+			cout << i << " ";
+	}
+}
+int main()
+{
+
+	PrintallPerfectNumberFrom1toN(ReadPositiveNumber("Please Enter Positive Number?\n"));
+	return 0;
+}
+```
+
+## Problem 55
+
+**Write a program to read a number and print it in a reversed order.**
+
+```cpp
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+
+	do
+	{
+		cout << Message;
+		cin >> Number;
+
+	} while (Number <= 0);
+
+	return Number;
+}
+
+void PrintDigits(int Number)
+{
+	int Remainder = 0;
+
+	while (Number > 0)
+	{
+		Remainder = Number % 10;
+		Number = Number / 10;
+		cout << Remainder << endl;
+	}
+}
+
+int main()
+{
+
+	PrintDigits(ReadPositiveNumber("Please Enter Positive Number?\n"));
+	return 0;
+}
+```
+
+## Problem 56
+
+**Write a program to read a number and print the sum of its digits.**  
+
+```cpp
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+
+	do
+	{
+		cout << Message;
+		cin >> Number;
+
+	} while (Number <= 0);
+
+	return Number;
+}
+
+int SumOfDigits(int Number)
+{
+	int Remainder = 0,Sum=0;
+
+	while (Number > 0)
+	{
+		Remainder = Number % 10;
+		Number = Number / 10;
+		Sum += Remainder;
+	}
+
+	return Sum;
+}
+
+int main()
+{
+	cout << "Summation Digits Number is : " << SumOfDigits(ReadPositiveNumber("Please Enter Positive Number:?\n")) << endl;
+	return 0;
+}
+```
+
+## Problem 57
+
+**Write a program to read a number and print it reversed.**  
+
+```cpp
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+
+	do
+	{
+		cout << Message;
+		cin >> Number;
+
+	} while (Number <= 0);
+
+	return Number;
+}
+
+int ReverseNumber(int Number)
+{
+	int Remainder = 0,Reversed=0;
+
+	while (Number > 0)
+	{
+		Remainder = Number % 10; // 1234 --> 2
+		Number = Number / 10; // 1234 --> 12
+		Reversed = Reversed * 10 + Remainder; // 124
+	}
+
+	return Reversed;
+}
+
+int main()
+{
+	cout << "Reversed Number is : " << ReverseNumber(ReadPositiveNumber("Please Enter Positive Number:?\n")) << endl;
+	return 0;
+}
+```
+
+## Problem 58
+
+**Write a program read a digit and a number , then print digit frequency in that number**  
+
+```cpp
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+
+	do
+	{
+		cout << Message;
+		cin >> Number;
+
+	} while (Number <= 0);
+
+	return Number;
+}
+
+int CountDigitFrequency(short DigitToCheck, int Number)
+{
+	int Remainder = 0;
+	int FreqCount = 0;
+	while (Number > 0)
+	{
+		Remainder = Number % 10;
+		Number = Number / 10;
+		if (Remainder == DigitToCheck)
+		{
+			FreqCount++;
+		}
+	}
+	return FreqCount;
+}
+
+int main()
+{
+	int Number = ReadPositiveNumber("Please Enter Number?\n");
+	short DigitToCheck = ReadPositiveNumber("Please Enter Digit To Check?\n");
+	cout << "Digit " << DigitToCheck << " Frequency is " << CountDigitFrequency(DigitToCheck, Number) << " Time(s)\n";
+	return 0;
+}
+```
+
+## Problem 59
+
+**Write a program read a number, then print all digit frequency in that number.**  
+
+```cpp
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+
+	do
+	{
+		cout << Message;
+		cin >> Number;
+
+	} while (Number <= 0);
+
+	return Number;
+}
+
+int CountDigitFrequency(short DigitToCheck, int Number)
+{
+	int Remainder = 0;
+	int FreqCount = 0;
+	while (Number > 0)
+	{
+		Remainder = Number % 10;
+		Number = Number / 10;
+		if (Remainder == DigitToCheck)
+		{
+			FreqCount++;
+		}
+	}
+	return FreqCount;
+}
+
+void PrintAllDigitsFrequencey(int Number)
+{
+	cout << endl;
+
+	for (int i = 0; i < 10; i++)
+	{
+		short DigitFrequency = 0;
+		DigitFrequency = CountDigitFrequency(i, Number);
+		
+		if (DigitFrequency > 0)
+		{
+			cout << "Digit " << i << " Frequency is " << DigitFrequency << " Time(s).\n";
+		}
+	}
+}
+int main()
+{
+	PrintAllDigitsFrequencey(ReadPositiveNumber("Please Enter Number?\n"));
+	return 0;
+}
+```
+
+## Problem 60
+
+**Write a program to read a number and print it in order from left to right.**  
+
+```cpp
+
+```
