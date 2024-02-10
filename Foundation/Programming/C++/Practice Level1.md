@@ -2590,3 +2590,63 @@ int main()
 	return 0;
 }
 ```
+
+## Problem 50
+
+**Write a program to read the ATM PIN code from the user, then check if PIN Code = 1234, then show the balance to user, otherwise print "Wrong PIN" and ask the user to enter the PIN again.**  
+**Asume User Balance is 7500**  
+**Note : Only allow user to enter the PIN 3 times, if fails,print "Card is locked!"**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+string ReadPinCode()
+{
+	string PIN;
+
+	cout << "Please Enter The Correct PIN?\n";
+	cin >> PIN;
+
+	return PIN;
+}
+
+bool Login()
+{
+	string PinCode;
+	int Tries = 3;
+	do
+	{
+		PinCode = ReadPinCode();
+
+		if (PinCode == "1234")
+		{
+			return 1;
+		}
+		else
+		{
+			Tries--;
+			cout << "\nWrong PIN, you have " << Tries << " more tries\n";
+			system("color 4F"); // turn screen to red
+		}
+
+		
+	} while (PinCode != "1234" && Tries != 0);
+
+	return 0;
+}
+int main()
+{
+	if (Login())
+	{
+		system("color 2F"); // turn screen to green
+		cout << "\nYour account balance is : " << 7500 << '\n';
+    }
+	else
+	{
+		cout << "Your card blocked call the bank for help.\n";
+	}
+	return 0;
+}
+```
