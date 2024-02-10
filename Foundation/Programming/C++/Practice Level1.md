@@ -2022,3 +2022,46 @@ int main()
 	cout << "Remainder = " << CalculateRemainder(TotalBill, TotalCashPaid);
 }
 ```
+
+## Problem 40
+
+**Write a program to read a BillValue and add service fee and sales tax to it, and print the TotalBill on the screen.**  
+**Note : A resturant charges 10% services fee and 16% sales tax.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+float ReadPositiveNumber(string Message)
+{
+	float Number;
+
+	do 
+	{
+	  cout << Message;
+	  cin >> Number;
+
+	}while (Number <= 0);
+
+	return Number;
+}
+
+float CalculateRestaurantCharges(float TotalBill)
+{
+	
+	TotalBill = TotalBill * 1.1;
+	TotalBill = TotalBill * 1.16;
+	return TotalBill;
+}
+int main()
+{
+	float TotalBill = ReadPositiveNumber("Please Enter BillValue?\n");
+	
+	cout << "\nTotal Bill = " << TotalBill << endl;
+	cout << "Total Bill After Service Fee and Sales Tax = " << CalculateRestaurantCharges(TotalBill);
+}
+```
+
+
