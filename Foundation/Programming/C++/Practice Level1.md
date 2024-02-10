@@ -1843,6 +1843,8 @@ float Calculation(float Number1, float Number2, enOperationType OperationType)
 		return Number1 * Number2;
 	case enOperationType::Divide:
 		return Number1 / Number2;
+	default:
+	   return Number1 + Number2;
 	}
 }
 int main()
