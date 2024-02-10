@@ -1855,3 +1855,54 @@ int main()
 	cout << "\nResult = " << Calculation(Number1, Number2, OperationType);
 }
 ```
+
+## Problem 37
+
+**Write a program to read numbers from user and sum them, keep reading until the user enters -99 then print the Sum on screen.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+float ReadNumber()
+{
+	float Number;
+	
+	cout << "Please Enter Number : " << endl;
+	cin >> Number;
+
+	return Number;
+}
+
+float SumNumber()
+{
+	float Sum = 0 ,Number;
+	
+	do
+	{
+		Number = ReadNumber();
+		
+		if (Number == -99)
+			break;
+		
+		Sum += Number;
+	} while (Number != -99);
+
+	return Sum;
+}
+int main()
+{
+	
+	cout << "Summation Number You Input is : " << SumNumber() << endl;
+}
+```
+
+## Problem 38
+
+**Write a program to read a number and check if it is a prime number or not.**  
+**Note: Prime Number can only divide on one and on itself.**  
+
+```cpp
+
+```
