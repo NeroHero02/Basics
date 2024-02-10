@@ -2696,3 +2696,59 @@ int main()
 	PrintMultiplicationTable();
 }
 ```
+
+## Problem 52
+
+**Print All Prime Numbers 1 to N**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+enum enPrimeNotPrime { Prime = 1, NotPrime = 2 };
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+
+	do
+	{
+		cout << Message;
+		cin >> Number;
+
+	} while (Number <= 0);
+
+	return Number;
+}
+
+enPrimeNotPrime CheckPrimeNumber(int Number)
+{
+	int M = round(Number / 2);
+
+	for (int Counter = 2; Counter <= M; Counter++)
+	{
+		if (Number % Counter == 0)
+		{
+			return enPrimeNotPrime::NotPrime;
+		}
+	}
+	return enPrimeNotPrime::Prime;
+}
+
+void PrintPrimeNumbersFrom1ToN(int N)
+{
+	for (int i = 1; i <= N; i++)
+	{
+		if (CheckPrimeNumber(i) == enPrimeNotPrime::Prime)
+			cout << i << " ";
+	}
+}
+int main()
+{
+
+	PrintPrimeNumbersFrom1ToN(ReadPositiveNumber("Please Enter Number?\n"));
+	return 0;
+}
+```
+
