@@ -3758,3 +3758,268 @@ int main()
 	return 0;
 }
 ```
+
+## Problem 72
+
+**Write a program to read N elements and store them in array then print all array elements and ask for a number to check, then print how many number a creatain element repeated in that array.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+
+	do
+	{
+		cout << Message;
+		cin >> Number;
+
+	} while (Number <= 0);
+
+	return Number;
+}
+
+void ReadArray(int arr[],int &arrLength)
+{
+	cout << "Please Enter Length of Array:\n";
+	cin >> arrLength;
+
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << "Element [" << i + 1 << "] : \n";
+		cin >> arr[i];
+	}
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	cout << "Original array : ";
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+int TimesRepeated(int NumbertToCheck, int arr[100], int arrLength)
+{
+	int Counter = 0;
+
+	for (int i = 0; i < arrLength; i++)
+	{
+		if (arr[i] == NumbertToCheck)
+			Counter++;
+	}
+
+	return Counter;
+}
+
+int main()
+{
+	int arr[100], arrLength, NumbertToCheck;
+
+	ReadArray(arr, arrLength);
+
+	NumbertToCheck = ReadPositiveNumber("Enter the number you want to check: \n");
+
+	PrintArray(arr, arrLength);
+
+	cout << NumbertToCheck << " is repeated " << TimesRepeated(NumbertToCheck, arr, arrLength) << " time(s)\n";
+
+
+
+	return 0;
+}
+```
+
+## Problem 73
+
+**Write a program to fill array with max size 100 with random numbers from 1 to 100**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void FillarrayWithRandomNumbers(int arr[100],int &arrLength)
+{
+	cout << "Please Enter Length of Array:\n";
+	cin >> arrLength;
+
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = RandomNumber(1, 100);
+	
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+
+int main()
+{
+
+	srand((unsigned)time(NULL));
+	int arr[100], arrLength;
+
+	FillarrayWithRandomNumbers(arr, arrLength);
+
+	cout << "\nArray Elements: ";
+	PrintArray(arr, arrLength);
+
+	return 0;
+}
+```
+
+## Problem 74  
+
+**Write a program to fill array with max size 100 with random numbers from 1 to 100, then print Max**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void FillarrayWithRandomNumbers(int arr[100],int &arrLength)
+{
+	cout << "Please Enter Length of Array:\n";
+	cin >> arrLength;
+
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = RandomNumber(1, 100);
+	
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+int MaxNumberInArray(int arr[100], int arrLength)
+{
+	int Max = 0;
+
+	for (int i = 0; i < arrLength; i++)
+	{
+		if (arr[i] > Max)
+		{
+			Max = arr[i];
+		}
+	}
+
+	return Max;
+}
+
+int main()
+{
+
+	srand((unsigned)time(NULL));
+	int arr[100], arrLength;
+
+	FillarrayWithRandomNumbers(arr, arrLength);
+
+	cout << "\nArray Elements: ";
+	PrintArray(arr, arrLength);
+
+	cout << "Max Number is : " << MaxNumberInArray(arr, arrLength) << endl;
+
+	return 0;
+}
+```
+
+## Problem 75  
+
+**Write a program to fill array with max size 100 with random numbers from 1 to 100, then print Minimum Number**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void FillarrayWithRandomNumbers(int arr[100],int &arrLength)
+{
+	cout << "Please Enter Length of Array:\n";
+	cin >> arrLength;
+
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = RandomNumber(1, 100);
+	
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+int MinNumberInArray(int arr[100], int arrLength)
+{
+	int Min = 0;
+	Min = arr[0];
+
+	for (int i = 0; i < arrLength; i++)
+	{
+		if (arr[i] < Min)
+		{
+			Min = arr[i];
+		}
+	}
+
+	return Min;
+}
+
+int main()
+{
+
+	srand((unsigned)time(NULL));
+	int arr[100], arrLength;
+
+	FillarrayWithRandomNumbers(arr, arrLength);
+
+	cout << "\nArray Elements: ";
+	PrintArray(arr, arrLength);
+
+	cout << "Min Number is : " << MinNumberInArray(arr, arrLength) << endl;
+
+	return 0;
+}
+```
