@@ -4380,7 +4380,7 @@ int main()
 	FillarrayWithRandomNumbers(arr2, arrLength);
 
 	SumOf2Arrays(arr1, arr2, arrSum, arrLength);
-	
+
 	cout << "\nArray 1 Elements: \n";
 	PrintArray(arr1, arrLength);
 
@@ -4396,3 +4396,264 @@ int main()
 ```
 
 ## Problem 81
+
+**Write a program to fill array with ordered numbers from 1 to N, then print it, after that shuffle this array and print it after shuffle.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+	do
+	{
+		cout << Message << endl;
+		cin >> Number;
+	} while (Number < 0);
+
+	return Number;
+}
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+
+
+void Swap(int& Number1, int& Number2)
+{
+	int Temp = Number1;
+	Number1 = Number2;
+	Number2 = Temp;
+}
+
+void FillArrayWith1toN(int arr[100], int& arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = i + 1;
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+void ShuffleArray(int arr[100], int arrLength)
+{
+
+	for (int i = 0; i < arrLength; i++)
+	{
+		Swap(arr[(1, arrLength) - 1], arr[RandomNumber(1, arrLength) -1 ]);
+	}
+}
+int main()
+{
+	srand((unsigned)time(NULL));
+
+	int arr[100], arrLength;
+	arrLength = ReadPositiveNumber("\nPlease Enter Length of Array: \n");
+
+	FillArrayWith1toN(arr, arrLength);
+
+	cout << "Array Elements Before Shuffle:\n";
+	PrintArray(arr, arrLength);
+
+	ShuffleArray(arr, arrLength);
+
+	cout << "Array Elements After Shuffle:\n";
+	PrintArray(arr, arrLength);
+
+	return 0;
+}
+```
+
+## Problem 82
+
+**Write a program to fill array with max size 100 with random numbers from 1 to 100, copy it to another array in reverse order and print it**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+	do
+	{
+		cout << Message << endl;
+		cin >> Number;
+	} while (Number < 0);
+
+	return Number;
+}
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void FillarrayWithRandomNumbers(int arr[100], int arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = RandomNumber(1, 100);
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+void CopyArrayInReverseOrder(int arr[100], int arr2[100], int arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		arr2[i] = arr[arrLength - 1 - i];
+	}
+}
+int main()
+{
+	srand((unsigned)time(NULL));
+
+	int arr[100], arr2[100], arrLength;
+	arrLength = ReadPositiveNumber("\nPlease Enter Length of Array: \n");
+
+	FillarrayWithRandomNumbers(arr, arrLength);
+
+	cout << "Array 1 Elements:\n";
+	PrintArray(arr, arrLength);
+
+	CopyArrayInReverseOrder(arr, arr2, arrLength);
+
+	cout << "Array 2 Elements after copy:\n";
+	PrintArray(arr2, arrLength);
+
+	return 0;
+}
+```
+
+## Problem 83
+
+**Write a program to read how many keys to generate and fill them in array then print them on the screen.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+enum enCharType { SmallLetter = 1, CapitalLetter = 2, SpecialCharacter = 3, Digit = 4 };
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+	do
+	{
+		cout << Message << endl;
+		cin >> Number;
+	} while (Number < 0);
+
+	return Number;
+}
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+char GetRandomCharacter(enCharType CharType)
+{
+	switch (CharType)
+	{
+	case enCharType::SmallLetter:
+		return (char)RandomNumber(97, 122);
+	case enCharType::CapitalLetter:
+		return (char)RandomNumber(65, 90);
+	case enCharType::Digit:
+		return (char)RandomNumber(48, 57);
+	default:
+		return (char)RandomNumber(33, 47);
+	}
+}
+
+string GenerateWord(enCharType CharType, short Length)
+{
+	string Word;
+
+	for (int i = 1; i <= Length; i++)
+	{
+		Word = Word + GetRandomCharacter(CharType);
+	}
+	return Word;
+}
+
+string GenerateKeys()
+{
+	string Key = "";
+
+	Key = GenerateWord(enCharType::CapitalLetter, 4) + "-";
+	Key += GenerateWord(enCharType::CapitalLetter, 4) + "-";
+	Key += GenerateWord(enCharType::CapitalLetter, 4) + "-";
+	Key += GenerateWord(enCharType::CapitalLetter, 4);
+
+	return Key;
+}
+
+void FillArrayWithKeys(string arr[100], int& arrLength)
+{
+	cout << "Please Enter Length of Array:\n";
+	cin >> arrLength;
+
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = GenerateKeys();
+
+}
+
+void PrintStringArray(string arr[100], int arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << "Array[" << i << "] : " << arr[i] << endl;
+	}
+}
+int main()
+{
+	srand((unsigned)time(NULL));
+
+	string arr[100];
+	int arrLength;
+    
+	FillArrayWithKeys(arr, arrLength);
+
+	cout << "Array Elements : \n";
+	PrintStringArray(arr, arrLength);
+
+	return 0;
+}
+```
+
+## Problem 84
+
+**Write a program to fill array with max size 100 with random numbers from 1 to 100 read number and return its index in array if found otherwise return -1.**  
+
+```cpp
+
+```
