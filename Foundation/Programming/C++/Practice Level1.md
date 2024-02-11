@@ -3480,3 +3480,189 @@ int main()
 }
 ```
 
+## Problem 67
+
+**Write a program to guess a 3-Letter Password (all capital)**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+string ReadPassword()
+{
+	string OriginalPassword;
+	cout << "Please Enter You'r Password : \n";
+	cin >> OriginalPassword;
+
+	return OriginalPassword;
+}
+
+bool GuessPassword(string OriginalPassword)
+{
+	int Counter = 0;
+	string word = "";
+	for (int i = 65; i <= 90; i++)
+	{
+		for (int j = 65; j <= 90; j++)
+		{
+			for (int k = 65; k <= 90; k++)
+			{
+				word = word + char(i);
+				word = word + char(j);
+				word = word + char(k);
+				Counter++;
+				cout << "Trial[" << Counter << "]: " << word << "\n";
+				if (word == OriginalPassword) 
+				{
+					cout << "\nPassword is " << word << endl;
+					cout << "Found after " << Counter << " Trial(s)\n";
+					return true;
+				}
+				word = "";
+			}
+		}
+	}
+	return false;
+}
+int main()
+{
+	GuessPassword(ReadPassword());
+	return 0;
+}
+```
+
+## Problem 68
+
+**Write a program to read a text and encrypt it, decrypt it.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+string ReadText()
+{
+	string OriginalText;
+	cout << "Please Enter You'r Text : \n";
+	cin >> OriginalText;
+
+	return OriginalText;
+}
+
+
+string EncryptionT(string OriginalText,int Key)
+{
+	string EncryptionT = "";
+	for (int i = 0; i < OriginalText.length(); i++)
+	{
+		EncryptionT += char((int)OriginalText[i] + Key);
+	}
+
+	return EncryptionT;
+}
+
+string DecryptionT(string EncryptionT, int Key)
+{
+	string DecryptionT = "";
+	for (int i = 0; i < EncryptionT.length(); i++)
+	{
+		DecryptionT += char((int)EncryptionT[i] - Key);
+	}
+
+	return DecryptionT;
+}
+
+int main()
+{
+	const short EncryptionKey = 2;
+
+	string OriginalText = ReadText();
+	string EncryptionText = EncryptionT(OriginalText, EncryptionKey);
+	string DecryptionText = DecryptionT(EncryptionText, EncryptionKey);
+
+	cout << "\nText Before Encryption : " << OriginalText << "\n";
+	cout << "\nText After Encryption : " << EncryptionText << "\n";
+	cout << "\nText After Decryption : " << DecryptionText << "\n";
+
+	return 0;
+}
+```
+
+## Problem 69
+
+**Write a program to print 3 random numbers from 1 to 10.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+int main()
+{
+	
+	//Seeds the random number generator in C++, called only once.
+	srand((unsigned)time(NULL));
+
+	cout << RandomNumber(1, 10) << endl;
+	cout << RandomNumber(1, 10) << endl;
+	cout << RandomNumber(1, 10) << endl;
+	return 0;
+}
+```
+
+## Problem 70
+
+**Write a program to print random Small Letter, Capital Letter, Special Character, and Digit in order.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+enum enCharType { SmallLetter = 1, CapitalLetter = 2, SpecialCharacter = 3, Digit = 4 };
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+char GetRandomCharacter(enCharType CharType)
+{
+	switch (CharType)
+	{
+	case enCharType::SmallLetter:
+		return (char)RandomNumber(97, 122);
+	case enCharType::CapitalLetter:
+		return (char)RandomNumber(65, 90);
+	case enCharType::Digit:
+		return (char)RandomNumber(48, 57);
+	default:
+		return (char)RandomNumber(33, 47);
+	}
+}
+
+int main()
+{
+	
+	//Seeds the random number generator in C++, called only once.
+	srand((unsigned)time(NULL));
+
+	cout << GetRandomCharacter(enCharType::SmallLetter) << endl;
+	cout << GetRandomCharacter(enCharType::CapitalLetter) << endl;
+	cout << GetRandomCharacter(enCharType::SpecialCharacter) << endl;
+	cout << GetRandomCharacter(enCharType::Digit) << endl;
+	return 0;
+}
+```
