@@ -4380,6 +4380,7 @@ int main()
 	FillarrayWithRandomNumbers(arr2, arrLength);
 
 	SumOf2Arrays(arr1, arr2, arrSum, arrLength);
+	
 	cout << "\nArray 1 Elements: \n";
 	PrintArray(arr1, arrLength);
 
