@@ -4023,3 +4023,68 @@ int main()
 	return 0;
 }
 ```
+
+## Problem 76  
+
+**Write a program to fill array with max size 100 with random numbers from 1 to 100, then print sum of all number**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void FillarrayWithRandomNumbers(int arr[100],int &arrLength)
+{
+	cout << "Please Enter Length of Array:\n";
+	cin >> arrLength;
+
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = RandomNumber(1, 100);
+	
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+int SumArray(int arr[100], int arrLength)
+{
+	int Sum = 0;
+	
+	for (int i = 0; i < arrLength; i++)
+	{
+		Sum += arr[0];
+	}
+
+	return Sum;
+}
+
+int main()
+{
+
+	srand((unsigned)time(NULL));
+	int arr[100], arrLength;
+
+	FillarrayWithRandomNumbers(arr, arrLength);
+
+	cout << "\nArray Elements: ";
+	PrintArray(arr, arrLength);
+
+	cout << "Sum of all Number is : " << SumArray(arr, arrLength) << endl;
+
+	return 0;
+}
+```
