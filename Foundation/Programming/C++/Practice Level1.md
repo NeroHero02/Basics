@@ -2816,7 +2816,6 @@ int main()
 ```cpp
 #include <iostream>
 #include <string>
-#include <cmath>
 using namespace std;
 
 
@@ -2871,7 +2870,6 @@ int main()
 ```cpp
 #include <iostream>
 #include <string>
-#include <cmath>
 using namespace std;
 
 
@@ -2927,7 +2925,6 @@ int main()
 ```cpp
 #include <iostream>
 #include <string>
-#include <cmath>
 using namespace std;
 
 
@@ -2972,7 +2969,6 @@ int main()
 ```cpp
 #include <iostream>
 #include <string>
-#include <cmath>
 using namespace std;
 
 int ReadPositiveNumber(string Message)
@@ -3017,7 +3013,6 @@ int main()
 ```cpp
 #include <iostream>
 #include <string>
-#include <cmath>
 using namespace std;
 
 
@@ -3063,7 +3058,6 @@ int main()
 ```cpp
 #include <iostream>
 #include <string>
-#include <cmath>
 using namespace std;
 
 
@@ -3113,7 +3107,6 @@ int main()
 ```cpp
 #include <iostream>
 #include <string>
-#include <cmath>
 using namespace std;
 
 
@@ -3176,7 +3169,6 @@ int main()
 ```cpp
 #include <iostream>
 #include <string>
-#include <cmath>
 using namespace std;
 
 int ReadPositiveNumber(string Message)
@@ -3231,7 +3223,6 @@ int main()
 ```cpp
 #include <iostream>
 #include <string>
-#include <cmath>
 using namespace std;
 
 
@@ -3285,11 +3276,10 @@ int main()
 ## Problem 62  
 
 **Write a program to read a number and print inverted pattern**  
-
+**Note: From Number to 1**   
 ```cpp
 #include <iostream>
 #include <string>
-#include <cmath>
 using namespace std;
 
 
@@ -3325,3 +3315,168 @@ int main()
 	return 0;
 }
 ```
+
+## Problem 63    
+
+**Write a program to read a number and print inverted pattern**  
+**Note: From 1 to Number**   
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+
+	do
+	{
+		cout << Message;
+		cin >> Number;
+
+	} while (Number <= 0);
+
+	return Number;
+}
+
+void PrintInvertedNumberPattern(int Number)
+{
+	cout << "\n";
+
+	for (int i = 1; i <= Number; i++) {
+		for (int j = 1; j <= i; j++) {
+			cout << i;
+		}
+		cout << endl;
+	}
+		
+}
+int main()
+{
+	PrintInvertedNumberPattern(ReadPositiveNumber("Please Enter a Number?\n"));
+	return 0;
+}
+```
+
+## Problem 64
+
+**Write a program to read a number and print inverted letter pattern**   
+**Note: From N to A**  
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+
+	do
+	{
+		cout << Message;
+		cin >> Number;
+
+	} while (Number <= 0);
+
+	return Number;
+}
+
+void PrintInvertedLetterPattern(int Number)
+{
+	cout << "\n";
+
+	for (int i = 65 + Number - 1; i >= 65; i--) {
+		for (int j = 1; j <= Number - (65 + Number - 1 - i); j++) 
+		{
+			cout << char(i);
+		}
+		cout << endl;
+	}
+		
+}
+int main()
+{
+	PrintInvertedLetterPattern(ReadPositiveNumber("Please Enter a Number?\n"));
+	return 0;
+}
+```
+
+## Problem 65
+
+**Write a program to read a number and print letter pattern**   
+**Note: From A to N**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+
+	do
+	{
+		cout << Message;
+		cin >> Number;
+
+	} while (Number <= 0);
+
+	return Number;
+}
+
+void PrintInvertedLetterPattern(int Number)
+{
+	cout << "\n";
+
+	for (int i = 65; i <= 65 + Number - 1; i++) {
+		for (int j = 1; j <= i - 65 + 1 ; j++) 
+		{
+			cout << char(i);
+		}
+		cout << endl;
+	}
+		
+}
+int main()
+{
+	PrintInvertedLetterPattern(ReadPositiveNumber("Please Enter a Number?\n"));
+	return 0;
+}
+```
+
+## Problem 66  
+
+**Write a program to print all words from AAA to ZZZ**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+void PrintWordFromAAAtoZZZ()
+{
+	
+	cout << "\n";
+	for (int i = 65; i <= 90; i++)
+	{
+		for (int j = 65; j <= 90; j++)
+		{
+			for (int k = 65; k <= 90; k++)
+			{
+				cout << char(i) << char(j) << char(k) << endl;
+			}
+		}
+	}
+}
+int main()
+{
+	PrintWordFromAAAtoZZZ();
+	return 0;
+}
+```
+
