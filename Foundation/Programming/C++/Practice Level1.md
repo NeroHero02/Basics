@@ -4066,7 +4066,7 @@ int SumArray(int arr[100], int arrLength)
 	
 	for (int i = 0; i < arrLength; i++)
 	{
-		Sum += arr[0];
+		Sum += arr[i];
 	}
 
 	return Sum;
@@ -4084,6 +4084,233 @@ int main()
 	PrintArray(arr, arrLength);
 
 	cout << "Sum of all Number is : " << SumArray(arr, arrLength) << endl;
+
+	return 0;
+}
+```
+
+## Problem 77
+**Write a program to fill array with max size 100 with random numbers from 1 to 100, then print average of all number.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void FillarrayWithRandomNumbers(int arr[100],int &arrLength)
+{
+	cout << "Please Enter Length of Array:\n";
+	cin >> arrLength;
+
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = RandomNumber(1, 100);
+	
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+int SumArray(int arr[100], int arrLength)
+{
+	int Sum = 0;
+	
+	for (int i = 0; i < arrLength; i++)
+	{
+		Sum += arr[i];
+	}
+
+	return Sum;
+}
+
+float AverageArray(int arr[100], int arrLength)
+{
+	return (float)SumArray(arr, arrLength) / arrLength;
+}
+int main()
+{
+
+	srand((unsigned)time(NULL));
+	int arr[100], arrLength;
+
+	FillarrayWithRandomNumbers(arr, arrLength);
+
+	cout << "\nArray Elements: ";
+	PrintArray(arr, arrLength);
+
+	cout << "Average of all Number is : " << AverageArray(arr, arrLength) << endl;
+
+	return 0;
+}
+```
+
+## Problem 78
+
+**Write a program to fill array with max size 100 with random numbers from 1 to 100, copy it to another array and print it.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void FillarrayWithRandomNumbers(int arr[100],int &arrLength)
+{
+	cout << "Please Enter Length of Array:\n";
+	cin >> arrLength;
+
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = RandomNumber(1, 100);
+	
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+void CopyArray(int arrSource[100], int arrDestination[100], int arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		arrDestination[i] = arrSource[i];
+	}
+}
+int main()
+{
+
+	srand((unsigned)time(NULL));
+	int arr[100], arrLength;
+
+	FillarrayWithRandomNumbers(arr, arrLength);
+
+	int arr2[100];
+	CopyArray(arr, arr2, arrLength);
+
+	cout << "\nArray 1 Elements: \n";
+	PrintArray(arr, arrLength);
+
+	cout << "\nArray 2 Elements after copy:\n";
+	PrintArray(arr2, arrLength);
+
+	return 0;
+}
+```
+
+## Problem 79
+
+**Write a program to fill array with max size 100 with random numbers from 1 to 100, copy only prime numbers to another array and print it.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+enum enPrimeNotPrime { Prime = 1, NotPrime = 2 };
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void FillarrayWithRandomNumbers(int arr[100], int& arrLength)
+{
+	cout << "Please Enter Length of Array:\n";
+	cin >> arrLength;
+
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = RandomNumber(1, 100);
+
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+void CopyArray(int arrSource[100], int arrDestination[100], int arrLength)
+{
+
+	for (int i = 0; i < arrLength; i++)
+	{
+		arrDestination[i] = arrSource[i];
+	}
+}
+
+enPrimeNotPrime CheckPrimeNumber(int Number)
+{
+	int Count = 0;
+
+	for (int Counter = 2; Counter < Number; Counter++)
+	{
+		if (Number % Counter == 0)
+		{
+			return enPrimeNotPrime::NotPrime;
+		}
+	}
+	return enPrimeNotPrime::Prime;
+}
+
+void CopyPrimeNumber(int arrSource[100], int arrDestination[100], int arrLength, int& arrLength2)
+{
+	int Counter = 0;
+	for (int i = 0; i < arrLength; i++)
+	{
+		if (CheckPrimeNumber(arrSource[i]) == enPrimeNotPrime::Prime)
+		{
+			arrDestination[Counter] = arrSource[i];
+			Counter++;
+		}
+	}
+	arrLength2 = Counter;
+}
+int main()
+{
+
+	srand((unsigned)time(NULL));
+	int arr[100], arrLength, arrLength2;
+
+	FillarrayWithRandomNumbers(arr, arrLength);
+
+	int arr2[100];
+	CopyPrimeNumber(arr, arr2, arrLength, arrLength2);
+
+	cout << "\nArray 1 Elements: \n";
+	PrintArray(arr, arrLength);
+
+	cout << "\nArray 2 Elements after copy Prime Number:\n";
+	PrintArray(arr2, arrLength2);
 
 	return 0;
 }
