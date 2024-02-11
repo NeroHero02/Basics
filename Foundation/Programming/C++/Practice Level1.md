@@ -3511,8 +3511,11 @@ bool GuessPassword(string OriginalPassword)
 				word = word + char(i);
 				word = word + char(j);
 				word = word + char(k);
+
 				Counter++;
+
 				cout << "Trial[" << Counter << "]: " << word << "\n";
+
 				if (word == OriginalPassword) 
 				{
 					cout << "\nPassword is " << word << endl;
