@@ -4315,3 +4315,83 @@ int main()
 	return 0;
 }
 ```
+
+## Problem 80  
+
+**Write a program to fill array two arrays with max size 100 with random numbers from 1 to 100, sum their elements in a third array and print the results.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+	do
+	{
+		cout << Message << endl;
+		cin >> Number;
+	} while (Number < 0);
+
+	return Number;
+}
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void FillarrayWithRandomNumbers(int arr[100], int arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = RandomNumber(1, 100);
+
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+
+void SumOf2Arrays(int arr1[100], int arr2[100],int arrSum[100], int arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		arrSum[i] = arr1[i] + arr2[i];
+	}
+}
+int main()
+{
+
+	srand((unsigned)time(NULL));
+	int arr1[100], arr2[100], arrSum[100];
+	int arrLength = ReadPositiveNumber("How many elements?\n");
+
+	FillarrayWithRandomNumbers(arr1, arrLength);
+	FillarrayWithRandomNumbers(arr2, arrLength);
+
+	SumOf2Arrays(arr1, arr2, arrSum, arrLength);
+	cout << "\nArray 1 Elements: \n";
+	PrintArray(arr1, arrLength);
+
+	cout << "\nArray 2 Elements: \n";
+	PrintArray(arr2, arrLength);
+
+	cout << "\nSum of array1 and array2 elements:\n";
+	PrintArray(arrSum, arrLength);
+
+
+	return 0;
+}
+```
+
+## Problem 81
