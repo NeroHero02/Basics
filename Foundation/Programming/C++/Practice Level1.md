@@ -3222,3 +3222,106 @@ int main()
 	return 0;
 }
 ```
+
+## Problem 61
+
+**Write a program to read a number and check if it is Palindrome?**  
+**Palindrome is a number that reads the same from right to left.**  
+
+```cpp
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+
+	do
+	{
+		cout << Message;
+		cin >> Number;
+
+	} while (Number <= 0);
+
+	return Number;
+}
+
+int ReverseNumber(int Number)
+{
+	int Remainder = 0, Reversed = 0;
+
+	while (Number > 0)
+	{
+		Remainder = Number % 10; 
+		Number = Number / 10; 
+		Reversed = Reversed * 10 + Remainder;
+	}
+
+	return Reversed;
+}
+
+bool isPalindromeNumber(int Number)
+{
+	return Number == ReverseNumber(Number);
+}
+void PrintNumber(int Number)
+{
+	if (isPalindromeNumber(Number))
+		cout << "\nYes, it is a Palindrome number.\n";
+	else
+		cout << "\nNo, it is NOT a Palindrome number.\n";
+}
+
+int main()
+{
+	PrintNumber(ReadPositiveNumber("Please Enter a Positive Number?\n"));
+	return 0;
+}
+```
+
+## Problem 62  
+
+**Write a program to read a number and print inverted pattern**  
+
+```cpp
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+
+	do
+	{
+		cout << Message;
+		cin >> Number;
+
+	} while (Number <= 0);
+
+	return Number;
+}
+
+void PrintInvertedNumberPattern(int Number)
+{
+	cout << "\n";
+
+	for (int i = Number; i > 0; i--) {
+		for (int j = 1; j <= i; j++) {
+			cout << i;
+		}
+		cout << endl;
+	}
+		
+}
+int main()
+{
+	PrintInvertedNumberPattern(ReadPositiveNumber("Please Enter a Number?\n"));
+	return 0;
+}
+```
