@@ -4655,5 +4655,83 @@ int main()
 **Write a program to fill array with max size 100 with random numbers from 1 to 100 read number and return its index in array if found otherwise return -1.**  
 
 ```cpp
+#include <iostream>
+#include <string>
+using namespace std;
 
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+	do
+	{
+		cout << Message << endl;
+		cin >> Number;
+	} while (Number < 0);
+
+	return Number;
+}
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void FillarrayWithRandomNumbers(int arr[100], int &arrLength)
+{
+	cout << "Please Enter Length for array?\n";
+	cin >> arrLength;
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = RandomNumber(1, 100);
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+int FindNumberPositionInArray(int arr[100], int arrLength, int Number)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		if (arr[i] == Number)
+			return i;
+	}
+
+	return -1;
+}
+
+int main()
+{
+
+	srand((unsigned)time(NULL));
+
+	int arr[100], arrLength;
+	FillarrayWithRandomNumbers(arr, arrLength);
+
+	cout << "Array 1 Elements : \n";
+	PrintArray(arr, arrLength);
+
+	int Number = ReadPositiveNumber("Please Enter a number to search for?\n");
+	cout << "Number you are looking for is: " << Number << endl;
+
+	short NumberPosition = FindNumberPositionInArray(arr, arrLength, Number);
+
+	if (NumberPosition == -1)
+	{
+		cout << "The number is not found :-(\n";
+	}
+	else
+	{
+		cout << "The number found at position : " << NumberPosition << endl;
+		cout << "The number found its order : " << NumberPosition + 1 << endl;
+	}
+	return 0;
+}
 ```
