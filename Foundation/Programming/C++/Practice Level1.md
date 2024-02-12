@@ -4735,3 +4735,91 @@ int main()
 	return 0;
 }
 ```
+
+## Problem 85
+
+**Write a program to fill array with max size 100 with random numbers from 1 to 100 read number and print if it's found or not (reuse code in prev problem).**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int ReadPositiveNumber(string Message)
+{
+	int Number;
+	do
+	{
+		cout << Message << endl;
+		cin >> Number;
+	} while (Number < 0);
+
+	return Number;
+}
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void FillarrayWithRandomNumbers(int arr[100], int &arrLength)
+{
+	cout << "Please Enter Length for array?\n";
+	cin >> arrLength;
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = RandomNumber(1, 100);
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+int FindNumberPositionInArray(int arr[100], int arrLength, int Number)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		if (arr[i] == Number)
+			return i;
+	}
+
+	return -1;
+}
+
+bool IsNumberInArray(int arr[100], int arrLength, int Number)
+{
+	return FindNumberPositionInArray(arr, arrLength, Number) != -1;
+}
+int main()
+{
+
+	srand((unsigned)time(NULL));
+
+	int arr[100], arrLength;
+	FillarrayWithRandomNumbers(arr, arrLength);
+
+	cout << "Array 1 Elements : \n";
+	PrintArray(arr, arrLength);
+
+	int Number = ReadPositiveNumber("Please Enter a number to search for?\n");
+	cout << "Number you are looking for is: " << Number << endl;
+
+	if (!IsNumberInArray(arr, arrLength, Number))
+	{
+		cout << "No, The number is not found :-(\n";
+	}
+	else
+	{
+		cout << "Yes it is found :-)\n";
+	}
+	return 0;
+}
+```
+
