@@ -4823,3 +4823,938 @@ int main()
 }
 ```
 
+## Problem 86
+
+**Write a program to dynamically read numbers and save them in an array Max size of array is 100, allocate simi-dynamic array length.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int ReadNumber() {
+	int Num;
+	cout << "Please Enter Number : " << endl;
+	cin >> Num;
+
+	return Num;
+}
+
+void AddArrayElement(int Number, int arr[100], int& arrLength)
+{
+	arrLength++;
+	arr[arrLength - 1] = Number;
+}
+
+void InputUserNumberInArray(int arr[100], int& arrLength)
+{
+	bool AddMore = true;
+	do
+	{
+		AddArrayElement(ReadNumber(), arr, arrLength);
+
+		cout << "\nDo you want to add more numbers? [0]:No,[1]:yes? ";
+		cin >> AddMore;
+	} while (AddMore);
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	cout << "Array elements : ";
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+
+int main()
+{
+
+	int arr[100], arrLength = 0;
+	InputUserNumberInArray(arr, arrLength);
+
+	cout << "Array Length: " << arrLength << "\n";
+	cout << "Array elements : ";
+	PrintArray(arr, arrLength);
+
+	return 0;
+}
+```
+
+## Problem 87
+
+**Write a program to fill array with max size 100 with random numbers from 1 to 100, copy it to another array using AddArrayElement, and print it.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int ReadNumber() {
+	int Num;
+	cout << "Please Enter Number : " << endl;
+	cin >> Num;
+
+	return Num;
+}
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void FillarrayWithRandomNumbers(int arr[100], int &arrLength)
+{
+	cout << "Please Enter Length for array?\n";
+	 cin >> arrLength;
+
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = RandomNumber(1, 100);
+}
+
+void AddArrayElement(int Number, int arr[100], int& arrLength)
+{
+	arrLength++;
+	arr[arrLength - 1] = Number;
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	cout << "Array elements : ";
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+void CopyArrayUsingAddArrayElement(int arrSource[100], int arrDestination[100], int arrLength, int &arrDestinationLength)
+{ 
+	for (int i = 0; i < arrLength; i++)
+	{
+		AddArrayElement(arrSource[i], arrDestination, arrDestinationLength);
+	}
+}
+
+
+int main()
+{
+	srand((unsigned)time(NULL));
+
+	int arr[100], arr2[100], arrLength;
+	int arrDestinationLength = 0;
+
+	FillarrayWithRandomNumbers(arr, arrLength);
+	cout << "Array 1 Elements : ";
+	PrintArray(arr, arrLength);
+
+	CopyArrayUsingAddArrayElement(arr, arr2, arrLength, arrDestinationLength);
+
+	cout << "Array 2 elements : ";
+	PrintArray(arr2, arrDestinationLength);
+
+	return 0;
+}
+```
+
+## Problem 88
+
+**Write a prgoram to fill array with max size 100 with random numbers from 1 to 100 copy only odd numbers to another array using AddArrayElement, and print it.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int ReadNumber() {
+	int Num;
+	cout << "Please Enter Number : " << endl;
+	cin >> Num;
+
+	return Num;
+}
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void FillarrayWithRandomNumbers(int arr[100], int &arrLength)
+{
+	cout << "Please Enter Length for array?\n";
+	 cin >> arrLength;
+
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = RandomNumber(1, 100);
+}
+
+void AddArrayElement(int Number, int arr[100], int& arrLength)
+{
+	arrLength++;
+	arr[arrLength - 1] = Number;
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	cout << "Array elements : ";
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+void CopyOddNumbers(int arrSource[100], int arrDestination[100], int arrLength, int &arrDestinationLength)
+{ 
+	for (int i = 0; i < arrLength; i++)
+	{
+		if (arrSource[i] % 2 != 0)
+		AddArrayElement(arrSource[i], arrDestination, arrDestinationLength);
+
+	}
+}
+
+
+int main()
+{
+	srand((unsigned)time(NULL));
+
+	int arr[100], arr2[100], arrLength;
+	int arrDestinationLength = 0;
+
+	FillarrayWithRandomNumbers(arr, arrLength);
+	cout << "Array 1 Elements : ";
+	PrintArray(arr, arrLength);
+
+	CopyOddNumbers(arr, arr2, arrLength, arrDestinationLength);
+
+	cout << "Array 2 Elements : ";
+	PrintArray(arr2, arrDestinationLength);
+
+	return 0;
+}
+```
+
+## Problem 89
+
+**Write a program to fill array with max size 100 with random numbers from 1 to 100, copy only prime numbers to another array using AddArrayElement, and print it.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+enum enPrimeNotPrime { Prime = 1, NotPrime = 2 };
+
+int ReadNumber() {
+	int Num;
+	cout << "Please Enter Number : " << endl;
+	cin >> Num;
+
+	return Num;
+}
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void FillarrayWithRandomNumbers(int arr[100], int &arrLength)
+{
+	cout << "Please Enter Length for array?\n";
+	 cin >> arrLength;
+
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = RandomNumber(1, 100);
+}
+
+void AddArrayElement(int Number, int arr[100], int& arrLength)
+{
+	arrLength++;
+	arr[arrLength - 1] = Number;
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	cout << "Array elements : ";
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+enPrimeNotPrime CheckPrimeNumber(int Number)
+{
+	int Count = 0;
+
+	for (int Counter = 2; Counter < Number; Counter++)
+	{
+		if (Number % Counter == 0)
+		{
+			return enPrimeNotPrime::NotPrime;
+		}
+	}
+	return enPrimeNotPrime::Prime;
+}
+
+void CopyOnlyPrime(int arrSource[100], int arrDestination[100], int arrLength, int &arrDestinationLength)
+{ 
+	for (int i = 0; i < arrLength; i++)
+	{
+		if (CheckPrimeNumber(arrSource[i]) == enPrimeNotPrime::Prime)
+		AddArrayElement(arrSource[i], arrDestination, arrDestinationLength);
+
+	}
+}
+
+
+int main()
+{
+	srand((unsigned)time(NULL));
+
+	int arr[100], arr2[100], arrLength;
+	int arrDestinationLength = 0;
+
+	FillarrayWithRandomNumbers(arr, arrLength);
+	cout << "Array 1 Elements : ";
+	PrintArray(arr, arrLength);
+
+	CopyOnlyPrime(arr, arr2, arrLength, arrDestinationLength);
+
+	cout << "Array 2 Elements : ";
+	PrintArray(arr2, arrDestinationLength);
+
+	return 0;
+}
+```
+
+## Problem 90
+
+**Write a program to fill array with numbers, then print distinct numbers to another array.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+void FillArray(int arr[100], int &arrLength)
+{
+	cout << "Please Enter Length for array?\n";
+	 cin >> arrLength;
+
+	 for (int i = 0; i < arrLength; i++)
+		 cin >> arr[i];
+}
+
+void AddArrayElement(int Number, int arr[100], int& arrLength)
+{
+	arrLength++;
+	arr[arrLength - 1] = Number;
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	cout << "Array elements : ";
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+int FindNumberPositionInArray(int arr[100], int arrLength, int Number)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		if (arr[i] == Number)
+			return i;
+	}
+
+	return -1;
+}
+
+bool IsNumberInArray(int arr[100], int arrLength, int Number)
+{
+	return FindNumberPositionInArray(arr, arrLength, Number) != -1;
+}
+
+void CopyDistinctElemnts(int arrSource[100], int arrDestination[100], int arrLength, int &arrDestinationLength)
+{ 
+	for (int i = 0; i < arrLength ; i++)
+	{
+
+		if (!IsNumberInArray(arrDestination, arrDestinationLength, arrSource[i]))
+		{
+			AddArrayElement(arrSource[i], arrDestination, arrDestinationLength);
+
+		}
+	}
+}
+
+
+int main()
+{
+	srand((unsigned)time(NULL));
+
+	int arr[100], arr2[100], arrLength;
+	int arrDestinationLength = 0;
+
+	FillArray(arr, arrLength);
+
+	cout << "Array 1 Elements : ";
+	PrintArray(arr, arrLength);
+
+	CopyDistinctElemnts(arr, arr2, arrLength, arrDestinationLength);
+
+	cout << "Array 2 Elements : ";
+	PrintArray(arr2, arrDestinationLength);
+
+	return 0;
+}
+```
+
+## Problem 91
+
+**Write a program to fill array with numbers, then check if it is Palindrome array or not.**  
+**Note: Palindrome array can be read the same from right to left and from left to right.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+void FillArray(int arr[100], int &arrLength)
+{
+	cout << "Please Enter Length for array?\n";
+	 cin >> arrLength;
+
+	 for (int i = 0; i < arrLength; i++)
+		 cin >> arr[i];
+}
+
+
+bool isPalindromeArray(int arr[100], int arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		if (arr[i] != arr[arrLength - i - 1])
+		{
+			return false;
+		}
+	}
+	
+	return true;
+}
+void PrintArray(int arr[100], int arrLength)
+{
+	cout << "Array elements : ";
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+
+int main()
+{
+	srand((unsigned)time(NULL));
+
+	int arr[100], arrLength;
+	int arrDestinationLength = 0;
+
+	FillArray(arr, arrLength);
+
+	cout << "Array 1 Elements : ";
+	PrintArray(arr, arrLength);
+
+	if (isPalindromeArray(arr, arrLength))
+		cout << "Yes array is Palindrome.\n";
+
+	else
+		cout << "No Array is'nt Palindrome.\n";
+
+	return 0;
+}
+```
+
+## Problem 92
+
+**Write a program to fill array with max size 100 with random numbers from 1 to 100, then print the count of Odd numbers.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void FillArrayWithRandomNumbers(int arr[100], int& arrLength)
+{
+	cout << "Please Enter Length of Array:\n";
+	cin >> arrLength;
+
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = RandomNumber(1, 100);
+
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	cout << "Array elements : ";
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+int OddCount(int arr[100], int arrLength)
+{
+	int Counter = 0;
+	for (int i = 0; i < arrLength; i++)
+	{
+		if (arr[i] % 2 != 0)
+		{
+			Counter++;
+		}
+			
+	}
+
+	return Counter;
+}
+
+int main()
+{
+	srand((unsigned)time(NULL));
+
+	int arr[100], arrLength;
+
+	FillArrayWithRandomNumbers(arr, arrLength);
+
+	cout << "\nArray Elements: ";
+	PrintArray(arr, arrLength);
+
+	cout << "\nOdd Number count is: ";
+	cout << OddCount(arr, arrLength) << endl;
+
+	return 0;
+}
+```
+
+## Problem 93
+
+**Write a program to fill array with max size 100 with random numbers from 1 to 100, then print the count of Even numbers.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void FillArrayWithRandomNumbers(int arr[100], int& arrLength)
+{
+	cout << "Please Enter Length of Array:\n";
+	cin >> arrLength;
+
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = RandomNumber(1, 100);
+
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	cout << "Array elements : ";
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+int EvenCount(int arr[100], int arrLength)
+{
+	int Counter = 0;
+	for (int i = 0; i < arrLength; i++)
+	{
+		if (arr[i] % 2 == 0)
+		{
+			Counter++;
+		}
+			
+	}
+
+	return Counter;
+}
+
+int main()
+{
+	srand((unsigned)time(NULL));
+
+	int arr[100], arrLength;
+
+	FillArrayWithRandomNumbers(arr, arrLength);
+
+	cout << "\nArray Elements: ";
+	PrintArray(arr, arrLength);
+
+	cout << "\nEven Number count is: ";
+	cout << EvenCount(arr, arrLength) << endl;
+
+	return 0;
+}
+```
+
+## Problem 94
+
+**Write a program to fill array with max size 100 with random numbers from -100 to 100, then print the count of Positive numbers.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void FillArrayWithRandomNumbers(int arr[100], int& arrLength)
+{
+	cout << "Please Enter Length of Array:\n";
+	cin >> arrLength;
+
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = RandomNumber(-100, 100);
+
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	cout << "Array elements : ";
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+int PositiveCount(int arr[100], int arrLength)
+{
+	int Counter = 0;
+	for (int i = 0; i < arrLength; i++)
+	{
+		if (arr[i] >= 0)
+			Counter++;
+	}
+
+	return Counter;
+}
+
+int main()
+{
+	srand((unsigned)time(NULL));
+
+	int arr[100], arrLength;
+
+	FillArrayWithRandomNumbers(arr, arrLength);
+
+	cout << "\nArray Elements: ";
+	PrintArray(arr, arrLength);
+
+	cout << "\nPositive Number count is: ";
+	cout << PositiveCount(arr, arrLength) << endl;
+
+	return 0;
+}
+```
+
+## Problem 95
+
+**Write a program to fill array with max size 100 with random numbers from -100 to 100, then print the count of Negative numbers.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int RandomNumber(int From, int To)
+{
+	// Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void FillArrayWithRandomNumbers(int arr[100], int& arrLength)
+{
+	cout << "Please Enter Length of Array:\n";
+	cin >> arrLength;
+
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = RandomNumber(-100, 100);
+
+}
+
+void PrintArray(int arr[100], int arrLength)
+{
+	cout << "Array elements : ";
+	for (int i = 0; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+int NegativeCount(int arr[100], int arrLength)
+{
+	int Counter = 0;
+	for (int i = 0; i < arrLength; i++)
+	{
+		if (arr[i] < 0)
+			Counter++;
+	}
+
+	return Counter;
+}
+
+int main()
+{
+	srand((unsigned)time(NULL));
+
+	int arr[100], arrLength;
+
+	FillArrayWithRandomNumbers(arr, arrLength);
+
+	cout << "\nArray Elements: ";
+	PrintArray(arr, arrLength);
+
+	cout << "\nNegative Number count is: ";
+	cout << NegativeCount(arr, arrLength) << endl;
+
+	return 0;
+}
+```
+
+## Problem 96
+
+**Write a program to print abs of numbers, don't use built in abs function**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+float ReadNumber() {
+	float Num;
+	cout << "Please Enter Number : " << endl;
+	cin >> Num;
+
+	return Num;
+}
+
+float Myabs(float Number)
+{
+	if (Number > 0)
+		return Number;
+	return Number * -1;
+}
+int main()
+{
+	float Number = ReadNumber();
+
+	cout << "\nMy abs Result : " << Myabs(Number) << endl;
+	cout << "\nC++ abs Result : " << abs(Number) << endl;
+	return 0;
+}
+```
+
+## Problem 97
+
+**Write a program to print round of numbers, don't use built in round function.**  
+
+```cpp
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+float ReadNumber() {
+	float Num;
+	cout << "Please Enter Number : " << endl;
+	cin >> Num;
+
+	return Num;
+}
+
+float GetFractionPart(float Number)
+{
+	return Number - (int)Number;
+}
+float Myround(float Number)
+{
+	int IntPart = Number;
+
+	float FractionsPart = GetFractionPart(Number);
+
+	if (abs(FractionsPart) >= 0.5)
+	{
+		if (Number > 0)
+			return ++IntPart;
+		else
+			return --IntPart;
+	}
+	return IntPart;
+}
+int main()
+{
+	float Number = ReadNumber();
+
+	cout << "\nMy Round Result : " << Myround(Number) << endl;
+	cout << "\nC++ Round Result : " << round(Number) << endl;
+	return 0;
+}
+```
+
+## Problem 98
+
+**Write a program to rpint floor of numbers, don't use built in floor function**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+float ReadNumber() {
+	float Num;
+	cout << "Please Enter Number : " << endl;
+	cin >> Num;
+
+	return Num;
+}
+
+float GetFractionPart(float Number)
+{
+	return Number - (int)Number;
+}
+float MyFloor(float Number)
+{
+	if (Number > 0)
+		return (int)Number;
+	else
+		return (int)Number - 1;
+}
+int main()
+{
+	float Number = ReadNumber();
+
+	cout << "\nMy Floor Result : " << MyFloor(Number) << endl;
+	cout << "\nC++ Floor Result : " << floor(Number) << endl;
+	return 0;
+}
+```
+
+## Problem 99
+
+**Write a program to print Ceil of numbers, don't use built in Ceil function**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+float ReadNumber() {
+	float Num;
+	cout << "Please Enter Number : " << endl;
+	cin >> Num;
+
+	return Num;
+}
+
+float GetFractionPart(float Number)
+{
+	return Number - (int)Number;
+}
+float MyCeil(float Number)
+{
+	if (abs(GetFractionPart(Number)) > 0)
+		if (Number > 0)
+			return (int)Number + 1;
+		else
+			return (int)Number;
+
+	else
+		return Number;
+}
+int main()
+{
+	float Number = ReadNumber();
+
+	cout << "\nMy MyCeil Result : " << MyCeil(Number) << endl;
+	cout << "\nC++ Ceil Result : " << ceil(Number) << endl;
+	return 0;
+}
+```
+
+## Problem 100
+
+**Write a program to print Sqrt of numbers, don't use built in sqrt function.**  
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+float ReadNumber() {
+	float Num;
+	cout << "Please Enter Number : " << endl;
+	cin >> Num;
+
+	return Num;
+}
+
+int MySqrt(float Number)
+{
+	return pow(Number, 0.5);
+}
+int main()
+{
+	float Number = ReadNumber();
+
+	cout << "\nMy MySqrt Result : " << MySqrt(Number) << endl;
+	cout << "\nC++ Sqrt Result : " << sqrt(Number) << endl;
+	return 0;
+}
+```
+
+# Started 
+
+**alhamdulillah we have completed the Practice Level1, now i will do 2 Project you can see from `C++ Procuder Project`**  
