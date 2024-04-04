@@ -50,5 +50,34 @@ Foreign Key
 
 - The foreign key ensures that referential integrity is maintained by ensuring that any value in the foreign key column must exist in the primary key column of the related table.  
 
+## What is Redundancy?
+
+Redundancy refers to the presence of duplicated data within the database.  
+
+Redundancy can occur in different ways, such as storing the same information multiple times, or storing information than can be derived from other data in the database.   
+
+While redundancy can sometimes be useful, it can also cause problems. For example, redundant data takes up additional storage space and can make it more difficult to maintain consistency within the database. If one copy of the data is updated, the other copies may become outdataed, leading to inconsistencies and errors.  
+
+To avoid redundancy in databases, normalization techniques can be used to organize the data in a way that minimizes duplication.  
+
+Duplicates Redundancy :
+
+- More Wasted Space  
+- Data Inconsistency  
+- Data Corruption  
+- Missing/Incomplete Data  
+- Data Integrity Problems  
+- Hard to maintain  
+
+the solutions for Duplicates redundancy problem using Primary Key and Foreign Key and this is call Normalization.  
+
+Normalization : is the process of organizing data in a database in a way that reduces redundancy and improves data integrity. There are several levels of normalization, also known as normal forms, each with its own set of rules.  
+
+To avoid redundancy in databases, normalization techniques can be used to  organize the data in a way that minimizes duplication.  
+
+This involves breaking down the data into smaller, more atomic pieces and  linking them together through relationships, which can reduce the amount of redundant data and make it easier to manage and update the database.
+
+Additionally, enforcing data constraints, such as unique keys and foreign key relationships, can help prevent redundant data from being inserted into the database. 
+
 
 
