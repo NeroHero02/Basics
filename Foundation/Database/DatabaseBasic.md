@@ -79,5 +79,68 @@ This involves breaking down the data into smaller, more atomic pieces and  linki
 
 Additionally, enforcing data constraints, such as unique keys and foreign key relationships, can help prevent redundant data from being inserted into the database. 
 
+## Data Integrity
+
+Data integrity refers to the accuracy, consistency, and reliablity of data over its entire life cycle, from creation to deleteion. In other words, it refers to the assurance that data is complete, accurate, and trustworthy.  
+
+There are several factors that can impact data integrity, including human error, hardware or software failure, security breaches, and data transfer errors.  
+
+To maintain data integrity, it is important to establish appropriate policies and procedures, and to implement appropriate technologies, such as encryption, backups, and access controls.  
+
+There are different types of data integrity that organizations need to consider:  
+
+1. Entity integrity : This ensures that each row or record in a table is unique and can be uniquely identified. This is typically achieved through the use of primary keys.  
+
+2. Referential integrity : This ensures that relationships between tables are maintained and that there are no orphaned records. This is typically achieved through the use of foreign keys.  
+
+
+3. Domain integrity: This ensures that data is within acceptable ranges or values.  
+For Example, a date field should only contain valid dates, and a numeric field should only contain valid numbers.  
+
+4. Business integrity: This ensures that data meets business rules and requirements. For example, a bank might have rules around minmum and maximum account balances, or a hospital might have rules around patient data confidentiality.  
+
+Maintaining data integrity is critical for organizations that rely on accurate and trustworthy data to make informed decisions. Without data integrity, organizations risk making decisions based on incomplete, inaccurate, or unreliable data, which can lead to poor outcomes, financial losses, and damage to reputation.  
+
+## Constraint
+
+In the context of databases, constraints are rules or conditions that are applied to the data to ensure its integrity and consistency. Constraints can be applied to individual columns or to entire tables, and they are used to enforce various rules and restrictions on the data.  
+
+By using constraints, you can help ensure that your data is accurate, consistent, and easy to manage.  
+
+
+Here are some common types of constraints used in databases:  
+
+1. Primary Key Constraint: This constraint ensures that a column or a set of columns uniquely identifies each row in a table. This constraint helps to enforce data integrity and ensure that there are no duplicate rows in the table.  
+
+2. Foreign Key Constraint: This constraint establishes a relationship between two tables based on a key field. The foreign key constraint ensures that data in one table matches data in another table, and it helps to maintain referential integrity in the database.  
+
+3. Unique Constraint: This constraint ensures that the data in a column or set of columns is unique across all rows in the table. This constraint helps to enforce data integrity and prevent duplicate values from being inserted into the table.  
+
+4. Not Null Constraint: This constraint ensures that a column or set of columns cannot contain null (empty) values. This constraint helps to ensure that the data is complete and accurate, and it can help prevent errors in queries and calculations.  
+
+5. Check Constraint: This constraint ensures that the data in a column or set of columns meets a specified condition. This constraint helps to enforce data integrity and prevent invalid data from being inserted into the table.  
+
+What is the difference between Primary Key Constraint and Unique Constraint ?
+
+Primary Key is Unique but it does not all NULL while Unique allows NULL.  
+
+## What is SQL?
+
+SQL stands for Structured Query Language  
+
+Pronounced as "S-Q-L" or sometimes as "See-Quel"  
+
+SQL is used to communicate with a database  
+
+SQL lets you access and manipulate databases  
+
+
+
+
+
+
+
+
+
 
 
