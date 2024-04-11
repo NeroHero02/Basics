@@ -134,6 +134,20 @@ SQL is used to communicate with a database
 
 SQL lets you access and manipulate databases  
 
+Database management systems that use SQL are:  
+
+Oracle, Sybase, Microsoft SQL Server, Access, Ingres, etc.  
+
+Types of SQL Statements : 
+
+- Data Definition Language (DDL)  
+- Data Manipulation Language (DML)  
+- Data Control Language (DCL)  
+- Transaction Control Language (TCL)  
+- Data Query Language (DQL)  
+
+![Types SQL](../Database/Images/sql.png)  
+
 
 
 
