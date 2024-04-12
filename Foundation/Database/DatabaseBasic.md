@@ -177,9 +177,52 @@ RDBMS
 - Centralized Data Sharing.  
 - Very Easy to deal with.  
 
+## Entity Relationship Diagram (ERD)  
+
+- An Entity Relationship Diagram (ER Diagram) pictorially explains the relationship between entities to be stored in a database.  
+
+- Fundamentally, the ER Diagram is a structural design of the database.  
+
+- It acts as a framework created with specialized symbols for the purpose of defining the relationship between the database entities.  
+
+- ER diagram is created based on three principal components:  
+
+1. Entities.  
+2. Attributes.  
+3. Relationships.  
 
 
+- An Entity-Relationship Model represents the structure of the database with the help of a diagram.  
 
+- ER Modelling is a systematic process to design a database as it would require you to analyze all data requirements before implementing your database.  
+
+Why Use ER Diagram in DBMS?  
+
+- ER Diagram helps you conceptualize the database and lets you know which fields need to be embedded for a particular entity.  
+
+- ER Diagram gives a better understanding of the information to be stored in a database.  
+
+- It reduces complexity and allows database designers to build databases quickly.  
+
+- It helps to describe elements using Entity-Relationship models.  
+
+- It allows users to get a preview of the logical structure of the database.  
+
+## ERD Symbols  
+
+Rectangles : This Entity Relationship Diagram symbol represents entity types.  
+
+Ellipses : This symbol represents attributes.  
+
+Diamonds : This symbol represents relationship types.  
+
+Lines : It links attributes to entity types and entity types with other relationship types.  
+
+Primary Key : Here, it underlines the attributes.  
+
+Double Ellipses : Represents multi-valued attributes.  
+
+![ERD Symbols](../Database/Images/ERD.png)  
 
 
 
