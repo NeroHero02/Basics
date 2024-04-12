@@ -225,6 +225,74 @@ Double Ellipses : Represents multi-valued attributes.
 ![ERD Symbols](../Database/Images/ERD.png)  
 
 
+## Components of ERD  
+
+We base an ER Diagram on three basic concepts :  
+
+- Entities
+  - Entity (Strong Entity)
+  - Weak Entity
+
+- Attributes  
+  - Attribute  
+  - Key Attribute  
+  - Composite Attribute  
+  - Multivalued Attribute  
+  - Deried Attribute  
+
+- Relationships  
+  - One-to-One Relationships  
+  - One-to-Many Relationships  
+  - Many-to-One Relationships  
+  - Many-toMany Relationships  
+
+
+## Entity (Strong) and Weak Entity  
+
+Entities(Strong Entities)  
+
+- An entity can be either a living or non-living component.  
+- It showcases an entity as a rectangle in an ER diagram.  
+- Each Entity has a primary key.  
+- For example, in a student study course, both the student and the course are entities.  
+
+Weak Entities  
+
+- An entity that makes reliance over another entity is called a weak entity.  
+- You showcase the weak entity as a double rectangle in ER Diagram.  
+- Weak Entity has no primary key.  
+- In the example below, Employee is a strong entity because it has a primary key attribute - ID. Unlike Dependent, the dependent is a weak entity because it does not have any primary key and the name here acts only as a discriminator.  
+
+## Attributes  
+
+Attributes  
+
+- An attribute exhibits the properties of an entity.  
+- You can illustrate an attribute with an oval shape in an ER diagram.  
+
+Key Attribute  
+
+- Key attribute uniquely identifies an entity from an entity set.  
+- It underlines the text of a key attribute.  
+- For example : For a student entity, the ID can uniquely identify a student from a set of students.    
+
+Composite Attribute  
+
+- An attribute that is composed of several other attributes is known as a composite attribute.  
+- An oval showcases the composite attribute, and the composite attribute oval is further connected with other ovals.  
+
+Multivalued Attribute  
+
+- Some attributes can possess over one value, those attributes are called multivalued attributes.  
+- The double oval shape is used to represent a multivalued attribute.  
+
+Derived Attribute
+
+- An attribute that can be derived from other attributes of the entity is known as a derived attribute.  
+- In the ER diagram, the dashed oval represents the derived attribute.  
+
+
+
 
 
 
