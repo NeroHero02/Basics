@@ -292,6 +292,15 @@ Derived Attribute
 - In the ER diagram, the dashed oval represents the derived attribute.  
 
 
+## Relationships 
+
+Relationship Types :  
+
+- One-to-One Realtionship.  
+- One-to-Many Relationship.  
+- Many-to-One Relationship.  
+- Many-to-Many Relationship.  
+
 
 
 
