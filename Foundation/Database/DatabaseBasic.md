@@ -322,6 +322,43 @@ Cardinality : Refers to the maximum number of times an instance in one entity ca
 
 Ordinality : on the other hand, is the minum number of times an instance in one entity can be associated with an instance in the related entity. (optional/mandatory/required or not).  
 
+## Cardinality Symbols 
+
+![Cardinality Symbols](../Database/Images/symbolscord.png)  
+
+![Optional](../Database/Images/optional.png)  
+
+## Total Vs Partial Participation  
+
+// Will back
+
+## Process of Creating ERD Step by Step 
+ 
+1. Entity Identification 
+   - We need to identify Entities in the System.  
+2. Relationship Idententification  
+   - Identify the relationship among all entities.  
+3. Cardinality Identification  
+   - In each Relationship we need to identify it's Type.  
+4. Identify Attributes  
+5. Create ERD
+
+## Create ERD for University
+
+Requirements:  
+
+- In a university, a Student enrolls in Courses. A student can enroll in more than one course, Each course can have more than one student.  
+- Each student has only one mentor(prof), Professor can mentor more than one student.  
+- Each Professor can teach only one course.  
+- Each Course can have only one professor.  
+- Course can have un-assigned professor.  
+- Professor can teach no courses.  
+
+
+
+
+
+
 
 
 
