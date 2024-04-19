@@ -302,6 +302,28 @@ Relationship Types :
 - Many-to-Many Relationship.  
 
 
+## One-to-One Relationship  
+
+When a single element of an entity is associated with a single element of another entity, it is called a one-to-one relationship.  
+
+## One-to-Many/Many-to-One Relationship  
+
+When a single element of an entity is associated with more than one element of another entity, it is called a one-to-many relationship.  
+
+When more than one element of an entity is associated with a single element of another entity, it is called a many-to-one relationship.  
+
+## Many-to-Many Relationship 
+
+ When more than one element of an entity is associated with more than one element of another entity, it is called a Many-to-Many Relationship.  
+
+ ## Cardinality vs Ordinality  
+
+Cardinality : Refers to the maximum number of times an instance in one entity can relate to instances of another entity.  
+
+Ordinality : on the other hand, is the minum number of times an instance in one entity can be associated with an instance in the related entity. (optional/mandatory/required or not).  
+
+
+
 
 
 
