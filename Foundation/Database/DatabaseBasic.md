@@ -354,6 +354,49 @@ Requirements:
 - Course can have un-assigned professor.  
 - Professor can teach no courses.  
 
+Step 1 (Entity Identification):  
+
+Student,Courses,Professor.  
+
+Step 2 (Relationship Identification):  
+
+Student With Course (Enrolled).  
+Course With Professor (Teaches).  
+Student With Professor (Menetor).  
+
+Step 3 (Cardinality Identification):
+
+![Cardinality Identification](../Database/Images/cardinalityidentification.png.png)  
+
+
+Step 4 (Attributes Identification): 
+
+![Attributes Identification](../Database/Images/Attributes%20Identification.png)    
+
+Step 5 (Creat ERD) : 
+
+![Creat ERD](../Database/Images/Attributes%20Identification.png)    
+
+
+Using Website : (https://erdplus.com/).  
+
+
+## Generalization
+
+- Generalization is the process of extracting common properties from a set of entities and create a generalized entity from it.  
+
+- It is a bottom-up approach in which two or more entities can be generalized to a higher level entity if they have some attributes in common.  
+
+## Specialization  
+
+- In specialization, an entity is divided into sub-entities based on their characteristics.  
+
+- Specialization is a top-down approach in which a higher-level entity is divided into multiple specialized lower-level entities.  
+
+
+
+
+
 
 
 
