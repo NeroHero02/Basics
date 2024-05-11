@@ -394,6 +394,75 @@ Using Website : (https://erdplus.com/).
 - Specialization is a top-down approach in which a higher-level entity is divided into multiple specialized lower-level entities.  
 
 
+## Relational Schema
+
+
+
+
+## SQL - Data Definition Language - DDL
+
+1. Create Database  
+
+```sql
+CREATE DATABASE NameDatabase;
+```
+
+2. Create Database IF NOT EXISTS  
+
+```sql
+IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'NameDatabase')
+BEGIN
+CREATE DATABASE NameDatabase;
+END
+```
+
+3. Switch Database  
+
+```sql
+USE NameDatabase;
+```
+
+4. Drop Database  
+
+```sql
+DROP DATABASE NameDatabase;
+```
+
+5. Drop Database IF EXISTS  
+
+```sql
+IF EXISTS(SELECT * From sys.databases WHERE name = 'NameDatabase')
+BEGIN
+Drop Database NameDatabase;
+END
+```
+
+6. Create Table  
+
+```sql
+CREATE TABLE NameDatabase (
+column1 datatype,
+column2 datatype,
+column3 datatype,
+....
+);
+```
+
+Example : 
+
+```sql
+CREATE TABLE Employees (
+  ID int NOT NULL,
+  Name nvarchar(50) NOT NULL,
+  Phone nvarchar(10) Null,
+  Salary smallmoney NULL,
+  PRIMARY KEY (ID)
+);
+```
+
+7. SQL Server Data Types  
+
+![SQL Server Data Types](../Database/Images/SQL%20SERVER%20DATA%20TYPES.PNG)   
 
 
 
