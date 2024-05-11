@@ -518,11 +518,79 @@ ALTER COLUMN NameColumn newDatatype;
 ```
 
 
+4. Delete Column in a Table
+
+```sql
+ALTER TABLE NameTable
+DROP COLUMN NameColumn;
+```
+
+## Data Manipulation Language - DML
+
+1. Insert Into Statement  
+
+```sql
+-- Insert one record at a time
+INSERT INTO table_name (column1,column2,column3,...) 
+VALUES (value1,value2,value3,...)
+
+-- Insert one record at a time with some null values  
+INSERT INTO table_name
+values (value1,value2,null,null,....);
+
+-- Insert Multiple records at a time
+INSERT INTO table_name
+VALUES(value1,value2,value3,....),
+(value1,value2,value3,....),
+(value1,value2,value3,....);
+
+-- insert only selected fields
+INSERT INTO table_name (Column1,Column2)
+values (valu1,value2);
+
+-- Return all records in table
+SELECT * FROM table_name;
+
+-- Delete all records in table
+DELETE FROM table_name;
+```
+
+## Backup & Restore Database
+
+1. SQL Backup Database Statement  
+
+```sql
+BACKUP DATABASE NameDatabase
+TO DISK = 'Path' -- Example : 'C:\Mydatabase1_backup.bak';
+```
+
+- Using Sql Server GUI  
+Right Click Database Then Select Tasks Then Select BackUp.  
 
 
+2. Differential Backup  
+
+Note : A differential back up only backs up the parts of the database that have changed since the last full database backup.  
+
+```sql
+BACKUP DATABASE NameDatabase
+TO DISK = 'Path'
+WITH DIFFERENTIAL;
+```
+
+- Using Sql Server GUI  
+Right Click Database Then Select Tasks Then Select BackUp Change BackUp File From Full to Differential.  
 
 
+3. Restore Database  
 
+```sql
+RESTORE DATABASE NameDatabase
+FROM DISK = 'PATH';
+```
+
+- Using Sql Server GUI  
+Right Click Database Then Select Tasks Then Restore.  
 
 
 
