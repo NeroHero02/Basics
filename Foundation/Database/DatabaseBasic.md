@@ -465,7 +465,57 @@ CREATE TABLE Employees (
 ![SQL Server Data Types](../Database/Images/SQL%20SERVER%20DATA%20TYPES.PNG)   
 
 
+8. Drop Table  
 
+```sql
+DROP TABLE NameTable;
+```
+
+## DDL - Alter Table Statement
+
+1. Add Column in a Table
+
+```sql
+ALTER TABLE NameTable
+ADD NameColumn Datatype;
+```
+
+2. Rename Column in a Table 
+
+```sql
+ALTER TABLE NameTable
+RENAME COLUMN Old_Name TO New_Name;
+```
+
+3. Modify Column in a Table
+
+- SQL Server  
+
+```sql
+ALTER TABLE NameTable
+ALTER COLUMN NameColumn newDatatype;
+```
+
+- MySQL  
+
+```sql
+ALTER TABLE NameTable
+MODIFY COLUMN NameColumn newDatatype;
+```
+
+- Oracle  
+
+```sql
+ALTER TABLE NameTable
+MODIFY NameColumn newDatatype;
+```
+
+- PostgreSQL  
+
+```sql
+ALTER TABLE NameTable
+ALTER COLUMN NameColumn newDatatype;
+```
 
 
 
