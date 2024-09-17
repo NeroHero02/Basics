@@ -90,3 +90,48 @@ Responsible for :
 - When computers are connected to the internet or Network, the IP address alows them to send and receive data.
 - The acronym IP stand for "Internet Protocol", which is a collection of rules that regulate the format of data transferred over the internet or a local network.
 
+## Internet Protocol (IPv6)
+- IPv6 Address Format (Hexadecimal Notation)
+16 Bytes = 128 Bits.  
+Example : 2001:0db8:0000:0000:ff00:0000:0042:8330
+
+## Types of IP Address 
+
+Four Types:  
+- Public 
+- Private
+- Static
+- Dynamic
+
+## Dynamic Host Configuration Protocol 
+
+- DHCP is a client/server protocol that automatically provides an Internet Protocol (IP).
+
+## Internet Service Provider
+
+- ISP a company that provides Internet connections and services to indivduals and organizations.
+
+## Port & Socket 
+
+- IP Address + Port = Socket Address.  
+- In networking, a socket is used to allow many processes within a single or different host to use TCP communication simultaneously.  
+- a port is a number assigned to uniquely identify a connection endpoint and to direct data to a specific service.  
+
+<span style="color: red;">Important: Server can have many Services on it</span>  
+
+## Subnet Mask
+
+- Subnetting is the practice of dividing a network into two or more smaller networks. It increases routing efficiency, enhances the security of the network.  
+- Network Identifier : The first part of the IP address is the network identifier that identifies the network segment in which the computer is located. The same network identifier is required for all computer in the same segment, just as all houses in a particular county must have the same postal code.  
+- The second part of the IP address is the host identifier, which identifies a computer, router , or other device within a segment. The host identifier must be unique within the network segment, just as the street name for a house within the postcode area must be unique.
+
+## Mac Address
+
+- Media Accesss Control address : is a hardware identifier that uniquely identifies each device on a network. Primarily, the manufacturer assigns it.  
+- MAC address is a unique number which is used to track a device in a network.  
+- MAC address provides a secure way to find senders or receivers in the network.
+- It helps prevent unwanted network access.
+- Mac address is also used in Wi-Fi networks at the airport for a specfic device in order to identifiy it.
+
+
+
