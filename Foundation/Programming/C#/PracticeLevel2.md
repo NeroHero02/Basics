@@ -967,3 +967,537 @@ namespace ConsoleApp2
     }
 }
 ```
+
+## Problem 14
+**Write a program to check if the matrix is Scalar or not.**
+
+```c#
+using System;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+      
+        static bool IsScalar(int[,] arr, int Rows, int Cols)
+        {
+            int FirstDigitElements = arr[0, 0];
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Cols; j++)
+                {
+                    if (i == j && arr[i, j] != FirstDigitElements)
+                        return false;
+                    else if (i != j && arr[i, j] != 0)
+                        return false;
+                }
+            }
+            return true;
+        }
+        static void PrintMatrix(int[,] arr, int Rows, int Cols)
+        {
+            for (int i = 0;i < Rows; i++)
+            {
+                for (int j = 0;j < Cols; j++)
+                {
+                    Console.Write(arr[i, j] + "\t");
+                }    
+                Console.WriteLine();
+            }
+        }
+      
+        static void Main(string[] args)
+        {
+            int[,] arr1 = {{9,0,0},{ 0, 9, 0 },{ 0, 0, 9 } };
+
+            Console.WriteLine("Matrix1:");
+            PrintMatrix(arr1, 3, 3);
+
+            if (IsScalar(arr1,3,3))
+                Console.WriteLine("Yes: Matrix is Scalar.");
+            else
+                Console.WriteLine("No: Matrix is not Scalar.");
+
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 15
+**Write a program to count given number in matrix.**
+
+```c#
+using System;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    { 
+        static int CountNumberInMatrix(int[,] arr, int Rows, int Cols, int Number)
+        {
+            int numberCount = 0;
+            for (int i = 0;i<Rows;i++)
+            {
+                for (int j = 0;j<Cols;j++)
+                {
+                    if (arr[i,j] == Number)
+                        numberCount++;
+                }
+            }
+            return numberCount;
+        }
+        static void PrintMatrix(int[,] arr, int Rows, int Cols)
+        {
+            for (int i = 0;i < Rows; i++)
+            {
+                for (int j = 0;j < Cols; j++)
+                {
+                    Console.Write(arr[i, j] + "\t");
+                }    
+                Console.WriteLine();
+            }
+        }
+      
+        static void Main(string[] args)
+        {
+            int[,] arr1 = { {9, 1, 12},{ 0, 9, 1 },{ 0, 9, 9 } };
+
+            Console.WriteLine("Matrix1:");
+            PrintMatrix(arr1, 3, 3);
+
+            Console.Write("Enter the number to count in matrix? ");
+            int Number = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Number " + Number + " count in matrix is : " + CountNumberInMatrix(arr1, 3, 3, Number));
+           
+
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 16
+**Write a program to check if the matrix is Sparce or not.**
+
+```c#
+using System;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    { 
+        static int CountNumberInMatrix(int[,] arr, int Rows, int Cols, int Number)
+        {
+            int numberCount = 0;
+            for (int i = 0;i<Rows;i++)
+            {
+                for (int j = 0;j<Cols;j++)
+                {
+                    if (arr[i,j] == Number)
+                        numberCount++;
+                }
+            }
+            return numberCount;
+        }
+
+        static bool isSparce(int[,] arr , int Rows, int Cols)
+        {
+            if (CountNumberInMatrix(arr, Rows, Cols, 0) <= Math.Ceiling((float)(Rows*Cols) / 2))
+                return false;
+            return true;
+        }
+        static void PrintMatrix(int[,] arr, int Rows, int Cols)
+        {
+            for (int i = 0;i < Rows; i++)
+            {
+                for (int j = 0;j < Cols; j++)
+                {
+                    Console.Write(arr[i, j] + "\t");
+                }    
+                Console.WriteLine();
+            }
+        }
+      
+        static void Main(string[] args)
+        {
+            int[,] arr1 = { {0, 0, 12},{ 0, 0, 1 },{ 0, 0, 9 } };
+
+            Console.WriteLine("Matrix1:");
+            PrintMatrix(arr1, 3, 3);
+
+            if (isSparce(arr1, 3, 3))
+                Console.WriteLine("Yes: It is Sparse");
+            else
+                Console.WriteLine("No: It's NOT Sparse");
+
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 17
+**Write a program to check if a given number exists in matrix or not.**
+
+```c#
+using System;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    { 
+        static bool IsNumberInMatrix(int[,] arr, int Rows, int Cols, int Number)
+        {
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Cols; j++)
+                {
+                    if (arr[i, j] == Number)
+                        return true;
+                }
+            }
+            return false;
+        }
+        static void PrintMatrix(int[,] arr, int Rows, int Cols)
+        {
+            for (int i = 0;i < Rows; i++)
+            {
+                for (int j = 0;j < Cols; j++)
+                {
+                    Console.Write(arr[i, j] + "\t");
+                }    
+                Console.WriteLine();
+            }
+        }
+      
+        static void Main(string[] args)
+        {
+            int[,] arr1 = { {77, 5, 12},{ 22, 20, 1 },{ 1, 0, 9 } };
+
+            Console.WriteLine("Matrix1:");
+            PrintMatrix(arr1, 3, 3);
+
+            Console.Write("Please Enter the number to look for in matrix? ");
+            int Number = Int32.Parse(Console.ReadLine());
+
+            if (IsNumberInMatrix(arr1, 3, 3,Number))
+                Console.WriteLine("Yes: It is there.");
+            else
+                Console.WriteLine("No: It's not there.");
+
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 18
+**Write a program to print the intersected numbers in two given matrices.**
+
+```c#
+using System;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static bool IsNumberInMatrix(int[,] arr, int Rows, int Cols, int Number)
+        {
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Cols; j++)
+                {
+                    if (arr[i, j] == Number)
+                        return true;
+                }
+            }
+            return false;
+        }
+        static void PrintIntersectedNumbers(int[,] arr1, int[,] arr2, int Rows, int Cols)
+        {
+            int Number;
+            for (int i = 0; i < Rows; i++)
+                for (int j = 0; j < Cols; j++)
+                {
+                    Number = arr1[i, j];
+                    if (IsNumberInMatrix(arr2,Rows,Cols,Number))
+                        Console.Write(Number + "\t");
+                }
+        }
+        static void PrintMatrix(int[,] arr, int Rows, int Cols)
+        {
+            for (int i = 0;i < Rows; i++)
+            {
+                for (int j = 0;j < Cols; j++)
+                {
+                    Console.Write(arr[i, j] + "\t");
+                }    
+                Console.WriteLine();
+            }
+        }
+      
+        static void Main(string[] args)
+        {
+            int[,] arr1 = { {77, 5, 12},{ 22, 20, 1 },{ 1, 0, 9 } };
+            int[,] arr2 = { { 5, 80, 90 }, { 22, 77, 1 }, {10,8,33} };
+
+            Console.WriteLine("Matrix1:");
+            PrintMatrix(arr1, 3, 3);
+
+            Console.WriteLine("Matrix2:");
+            PrintMatrix(arr2,3,3);
+
+            Console.WriteLine("Intersected Numbers are:");
+            PrintIntersectedNumbers(arr1, arr2, 3, 3);
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 19
+**Write a program to print the Minimum and Maximum Numbers in Matrix.**
+
+```c#
+using System;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        
+        static int MinNumberInMatrix(int[,] arr, int Rows, int Cols)
+        {
+            int MinNumber = arr[0, 0];
+            for (int i = 0;i<Rows;i++)
+            {
+                for (int j = 0;j<Cols;j++)
+                {
+                    if (MinNumber > arr[i,j])
+                        MinNumber = arr[i,j];
+                }
+            }
+            return MinNumber;
+        }
+        static int MaxNumberInMatrix(int[,] arr, int Rows, int Cols)
+        {
+            int MaxNumber = arr[0, 0];
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Cols; j++)
+                {
+                    if (MaxNumber < arr[i, j])
+                        MaxNumber = arr[i, j];
+                }
+            }
+            return MaxNumber;
+        }
+        static void PrintMatrix(int[,] arr, int Rows, int Cols)
+        {
+            for (int i = 0;i < Rows; i++)
+            {
+                for (int j = 0;j < Cols; j++)
+                {
+                    Console.Write(arr[i, j] + "\t");
+                }    
+                Console.WriteLine();
+            }
+        }
+      
+        static void Main(string[] args)
+        {
+            int[,] arr1 = { {77, 5, 12},{ 22, 20, 6 },{ 14, 3, 9 } };
+
+            Console.WriteLine("Matrix1:");
+            PrintMatrix(arr1, 3, 3);
+
+            Console.Write("Minimum Number is: ");
+            Console.WriteLine(MinNumberInMatrix(arr1, 3, 3));
+
+            Console.Write("Max Number is: ");
+            Console.WriteLine(MaxNumberInMatrix(arr1, 3, 3));
+
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 20
+**Write a program to check it the matrix is Palindrome or not.**
+
+```c#
+using System;
+using System.Net.Http.Headers;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        
+        static bool isPalindrome(int[,] arr, int Rows, int Cols)
+        {
+            for (int i = 0; i < Rows; i++)
+                for (int j = 0; j < Cols/2; j++)
+                {
+                    if (arr[i, j] != arr[i, Cols - j - 1])
+                        return false;
+                }
+            return true;
+
+        }
+       
+        static void PrintMatrix(int[,] arr, int Rows, int Cols)
+        {
+            for (int i = 0;i < Rows; i++)
+            {
+                for (int j = 0;j < Cols; j++)
+                {
+                    Console.Write(arr[i, j] + "\t");
+                }    
+                Console.WriteLine();
+            }
+        }
+      
+        static void Main(string[] args)
+        {
+            int[,] arr1 = { {1, 2, 1},{ 5, 5, 5 },{ 7, 3, 7 } };
+
+            Console.WriteLine("Matrix1:");
+            PrintMatrix(arr1, 3, 3);
+
+            if (isPalindrome(arr1, 3, 3))
+                Console.WriteLine("Yes: Matrix is Palindrome");
+            else
+                Console.WriteLine("No: Matrix is NOT Palindrome");
+
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 21 
+**Write a program to print Fibonacci Series of 10 using loop.**
+
+```c#
+using System;
+using System.Net.Http.Headers;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void PrintFibonacciUsingLoop(int Number)
+        {
+            int FirstPrev = 1;
+            int SecPrev = 0;
+            int FebNumber = 0;
+            Console.Write("1\t");
+            for(int i = 0; i < Number - 1; i++)
+            {
+                FebNumber = FirstPrev + SecPrev;
+
+                Console.Write(FebNumber + "\t");
+         
+                SecPrev = FirstPrev;
+                FirstPrev = FebNumber;
+            }
+        }
+        static void Main(string[] args)
+        {
+            PrintFibonacciUsingLoop(10);
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 22
+**Write a program to print Fibonacci Series of 10 using Recursion.**
+
+```c#
+using System;
+using System.Net.Http.Headers;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void PrintFibonacciUsingRecursion(int Number, int Prev1, int Prev2)
+        {
+            int FebNumber = 0;
+
+            if (Number > 0)
+               {
+                FebNumber = Prev1 + Prev2;
+                Console.Write(FebNumber + "\t");
+                Prev2 = Prev1;
+                Prev1 = FebNumber;
+
+                PrintFibonacciUsingRecursion(Number - 1, Prev1, Prev2);
+               }
+            else
+                return;
+        }
+        static void Main(string[] args)
+        {
+            PrintFibonacciUsingRecursion(10, 0, 1);
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 23
+**Write a program to read a string then print the first letter of each word in that string.**
+
+```c#
+using System;
+using System.Net.Http.Headers;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+
+        static string ReadString()
+        {
+            string _Input;
+            Console.WriteLine("Please Enter Your String?");
+            _Input = Console.ReadLine();
+
+            return _Input;
+
+        }
+       static void PrintFirstLetterEachWord(string Input)
+        {
+            bool isFirstLetter = true;
+            Console.WriteLine("First letter of this string:");
+
+            for (int i = 0; i < Input.Length - 1; i++)
+            {
+                if (Input[i] != ' ' && isFirstLetter)
+                {
+                    Console.WriteLine(Input[i]);
+                }
+                isFirstLetter = (Input[i] == ' ' ? true : false);
+            }
+
+        }
+        static void Main(string[] args)
+        {
+            PrintFirstLetterEachWord(ReadString());
+
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 24
+****
+```c#
+
+```
