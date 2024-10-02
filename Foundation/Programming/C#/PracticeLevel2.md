@@ -745,3 +745,225 @@ namespace ConsoleApp2
     }
 }
 ```
+
+## Problem 11
+**Write a program to compre two matrices and check if they are equal or not.**
+
+```c#
+using System;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static Random rnd = new Random();
+        static int Number = rnd.Next();
+
+        static int RandomNumber(int From, int To)
+        {
+            Number = rnd.Next(From, To);
+            return Number;
+        }
+
+        static void FillMatrixWithRandomNumber(int[,] arr, int Rows, int Cols)
+        {
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Cols; j++)
+                {
+                    arr[i, j] = RandomNumber(1, 10);
+                }
+            }
+        }
+
+        static int SumOfMatrix(int[,] arr, int Rows, int Cols)
+        {
+            int Sum = 0;
+
+            for (int i = 0;i < Rows; i++)
+            {
+                for (int j=0;j < Cols; j++)
+                {
+                    Sum+= arr[i, j];
+                }
+            }
+
+            return Sum;
+        }
+
+        static bool AreEqualMatrix(int[,] arr1, int[,] arr2, int Rows, int Cols)
+        {
+            return SumOfMatrix(arr1,Rows,Cols) == SumOfMatrix(arr2,Rows,Cols);
+        }
+        static void PrintMatrix(int[,] arr, int Rows, int Cols)
+        {
+            for (int i = 0;i < Rows; i++)
+            {
+                for (int j = 0;j < Cols; j++)
+                {
+                    Console.Write(String.Format("{0:D2}", arr[i, j]) + "\t");
+                }    
+                Console.WriteLine();
+            }
+        }
+      
+        static void Main(string[] args)
+        {
+            int[,] arr1 = new int[3, 3];
+            int[,] arr2 = new int[3, 3];
+
+            FillMatrixWithRandomNumber(arr1, 3, 3);
+
+            Console.WriteLine("Matrix1:");
+            PrintMatrix(arr1,3,3);
+
+            FillMatrixWithRandomNumber(arr2, 3, 3);
+
+            Console.WriteLine("Matrix2:");
+            PrintMatrix(arr2, 3, 3);
+
+            if (AreEqualMatrix(arr1, arr2, 3, 3))
+                Console.WriteLine("Yes: both Matrices are equal.");
+            else
+                Console.WriteLine("No: Matrix are not equal.");
+
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 12
+**Write a program to compare two matrices and check if they are typical or not.**
+
+```c#
+using System;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static Random rnd = new Random();
+        static int Number = rnd.Next();
+
+        static int RandomNumber(int From, int To)
+        {
+            Number = rnd.Next(From, To);
+            return Number;
+        }
+
+        static void FillMatrixWithRandomNumber(int[,] arr, int Rows, int Cols)
+        {
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Cols; j++)
+                {
+                    arr[i, j] = RandomNumber(1, 10);
+                }
+            }
+        }
+
+        static bool AreTypicalMatrix(int[,] arr1, int[,] arr2, int Rows, int Cols)
+        {
+            for (int i = 0;i<Rows;i++)
+            {
+                for (int j=0; j<Cols; j++)
+                {
+                    if (arr1[i, j] != arr2[i, j])
+                        return false;
+                }
+            }
+            return true;
+        }
+        static void PrintMatrix(int[,] arr, int Rows, int Cols)
+        {
+            for (int i = 0;i < Rows; i++)
+            {
+                for (int j = 0;j < Cols; j++)
+                {
+                    Console.Write(String.Format("{0:D2}", arr[i, j]) + "\t");
+                }    
+                Console.WriteLine();
+            }
+        }
+      
+        static void Main(string[] args)
+        {
+            int[,] arr1 = new int[3, 3];
+            int[,] arr2 = new int[3, 3];
+
+            FillMatrixWithRandomNumber(arr1, 3, 3);
+
+            Console.WriteLine("Matrix1:");
+            PrintMatrix(arr1,3,3);
+
+            FillMatrixWithRandomNumber(arr2, 3, 3);
+
+            Console.WriteLine("Matrix2:");
+            PrintMatrix(arr2, 3, 3);
+
+            if (AreTypicalMatrix(arr1,arr2,3,3))
+                Console.WriteLine("Yes: both Matrices are Typical.");
+            else
+                Console.WriteLine("No: Matrix are not Typical.");
+
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 13
+**Write a program to check if the matrix is identity or not.**
+
+```c#
+using System;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+      
+        static bool IsIdentityMarix(int[,] arr, int Rows, int Cols)
+        {
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Cols; j++)
+                {
+                    if (i == j && arr[i, j] != 1)
+                        return false;
+                    else if (i != j && arr[i, j] != 0)
+                        return false;
+                }
+            }
+            return true;
+        }
+        static void PrintMatrix(int[,] arr, int Rows, int Cols)
+        {
+            for (int i = 0;i < Rows; i++)
+            {
+                for (int j = 0;j < Cols; j++)
+                {
+                    Console.Write(arr[i, j] + "\t");
+                }    
+                Console.WriteLine();
+            }
+        }
+      
+        static void Main(string[] args)
+        {
+            int[,] arr1 = {{1,0,0},{ 0, 1, 0 },{ 0, 0, 1 } };
+
+            Console.WriteLine("Matrix1:");
+            PrintMatrix(arr1, 3, 3);
+
+            if (IsIdentityMarix(arr1,3,3))
+                Console.WriteLine("Yes: Matrix is identity.");
+            else
+                Console.WriteLine("No: Matrix is not identity.");
+
+            Console.ReadKey();
+        }
+    }
+}
+```
