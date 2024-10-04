@@ -1872,3 +1872,346 @@ namespace ConsoleApp2
     }
 }
 ```
+
+## Problem 31
+**Write a program to read a string and read a character then count the character in that string (Match Case or Not).**
+
+```c#
+using System;
+using System.Net.Http.Headers;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static string ReadString()
+        {
+            string _Input;
+            Console.WriteLine("Please Enter Your String?");
+            _Input = Console.ReadLine();
+
+            return _Input;
+
+        }
+
+        static char ReadChar()
+        {
+            char _Input;
+            Console.WriteLine("\nPlease Enter Your Character?");
+            _Input = (char)Console.Read();
+
+            return _Input;
+
+        }
+
+        static int CountLetter(string Input, char Letter)
+        {
+            int Counter = 0;
+            for (int i = 0;i<Input.Length;i++)
+            {
+                if (Input[i] == Letter)
+                    Counter++;
+            }
+            return Counter;
+        }
+        static int CountLetterMatchOrNot(string Input, char Letter)
+        {
+            int Counter = 0;
+            for (int i = 0;i < Input.Length; i++)
+            {
+                if (char.ToUpper(Input[i]) == Letter || char.ToLower(Input[i]) == Letter)
+                    Counter++;
+            }
+            return Counter;
+        }
+
+        static void Main(string[] args)
+        {
+            string _Input = ReadString();
+            char _Letter = ReadChar();
+
+            Console.WriteLine("Letter '" + _Letter + "' Count = " + CountLetter(_Input,_Letter));
+            Console.WriteLine("Letter '" + char.ToUpper(_Letter) + "' or '" + char.ToLower(_Letter) + "' Count = " + CountLetterMatchOrNot(_Input,_Letter));
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 32
+**Write a program to read a character the check if it is a vowel or not (Vowels are:a, e ,i ,o ,u).**
+
+```c#
+using System;
+using System.Net.Http.Headers;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static char ReadChar()
+        {
+            char _Input;
+            Console.WriteLine("\nPlease Enter Your Character?");
+            _Input = (char)Console.Read();
+
+            return _Input;
+
+        }
+        
+        static bool IsVowel(char _Letter)
+        {
+            return (_Letter == 'a') || (_Letter == 'o') || (_Letter == 'e') || (_Letter == 'i') || (_Letter == 'u');
+        }
+   
+        static void Main(string[] args)
+        {
+            char _Letter = ReadChar();
+
+            if (IsVowel(_Letter))
+             Console.WriteLine("YES: Letter '" + _Letter + "' is vowel");
+            else
+             Console.WriteLine("NO: Letter '" + _Letter + "' is NOT vowel");
+
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 33
+**Write a program to read a string then count all vowels in that string (Vowels are: a,e,i,o,u).**
+
+```c#
+using System;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static string ReadString()
+        {
+            string _Input;
+            Console.WriteLine("Please Enter Your String?");
+            _Input = Console.ReadLine();
+
+            return _Input;
+
+        }
+
+        static bool IsVowel(char _Letter)
+        {
+            return (_Letter == 'a') || (_Letter == 'o') || (_Letter == 'e') || (_Letter == 'i') || (_Letter == 'u');
+        }
+       
+        static int CountVowels(string Input)
+        {
+            int Counter = 0;
+            for (int i = 0; i < Input.Length; i++)
+            {
+                if (IsVowel(Input[i]))
+                    Counter++;  
+                
+            }
+
+            return Counter;
+        }
+        static void Main(string[] args)
+        {
+
+            Console.WriteLine("\nNumber of vowels is: " + CountVowels(ReadString()));
+            
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 34
+**Write a program to read a string then print all vowels in that string (Vowels are: a,e,i,o,u).**
+
+```c#
+using System;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static string ReadString()
+        {
+            string _Input;
+            Console.WriteLine("Please Enter Your String?");
+            _Input = Console.ReadLine();
+
+            return _Input;
+
+        }
+
+        static bool IsVowel(char _Letter)
+        {
+           _Letter = char.ToLower(_Letter);
+            return (_Letter == 'a') || (_Letter == 'o') || (_Letter == 'e') || (_Letter == 'i') || (_Letter == 'u');
+        }
+       
+        static void PrintVowels(string Input)
+        {
+            Console.Write("Vowels in string are: ");
+            for (int i = 0; i < Input.Length; i++)
+            {
+                if (IsVowel(Input[i]))
+                    Console.Write(Input[i] + "     ");  
+            }
+        }
+        static void Main(string[] args)
+        {
+            PrintVowels(ReadString());
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 35
+**Write a program to read a string then print each word in that string.**
+
+```c#
+using System;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static string ReadString()
+        {
+            string _Input;
+            Console.WriteLine("Please Enter Your String?");
+            _Input = Console.ReadLine();
+
+            return _Input;
+
+        }
+
+        static void PrintEachWordInString(string Input)
+        {
+            Console.WriteLine("Your string words are:");
+            for (int i = 0; i < Input.Length; i++)
+            {
+                if (Input[i] == ' ')
+                    Console.WriteLine();
+                else
+                    Console.Write(Input[i]);
+            }
+        }
+        static void Main(string[] args)
+        {
+            PrintEachWordInString(ReadString());
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 36
+**Write a program to read a string then count each word in that string.**
+
+```c#
+using System;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static string ReadString()
+        {
+            string _Input;
+            Console.WriteLine("Please Enter Your String?");
+            _Input = Console.ReadLine();
+
+            return _Input;
+
+        }
+
+        static int CountWordInString(string Input)
+        {
+            int countWord = 0;
+            bool isWord = false;
+            for (int i = 0; i < Input.Length; i++)
+            {
+                if (Input[i] != ' ')
+                {
+                    if (!isWord)
+                    {
+                        countWord++;
+                        isWord = true;
+                    }
+                }
+                else
+                    isWord = false;
+            }
+            return countWord;
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("The number of words in your string is: "+CountWordInString(ReadString()));
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 37
+**Write a program to read a string then Trim Left, Right, All**
+
+```c#
+using System;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static string ReadString()
+        {
+            string _Input;
+            Console.WriteLine("Please Enter Your String?");
+            _Input = Console.ReadLine();
+
+            return _Input;
+
+        }
+
+        static string TrimLeft(string Input)
+        {
+            for (int i = 0;i<Input.Length;i++)
+            {
+                if (Input[i] != ' ')
+                    return Input.Substring(i);
+            }
+            return "";
+        }
+
+        static string TrimRight(string Input)
+        {
+            for (int i = Input.Length - 1; i >= 0 ; i--)
+            {
+                if (Input[i] != ' ')
+                    return Input.Substring(0,i + 1);
+            }
+            return "";
+        }
+
+        static string Trim(string Input)
+        {
+            return TrimLeft(TrimRight(Input));
+        }
+
+        static void Main(string[] args)
+        {
+            string _Input = ReadString();
+            Console.WriteLine("Trim: " + Trim(_Input));
+            Console.WriteLine("Trim Left: " + TrimLeft(_Input));
+            Console.WriteLine("Trim Right: " + TrimRight(_Input));
+            Console.ReadKey();
+        }
+    }
+}
+```
