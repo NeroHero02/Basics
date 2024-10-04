@@ -1497,7 +1497,378 @@ namespace ConsoleApp2
 ```
 
 ## Problem 24
-****
+**Write a program to read a string then uppercase the first letter of each word in that string.**
 ```c#
+using System;
+using System.Net.Http.Headers;
 
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+
+        static string ReadString()
+        {
+            string _Input;
+            Console.WriteLine("Please Enter Your String?");
+            _Input = Console.ReadLine();
+
+            return _Input;
+
+        }
+       static string UpperFirstLetterOfEachWord(string Input)
+        {
+            bool isFirstLetter = true;
+            char[] chars = Input.ToCharArray();
+            for (int i = 0; i < chars.Length - 1; i++)
+            {
+                if (chars[i] != ' ' && isFirstLetter)
+                {
+                    chars[i] = char.ToUpper(chars[i]);
+                }
+                isFirstLetter = (chars[i] == ' ' ? true : false);
+            }
+
+            Console.WriteLine("String After Conversion:");
+            return new string(chars);
+
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine(UpperFirstLetterOfEachWord(ReadString()));
+
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 25
+**Write a program to read a string then lowercase the first letter of each word in that string.**
+
+```c#
+using System;
+using System.Net.Http.Headers;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+
+        static string ReadString()
+        {
+            string _Input;
+            Console.WriteLine("Please Enter Your String?");
+            _Input = Console.ReadLine();
+
+            return _Input;
+
+        }
+       static string LowerFirstLetterOfEachWord(string Input)
+        {
+            bool isFirstLetter = true;
+            char[] chars = Input.ToCharArray();
+            for (int i = 0; i < chars.Length - 1; i++)
+            {
+                if (chars[i] != ' ' && isFirstLetter)
+                {
+                    chars[i] = char.ToLower(chars[i]);
+                }
+                isFirstLetter = (chars[i] == ' ' ? true : false);
+            }
+
+            Console.WriteLine("String After Conversion:");
+            return new string(chars);
+
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine(LowerFirstLetterOfEachWord(ReadString()));
+
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 26
+**Write a program to read a string then upper all letters , then lower all letters , and print them**
+
+```c#
+using System;
+using System.Net.Http.Headers;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+
+        static string ReadString()
+        {
+            string _Input;
+            Console.WriteLine("Please Enter Your String?");
+            _Input = Console.ReadLine();
+
+            return _Input;
+
+        }
+       static string LowerAllString(string Input)
+        {
+            
+            char[] chars = Input.ToCharArray();
+            for (int i = 0; i < chars.Length; i++)
+            {
+                if (chars[i] != ' ')
+                {
+                    chars[i] = char.ToLower(chars[i]);
+                }
+            }
+            Console.WriteLine("String After Lower:");
+            return new string(chars);
+
+        }
+
+        static string UpperAllString(string Input)
+        {
+
+            char[] chars = Input.ToCharArray();
+            for (int i = 0; i < chars.Length; i++)
+            {
+                if (chars[i] != ' ')
+                {
+                    chars[i] = char.ToUpper(chars[i]);
+                }
+            }
+            Console.WriteLine("String After Upper:");
+            return new string(chars);
+
+        }
+        static void Main(string[] args)
+        {
+            string _Input = ReadString();  
+            Console.WriteLine(UpperAllString(_Input));
+            Console.WriteLine(LowerAllString(_Input));
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 27
+**Write a program to read a character then invert it's case and print it.**
+
+```c#
+using System;
+using System.Net.Http.Headers;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+
+        static char ReadChar()
+        {
+            char _Input;
+            Console.WriteLine("Please Enter Your Character?");
+            _Input = (char)Console.Read();
+
+            return _Input;
+
+        }
+       static char InvertChar(char Input)
+        {
+            Console.WriteLine("Char after inverting case:");
+            return (Char.IsUpper(Input)) ? Input = Char.ToLower(Input) : Input = Char.ToUpper(Input);
+        }
+
+      
+        static void Main(string[] args)
+        {
+            Console.WriteLine(InvertChar(ReadChar()));
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 28
+**Write a program to read a string then invert all its letter's case and print it.**
+
+```c#
+using System;
+using System.Net.Http.Headers;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+
+        static string ReadString()
+        {
+            string _Input;
+            Console.WriteLine("Please Enter Your String?");
+            _Input = Console.ReadLine();
+
+            return _Input;
+
+        }
+        static char InvertChar(char Input)
+        {
+            return (Char.IsUpper(Input)) ? Input = Char.ToLower(Input) : Input = Char.ToUpper(Input);
+        }
+
+        static string InvertAllCharacter(string Input)
+        {
+            char[] chars = Input.ToCharArray();
+
+            for (int i = 0;i<chars.Length;i++)
+            {
+                chars[i] = InvertChar(chars[i]);
+            }
+
+
+            Console.WriteLine("String after Inverting All Letter Case:");
+            return new string(chars);
+        }
+
+      
+        static void Main(string[] args)
+        {
+            Console.WriteLine(InvertAllCharacter(ReadString()));
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 29
+**Write a program to read a string then count small/capital letters in that string.**
+```c#
+using System;
+using System.Net.Http.Headers;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        enum enWhatToCount { SmallLetter = 0 , CapitalLetter = 1, All = 3}
+
+        static int CountLetter(string Input, enWhatToCount WhatToCount = enWhatToCount.All)
+        {
+            int Counter = 0;
+            if (WhatToCount == enWhatToCount.All)
+                return Input.Length;
+           
+            for (int i = 0; i<Input.Length;i++)
+            {
+                if (char.IsUpper(Input[i]) && WhatToCount == enWhatToCount.CapitalLetter)
+                    Counter++;
+                if (char.IsLower(Input[i]) && WhatToCount == enWhatToCount.SmallLetter)
+                    Counter++;
+            }
+            return Counter;
+        }
+        static string ReadString()
+        {
+            string _Input;
+            Console.WriteLine("Please Enter Your String?");
+            _Input = Console.ReadLine();
+
+            return _Input;
+
+        }
+        
+        // First Way
+        static int CapitalLetterCount(string Input)
+        {
+            int Count = 0;
+            foreach (char c in Input)
+            {
+                if (char.IsUpper(c))
+                {
+                    Count++;
+                }
+            }
+
+            return Count;
+        }
+        // First way
+        static int SmallLetterCount(string Input)
+        {
+            int Count = 0;
+            foreach (char c in Input)
+            {
+                if (char.IsLower(c))
+                {
+                    Count++;
+                }
+            }
+
+            return Count;
+        }
+
+        static void Main(string[] args)
+        {
+            string _Input = ReadString();
+            Console.WriteLine("String Length:" + CountLetter(_Input, enWhatToCount.All));
+            Console.WriteLine("Capital Letter Count:" + CountLetter(_Input, enWhatToCount.CapitalLetter));
+            Console.WriteLine("Small Letter Count:" + CountLetter(_Input, enWhatToCount.SmallLetter));
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 30
+
+**Write a program to read a string and read a character then count the character in that string.**
+
+```c#
+using System;
+using System.Net.Http.Headers;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static string ReadString()
+        {
+            string _Input;
+            Console.WriteLine("Please Enter Your String?");
+            _Input = Console.ReadLine();
+
+            return _Input;
+
+        }
+
+        static char ReadChar()
+        {
+            char _Input;
+            Console.WriteLine("\nPlease Enter Your Character?");
+            _Input = (char)Console.Read();
+
+            return _Input;
+
+        }
+
+        static int CountLetter(string Input, char Letter)
+        {
+            int Counter = 0;
+            for (int i = 0;i<Input.Length;i++)
+            {
+                if (Input[i] == Letter)
+                    Counter++;
+            }
+            return Counter;
+        }
+        static void Main(string[] args)
+        {
+            string _Input = ReadString();
+            char _Letter = ReadChar();
+
+            Console.WriteLine("Letter '" + _Letter + "' Count = " + CountLetter(_Input,_Letter));
+            Console.ReadKey();
+        }
+    }
+}
 ```
