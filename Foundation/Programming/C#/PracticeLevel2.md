@@ -2685,5 +2685,361 @@ namespace ConsoleApp2
 **Write a program to find client by AccountNumber and print it to the screen.**
 
 ```c#
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static string ClientsFileName = "MyClient/Clients.txt";
+        struct sClient
+        {
+            public string AccountNumber;
+            public string PinCode;
+            public string Name;
+            public string Phone;
+            public double AccountBalance;
+        }
 
+        static List<string> SplitString(string Input)
+        {
+            string[] Splits = Input.Split(new string[] { "#//#" }, StringSplitOptions.None);
+
+
+            return new List<string>(Splits);
+        }
+        static sClient ConvertLineToRecord(string Client)
+        {
+            sClient stClient = new sClient();
+
+            List<string> vClientData = new List<string>();
+            vClientData = SplitString(Client);
+
+            stClient.AccountNumber = (string)vClientData[0];
+            stClient.PinCode = (string)vClientData[1];
+            stClient.Name = (string)vClientData[2];
+            stClient.Phone = (string)vClientData[3];
+            double.TryParse(vClientData[4], out stClient.AccountBalance);
+
+
+
+            return stClient;
+        }
+
+        static void PrintClientCard(sClient Client)
+        {
+            Console.WriteLine("\nThe Following are the client details:\n");
+            Console.WriteLine("Account Number: " + Client.AccountNumber);
+            Console.WriteLine("PinCode: " + Client.PinCode);
+            Console.WriteLine("Name: " + Client.Name);
+            Console.WriteLine("Phone: " + Client.Phone);
+            Console.WriteLine("Account Balance: " + Client.AccountBalance);
+
+        }
+        static void SearchForAccountInFile()
+        {
+            StreamReader st = new StreamReader(ClientsFileName);
+            string Line = st.ReadLine();
+            Console.WriteLine("Please Enter Account Number?");
+            string Input = Console.ReadLine();
+            while (Line != null)
+            {
+                if (Line.Contains(Input))
+                {
+                    PrintClientCard(ConvertLineToRecord(Line));
+                    return;
+                }
+                Line = st.ReadLine();
+            }
+
+            Console.WriteLine("\nClient with Account Number(" + Input + ") NOT Found!");
+
+        }
+    
+        static void Main(string[] args)
+        {
+
+            SearchForAccountInFile();
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 45
+**Write a program to delete client by AccountNumber.**
+
+```c#
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static string ClientsFileName = "MyClient/Clients.txt";
+        struct sClient
+        {
+            public string AccountNumber;
+            public string PinCode;
+            public string Name;
+            public string Phone;
+            public double AccountBalance;
+        }
+
+        static string ReadClientAccountNumber()
+        {
+            Console.Write("Please Enter AccountNumber?");
+            string AccountNumber = Console.ReadLine();
+
+            return AccountNumber;
+        }
+        static List<string> SplitString(string Input)
+        {
+            string[] Splits = Input.Split(new string[] { "#//#" }, StringSplitOptions.None);
+
+
+            return new List<string>(Splits);
+        }
+        static sClient ConvertLineToRecord(string Client)
+        {
+            sClient stClient = new sClient();
+
+            List<string> vClientData = new List<string>();
+            vClientData = SplitString(Client);
+
+            stClient.AccountNumber = (string)vClientData[0];
+            stClient.PinCode = (string)vClientData[1];
+            stClient.Name = (string)vClientData[2];
+            stClient.Phone = (string)vClientData[3];
+            double.TryParse(vClientData[4], out stClient.AccountBalance);
+
+
+
+            return stClient;
+        }
+
+        static void PrintClientCard(sClient Client)
+        {
+            Console.WriteLine("\nThe Following are the client details:\n");
+            Console.WriteLine("Account Number: " + Client.AccountNumber);
+            Console.WriteLine("PinCode: " + Client.PinCode);
+            Console.WriteLine("Name: " + Client.Name);
+            Console.WriteLine("Phone: " + Client.Phone);
+            Console.WriteLine("Account Balance: " + Client.AccountBalance);
+
+        }
+        static bool SearchForAccountInFile(string AccountNumber)
+        {
+            using (StreamReader st = new StreamReader(ClientsFileName))
+            { 
+            string Line = st.ReadLine();
+            while (Line != null)
+            {
+                if (Line.Contains(AccountNumber))
+                {
+                    PrintClientCard(ConvertLineToRecord(Line));
+                    return true;
+                }
+                Line = st.ReadLine();
+            }
+            }
+            return false;
+        }
+
+        static void DeleteClient(string AccountNumber)
+        {
+            if (!(SearchForAccountInFile(AccountNumber)))
+            {
+                Console.WriteLine("\nClient with Account Number(" + AccountNumber + ") NOT Found!");
+                return;
+            }
+
+            Console.WriteLine("Are you sure you want delte this client? (Y/N) ? ");
+            char Deleted = Convert.ToChar(Console.ReadLine());
+            if (char.ToUpper(Deleted) == 'Y')
+            {
+                List<string> Lines = new List<string>(File.ReadAllLines(ClientsFileName));
+                using (StreamWriter st = new StreamWriter(ClientsFileName))
+                {
+                    foreach (string Line in Lines)
+                    {
+                        if (!(Line.Contains(AccountNumber)))
+                        {
+                            st.WriteLine(Line);
+                        }
+                    }
+                }
+
+                Console.WriteLine("\nClient Deleted Successfully.");
+            }
+
+        }
+        static void Main(string[] args)
+        {
+
+            DeleteClient(ReadClientAccountNumber());
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 46
+**Write a program to Update client by AccountNumber.**
+
+```c#
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static string ClientsFileName = "MyClient/Clients.txt";
+        struct sClient
+        {
+            public string AccountNumber;
+            public string PinCode;
+            public string Name;
+            public string Phone;
+            public double AccountBalance;
+        }
+
+        static string ReadClientAccountNumber()
+        {
+            Console.Write("Please Enter AccountNumber?");
+            string AccountNumber = Console.ReadLine();
+
+            return AccountNumber;
+        }
+        static List<string> SplitString(string Input)
+        {
+            string[] Splits = Input.Split(new string[] { "#//#" }, StringSplitOptions.None);
+
+
+            return new List<string>(Splits);
+        }
+        static sClient ConvertLineToRecord(string Client)
+        {
+            sClient stClient = new sClient();
+
+            List<string> vClientData = new List<string>();
+            vClientData = SplitString(Client);
+
+            stClient.AccountNumber = (string)vClientData[0];
+            stClient.PinCode = (string)vClientData[1];
+            stClient.Name = (string)vClientData[2];
+            stClient.Phone = (string)vClientData[3];
+            double.TryParse(vClientData[4], out stClient.AccountBalance);
+
+
+
+            return stClient;
+        }
+
+        static string ConvertRecoredToLine(sClient Client, string Seperator = "#//#")
+        {
+            string stClientRecord = "";
+
+            stClientRecord += Client.AccountNumber + Seperator;
+            stClientRecord += Client.PinCode + Seperator;
+            stClientRecord += Client.Name + Seperator;
+            stClientRecord += Client.Phone + Seperator;
+            stClientRecord += Client.AccountBalance;
+
+            return stClientRecord;
+        }
+        static void PrintClientCard(sClient Client)
+        {
+            Console.WriteLine("\nThe Following are the client details:\n");
+            Console.WriteLine("Account Number: " + Client.AccountNumber);
+            Console.WriteLine("PinCode: " + Client.PinCode);
+            Console.WriteLine("Name: " + Client.Name);
+            Console.WriteLine("Phone: " + Client.Phone);
+            Console.WriteLine("Account Balance: " + Client.AccountBalance);
+
+        }
+
+        static bool SearchForAccountInFile(string AccountNumber)
+        {
+            using (StreamReader st = new StreamReader(ClientsFileName))
+            { 
+            string Line = st.ReadLine();
+            while (Line != null)
+            {
+                if (Line.Contains(AccountNumber))
+                {
+                    PrintClientCard(ConvertLineToRecord(Line));
+                    return true;
+                }
+                Line = st.ReadLine();
+            }
+            }
+            return false;
+        }
+         
+
+        static string ReadDataUpdated(sClient nClient)
+        {
+
+            Console.Write("Enter PinCode?");
+            nClient.PinCode = Console.ReadLine();
+
+            Console.Write("Enter Name?");
+            nClient.Name = Console.ReadLine();
+
+            Console.Write("Enter Phone?");
+            nClient.Phone = Console.ReadLine();
+
+            Console.Write("Enter Account Balance?");
+            nClient.AccountBalance = Convert.ToInt32(Console.ReadLine());
+
+            return ConvertRecoredToLine(nClient);
+
+        }
+        static void UpdateClient(string AccountNumber)
+        {
+            if (!(SearchForAccountInFile(AccountNumber)))
+            {
+                Console.WriteLine("\nClient with Account Number(" + AccountNumber + ") NOT Found!");
+                return;
+            }
+
+            Console.WriteLine("Are you sure you want update this client? (Y/N) ? ");
+            char Update = Convert.ToChar(Console.ReadLine());
+            if (char.ToUpper(Update) == 'Y')
+            {
+                List<string> Lines = new List<string>(File.ReadAllLines(ClientsFileName));
+                using (StreamWriter st = new StreamWriter(ClientsFileName))
+                {
+                    foreach (string Line in Lines)
+                    {
+                        if (!(Line.Contains(AccountNumber)))
+                        {
+                            st.WriteLine(Line);
+                        }
+                        else
+                        {
+                            st.WriteLine(ReadDataUpdated(ConvertLineToRecord(Line)));
+                        }
+                    }
+                }
+
+                Console.WriteLine("\nClient Updated Successfully.");
+            }
+
+        }
+        static void Main(string[] args)
+        {
+
+            UpdateClient(ReadClientAccountNumber());
+            Console.ReadKey();
+        }
+    }
+}
 ```
