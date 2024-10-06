@@ -2220,5 +2220,470 @@ namespace ConsoleApp2
 **Write a program to read string and reverse its words.**
 
 ```c#
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.Design;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static string ReadString()
+        {
+            string _Input;
+            Console.WriteLine("Please Enter Your String?");
+            _Input = Console.ReadLine();
+
+            return _Input;
+
+        }
+
+        static void ReverseWords(string input)
+        {
+            int startIndex = 0;
+            List<string> words = new List<string>();
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (input[i] == ' ')
+                {
+                    words.Add(input.Substring(startIndex, i - startIndex));
+                    startIndex = i + 1;
+                }
+                
+            }
+            words.Add(input.Substring(startIndex, input.Length - startIndex));
+            Console.WriteLine("String after reversing words:");
+            for (int i = words.Count - 1; i >= 0; i--)
+            {
+                Console.Write(words[i] + " ");
+            }
+        }
+        static void Main(string[] args)
+        {
+            ReverseWords(ReadString());
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 39
+**Write a program to remove all punctuations from a string.**
+
+```c#
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.Design;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static string ReadString()
+        {
+            string _Input;
+            Console.WriteLine("Please Enter Your String?");
+            _Input = Console.ReadLine();
+
+            return _Input;
+
+        }
+
+        static string RemoveAllPunchecation(string Input)
+        {
+            for (int i = 0; i < Input.Length; i++)
+            {
+                if (char.IsPunctuation(Input[i]))
+                {
+                    Input = Input.Remove(i,1);
+                }
+            }
+
+            return Input;
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Pauncations Removed: \n" + RemoveAllPunchecation(ReadString()));
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 40
+**Write a program to read bank client data record and convert it to one line.**
+
+```c#
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.Design;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        struct sClient
+        {
+           public string AccountNumber;
+           public string PinCode;
+           public string Name;
+           public string Phone;
+           public double AccountBalance;
+        }
+ 
+        static sClient ReadNewClient()
+        {
+            sClient nClient = new sClient();
+
+            Console.WriteLine("Please Enter Client Data:");
+
+            Console.Write("Enter Account number?");
+            nClient.AccountNumber  = Console.ReadLine();
+
+            Console.Write("Enter PinCode?");
+            nClient.PinCode = Console.ReadLine();
+
+            Console.Write("Enter Name?");
+            nClient.Name = Console.ReadLine();
+
+            Console.Write("Enter Phone?");
+            nClient.Phone = Console.ReadLine();
+
+            Console.Write("Enter Account Balance?");
+            nClient.AccountBalance = Convert.ToInt32(Console.ReadLine());
+
+            return nClient;
+
+        }
+
+        static string ConvertRecoredToLine(sClient Client, string Seperator = "#//#")
+        {
+            string stClientRecord = "";
+
+            stClientRecord += Client.AccountNumber + Seperator;
+            stClientRecord += Client.PinCode + Seperator;
+            stClientRecord += Client.Name + Seperator;
+            stClientRecord += Client.Phone + Seperator;
+            stClientRecord += Client.AccountBalance;
+
+            return stClientRecord;
+        }
+        static void Main(string[] args)
+        {
+            sClient Client1 = new sClient();
+            Client1 = ReadNewClient();
+            Console.WriteLine("\n\nClient Record For Saving is:");
+            Console.WriteLine(ConvertRecoredToLine(Client1));
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 41
+**Write a program to convert line data to record and print it.**
+
+```c#
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.Design;
+using System.Runtime.InteropServices;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        struct sClient
+        {
+           public string AccountNumber;
+           public string PinCode;
+           public string Name;
+           public string Phone;
+           public double AccountBalance;
+        }
+ 
+        static sClient ReadNewClient()
+        {
+            sClient nClient = new sClient();
+
+            Console.WriteLine("Please Enter Client Data:");
+
+            Console.Write("Enter Account number?");
+            nClient.AccountNumber  = Console.ReadLine();
+
+            Console.Write("Enter PinCode?");
+            nClient.PinCode = Console.ReadLine();
+
+            Console.Write("Enter Name?");
+            nClient.Name = Console.ReadLine();
+
+            Console.Write("Enter Phone?");
+            nClient.Phone = Console.ReadLine();
+
+            Console.Write("Enter Account Balance?");
+            nClient.AccountBalance = Convert.ToInt32(Console.ReadLine());
+
+            return nClient;
+
+        }
+        static List<string> SplitString(string Input)
+        {
+            string[] Splits = Input.Split(new string[] { "#//#" }, StringSplitOptions.None);
+
+            
+            return new List<string>(Splits);
+        }
+        static sClient ConvertLineToRecord(string Client)
+        {
+            sClient stClient = new sClient();
+
+            List<string> vClientData = new List<string>();
+            vClientData = SplitString(Client);
+
+            stClient.AccountNumber = (string)vClientData[0];
+            stClient.PinCode = (string)vClientData[1];
+            stClient.Name = (string)vClientData[2];
+            stClient.Phone = (string)vClientData[3];
+            double.TryParse(vClientData[4] , out stClient.AccountBalance);
+
+
+
+            return stClient;
+        }
+
+        static void PrintClientRecord(sClient Client)
+        {
+            Console.WriteLine("\nThe Following is the extracted client record:\n");
+            Console.WriteLine("Account Number: " + Client.AccountNumber);
+            Console.WriteLine("PinCode: " + Client.PinCode);
+            Console.WriteLine("Name: " + Client.Name);
+            Console.WriteLine("Phone: " + Client.Phone);
+            Console.WriteLine("Account Balance: " + Client.AccountBalance);
+
+        }
+
+        static void Main(string[] args)
+        {
+            string stLine = "A150#//#1234#//#Osama#//#0787833842#//#3000";
+            Console.WriteLine("Line Record is:\n" + stLine);
+            sClient Client = ConvertLineToRecord(stLine);
+
+            PrintClientRecord(Client);
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 42
+**Write a program to ask you to enter clients and save them to file.**
+
+```c#
+using System;
+using System.Collections.Generic;
+using System.IO;
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static string ClientsFileName = "MyClient/Clients.txt";
+        struct sClient
+        {
+           public string AccountNumber;
+           public string PinCode;
+           public string Name;
+           public string Phone;
+           public double AccountBalance;
+        }
+ 
+        static sClient ReadNewClient()
+        {
+            sClient nClient = new sClient();
+
+            //Console.WriteLine("Please Enter Client Data:");
+
+            Console.Write("\nEnter Account number?");
+            nClient.AccountNumber  = Console.ReadLine();
+
+            Console.Write("Enter PinCode?");
+            nClient.PinCode = Console.ReadLine();
+
+            Console.Write("Enter Name?");
+            nClient.Name = Console.ReadLine();
+
+            Console.Write("Enter Phone?");
+            nClient.Phone = Console.ReadLine();
+
+            Console.Write("Enter Account Balance?");
+            nClient.AccountBalance = Convert.ToInt32(Console.ReadLine());
+
+            return nClient;
+
+        }
+
+        static string ConvertRecoredToLine(sClient Client, string Seperator = "#//#")
+        {
+            string stClientRecord = "";
+
+            stClientRecord += Client.AccountNumber + Seperator;
+            stClientRecord += Client.PinCode + Seperator;
+            stClientRecord += Client.Name + Seperator;
+            stClientRecord += Client.Phone + Seperator;
+            stClientRecord += Client.AccountBalance;
+
+            return stClientRecord;
+        }
+
+        static void AddDataLineToFile(string FileName ,string Line)
+        {
+            
+
+            StreamWriter stWriter = new StreamWriter(FileName,true);
+
+            stWriter.WriteLine(Line);
+            stWriter.Close();
+
+        }
+
+        static void AddNewClient()
+        {
+            sClient stClient = new sClient();
+            stClient = ReadNewClient();
+            AddDataLineToFile(ClientsFileName, ConvertRecoredToLine(stClient));
+        }
+
+        static void AddClients()
+        {
+            
+            char AddMore;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("Adding New Client:");
+                AddNewClient();
+                Console.Write("Client Added Successfully, do you want to add more clients? (Y/N)");
+                AddMore = Convert.ToChar(Console.ReadLine());
+            } while (char.ToUpper(AddMore) == 'Y' );
+
+        }
+
+        static void Main(string[] args)
+        { 
+            AddClients();
+        }
+    }
+}
+```
+
+## Problem 43
+**Write a program to read clients file and show them on the screen.**
+
+```c#
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static string ClientsFileName = "MyClient/Clients.txt";
+        static int countLine = CountLineInFile();
+        static string repeatedString = new string('_', 90);
+        struct sClient
+        {
+            public string AccountNumber;
+            public string PinCode;
+            public string Name;
+            public string Phone;
+            public double AccountBalance;
+        }
+
+        static List<string> SplitString(string Input)
+        {
+            string[] Splits = Input.Split(new string[] { "#//#" }, StringSplitOptions.None);
+
+
+            return new List<string>(Splits);
+        }
+        static sClient ConvertLineToRecord(string Client)
+        {
+            sClient stClient = new sClient();
+
+            List<string> vClientData = new List<string>();
+            vClientData = SplitString(Client);
+
+            stClient.AccountNumber = (string)vClientData[0];
+            stClient.PinCode = (string)vClientData[1];
+            stClient.Name = (string)vClientData[2];
+            stClient.Phone = (string)vClientData[3];
+            double.TryParse(vClientData[4], out stClient.AccountBalance);
+
+
+
+            return stClient;
+        }
+
+        static void PrintHeader()
+        {
+           
+            Console.Write($"{" ",35}");
+            Console.Write("Client List("+countLine+") Client(s).\n\n");
+            Console.WriteLine(repeatedString);
+            Console.WriteLine("\n| Account Number    | Pin Code   | Client Name"+($"{" ",20}") + "| Phone      | Balance");
+            Console.WriteLine(repeatedString + "\n");
+
+        }
+        static void PrintClients(sClient Client)
+        {
+            Console.WriteLine(string.Format("|{0,-19}|", " " + Client.AccountNumber) + string.Format("{0,-12}|", " " + Client.PinCode) + string.Format("{0,-32}"," " + Client.Name)+string.Format("|{0,-12}|", " " + Client.Phone)  + string.Format("{0,-8}", " " + Client.AccountBalance));
+        }
+
+        static void ReadLineFromFile()
+        {
+            StreamReader st = new StreamReader(ClientsFileName);
+            string Line = st.ReadLine();
+
+            while (Line != null)
+            {
+                PrintClients(ConvertLineToRecord(Line));
+                Line = st.ReadLine();
+            }
+
+        }
+
+        static void PrintFooter()
+        {
+            Console.WriteLine("\n"+repeatedString);
+        }
+
+        static int CountLineInFile()
+        {
+            StreamReader st = new StreamReader(ClientsFileName);
+            string line = st.ReadLine();
+            int count = 0;
+            while (line != null)
+            {
+                line = st.ReadLine();
+                count++;
+            }
+            return count;
+        }
+        static void Main(string[] args)
+        {
+
+            PrintHeader();
+            ReadLineFromFile();
+            PrintFooter();
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 44
+**Write a program to find client by AccountNumber and print it to the screen.**
+
+```c#
 
 ```
