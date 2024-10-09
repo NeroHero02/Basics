@@ -3043,3 +3043,115 @@ namespace ConsoleApp2
     }
 }
 ```
+
+## Problem 47
+**Write a program to read a number and print the text of that number.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        static long ReadNumber()
+        {
+            Console.WriteLine("Enter a Number?");
+            long number = Convert.ToInt64(Console.ReadLine());
+            return number;
+        }
+
+        static string NumberToString(long number)
+        {
+            if (number == 0)
+            {
+                return "Zero";
+            }
+
+            if (number >= 1 && number <= 19)
+            {
+                string[] arr = { "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
+                                 "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen",
+                                 "Eighteen", "Nineteen" };
+                return arr[number - 1];
+            }
+            else if (number >= 20 && number < 100)
+            {
+                string[] arr = { "", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
+                return arr[number / 10] + (number % 10 > 0 ? " " + NumberToString(number % 10) : "");
+            }
+            else if (number >= 100 && number < 1000)
+            {
+                return NumberToString(number / 100) + " Hundred" + (number % 100 > 0 ? " " + NumberToString(number % 100) : "");
+            }
+            else if (number >= 1000 && number < 1000000)
+            {
+                return NumberToString(number / 1000) + " Thousand" + (number % 1000 > 0 ? " " + NumberToString(number % 1000) : "");
+            }
+            else if (number >= 1000000 && number < 1000000000)
+            {
+                return NumberToString(number / 1000000) + " Million" + (number % 1000000 > 0 ? " " + NumberToString(number % 1000000) : "");
+            }
+            else
+            {
+                return NumberToString(number / 1000000000) + " Billion" + (number % 1000000000 > 0 ? " " + NumberToString(number % 1000000000) : "");
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine(NumberToString(ReadNumber()));
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 48
+**Write a program to check if year is a leap year or not.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        static int ReadNumber()
+        {
+            Console.WriteLine("Enter a Number?");
+            int Number = Convert.ToInt32(Console.ReadLine());
+            return Number;
+        }
+
+       static bool LeapYear(int Number)
+        {
+            if ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0))
+                return true;
+            return false;
+        }
+
+        static void Main(string[] args)
+        {
+            Console.Write("Please enter a year to check");
+            int Year = ReadNumber();
+            if (LeapYear(Year))
+            {
+                Console.WriteLine("\nYes, Year [" + Year + "] is a leap year.\n");
+            }
+            else
+            {
+                Console.WriteLine("\nNo, Year [" + Year + "] is NOT a leap year.\n");
+            }
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 49
+**Solve Leap Year Problem with one line of code only.**
+
+```c#
+
+```
