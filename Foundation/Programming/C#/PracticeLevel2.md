@@ -3153,5 +3153,573 @@ namespace ConsoleApp3
 **Solve Leap Year Problem with one line of code only.**
 
 ```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        static int ReadNumber()
+        {
+            Console.WriteLine("Enter a Number?");
+            int Number = Convert.ToInt32(Console.ReadLine());
+            return Number;
+        }
+
+       static bool LeapYear(int Number)
+        {
+
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+          
+        }
+
+        static void Main(string[] args)
+        {
+            Console.Write("Please enter a year to check");
+            int Year = ReadNumber();
+            if (LeapYear(Year))
+            {
+                Console.WriteLine("\nYes, Year [" + Year + "] is a leap year.\n");
+            }
+            else
+            {
+                Console.WriteLine("\nNo, Year [" + Year + "] is NOT a leap year.\n");
+            }
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 50
+**Write a program to print Number of: Days , Hours , Minutes , Seconds in a certain Year.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        static int ReadNumber()
+        {
+            Console.WriteLine("Enter a Number?");
+            int Number = Convert.ToInt32(Console.ReadLine());
+            return Number;
+        }
+
+       static bool LeapYear(int Number)
+        {
+
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+          
+        }
+
+        static int NumberofDaysInYear(int Number)
+        {
+            if (LeapYear(Number))
+                return 366;
+            else
+                return 365;
+        }
+
+        static int NumberofHoursInYear(int Number)
+        {
+                return NumberofDaysInYear(Number) * 24;
+        }
+
+        static int NumberofMinutesInYear(int Number)
+        {
+            return NumberofHoursInYear(Number) * 60;
+        }
+
+        static int NumberofSecondsInYear(int Number)
+        {
+            return NumberofMinutesInYear(Number) * 60;
+        }
+        static void Main(string[] args)
+        {
+            int year = ReadNumber();
+            Console.WriteLine($"\nNumber of Days in Year [{year}] is {NumberofDaysInYear(year)}");
+            Console.WriteLine($"\nNumber of Hours in Year [{year}] is {NumberofHoursInYear(year)}");
+            Console.WriteLine($"\nNumber of Minutes in Year [{year}] is {NumberofMinutesInYear(year)}");
+            Console.WriteLine($"\nNumber of Seconds in Year [{year}] is {NumberofSecondsInYear(year)}");
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 51
+**Write a program to print Number of:**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        static short ReadYear()
+        {
+            Console.WriteLine("Please Enter a year to check?");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.WriteLine("Please Enter a Month to check?");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInYear(int Number)
+        {
+            if (LeapYear(Number))
+                return 366;
+            else
+                return 365;
+        }
+
+        static int NumberofHoursInMonths(short Number , short year)
+        {
+                return NumberofDaysInMonths(Number,year) * 24;
+        }
+
+        static int NumberofMinutesInMonth(short Number, short year)
+        {
+            return NumberofHoursInMonths(Number,year) * 60;
+        }
+
+        static int NumberofSecondsInMonth(short Number , short year)
+        {
+            return NumberofMinutesInMonth(Number,year) * 60;
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 9, 11, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+        static void Main(string[] args)
+        {
+            short year = ReadYear();
+            short month = ReadMonth();
+            Console.WriteLine($"\nNumber of Days in Month [{month}] is {NumberofDaysInMonths(month,year)}");
+            Console.WriteLine($"\nNumber of Hours in Month [{month}] is {NumberofHoursInMonths(month,year)}");
+            Console.WriteLine($"\nNumber of Minutes in Month [{month}] is {NumberofMinutesInMonth(month, year)}");
+            Console.WriteLine($"\nNumber of Seconds in Month [{month}] is {NumberofSecondsInMonth(month, year)}");
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 52
+**Write a program to print Number of Days in a certain Month in two line just.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        static short ReadYear()
+        {
+            Console.WriteLine("Please Enter a year to check?");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.WriteLine("Please Enter a Month to check?");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInYear(int Number)
+        {
+            if (LeapYear(Number))
+                return 366;
+            else
+                return 365;
+        }
+
+        static int NumberofHoursInMonths(short Number , short year)
+        {
+                return NumberofDaysInMonths(Number,year) * 24;
+        }
+
+        static int NumberofMinutesInMonth(short Number, short year)
+        {
+            return NumberofHoursInMonths(Number,year) * 60;
+        }
+
+        static int NumberofSecondsInMonth(short Number , short year)
+        {
+            return NumberofMinutesInMonth(Number,year) * 60;
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+
+            if (Number > 12 || Number < 0)
+                return 0;
+
+            int[] arr = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+            return (Number == 2 ? (LeapYear(Number) ? 29 : 28) : arr[Number - 1]);
+        }
+        static void Main(string[] args)
+        {
+            short year = ReadYear();
+            short month = ReadMonth();
+            Console.WriteLine($"\nNumber of Days in Month [{month}] is {NumberofDaysInMonths(month,year)}");
+            Console.WriteLine($"\nNumber of Hours in Month [{month}] is {NumberofHoursInMonths(month,year)}");
+            Console.WriteLine($"\nNumber of Minutes in Month [{month}] is {NumberofMinutesInMonth(month, year)}");
+            Console.WriteLine($"\nNumber of Seconds in Month [{month}] is {NumberofSecondsInMonth(month, year)}");
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 53
+**Write a program to read a date, and print the day name of week.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        static short ReadYear()
+        {
+            Console.WriteLine("Please Enter a Year?");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.WriteLine("Please Enter a Month?");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.WriteLine("Please Enter a Day?");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+    
+         static short DayofWeekOrder(short year, short month, short day)
+        {
+            short a = (short)((14 - month) / 12);
+            short y = (short)(year - a);
+            short m = (short)(month + (12 * a) - 2);
+
+            return (short)((day + y + (y / 4) - (y / 100) + (y / 400) + ((31 * m) / 12)) % 7);
+
+        }
+
+        static string DayShortName(short DayofWeekOrder)
+        {
+            string[] arrDayNames = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+
+            return arrDayNames[DayofWeekOrder];
+        }
+        static void Main(string[] args)
+        {
+            short Year = ReadYear();
+            short Month = ReadMonth();
+            short Day = ReadDay();
+
+            short Days = DayofWeekOrder(Year, Month, Day);
+
+
+            Console.WriteLine("Date      : " + Day + "/" + Month + "/" + Year);
+            Console.WriteLine("Day Order : " + Days);
+            Console.WriteLine("Day Name  : " + DayShortName(Days));
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 54
+**Write a program to print Month Calendar.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        static short ReadYear()
+        {
+            Console.WriteLine("Please Enter a Year?");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.WriteLine("Please Enter a Month?");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 9, 11, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+        static short DayofWeekOrder(short year, short month, short day)
+        {
+            short a = (short)((14 - month) / 12);
+            short y = (short)(year - a);
+            short m = (short)(month + (12 * a) - 2);
+
+            return (short)((day + y + (y / 4) - (y / 100) + (y / 400) + ((31 * m) / 12)) % 7);
+
+        }
+
+        static string DayShortName(short DayofWeekOrder)
+        {
+            string[] arrDayNames = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+
+            return arrDayNames[DayofWeekOrder];
+        }
+
+        static string MonthShortName(short MonthNumber)
+        {
+            string[] arrMonthDays = { "Jan" , "Feb" , "Mar" , "Apr" , "May" , "June" , "July" , "Aug" , "Sep" , "Oct" , "Nov" , "Dec"};
+
+            return arrMonthDays[MonthNumber - 1];
+        }
+        static void PrintHeaderCalender()
+        {
+            Console.WriteLine("   Sat  Mon  Tue  Wed  Thu  Fri  Sat\n");
+        }
+
+        static void PrintDaysInMonths(short Year , short Month)
+        {
+            short IndexDays = DayofWeekOrder(Year,Month,1);
+            short count = 0;
+            short CountDay = 1;
+            for (short i = 0;i< NumberofDaysInMonths(Month,Year) + IndexDays; i++)
+            {
+                if (count == 7)
+                {
+                    Console.WriteLine();
+                    count = 0;
+                }
+                if (i < IndexDays)
+                    Console.Write("     ");
+                else
+                {
+                    Console.Write("  " + $"{CountDay,3}");
+                    CountDay++;
+                }
+                count++;
+            }
+                
+        }
+        static void PrintMonthCalender(short Year, short Month)
+        {
+            string MonthName = MonthShortName(Month);
+            Console.WriteLine("  ________________" + MonthName + "________________\n");
+            PrintHeaderCalender();
+            PrintDaysInMonths(Year,Month);
+            Console.WriteLine();
+            Console.WriteLine("  ___________________________________\n");
+        }
+        static void Main(string[] args)
+        {
+            short Year = ReadYear();
+            short Month = ReadMonth();
+
+            PrintMonthCalender(Year, Month);
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 55
+**Write a program to print Year Calender.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        static short ReadYear()
+        {
+            Console.WriteLine("Please Enter a Year?");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.WriteLine("Please Enter a Month?");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 9, 11, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+        static short DayofWeekOrder(short year, short month, short day)
+        {
+            short a = (short)((14 - month) / 12);
+            short y = (short)(year - a);
+            short m = (short)(month + (12 * a) - 2);
+
+            return (short)((day + y + (y / 4) - (y / 100) + (y / 400) + ((31 * m) / 12)) % 7);
+
+        }
+
+        static string DayShortName(short DayofWeekOrder)
+        {
+            string[] arrDayNames = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+
+            return arrDayNames[DayofWeekOrder];
+        }
+
+        static string MonthShortName(short MonthNumber)
+        {
+            string[] arrMonthDays = { "Jan" , "Feb" , "Mar" , "Apr" , "May" , "June" , "July" , "Aug" , "Sep" , "Oct" , "Nov" , "Dec"};
+
+            return arrMonthDays[MonthNumber - 1];
+        }
+        static void PrintHeaderCalender()
+        {
+            Console.WriteLine("   Sat  Mon  Tue  Wed  Thu  Fri  Sat\n");
+        }
+
+        static void PrintDaysInMonths(short Year , short Month)
+        {
+            short IndexDays = DayofWeekOrder(Year,Month,1);
+            short count = 0;
+            short CountDay = 1;
+            for (short i = 0;i< NumberofDaysInMonths(Month,Year) + IndexDays; i++)
+            {
+                if (count == 7)
+                {
+                    Console.WriteLine();
+                    count = 0;
+                }
+                if (i < IndexDays)
+                    Console.Write("     ");
+                else
+                {
+                    Console.Write("  " + $"{CountDay,3}");
+                    CountDay++;
+                }
+                count++;
+            }
+                
+        }
+        static void PrintMonthCalendar(short Year, short Month)
+        {
+            string MonthName = MonthShortName(Month);
+            Console.WriteLine("  ________________" + MonthName + "________________\n");
+            PrintHeaderCalender();
+            PrintDaysInMonths(Year,Month);
+            Console.WriteLine();
+            Console.WriteLine("  ___________________________________\n");
+        }
+
+        static void PrintYearsCalendar(short Year)
+        {
+            Console.WriteLine("  ___________________________________\n");
+            Console.WriteLine($"{"Calendar - " + Year,28}");
+            Console.WriteLine("  ___________________________________\n");
+            
+            for (short i = 1;i<=12;i++)
+            {
+                Console.WriteLine();
+                PrintMonthCalendar(Year, i);
+            }
+        }
+        static void Main(string[] args)
+        {
+            PrintYearsCalendar(ReadYear());
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 56
+**Write a program to print total days from the beginning of year.**
+
+```c#
 
 ```
