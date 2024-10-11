@@ -3721,5 +3721,525 @@ namespace ConsoleApp3
 **Write a program to print total days from the beginning of year.**
 
 ```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        static short ReadYear()
+        {
+            Console.WriteLine("Please Enter a Year?");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.WriteLine("Please Enter a Month?");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.WriteLine("Please Enter a Day?");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 8 , 10, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+
+        static int NumberOfDaysFromTheBeginingOfTheYear(short Year, short Month, short Day)
+        {
+            int TotalDays = 0;
+
+            for (short i = 1; i < Month; i++)
+                TotalDays += NumberofDaysInMonths(i,Year);
+
+            TotalDays += Day;
+
+            return TotalDays;
+        }
+       
+        static void Main(string[] args)
+        {
+            short _Day = ReadDay();
+            short _Month = ReadMonth();
+            short _Year = ReadYear();
+
+            Console.WriteLine("Number of Days from the begining of the year is " + NumberOfDaysFromTheBeginingOfTheYear(_Year,_Month,_Day));
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 57
+**Write a program to print total days from the beginning of year, then Take the total days and convert them back to date.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        struct sDate
+        {
+            public short Year;
+            public short Month;
+            public short Day;
+        }
+        static short ReadYear()
+        {
+            Console.Write("Please Enter a Year? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.Write("Please Enter a Month? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.Write("Please Enter a Day? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 8 , 10, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+
+        static int NumberOfDaysFromTheBeginingOfTheYear(short Year, short Month, short Day)
+        {
+            int TotalDays = 0;
+
+            for (short i = 1; i < Month; i++)
+                TotalDays += NumberofDaysInMonths(i,Year);
+
+            TotalDays += Day;
+
+            return TotalDays;
+        }
+       
+         static sDate GetDateFromDayOrderInYear(short DateOrderInYear, short Year)
+        {
+            sDate Date;
+            short RemainingDays = DateOrderInYear;
+            short MonthDays = 0;
+
+            Date.Year = Year;
+            Date.Month = 1;
+
+            while(true)
+            {
+                MonthDays = (short)(NumberofDaysInMonths(Date.Month, Year));
+
+                if (RemainingDays > MonthDays)
+                {
+                    RemainingDays-=MonthDays;
+                    Date.Month++;
+                }
+                else
+                {
+                    Date.Day = RemainingDays;
+                    break;
+                }
+            }
+            return Date;
+        }
+        static void Main(string[] args)
+        {
+            short _Day = ReadDay();
+            short _Month = ReadMonth();
+            short _Year = ReadYear();
+
+            short DaysOrderInYear = (short)(NumberOfDaysFromTheBeginingOfTheYear(_Year, _Month, _Day));
+            Console.WriteLine("Number of Days from the begining of the year is " + DaysOrderInYear);
+
+            sDate Date;
+
+            Date = GetDateFromDayOrderInYear(DaysOrderInYear, _Year);
+            Console.Write("Date for [" + DaysOrderInYear + "] is: ");
+            Console.Write(Date.Day + "/" + Date.Month + "/" + Date.Year);
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 58
+**Write a program to read date and read how many days to add to it, print the results on screen.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        struct sDate
+        {
+            public short Year;
+            public short Month;
+            public short Day;
+        }
+        static short ReadYear()
+        {
+            Console.Write("Please Enter a Year? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.Write("Please Enter a Month? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.Write("Please Enter a Day? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+        static int NumberofDaysInYear(int Number)
+        {
+            if (LeapYear(Number))
+                return 366;
+            else
+                return 365;
+        }
+
+
+        static short ReadAdd()
+        {
+            Console.Write("How Many days to add? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 8 , 10, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+
+        static int NumberOfDaysFromTheBeginingOfTheYear(short Year, short Month, short Day)
+        {
+            int TotalDays = 0;
+
+            for (short i = 1; i < Month; i++)
+                TotalDays += NumberofDaysInMonths(i,Year);
+
+            TotalDays += Day;
+
+            return TotalDays;
+        }
+       
+         static sDate GetDateFromDayOrderInYear(short DateOrderInYear, short Year)
+        {
+            sDate Date;
+            short RemainingDays = DateOrderInYear;
+            short MonthDays = 0;
+
+            Date.Year = Year;
+            Date.Month = 1;
+
+            while(true)
+            {
+                MonthDays = (short)(NumberofDaysInMonths(Date.Month, Year));
+
+                if (RemainingDays > MonthDays)
+                {
+                    RemainingDays-=MonthDays;
+                    Date.Month++;
+                }
+                else
+                {
+                    Date.Day = RemainingDays;
+                    break;
+                }
+            }
+            return Date;
+        }
+
+     
+        static short ReadDaysToAdd()
+        {
+            short Days;
+            Console.Write("How Many Days To Add? ");
+            Days = short.Parse(Console.ReadLine());
+
+            return Days;
+        }
+        static sDate ReadFullDate()
+        {
+            sDate Date;
+
+            Date.Day = ReadDay();
+            Date.Month = ReadMonth();
+            Date.Year = ReadYear();
+
+            return Date;
+        }
+
+        static sDate DateAddDays(short Days, sDate Date)
+        {
+           short RemainingDays = (short)(Days + NumberOfDaysFromTheBeginingOfTheYear(Date.Year, Date.Month, Date.Day));
+
+            short MonthDays = 0;
+
+            Date.Month = 1;
+            while (true)
+            {
+                MonthDays = (short)(NumberofDaysInMonths(Date.Month, Date.Year));
+
+                if (RemainingDays > MonthDays)
+                {
+                    RemainingDays -= MonthDays;
+                    Date.Month++;
+
+                    if (Date.Month > 12)
+                    {
+                        Date.Month = 1;
+                        Date.Year++;
+                    }
+                }
+                else
+                {
+                    Date.Day = RemainingDays;
+                    break;
+                }
+            }
+            return Date;
+        }
+        static void Main(string[] args)
+        {
+            sDate Date = ReadFullDate();
+            short Days = ReadDaysToAdd();
+
+            Date = DateAddDays(Days,Date);
+
+            Console.WriteLine("\nDate after adding [" + Days + "] days is : " + Date.Day + "/" + Date.Month + "/" + Date.Year);
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 59
+**Write a program to read Date1,Date2 and check if date1 is less than date2.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        struct sDate
+        {
+            public short Year;
+            public short Month;
+            public short Day;
+        }
+        static short ReadYear()
+        {
+            Console.Write("Please Enter a Year? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.Write("Please Enter a Month? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.Write("Please Enter a Day? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+
+        static sDate ReadFullDate()
+        {
+            sDate Date;
+
+            Date.Day = ReadDay();
+            Date.Month = ReadMonth();
+            Date.Year = ReadYear();
+
+            return Date;
+        }
+        
+        static bool IsDate1BeforeDate2(sDate Date1 , sDate Date2)
+        {
+            return ((Date1.Year < Date2.Year) ? true : (Date1.Year == Date2.Year) ? (Date1.Month < Date2.Month) ? true : (Date1.Month == Date2.Month) ? (Date1.Day < Date2.Day) : false : false);
+
+        }
+
+
+        static void Main(string[] args)
+        {
+            sDate Date1 = ReadFullDate();
+            Console.WriteLine();
+            sDate Date2 = ReadFullDate();
+
+            if (IsDate1BeforeDate2(Date1, Date2))
+                Console.WriteLine("\nYes, Date1 is Less than Date2."); 
+            else 
+                Console.WriteLine("\nNo, Date1 is NOT Less than Date2.");
+
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 60
+**Write a program to read date1,date2 and check if Date1 Equals to Date2.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        struct sDate
+        {
+            public short Year;
+            public short Month;
+            public short Day;
+        }
+        static short ReadYear()
+        {
+            Console.Write("Please Enter a Year? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.Write("Please Enter a Month? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.Write("Please Enter a Day? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+
+        static sDate ReadFullDate()
+        {
+            sDate Date;
+
+            Date.Day = ReadDay();
+            Date.Month = ReadMonth();
+            Date.Year = ReadYear();
+
+            return Date;
+        }
+        
+        static bool IsDate1EqualDate2(sDate Date1 , sDate Date2)
+        {
+            return (Date1.Year == Date2.Year) ? ((Date1.Month == Date2.Month) ? (Date1.Day == Date2.Day ) ? true : false : false)  : false;
+
+        }
+
+
+        static void Main(string[] args)
+        {
+            sDate Date1 = ReadFullDate();
+            Console.WriteLine();
+            sDate Date2 = ReadFullDate();
+
+            if (IsDate1EqualDate2(Date1, Date2))
+                Console.WriteLine("\nYes, Date1 is Equal To Date2."); 
+            else 
+                Console.WriteLine("\nNo, Date1 is NOT Equal To Date2.");
+
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 61
+**Write a program to read a date and check:**  
+**1.if it is last Day in Month**  
+**2.If it is last Month In Year**  
+
+```c#
 
 ```
