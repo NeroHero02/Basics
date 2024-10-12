@@ -4241,5 +4241,2705 @@ namespace ConsoleApp3
 **2.If it is last Month In Year**  
 
 ```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        struct sDate
+        {
+            public short Year;
+            public short Month;
+            public short Day;
+        }
+        static short ReadYear()
+        {
+            Console.Write("Please Enter a Year? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.Write("Please Enter a Month? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.Write("Please Enter a Day? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+
+
+        static sDate ReadFullDate()
+        {
+            sDate Date;
+
+            Date.Day = ReadDay();
+            Date.Month = ReadMonth();
+            Date.Year = ReadYear();
+
+            return Date;
+        }
+
+        static bool IsLastMonthInYear(short Month)
+        {
+            return Month == 12;
+        }
+
+        static bool IsLastDayInMonth(sDate Date)
+        {
+            return Date.Day == NumberofDaysInMonths(Date.Month,Date.Year);
+        }
+        static void Main(string[] args)
+        {
+            sDate Date1 = ReadFullDate();
+
+            if (IsLastDayInMonth(Date1))
+                Console.WriteLine("\nYes, Day is Last Day in Month.");
+
+            else
+                Console.WriteLine("\nNo, Day is Not Last Day in Month.");
+
+            if (IsLastMonthInYear(Date1.Month))
+                Console.WriteLine("\nYes, Month is Last Month in Year.");
+
+            else
+                Console.WriteLine("\nNo, Month is Not Last Month in Year.");
+
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 62
+**Write a program to read a date and make a function to increase date by one day.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        struct sDate
+        {
+            public short Year;
+            public short Month;
+            public short Day;
+        }
+        static short ReadYear()
+        {
+            Console.Write("Please Enter a Year? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.Write("Please Enter a Month? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.Write("Please Enter a Day? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+
+
+        static sDate ReadFullDate()
+        {
+            sDate Date;
+
+            Date.Day = ReadDay();
+            Date.Month = ReadMonth();
+            Date.Year = ReadYear();
+
+            return Date;
+        }
+
+        static bool IsLastMonthInYear(short Month)
+        {
+            return Month == 12;
+        }
+
+        static bool IsLastDayInMonth(sDate Date)
+        {
+            return Date.Day == NumberofDaysInMonths(Date.Month,Date.Year);
+        }
+
+        static sDate IncreaseDateByOneDay(sDate Date)
+        {
+            if (IsLastMonthInYear(Date.Month))
+            {
+                if (IsLastDayInMonth(Date))
+                {
+                    Date.Day = 1;
+                    Date.Month = 1;
+                    Date.Year++;
+                }
+                else
+                {
+                    Date.Day++;
+                }
+            }
+          else if (IsLastDayInMonth(Date))
+            {
+                Date.Day = 1;
+                Date.Month++;
+            }
+            else
+                Date.Day++;
+            return Date;
+        }
+        static void Main(string[] args)
+        {
+            sDate Date1 = ReadFullDate();
+
+            Date1 = IncreaseDateByOneDay(Date1);
+
+            Console.WriteLine("\nDate after adding one day is: " + Date1.Day + "/" + Date1.Month + "/" + Date1.Year);
+
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 63
+**Write a program to read a Date1,Date2 and make a function to calculate the difference in days.**  
+**Note: Date 1 should be less than Date2**  
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        struct sDate
+        {
+            public short Year;
+            public short Month;
+            public short Day;
+        }
+        static short ReadYear()
+        {
+            Console.Write("Please Enter a Year? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.Write("Please Enter a Month? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.Write("Please Enter a Day? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+
+
+        static sDate ReadFullDate()
+        {
+            sDate Date;
+
+            Date.Day = ReadDay();
+            Date.Month = ReadMonth();
+            Date.Year = ReadYear();
+
+            return Date;
+        }
+
+        static bool IsLastMonthInYear(short Month)
+        {
+            return Month == 12;
+        }
+
+        static int NumberOfDaysFromTheBeginingOfTheYear(short Year, short Month, short Day)
+        {
+            int TotalDays = 0;
+
+            for (short i = 1; i < Month; i++)
+                TotalDays += NumberofDaysInMonths(i, Year);
+
+            TotalDays += Day;
+
+            return TotalDays;
+        }
+        static bool IsLastDayInMonth(sDate Date)
+        {
+            return Date.Day == NumberofDaysInMonths(Date.Month,Date.Year);
+        }
+
+        static bool IsDate1BeforeDate2(sDate Date1, sDate Date2)
+        {
+            return ((Date1.Year < Date2.Year) ? true : (Date1.Year == Date2.Year) ? (Date1.Month < Date2.Month) ? true : (Date1.Month == Date2.Month) ? (Date1.Day < Date2.Day) : false : false);
+
+        }
+        static sDate IncreaseDateByOneDay(sDate Date)
+        {
+            if (IsLastMonthInYear(Date.Month))
+            {
+                if (IsLastDayInMonth(Date))
+                {
+                    Date.Day = 1;
+                    Date.Month = 1;
+                    Date.Year++;
+                }
+                else
+                {
+                    Date.Day++;
+                }
+            }
+            else if (IsLastDayInMonth(Date))
+            {
+                Date.Day = 1;
+                Date.Month++;
+            }
+            else
+                Date.Day++;
+            return Date;
+        }
+        static short GetDifferenceInDays(sDate Date1, sDate Date2, bool IncludeEndDay = false)
+        {
+            short Days = 0;
+
+            while (IsDate1BeforeDate2(Date1,Date2))
+            {
+                Days++;
+                Date1 = IncreaseDateByOneDay(Date1);
+            }
+
+
+            return IncludeEndDay ? ++Days : Days;
+        }
+        static void Main(string[] args)
+        {
+            sDate Date1 = ReadFullDate();
+            Console.WriteLine();
+            sDate Date2 = ReadFullDate();
+
+            Console.WriteLine("\nDiffrence is: " + GetDifferenceInDays(Date1,Date2));
+            Console.WriteLine("\nDiffrence (Including End Day) is: " + GetDifferenceInDays(Date1, Date2,true));
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 64
+**Write a program calculate you age in days.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        struct sDate
+        {
+            public short Year;
+            public short Month;
+            public short Day;
+        }
+        static short ReadYear()
+        {
+            Console.Write("Please Enter a Year? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.Write("Please Enter a Month? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.Write("Please Enter a Day? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+
+
+        static sDate ReadFullDate()
+        {
+            sDate Date;
+
+            Date.Day = ReadDay();
+            Date.Month = ReadMonth();
+            Date.Year = ReadYear();
+
+            return Date;
+        }
+
+        static bool IsLastMonthInYear(short Month)
+        {
+            return Month == 12;
+        }
+
+        static int NumberOfDaysFromTheBeginingOfTheYear(short Year, short Month, short Day)
+        {
+            int TotalDays = 0;
+
+            for (short i = 1; i < Month; i++)
+                TotalDays += NumberofDaysInMonths(i, Year);
+
+            TotalDays += Day;
+
+            return TotalDays;
+        }
+        static bool IsLastDayInMonth(sDate Date)
+        {
+            return Date.Day == NumberofDaysInMonths(Date.Month,Date.Year);
+        }
+
+        static bool IsDate1BeforeDate2(sDate Date1, sDate Date2)
+        {
+            return ((Date1.Year < Date2.Year) ? true : (Date1.Year == Date2.Year) ? (Date1.Month < Date2.Month) ? true : (Date1.Month == Date2.Month) ? (Date1.Day < Date2.Day) : false : false);
+
+        }
+        static sDate IncreaseDateByOneDay(sDate Date)
+        {
+            if (IsLastMonthInYear(Date.Month))
+            {
+                if (IsLastDayInMonth(Date))
+                {
+                    Date.Day = 1;
+                    Date.Month = 1;
+                    Date.Year++;
+                }
+                else
+                {
+                    Date.Day++;
+                }
+            }
+            else if (IsLastDayInMonth(Date))
+            {
+                Date.Day = 1;
+                Date.Month++;
+            }
+            else
+                Date.Day++;
+            return Date;
+        }
+        static short GetDifferenceInDays(sDate Date1, sDate Date2, bool IncludeEndDay = false)
+        {
+            short Days = 0;
+
+            while (IsDate1BeforeDate2(Date1,Date2))
+            {
+                Days++;
+                Date1 = IncreaseDateByOneDay(Date1);
+            }
+
+
+            return IncludeEndDay ? ++Days : Days;
+        }
+
+        static sDate GetSystemDate()
+        {
+            DateTime now = DateTime.Now; // Get the current date and time
+
+            sDate date = new sDate
+            {
+                Year = (short)now.Year,
+                Month = (short)now.Month,
+                Day = (short)now.Day
+            };
+
+            return date;
+        }
+        static void Main(string[] args)
+        {
+            sDate Date1 = ReadFullDate();
+            Console.WriteLine();
+            sDate Date2 = GetSystemDate();
+
+            Console.WriteLine("Your age is : " + GetDifferenceInDays(Date1,Date2,true) + " Day(s).");
+
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 65
+**Write a program to read a Date1,Date2 and make a function to calculate the difference in days.**  
+**Note: if date2 is less than date1 print the results in Minutes**  
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        struct sDate
+        {
+            public short Year;
+            public short Month;
+            public short Day;
+        }
+        static short ReadYear()
+        {
+            Console.Write("Please Enter a Year? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.Write("Please Enter a Month? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.Write("Please Enter a Day? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+
+
+        static sDate ReadFullDate()
+        {
+            sDate Date;
+
+            Date.Day = ReadDay();
+            Date.Month = ReadMonth();
+            Date.Year = ReadYear();
+
+            return Date;
+        }
+
+        static bool IsLastMonthInYear(short Month)
+        {
+            return Month == 12;
+        }
+
+        static int NumberOfDaysFromTheBeginingOfTheYear(short Year, short Month, short Day)
+        {
+            int TotalDays = 0;
+
+            for (short i = 1; i < Month; i++)
+                TotalDays += NumberofDaysInMonths(i, Year);
+
+            TotalDays += Day;
+
+            return TotalDays;
+        }
+        static bool IsLastDayInMonth(sDate Date)
+        {
+            return Date.Day == NumberofDaysInMonths(Date.Month,Date.Year);
+        }
+
+        static bool IsDate1BeforeDate2(sDate Date1, sDate Date2)
+        {
+            return ((Date1.Year < Date2.Year) ? true : (Date1.Year == Date2.Year) ? (Date1.Month < Date2.Month) ? true : (Date1.Month == Date2.Month) ? (Date1.Day < Date2.Day) : false : false);
+
+        }
+        static sDate IncreaseDateByOneDay(sDate Date)
+        {
+            if (IsLastMonthInYear(Date.Month))
+            {
+                if (IsLastDayInMonth(Date))
+                {
+                    Date.Day = 1;
+                    Date.Month = 1;
+                    Date.Year++;
+                }
+                else
+                {
+                    Date.Day++;
+                }
+            }
+            else if (IsLastDayInMonth(Date))
+            {
+                Date.Day = 1;
+                Date.Month++;
+            }
+            else
+                Date.Day++;
+            return Date;
+        }
+        static void SwapDate(ref sDate Date1, ref sDate Date2)
+        {
+            sDate TempDate;
+
+            TempDate.Year = Date1.Year;
+            TempDate.Month = Date1.Month;
+            TempDate.Day = Date1.Day;
+
+            Date1.Year = Date2.Year;
+            Date1.Day = Date2.Day;
+            Date1.Month = Date2.Month;
+
+            Date2.Year  = TempDate.Year;
+            Date2.Month = TempDate.Month;
+            Date2.Day = TempDate.Day;
+        }
+        static short GetDifferenceInDays(sDate Date1, sDate Date2, bool IncludeEndDay = false)
+        {
+            short Days = 0;
+            short SwapFlagValue = 1;
+
+            if (!IsDate1BeforeDate2(Date1,Date2))
+            {
+               SwapDate(ref Date1, ref Date2);
+               SwapFlagValue = -1;
+            }
+          
+            while (IsDate1BeforeDate2(Date1,Date2))
+            {
+                Days++;
+                Date1 = IncreaseDateByOneDay(Date1);
+            }
+
+
+            return IncludeEndDay ? (short)(SwapFlagValue * ++Days) :(short)(SwapFlagValue * Days);
+        }
+
+    
+        static void Main(string[] args)
+        {
+            sDate Date1 = ReadFullDate();
+            Console.WriteLine();
+            sDate Date2 = ReadFullDate();
+
+            Console.WriteLine("\nDiffrence is: " + GetDifferenceInDays(Date1, Date2));
+            Console.WriteLine("\nDiffrence (Including End Day) is: " + GetDifferenceInDays(Date1, Date2, true));
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 66
+**Write a program to read a date and make a function to increase date by X days.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        struct sDate
+        {
+            public short Year;
+            public short Month;
+            public short Day;
+        }
+        static short ReadYear()
+        {
+            Console.Write("Please Enter a Year? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.Write("Please Enter a Month? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.Write("Please Enter a Day? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+
+
+        static sDate ReadFullDate()
+        {
+            sDate Date;
+
+            Date.Day = ReadDay();
+            Date.Month = ReadMonth();
+            Date.Year = ReadYear();
+
+            return Date;
+        }
+
+        static bool IsLastMonthInYear(short Month)
+        {
+            return Month == 12;
+        }
+
+        static int NumberOfDaysFromTheBeginingOfTheYear(short Year, short Month, short Day)
+        {
+            int TotalDays = 0;
+
+            for (short i = 1; i < Month; i++)
+                TotalDays += NumberofDaysInMonths(i, Year);
+
+            TotalDays += Day;
+
+            return TotalDays;
+        }
+        static bool IsLastDayInMonth(sDate Date)
+        {
+            return Date.Day == NumberofDaysInMonths(Date.Month,Date.Year);
+        }
+
+   
+        
+        static sDate IncreaseDateByOneDay(sDate Date)
+        {
+            if (IsLastMonthInYear(Date.Month))
+            {
+                if (IsLastDayInMonth(Date))
+                {
+                    Date.Day = 1;
+                    Date.Month = 1;
+                    Date.Year++;
+                }
+                else
+                {
+                    Date.Day++;
+                }
+            }
+            else if (IsLastDayInMonth(Date))
+            {
+                Date.Day = 1;
+                Date.Month++;
+            }
+            else
+                Date.Day++;
+            return Date;
+        }
+      
+        static sDate IncreaseDateByXDays(sDate Date, short Increase)
+        {
+
+            for (int i = 0; i < Increase; i++)
+                Date = IncreaseDateByOneDay(Date);
+
+            return Date;
+        }
+      
+
+    
+        static void Main(string[] args)
+        {
+            sDate Date1 = ReadFullDate();
+            Console.WriteLine();
+            sDate Date2 = IncreaseDateByXDays(Date1, 1);
+            Console.WriteLine("Adding one day is:" + Date2.Day + "/" + Date2.Month + "/" + Date2.Year);
+            Date1 = IncreaseDateByXDays(Date1, 10);
+            Console.WriteLine("Adding one day is:" + Date1.Day + "/" + Date1.Month + "/" + Date1.Year);
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 67
+**Write a program to read a date and make a function to increase date by One Week.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        struct sDate
+        {
+            public short Year;
+            public short Month;
+            public short Day;
+        }
+        static short ReadYear()
+        {
+            Console.Write("Please Enter a Year? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.Write("Please Enter a Month? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.Write("Please Enter a Day? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+
+
+        static sDate ReadFullDate()
+        {
+            sDate Date;
+
+            Date.Day = ReadDay();
+            Date.Month = ReadMonth();
+            Date.Year = ReadYear();
+
+            return Date;
+        }
+
+        static bool IsLastMonthInYear(short Month)
+        {
+            return Month == 12;
+        }
+
+        static int NumberOfDaysFromTheBeginingOfTheYear(short Year, short Month, short Day)
+        {
+            int TotalDays = 0;
+
+            for (short i = 1; i < Month; i++)
+                TotalDays += NumberofDaysInMonths(i, Year);
+
+            TotalDays += Day;
+
+            return TotalDays;
+        }
+        static bool IsLastDayInMonth(sDate Date)
+        {
+            return Date.Day == NumberofDaysInMonths(Date.Month,Date.Year);
+        }
+
+   
+        
+        static sDate IncreaseDateByOneDay(sDate Date)
+        {
+            if (IsLastMonthInYear(Date.Month))
+            {
+                if (IsLastDayInMonth(Date))
+                {
+                    Date.Day = 1;
+                    Date.Month = 1;
+                    Date.Year++;
+                }
+                else
+                {
+                    Date.Day++;
+                }
+            }
+            else if (IsLastDayInMonth(Date))
+            {
+                Date.Day = 1;
+                Date.Month++;
+            }
+            else
+                Date.Day++;
+            return Date;
+        }
+      
+        static sDate IncreaseDateByOneWeek(sDate Date)
+        {
+
+            for (int i = 0; i < 7; i++)
+                Date = IncreaseDateByOneDay(Date);
+
+            return Date;
+        }
+      
+
+    
+        static void Main(string[] args)
+        {
+            sDate Date1 = ReadFullDate();
+            Console.WriteLine();
+            Date1 = IncreaseDateByOneWeek(Date1);
+            Console.WriteLine("Adding one week is:" + Date1.Day + "/" + Date1.Month + "/" + Date1.Year);
+            Console.ReadKey();
+        }
+    }
+}
 
 ```
+
+## Problem 68
+**Write a program to read a date and make a function to increase date by X Weeks.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        struct sDate
+        {
+            public short Year;
+            public short Month;
+            public short Day;
+        }
+        static short ReadYear()
+        {
+            Console.Write("Please Enter a Year? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.Write("Please Enter a Month? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.Write("Please Enter a Day? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+
+
+        static sDate ReadFullDate()
+        {
+            sDate Date;
+
+            Date.Day = ReadDay();
+            Date.Month = ReadMonth();
+            Date.Year = ReadYear();
+
+            return Date;
+        }
+
+        static bool IsLastMonthInYear(short Month)
+        {
+            return Month == 12;
+        }
+
+        static int NumberOfDaysFromTheBeginingOfTheYear(short Year, short Month, short Day)
+        {
+            int TotalDays = 0;
+
+            for (short i = 1; i < Month; i++)
+                TotalDays += NumberofDaysInMonths(i, Year);
+
+            TotalDays += Day;
+
+            return TotalDays;
+        }
+        static bool IsLastDayInMonth(sDate Date)
+        {
+            return Date.Day == NumberofDaysInMonths(Date.Month, Date.Year);
+        }
+
+
+
+        static sDate IncreaseDateByOneDay(sDate Date)
+        {
+            if (IsLastMonthInYear(Date.Month))
+            {
+                if (IsLastDayInMonth(Date))
+                {
+                    Date.Day = 1;
+                    Date.Month = 1;
+                    Date.Year++;
+                }
+                else
+                {
+                    Date.Day++;
+                }
+            }
+            else if (IsLastDayInMonth(Date))
+            {
+                Date.Day = 1;
+                Date.Month++;
+            }
+            else
+                Date.Day++;
+            return Date;
+        }
+
+        static sDate IncreaseDateByOneWeek(sDate Date)
+        {
+
+            for (int i = 0; i < 7; i++)
+                Date = IncreaseDateByOneDay(Date);
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByXWeek(sDate Date, short Weeks)
+        { 
+            for (int i = 0 ;i<Weeks;i++)
+            {
+                Date = IncreaseDateByOneWeek(Date);
+            }
+            return Date;
+
+        }
+    
+        static void Main(string[] args)
+        {
+            sDate Date1 = ReadFullDate();
+            Console.WriteLine();
+            Date1 = IncreaseDateByXWeek(Date1,10);
+            Console.WriteLine("Adding one week is:" + Date1.Day + "/" + Date1.Month + "/" + Date1.Year);
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 69
+**Write a program to read a date and make a function to increase date by OneMonth.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        struct sDate
+        {
+            public short Year;
+            public short Month;
+            public short Day;
+        }
+        static short ReadYear()
+        {
+            Console.Write("Please Enter a Year? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.Write("Please Enter a Month? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.Write("Please Enter a Day? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+
+
+        static sDate ReadFullDate()
+        {
+            sDate Date;
+
+            Date.Day = ReadDay();
+            Date.Month = ReadMonth();
+            Date.Year = ReadYear();
+
+            return Date;
+        }
+
+        static bool IsLastMonthInYear(short Month)
+        {
+            return Month == 12;
+        }
+
+        static int NumberOfDaysFromTheBeginingOfTheYear(short Year, short Month, short Day)
+        {
+            int TotalDays = 0;
+
+            for (short i = 1; i < Month; i++)
+                TotalDays += NumberofDaysInMonths(i, Year);
+
+            TotalDays += Day;
+
+            return TotalDays;
+        }
+        static bool IsLastDayInMonth(sDate Date)
+        {
+            return Date.Day == NumberofDaysInMonths(Date.Month, Date.Year);
+        }
+
+
+
+        static sDate IncreaseDateByOneDay(sDate Date)
+        {
+            if (IsLastMonthInYear(Date.Month))
+            {
+                if (IsLastDayInMonth(Date))
+                {
+                    Date.Day = 1;
+                    Date.Month = 1;
+                    Date.Year++;
+                }
+                else
+                {
+                    Date.Day++;
+                }
+            }
+            else if (IsLastDayInMonth(Date))
+            {
+                Date.Day = 1;
+                Date.Month++;
+            }
+            else
+                Date.Day++;
+            return Date;
+        }
+
+        static sDate IncreaseDateByOneWeek(sDate Date)
+        {
+
+            for (int i = 0; i < 7; i++)
+                Date = IncreaseDateByOneDay(Date);
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByXWeek(sDate Date, short Weeks)
+        { 
+            for (int i = 0 ;i<Weeks;i++)
+            {
+                Date = IncreaseDateByOneWeek(Date);
+            }
+            return Date;
+
+        }
+        
+        static sDate IncreaseDateByOneMonth(sDate Date)
+        {
+            if (Date.Month == 12)
+            {
+                Date.Month = 1;
+                Date.Year++;
+            }
+            else
+            {
+                Date.Month++;
+            }
+
+            short NumberOfDaysInCurrentMonth = (short) (NumberofDaysInMonths(Date.Month, Date.Year));
+
+            if (Date.Month > NumberOfDaysInCurrentMonth)
+                Date.Month = NumberOfDaysInCurrentMonth;
+
+            return Date;
+        }
+        static void Main(string[] args)
+        {
+            sDate Date1 = ReadFullDate();
+            Console.WriteLine();
+            Date1 = IncreaseDateByOneMonth(Date1);
+            Console.WriteLine("Adding one Month is:" + Date1.Day + "/" + Date1.Month + "/" + Date1.Year);
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 70
+**Write a program to read a date and make a function to increase date by X Month.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        struct sDate
+        {
+            public short Year;
+            public short Month;
+            public short Day;
+        }
+        static short ReadYear()
+        {
+            Console.Write("Please Enter a Year? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.Write("Please Enter a Month? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.Write("Please Enter a Day? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+
+
+        static sDate ReadFullDate()
+        {
+            sDate Date;
+
+            Date.Day = ReadDay();
+            Date.Month = ReadMonth();
+            Date.Year = ReadYear();
+
+            return Date;
+        }
+
+        static bool IsLastMonthInYear(short Month)
+        {
+            return Month == 12;
+        }
+
+        static int NumberOfDaysFromTheBeginingOfTheYear(short Year, short Month, short Day)
+        {
+            int TotalDays = 0;
+
+            for (short i = 1; i < Month; i++)
+                TotalDays += NumberofDaysInMonths(i, Year);
+
+            TotalDays += Day;
+
+            return TotalDays;
+        }
+        static bool IsLastDayInMonth(sDate Date)
+        {
+            return Date.Day == NumberofDaysInMonths(Date.Month, Date.Year);
+        }
+
+
+
+        static sDate IncreaseDateByOneDay(sDate Date)
+        {
+            if (IsLastMonthInYear(Date.Month))
+            {
+                if (IsLastDayInMonth(Date))
+                {
+                    Date.Day = 1;
+                    Date.Month = 1;
+                    Date.Year++;
+                }
+                else
+                {
+                    Date.Day++;
+                }
+            }
+            else if (IsLastDayInMonth(Date))
+            {
+                Date.Day = 1;
+                Date.Month++;
+            }
+            else
+                Date.Day++;
+            return Date;
+        }
+
+        static sDate IncreaseDateByOneWeek(sDate Date)
+        {
+
+            for (int i = 0; i < 7; i++)
+                Date = IncreaseDateByOneDay(Date);
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByXWeek(sDate Date, short Weeks)
+        { 
+            for (int i = 0 ;i<Weeks;i++)
+            {
+                Date = IncreaseDateByOneWeek(Date);
+            }
+            return Date;
+
+        }
+        
+        static sDate IncreaseDateByOneMonth(sDate Date)
+        {
+            if (Date.Month == 12)
+            {
+                Date.Month = 1;
+                Date.Year++;
+            }
+            else
+            {
+                Date.Month++;
+            }
+
+            short NumberOfDaysInCurrentMonth = (short) (NumberofDaysInMonths(Date.Month, Date.Year));
+
+            if (Date.Month > NumberOfDaysInCurrentMonth)
+                Date.Month = NumberOfDaysInCurrentMonth;
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByXMonth(sDate Date, short Month)
+        {
+            for (int i = 0;i<Month;i++)
+                Date = IncreaseDateByOneMonth(Date);
+
+            return Date;
+        }
+        static void Main(string[] args)
+        {
+            sDate Date1 = ReadFullDate();
+            Console.WriteLine();
+            Date1 = IncreaseDateByXMonth(Date1,5);
+            Console.WriteLine("Adding 5 Month is:" + Date1.Day + "/" + Date1.Month + "/" + Date1.Year);
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 71
+**Write a program to read a date and make a function to increase date by One Year.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        struct sDate
+        {
+            public short Year;
+            public short Month;
+            public short Day;
+        }
+        static short ReadYear()
+        {
+            Console.Write("Please Enter a Year? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.Write("Please Enter a Month? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.Write("Please Enter a Day? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+
+
+        static sDate ReadFullDate()
+        {
+            sDate Date;
+
+            Date.Day = ReadDay();
+            Date.Month = ReadMonth();
+            Date.Year = ReadYear();
+
+            return Date;
+        }
+
+        static bool IsLastMonthInYear(short Month)
+        {
+            return Month == 12;
+        }
+
+        static int NumberOfDaysFromTheBeginingOfTheYear(short Year, short Month, short Day)
+        {
+            int TotalDays = 0;
+
+            for (short i = 1; i < Month; i++)
+                TotalDays += NumberofDaysInMonths(i, Year);
+
+            TotalDays += Day;
+
+            return TotalDays;
+        }
+        static bool IsLastDayInMonth(sDate Date)
+        {
+            return Date.Day == NumberofDaysInMonths(Date.Month, Date.Year);
+        }
+
+
+
+        static sDate IncreaseDateByOneDay(sDate Date)
+        {
+            if (IsLastMonthInYear(Date.Month))
+            {
+                if (IsLastDayInMonth(Date))
+                {
+                    Date.Day = 1;
+                    Date.Month = 1;
+                    Date.Year++;
+                }
+                else
+                {
+                    Date.Day++;
+                }
+            }
+            else if (IsLastDayInMonth(Date))
+            {
+                Date.Day = 1;
+                Date.Month++;
+            }
+            else
+                Date.Day++;
+            return Date;
+        }
+
+        static sDate IncreaseDateByOneWeek(sDate Date)
+        {
+
+            for (int i = 0; i < 7; i++)
+                Date = IncreaseDateByOneDay(Date);
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByXWeek(sDate Date, short Weeks)
+        { 
+            for (int i = 0 ;i<Weeks;i++)
+            {
+                Date = IncreaseDateByOneWeek(Date);
+            }
+            return Date;
+
+        }
+        
+        static sDate IncreaseDateByOneMonth(sDate Date)
+        {
+            if (Date.Month == 12)
+            {
+                Date.Month = 1;
+                Date.Year++;
+            }
+            else
+            {
+                Date.Month++;
+            }
+
+            short NumberOfDaysInCurrentMonth = (short) (NumberofDaysInMonths(Date.Month, Date.Year));
+
+            if (Date.Month > NumberOfDaysInCurrentMonth)
+                Date.Month = NumberOfDaysInCurrentMonth;
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByXMonth(sDate Date, short Month)
+        {
+            for (int i = 0;i<Month;i++)
+                Date = IncreaseDateByOneMonth(Date);
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByOneYear(sDate Date)
+        {
+            Date.Year++;
+            return Date;
+        }
+        static void Main(string[] args)
+        {
+            sDate Date1 = ReadFullDate();
+            Console.WriteLine();
+            Date1 = IncreaseDateByOneYear(Date1);
+            Console.WriteLine("Adding One Year is:" + Date1.Day + "/" + Date1.Month + "/" + Date1.Year);
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 72
+**Write a program to read a date and make a function to increase date by X Years.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        struct sDate
+        {
+            public short Year;
+            public short Month;
+            public short Day;
+        }
+        static short ReadYear()
+        {
+            Console.Write("Please Enter a Year? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.Write("Please Enter a Month? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.Write("Please Enter a Day? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+
+
+        static sDate ReadFullDate()
+        {
+            sDate Date;
+
+            Date.Day = ReadDay();
+            Date.Month = ReadMonth();
+            Date.Year = ReadYear();
+
+            return Date;
+        }
+
+        static bool IsLastMonthInYear(short Month)
+        {
+            return Month == 12;
+        }
+
+        static int NumberOfDaysFromTheBeginingOfTheYear(short Year, short Month, short Day)
+        {
+            int TotalDays = 0;
+
+            for (short i = 1; i < Month; i++)
+                TotalDays += NumberofDaysInMonths(i, Year);
+
+            TotalDays += Day;
+
+            return TotalDays;
+        }
+        static bool IsLastDayInMonth(sDate Date)
+        {
+            return Date.Day == NumberofDaysInMonths(Date.Month, Date.Year);
+        }
+
+
+
+        static sDate IncreaseDateByOneDay(sDate Date)
+        {
+            if (IsLastMonthInYear(Date.Month))
+            {
+                if (IsLastDayInMonth(Date))
+                {
+                    Date.Day = 1;
+                    Date.Month = 1;
+                    Date.Year++;
+                }
+                else
+                {
+                    Date.Day++;
+                }
+            }
+            else if (IsLastDayInMonth(Date))
+            {
+                Date.Day = 1;
+                Date.Month++;
+            }
+            else
+                Date.Day++;
+            return Date;
+        }
+
+        static sDate IncreaseDateByOneWeek(sDate Date)
+        {
+
+            for (int i = 0; i < 7; i++)
+                Date = IncreaseDateByOneDay(Date);
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByXWeek(sDate Date, short Weeks)
+        { 
+            for (int i = 0 ;i<Weeks;i++)
+            {
+                Date = IncreaseDateByOneWeek(Date);
+            }
+            return Date;
+
+        }
+        
+        static sDate IncreaseDateByOneMonth(sDate Date)
+        {
+            if (Date.Month == 12)
+            {
+                Date.Month = 1;
+                Date.Year++;
+            }
+            else
+            {
+                Date.Month++;
+            }
+
+            short NumberOfDaysInCurrentMonth = (short) (NumberofDaysInMonths(Date.Month, Date.Year));
+
+            if (Date.Month > NumberOfDaysInCurrentMonth)
+                Date.Month = NumberOfDaysInCurrentMonth;
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByXMonth(sDate Date, short Month)
+        {
+            for (int i = 0;i<Month;i++)
+                Date = IncreaseDateByOneMonth(Date);
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByOneYear(sDate Date)
+        {
+            Date.Year++;
+            return Date;
+        }
+
+        static sDate IncreaseDateByXYear(sDate Date,short Years)
+        {
+
+            Date.Year += Years;
+            return Date;
+        }
+        static void Main(string[] args)
+        {
+            sDate Date1 = ReadFullDate();
+            Console.WriteLine();
+            Date1 = IncreaseDateByXYear(Date1,10);
+            Console.WriteLine("Adding One Year is:" + Date1.Day + "/" + Date1.Month + "/" + Date1.Year);
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 73
+**Write a program to read a date and make a function to increase date by One Decade.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        struct sDate
+        {
+            public short Year;
+            public short Month;
+            public short Day;
+        }
+        static short ReadYear()
+        {
+            Console.Write("Please Enter a Year? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.Write("Please Enter a Month? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.Write("Please Enter a Day? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+
+
+        static sDate ReadFullDate()
+        {
+            sDate Date;
+
+            Date.Day = ReadDay();
+            Date.Month = ReadMonth();
+            Date.Year = ReadYear();
+
+            return Date;
+        }
+
+        static bool IsLastMonthInYear(short Month)
+        {
+            return Month == 12;
+        }
+
+        static int NumberOfDaysFromTheBeginingOfTheYear(short Year, short Month, short Day)
+        {
+            int TotalDays = 0;
+
+            for (short i = 1; i < Month; i++)
+                TotalDays += NumberofDaysInMonths(i, Year);
+
+            TotalDays += Day;
+
+            return TotalDays;
+        }
+        static bool IsLastDayInMonth(sDate Date)
+        {
+            return Date.Day == NumberofDaysInMonths(Date.Month, Date.Year);
+        }
+
+
+
+        static sDate IncreaseDateByOneDay(sDate Date)
+        {
+            if (IsLastMonthInYear(Date.Month))
+            {
+                if (IsLastDayInMonth(Date))
+                {
+                    Date.Day = 1;
+                    Date.Month = 1;
+                    Date.Year++;
+                }
+                else
+                {
+                    Date.Day++;
+                }
+            }
+            else if (IsLastDayInMonth(Date))
+            {
+                Date.Day = 1;
+                Date.Month++;
+            }
+            else
+                Date.Day++;
+            return Date;
+        }
+
+        static sDate IncreaseDateByOneWeek(sDate Date)
+        {
+
+            for (int i = 0; i < 7; i++)
+                Date = IncreaseDateByOneDay(Date);
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByXWeek(sDate Date, short Weeks)
+        { 
+            for (int i = 0 ;i<Weeks;i++)
+            {
+                Date = IncreaseDateByOneWeek(Date);
+            }
+            return Date;
+
+        }
+        
+        static sDate IncreaseDateByOneMonth(sDate Date)
+        {
+            if (Date.Month == 12)
+            {
+                Date.Month = 1;
+                Date.Year++;
+            }
+            else
+            {
+                Date.Month++;
+            }
+
+            short NumberOfDaysInCurrentMonth = (short) (NumberofDaysInMonths(Date.Month, Date.Year));
+
+            if (Date.Month > NumberOfDaysInCurrentMonth)
+                Date.Month = NumberOfDaysInCurrentMonth;
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByXMonth(sDate Date, short Month)
+        {
+            for (int i = 0;i<Month;i++)
+                Date = IncreaseDateByOneMonth(Date);
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByOneYear(sDate Date)
+        {
+            Date.Year++;
+            return Date;
+        }
+
+        static sDate IncreaseDateByXYear(sDate Date,short Years)
+        {
+
+            Date.Year += Years;
+            return Date;
+        }
+
+        static sDate IncreaseDateByOneDecade(sDate Date)
+        {
+            Date.Year += 10;
+            return Date;
+        }
+        static void Main(string[] args)
+        {
+            sDate Date1 = ReadFullDate();
+            Console.WriteLine();
+            Date1 = IncreaseDateByOneDecade(Date1);
+            Console.WriteLine("Adding One Decade is:" + Date1.Day + "/" + Date1.Month + "/" + Date1.Year);
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 74
+**Write a program to read a date and make a function to increase date by X Decade.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        struct sDate
+        {
+            public short Year;
+            public short Month;
+            public short Day;
+        }
+        static short ReadYear()
+        {
+            Console.Write("Please Enter a Year? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.Write("Please Enter a Month? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.Write("Please Enter a Day? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+
+
+        static sDate ReadFullDate()
+        {
+            sDate Date;
+
+            Date.Day = ReadDay();
+            Date.Month = ReadMonth();
+            Date.Year = ReadYear();
+
+            return Date;
+        }
+
+        static bool IsLastMonthInYear(short Month)
+        {
+            return Month == 12;
+        }
+
+        static int NumberOfDaysFromTheBeginingOfTheYear(short Year, short Month, short Day)
+        {
+            int TotalDays = 0;
+
+            for (short i = 1; i < Month; i++)
+                TotalDays += NumberofDaysInMonths(i, Year);
+
+            TotalDays += Day;
+
+            return TotalDays;
+        }
+        static bool IsLastDayInMonth(sDate Date)
+        {
+            return Date.Day == NumberofDaysInMonths(Date.Month, Date.Year);
+        }
+
+
+
+        static sDate IncreaseDateByOneDay(sDate Date)
+        {
+            if (IsLastMonthInYear(Date.Month))
+            {
+                if (IsLastDayInMonth(Date))
+                {
+                    Date.Day = 1;
+                    Date.Month = 1;
+                    Date.Year++;
+                }
+                else
+                {
+                    Date.Day++;
+                }
+            }
+            else if (IsLastDayInMonth(Date))
+            {
+                Date.Day = 1;
+                Date.Month++;
+            }
+            else
+                Date.Day++;
+            return Date;
+        }
+
+        static sDate IncreaseDateByOneWeek(sDate Date)
+        {
+
+            for (int i = 0; i < 7; i++)
+                Date = IncreaseDateByOneDay(Date);
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByXWeek(sDate Date, short Weeks)
+        { 
+            for (int i = 0 ;i<Weeks;i++)
+            {
+                Date = IncreaseDateByOneWeek(Date);
+            }
+            return Date;
+
+        }
+        
+        static sDate IncreaseDateByOneMonth(sDate Date)
+        {
+            if (Date.Month == 12)
+            {
+                Date.Month = 1;
+                Date.Year++;
+            }
+            else
+            {
+                Date.Month++;
+            }
+
+            short NumberOfDaysInCurrentMonth = (short) (NumberofDaysInMonths(Date.Month, Date.Year));
+
+            if (Date.Month > NumberOfDaysInCurrentMonth)
+                Date.Month = NumberOfDaysInCurrentMonth;
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByXMonth(sDate Date, short Month)
+        {
+            for (int i = 0;i<Month;i++)
+                Date = IncreaseDateByOneMonth(Date);
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByOneYear(sDate Date)
+        {
+            Date.Year++;
+            return Date;
+        }
+
+        static sDate IncreaseDateByXYear(sDate Date,short Years)
+        {
+
+            Date.Year += Years;
+            return Date;
+        }
+
+       
+
+        static sDate IncreaseDateByOneDecade(sDate Date)
+        {
+            Date.Year += 10;
+            return Date;
+        }
+        static sDate IncreaseDateByXDecade(sDate Date, short Years)
+        {
+            Date.Year += (short)(Years * 10);
+
+            return Date;
+        }
+        static void Main(string[] args)
+        {
+            sDate Date1 = ReadFullDate();
+            Console.WriteLine();
+            Date1 = IncreaseDateByXDecade(Date1,5);
+            Console.WriteLine("Adding 5 Decade is:" + Date1.Day + "/" + Date1.Month + "/" + Date1.Year);
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 75
+**Write a program to read a date and make a function to increase date by One Century.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        struct sDate
+        {
+            public short Year;
+            public short Month;
+            public short Day;
+        }
+        static short ReadYear()
+        {
+            Console.Write("Please Enter a Year? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.Write("Please Enter a Month? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.Write("Please Enter a Day? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+
+
+        static sDate ReadFullDate()
+        {
+            sDate Date;
+
+            Date.Day = ReadDay();
+            Date.Month = ReadMonth();
+            Date.Year = ReadYear();
+
+            return Date;
+        }
+
+        static bool IsLastMonthInYear(short Month)
+        {
+            return Month == 12;
+        }
+
+        static int NumberOfDaysFromTheBeginingOfTheYear(short Year, short Month, short Day)
+        {
+            int TotalDays = 0;
+
+            for (short i = 1; i < Month; i++)
+                TotalDays += NumberofDaysInMonths(i, Year);
+
+            TotalDays += Day;
+
+            return TotalDays;
+        }
+        static bool IsLastDayInMonth(sDate Date)
+        {
+            return Date.Day == NumberofDaysInMonths(Date.Month, Date.Year);
+        }
+
+
+
+        static sDate IncreaseDateByOneDay(sDate Date)
+        {
+            if (IsLastMonthInYear(Date.Month))
+            {
+                if (IsLastDayInMonth(Date))
+                {
+                    Date.Day = 1;
+                    Date.Month = 1;
+                    Date.Year++;
+                }
+                else
+                {
+                    Date.Day++;
+                }
+            }
+            else if (IsLastDayInMonth(Date))
+            {
+                Date.Day = 1;
+                Date.Month++;
+            }
+            else
+                Date.Day++;
+            return Date;
+        }
+
+        static sDate IncreaseDateByOneWeek(sDate Date)
+        {
+
+            for (int i = 0; i < 7; i++)
+                Date = IncreaseDateByOneDay(Date);
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByXWeek(sDate Date, short Weeks)
+        { 
+            for (int i = 0 ;i<Weeks;i++)
+            {
+                Date = IncreaseDateByOneWeek(Date);
+            }
+            return Date;
+
+        }
+        
+        static sDate IncreaseDateByOneMonth(sDate Date)
+        {
+            if (Date.Month == 12)
+            {
+                Date.Month = 1;
+                Date.Year++;
+            }
+            else
+            {
+                Date.Month++;
+            }
+
+            short NumberOfDaysInCurrentMonth = (short) (NumberofDaysInMonths(Date.Month, Date.Year));
+
+            if (Date.Month > NumberOfDaysInCurrentMonth)
+                Date.Month = NumberOfDaysInCurrentMonth;
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByXMonth(sDate Date, short Month)
+        {
+            for (int i = 0;i<Month;i++)
+                Date = IncreaseDateByOneMonth(Date);
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByOneYear(sDate Date)
+        {
+            Date.Year++;
+            return Date;
+        }
+
+        static sDate IncreaseDateByXYear(sDate Date,short Years)
+        {
+
+            Date.Year += Years;
+            return Date;
+        }
+
+       
+
+        static sDate IncreaseDateByOneDecade(sDate Date)
+        {
+            Date.Year += 10;
+            return Date;
+        }
+        static sDate IncreaseDateByXDecade(sDate Date, short Years)
+        {
+            Date.Year += (short)(Years * 10);
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByOneCentury(sDate Date)
+        {
+            Date.Year += 100;
+
+            return Date;
+        }
+        static void Main(string[] args)
+        {
+            sDate Date1 = ReadFullDate();
+            Console.WriteLine();
+            Date1 = IncreaseDateByOneCentury(Date1);
+            Console.WriteLine("Adding One Century is:" + Date1.Day + "/" + Date1.Month + "/" + Date1.Year);
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 76
+**Write a program to read a date and make a function to increase date by One Millennium.**
+
+```c#
+using System;
+
+namespace ConsoleApp3
+{
+    internal class Program
+    {
+        struct sDate
+        {
+            public short Year;
+            public short Month;
+            public short Day;
+        }
+        static short ReadYear()
+        {
+            Console.Write("Please Enter a Year? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadMonth()
+        {
+            Console.Write("Please Enter a Month? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static short ReadDay()
+        {
+            Console.Write("Please Enter a Day? ");
+            short Number = short.Parse(Console.ReadLine());
+            return Number;
+        }
+
+        static bool LeapYear(int Number)
+        {
+            return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+        }
+
+        static int NumberofDaysInMonths(short Number, short Year)
+        {
+            if (Number > 12 || Number < 0)
+                return 0;
+            if (Number == 2)
+            {
+                return LeapYear(Year) ? 29 : 28;
+            }
+
+            short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+            for (short i = 0; i < arr.Length; i++)
+            {
+                if (Number == arr[i])
+                    return 31;
+            }
+            return 30;
+        }
+
+
+        static sDate ReadFullDate()
+        {
+            sDate Date;
+
+            Date.Day = ReadDay();
+            Date.Month = ReadMonth();
+            Date.Year = ReadYear();
+
+            return Date;
+        }
+
+        static bool IsLastMonthInYear(short Month)
+        {
+            return Month == 12;
+        }
+
+        static int NumberOfDaysFromTheBeginingOfTheYear(short Year, short Month, short Day)
+        {
+            int TotalDays = 0;
+
+            for (short i = 1; i < Month; i++)
+                TotalDays += NumberofDaysInMonths(i, Year);
+
+            TotalDays += Day;
+
+            return TotalDays;
+        }
+        static bool IsLastDayInMonth(sDate Date)
+        {
+            return Date.Day == NumberofDaysInMonths(Date.Month, Date.Year);
+        }
+
+
+
+        static sDate IncreaseDateByOneDay(sDate Date)
+        {
+            if (IsLastMonthInYear(Date.Month))
+            {
+                if (IsLastDayInMonth(Date))
+                {
+                    Date.Day = 1;
+                    Date.Month = 1;
+                    Date.Year++;
+                }
+                else
+                {
+                    Date.Day++;
+                }
+            }
+            else if (IsLastDayInMonth(Date))
+            {
+                Date.Day = 1;
+                Date.Month++;
+            }
+            else
+                Date.Day++;
+            return Date;
+        }
+
+        static sDate IncreaseDateByOneWeek(sDate Date)
+        {
+
+            for (int i = 0; i < 7; i++)
+                Date = IncreaseDateByOneDay(Date);
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByXWeek(sDate Date, short Weeks)
+        { 
+            for (int i = 0 ;i<Weeks;i++)
+            {
+                Date = IncreaseDateByOneWeek(Date);
+            }
+            return Date;
+
+        }
+        
+        static sDate IncreaseDateByOneMonth(sDate Date)
+        {
+            if (Date.Month == 12)
+            {
+                Date.Month = 1;
+                Date.Year++;
+            }
+            else
+            {
+                Date.Month++;
+            }
+
+            short NumberOfDaysInCurrentMonth = (short) (NumberofDaysInMonths(Date.Month, Date.Year));
+
+            if (Date.Month > NumberOfDaysInCurrentMonth)
+                Date.Month = NumberOfDaysInCurrentMonth;
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByXMonth(sDate Date, short Month)
+        {
+            for (int i = 0;i<Month;i++)
+                Date = IncreaseDateByOneMonth(Date);
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByOneYear(sDate Date)
+        {
+            Date.Year++;
+            return Date;
+        }
+
+        static sDate IncreaseDateByXYear(sDate Date,short Years)
+        {
+
+            Date.Year += Years;
+            return Date;
+        }
+
+       
+
+        static sDate IncreaseDateByOneDecade(sDate Date)
+        {
+            Date.Year += 10;
+            return Date;
+        }
+        static sDate IncreaseDateByXDecade(sDate Date, short Years)
+        {
+            Date.Year += (short)(Years * 10);
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByOneCentury(sDate Date)
+        {
+            Date.Year += 100;
+
+            return Date;
+        }
+
+        static sDate IncreaseDateByOneMillennium(sDate Date)
+        { 
+            Date.Year += 1000;
+            return Date; 
+        }
+            static void Main(string[] args)
+        {
+            sDate Date1 = ReadFullDate();
+            Console.WriteLine();
+            Date1 = IncreaseDateByOneMillennium(Date1);
+            Console.WriteLine("Adding One Millennium is:" + Date1.Day + "/" + Date1.Month + "/" + Date1.Year);
+            Console.ReadKey();
+        }
+    }
+}
+```
+
