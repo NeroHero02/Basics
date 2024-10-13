@@ -7632,8 +7632,9 @@ namespace ConsoleApp3
 
 ```c#
 using System;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 
-struct Date
+struct sDate
 {
     public short Year;
     public short Month;
@@ -7647,134 +7648,7 @@ class Program
         return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
     }
 
-    static bool IsDate1BeforeDate2(Date date1, Date date2)
-    {
-        if (date1.Year < date2.Year)
-            return true;
-        if (date1.Year == date2.Year)
-        {
-            if (date1.Month < date2.Month)
-                return true;
-            if (date1.Month == date2.Month)
-                return date1.Day < date2.Day;
-        }
-        return false;
-    }
 
-    static short NumberOfDaysInAMonth(short month, short year)
-    {
-        if (month < 1 || month > 12)
-            return 0;
-
-        int[] days = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-        return (short)((month == 2 && IsLeapYear(year)) ? 29 : days[month - 1]);
-    }
-
-    static bool IsLastDayInMonth(Date date)
-    {
-        return date.Day == NumberOfDaysInAMonth(date.Month, date.Year);
-    }
-
-    static bool IsLastMonthInYear(short month)
-    {
-        return month == 12;
-    }
-
-    static Date IncreaseDateByOneDay(Date date)
-    {
-        if (IsLastDayInMonth(date))
-        {
-            if (IsLastMonthInYear(date.Month))
-            {
-                date.Month = 1;
-                date.Day = 1;
-                date.Year++;
-            }
-            else
-            {
-                date.Day = 1;
-                date.Month++;
-            }
-        }
-        else
-        {
-            date.Day++;
-        }
-        return date;
-    }
-
-    static int GetDifferenceInDays(Date date1, Date date2, bool includeEndDay = false)
-    {
-        int days = 0;
-        while (IsDate1BeforeDate2(date1, date2))
-        {
-            days++;
-            date1 = IncreaseDateByOneDay(date1);
-        }
-        return includeEndDay ? ++days : days;
-    }
-
-    static short DayOfWeekOrder(short day, short month, short year)
-    {
-        short a = (short)((14 - month) / 12);
-        short y = (short)(year - a);
-        short m = (short)(month + 12 * a - 2);
-        return (short)((day + y + (y / 4) - (y / 100) + (y / 400) + (31 * m / 12)) % 7);
-    }
-
-    static short DayOfWeekOrder(Date date)
-    {
-        return DayOfWeekOrder(date.Day, date.Month, date.Year);
-    }
-
-    static string DayShortName(short dayOfWeekOrder)
-    {
-        string[] arrDayNames = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
-        return arrDayNames[dayOfWeekOrder];
-    }
-
-    static bool IsEndOfWeek(Date date)
-    {
-        return DayOfWeekOrder(date) == 6;
-    }
-
-    static bool IsWeekEnd(Date date)
-    {
-        short dayIndex = DayOfWeekOrder(date);
-        return dayIndex == 5 || dayIndex == 6;
-    }
-
-    static bool IsBusinessDay(Date date)
-    {
-        return !IsWeekEnd(date);
-    }
-
-    static short DaysUntilTheEndOfWeek(Date date)
-    {
-        return (short)(6 - DayOfWeekOrder(date));
-    }
-
-    static short DaysUntilTheEndOfMonth(Date date)
-    {
-        Date endOfMonthDate = new Date
-        {
-            Day = NumberOfDaysInAMonth(date.Month, date.Year),
-            Month = date.Month,
-            Year = date.Year
-        };
-        return (short)GetDifferenceInDays(date, endOfMonthDate, true);
-    }
-
-    static short DaysUntilTheEndOfYear(Date date)
-    {
-        Date endOfYearDate = new Date
-        {
-            Day = 31,
-            Month = 12,
-            Year = date.Year
-        };
-        return (short)GetDifferenceInDays(date, endOfYearDate, true);
-    }
 
     static short ReadDay()
     {
@@ -7794,19 +7668,19 @@ class Program
         return short.Parse(Console.ReadLine());
     }
 
-    static Date ReadFullDate()
+    static sDate ReadFullDate()
     {
-        Date date;
+        sDate date;
         date.Day = ReadDay();
         date.Month = ReadMonth();
         date.Year = ReadYear();
         return date;
     }
 
-    static Date GetSystemDate()
+    static sDate GetSystemDate()
     {
         DateTime now = DateTime.Now;
-        return new Date
+        return new sDate
         {
             Year = (short)now.Year,
             Month = (short)now.Month,
@@ -7814,23 +7688,96 @@ class Program
         };
     }
 
+    static short NumberOfDaysInAMonth(short month, short year)
+    {
+        if (month < 1 || month > 12)
+            return 0;
+
+        int[] days = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        return (short)((month == 2 && IsLeapYear(year)) ? 29 : days[month - 1]);
+    }
+    static short DayOfWeekOrder(short day, short month, short year)
+    {
+        short a = (short)((14 - month) / 12);
+        short y = (short)(year - a);
+        short m = (short)(month + 12 * a - 2);
+        return (short)((day + y + (y / 4) - (y / 100) + (y / 400) + (31 * m / 12)) % 7);
+    }
+
+    static string DayShortName(short dayOfWeekOrder)
+    {
+        string[] arrDayNames = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+        return arrDayNames[dayOfWeekOrder];
+    }
+    static short DayOfWeekOrder(sDate date)
+    {
+        return DayOfWeekOrder(date.Day, date.Month, date.Year);
+    }
+
+    static bool isEndOfWeek(sDate date)
+    {
+        return DayOfWeekOrder(date.Day, date.Month, date.Year) == 6;
+    }
+
+    static bool isWeekend(sDate date)
+    {
+        short DayIndex = DayOfWeekOrder(date.Day, date.Month, date.Year);
+        return DayIndex == 5 || DayIndex == 6;
+    }
+
+    static bool IsBusinessDay(sDate date)
+    {
+        return !(isWeekend(date));
+    }
+
+    static short DaysUntilTheEndOfWeek(sDate date)
+    {
+        return (short)(6 - (DayOfWeekOrder(date.Day, date.Month, date.Year)));
+    }
+
+    static short DaysUntilTheEndOfMonth(sDate date)
+    {
+        return (short)(NumberOfDaysInAMonth(date.Month, date.Year) - date.Day);
+    }
+
+    static short DaysUntilTheEndOfYear(sDate date)
+    {
+        short DaysUntil = 0;
+        short Month = date.Month;
+        while (Month <=12)
+        {
+                DaysUntil += NumberOfDaysInAMonth(Month, date.Year);
+                Month++;
+        }
+        return (short)(DaysUntil - date.Day);
+    }
     static void Main(string[] args)
     {
-        Date date1 = GetSystemDate();
-        Console.WriteLine($"\nToday is {DayShortName(DayOfWeekOrder(date1))}, {date1.Day}/{date1.Month}/{date1.Year}");
+        sDate date = GetSystemDate();
 
-        Console.WriteLine("\nIs it End of Week?");
-        Console.WriteLine(IsEndOfWeek(date1) ? "Yes, it's Saturday, the end of the week." : "No, it's not the end of the week.");
+        Console.WriteLine("Today is " + DayShortName(DayOfWeekOrder(date)) + " , " + date.Day + "/" + date.Month + "/" + date.Year + "\n");
 
-        Console.WriteLine("\nIs it Weekend?");
-        Console.WriteLine(IsWeekEnd(date1) ? "Yes, it is a weekend." : $"No, today is {DayShortName(DayOfWeekOrder(date1))}, not a weekend.");
+        Console.WriteLine("Is it End of Week?");
+        if (isEndOfWeek(date))
+            Console.WriteLine("Yes end of week.\n");
+        else
+            Console.WriteLine("No NOT end of week.\n");
 
-        Console.WriteLine("\nIs it Business Day?");
-        Console.WriteLine(IsBusinessDay(date1) ? "Yes, it is a business day." : "No, it is not a business day.");
+        Console.WriteLine("Is it Weekend?");
+        if (isWeekend(date))
+            Console.WriteLine("Yes it is a week end.\n");
+        else
+            Console.WriteLine("No it is NOT a week end.\n");
 
-        Console.WriteLine($"\nDays until the end of the week: {DaysUntilTheEndOfWeek(date1)} day(s).");
-        Console.WriteLine($"Days until the end of the month: {DaysUntilTheEndOfMonth(date1)} day(s).");
-        Console.WriteLine($"Days until the end of the year: {DaysUntilTheEndOfYear(date1)} day(s).");
+        Console.WriteLine("Is it Business Day?");
+        if (IsBusinessDay(date))
+            Console.WriteLine("Yes it is a business day.\n");
+        else
+            Console.WriteLine("No it is NOT a business day.\n");
+
+        Console.WriteLine("Days until end of week : " + DaysUntilTheEndOfWeek(date));
+        Console.WriteLine("Days until end of month : " + DaysUntilTheEndOfMonth(date));
+        Console.WriteLine("Days until end of year : " + DaysUntilTheEndOfYear(date));
 
         Console.ReadKey();
     }
@@ -7841,5 +7788,856 @@ class Program
 **Write a program to read Vacation Period DateFrom and DateTo and make a function to calculate the actual vacation days. Note: Weekends are excluded**
 
 ```c#
+using System;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 
+struct sDate
+{
+    public short Year;
+    public short Month;
+    public short Day;
+}
+
+class Program
+{
+
+    static short ReadDay()
+    {
+        Console.Write("\nPlease enter a Day? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static short ReadMonth()
+    {
+        Console.Write("Please enter a Month? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static short ReadYear()
+    {
+        Console.Write("Please enter a Year? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static sDate ReadFullDate()
+    {
+        sDate date;
+        date.Day = ReadDay();
+        date.Month = ReadMonth();
+        date.Year = ReadYear();
+        return date;
+    }
+
+    static bool LeapYear(int Number)
+    {
+        return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+    }
+
+    static int NumberofDaysInMonths(short Number, short Year)
+    {
+        if (Number > 12 || Number < 0)
+            return 0;
+        if (Number == 2)
+        {
+            return LeapYear(Year) ? 29 : 28;
+        }
+
+        short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+        for (short i = 0; i < arr.Length; i++)
+        {
+            if (Number == arr[i])
+                return 31;
+        }
+        return 30;
+    }
+
+    static short DayOfWeekOrder(short day, short month, short year)
+    {
+        short a = (short)((14 - month) / 12);
+        short y = (short)(year - a);
+        short m = (short)(month + 12 * a - 2);
+        return (short)((day + y + (y / 4) - (y / 100) + (y / 400) + (31 * m / 12)) % 7);
+    }
+
+    static string DayShortName(short dayOfWeekOrder)
+    {
+        string[] arrDayNames = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+        return arrDayNames[dayOfWeekOrder];
+    }
+    static short DayOfWeekOrder(sDate date)
+    {
+        return DayOfWeekOrder(date.Day, date.Month, date.Year);
+    }
+
+    static bool isEndOfWeek(sDate date)
+    {
+        return DayOfWeekOrder(date.Day, date.Month, date.Year) == 6;
+    }
+
+    static bool isWeekend(sDate date)
+    {
+        short DayIndex = DayOfWeekOrder(date.Day, date.Month, date.Year);
+        return DayIndex == 5 || DayIndex == 6;
+    }
+
+    static bool IsBusinessDay(sDate date)
+    {
+        return !(isWeekend(date));
+    }
+
+    static bool IsLastMonthInYear(short Month)
+    {
+        return Month == 12;
+    }
+
+    static bool IsLastDayInMonth(sDate Date)
+    {
+        return Date.Day == NumberofDaysInMonths(Date.Month, Date.Year);
+    }
+
+    static sDate IncreaseDateByOneDay(sDate Date)
+    {
+        if (IsLastMonthInYear(Date.Month))
+        {
+            if (IsLastDayInMonth(Date))
+            {
+                Date.Day = 1;
+                Date.Month = 1;
+                Date.Year++;
+            }
+            else
+            {
+                Date.Day++;
+            }
+        }
+        else if (IsLastDayInMonth(Date))
+        {
+            Date.Day = 1;
+            Date.Month++;
+        }
+        else
+            Date.Day++;
+        return Date;
+    }
+    static bool IsDate1EqualDate2(sDate Date1, sDate Date2)
+    {
+        return (Date1.Year == Date2.Year) ? ((Date1.Month == Date2.Month) ? (Date1.Day == Date2.Day) ? true : false : false) : false;
+
+    }
+    static short ActualVacation(sDate DateFrom , sDate DateTo)
+    {
+        short DaysCount = 0;
+        while(!(IsDate1EqualDate2(DateFrom, DateTo)))
+        {
+                if (IsBusinessDay(DateFrom))
+                DaysCount++;
+
+            DateFrom = IncreaseDateByOneDay(DateFrom);
+
+        }
+
+        return DaysCount;
+        
+    }
+
+  
+    static void Main(string[] args)
+    {
+        Console.Write("Vacation Starts: ");
+        sDate DateFrom = ReadFullDate();
+
+        Console.Write("\nVacation End: ");
+        sDate DateTo = ReadFullDate();
+
+        Console.WriteLine("\nVacation From: " + DayShortName(DayOfWeekOrder(DateFrom.Day, DateFrom.Month, DateFrom.Year)) + " , " + DateFrom.Day + "/" + DateFrom.Month + "/" + DateFrom.Year);
+        Console.WriteLine("Vacation To: " + DayShortName(DayOfWeekOrder(DateTo.Day, DateTo.Month, DateTo.Year)) + " , " + DateTo.Day + "/" + DateTo.Month + "/" + DateTo.Year);
+
+        Console.WriteLine("\n\nActucal Vacation Days is: " + ActualVacation(DateFrom, DateTo));
+
+
+
+
+        Console.ReadKey();
+    }
+}
 ``` 
+
+## Problem 84
+**Write a program to read Vacation Start DateFrom and VacationDays, then make a function to calculate the vacation return Date.**
+
+```c#
+using System;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
+
+struct sDate
+{
+    public short Year;
+    public short Month;
+    public short Day;
+}
+
+class Program
+{
+
+    static short ReadDay()
+    {
+        Console.Write("\nPlease enter a Day? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static short ReadMonth()
+    {
+        Console.Write("Please enter a Month? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static short ReadYear()
+    {
+        Console.Write("Please enter a Year? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static short ReadVacation()
+    {
+        Console.Write("\nPlease enter vacation days?");
+        return short.Parse(Console.ReadLine());
+    }
+    static sDate ReadFullDate()
+    {
+        sDate date;
+        date.Day = ReadDay();
+        date.Month = ReadMonth();
+        date.Year = ReadYear();
+        return date;
+    }
+
+    static bool LeapYear(int Number)
+    {
+        return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+    }
+
+    static int NumberofDaysInMonths(short Number, short Year)
+    {
+        if (Number > 12 || Number < 0)
+            return 0;
+        if (Number == 2)
+        {
+            return LeapYear(Year) ? 29 : 28;
+        }
+
+        short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+        for (short i = 0; i < arr.Length; i++)
+        {
+            if (Number == arr[i])
+                return 31;
+        }
+        return 30;
+    }
+
+    static short DayOfWeekOrder(short day, short month, short year)
+    {
+        short a = (short)((14 - month) / 12);
+        short y = (short)(year - a);
+        short m = (short)(month + 12 * a - 2);
+        return (short)((day + y + (y / 4) - (y / 100) + (y / 400) + (31 * m / 12)) % 7);
+    }
+
+    static string DayShortName(short dayOfWeekOrder)
+    {
+        string[] arrDayNames = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+        return arrDayNames[dayOfWeekOrder];
+    }
+    static short DayOfWeekOrder(sDate date)
+    {
+        return DayOfWeekOrder(date.Day, date.Month, date.Year);
+    }
+
+    static bool isEndOfWeek(sDate date)
+    {
+        return DayOfWeekOrder(date.Day, date.Month, date.Year) == 6;
+    }
+
+    static bool isWeekend(sDate date)
+    {
+        short DayIndex = DayOfWeekOrder(date.Day, date.Month, date.Year);
+        return DayIndex == 5 || DayIndex == 6;
+    }
+
+    static bool IsBusinessDay(sDate date)
+    {
+        return !(isWeekend(date));
+    }
+
+    static bool IsLastMonthInYear(short Month)
+    {
+        return Month == 12;
+    }
+
+    static bool IsLastDayInMonth(sDate Date)
+    {
+        return Date.Day == NumberofDaysInMonths(Date.Month, Date.Year);
+    }
+
+    static sDate IncreaseDateByOneDay(sDate Date)
+    {
+        if (IsLastMonthInYear(Date.Month))
+        {
+            if (IsLastDayInMonth(Date))
+            {
+                Date.Day = 1;
+                Date.Month = 1;
+                Date.Year++;
+            }
+            else
+            {
+                Date.Day++;
+            }
+        }
+        else if (IsLastDayInMonth(Date))
+        {
+            Date.Day = 1;
+            Date.Month++;
+        }
+        else
+            Date.Day++;
+        return Date;
+    }
+    static bool IsDate1EqualDate2(sDate Date1, sDate Date2)
+    {
+        return (Date1.Year == Date2.Year) ? ((Date1.Month == Date2.Month) ? (Date1.Day == Date2.Day) ? true : false : false) : false;
+
+    }
+    static short ActualVacation(sDate DateFrom , sDate DateTo)
+    {
+        short DaysCount = 0;
+        while(!(IsDate1EqualDate2(DateFrom, DateTo)))
+        {
+                if (IsBusinessDay(DateFrom))
+                DaysCount++;
+
+            DateFrom = IncreaseDateByOneDay(DateFrom);
+
+        }
+
+        return DaysCount;
+        
+    }
+
+    static string ReturnDate(sDate DateFrom , short DaysVacation)
+    {
+        short DaysCount = 0;
+
+        while (DaysVacation != 0)
+        {
+            if(IsBusinessDay(DateFrom))
+            {
+                DaysVacation--;
+            }
+            DateFrom = IncreaseDateByOneDay(DateFrom);
+        }
+
+        return DayShortName(DayOfWeekOrder(DateFrom.Day, DateFrom.Month, DateFrom.Year)) + " , " + DateFrom.Day + "/" + DateFrom.Month + "/" +DateFrom.Year;
+    }
+    static void Main(string[] args)
+    {
+        Console.Write("Vacation Starts: ");
+        sDate DateFrom = ReadFullDate();
+
+        short DaysVacation = ReadVacation();
+
+
+        Console.WriteLine("\nReturn Date: " + ReturnDate(DateFrom,DaysVacation));
+
+
+
+
+        Console.ReadKey();
+    }
+}
+```
+
+## Problem 85
+**Write a program to read Date1& Date2, and check if Date1 is after Date2 or not.**
+
+```c#
+using System;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
+
+struct sDate
+{
+    public short Year;
+    public short Month;
+    public short Day;
+}
+
+class Program
+{
+
+    static short ReadDay()
+    {
+        Console.Write("\nPlease enter a Day? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static short ReadMonth()
+    {
+        Console.Write("Please enter a Month? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static short ReadYear()
+    {
+        Console.Write("Please enter a Year? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static sDate ReadFullDate()
+    {
+        sDate date;
+        date.Day = ReadDay();
+        date.Month = ReadMonth();
+        date.Year = ReadYear();
+        return date;
+    }
+
+
+    static bool IsDate1EqualDate2(sDate Date1, sDate Date2)
+    {
+        return (Date1.Year == Date2.Year) ? ((Date1.Month == Date2.Month) ? (Date1.Day == Date2.Day) ? true : false : false) : false;
+
+    }
+
+    static bool IsDate1BeforeDate2(sDate Date1, sDate Date2)
+    {
+        return ((Date1.Year < Date2.Year) ? true : (Date1.Year == Date2.Year) ? (Date1.Month < Date2.Month) ? true : (Date1.Month == Date2.Month) ? (Date1.Day < Date2.Day) : false : false);
+
+    }
+
+    static bool IsDate1AfterDate2(sDate Date1, sDate Date2)
+    {
+        return (!IsDate1BeforeDate2(Date1,Date2)) && (!IsDate1EqualDate2(Date1, Date2)) ;
+    }
+
+    static void Main(string[] args)
+    {
+        Console.Write("Enter Date1:");
+        sDate Date1 = ReadFullDate();
+
+        Console.Write("\nEnter Date2:");
+        sDate Date2 = ReadFullDate();
+
+        if (IsDate1AfterDate2(Date1,Date2))
+            Console.WriteLine("\nYes, Date1 is After Date2."); 
+        else
+            Console.WriteLine("\nNo, Date1 is NOT After Date2.");
+
+        Console.ReadKey();
+    }
+}
+```
+
+## Problem 86
+**Write a program to read Date1 & Date2, and write a function to compare dates, it should return:**  
+**-1 Before**  
+**0 Equals**  
+**1 After**  
+
+```c#
+using System;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
+
+struct sDate
+{
+    public short Year;
+    public short Month;
+    public short Day;
+}
+
+enum enDateCompare { Before = -1 , Equal = 0 , After = 1  };
+
+class Program
+{
+
+    static short ReadDay()
+    {
+        Console.Write("\nPlease enter a Day? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static short ReadMonth()
+    {
+        Console.Write("Please enter a Month? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static short ReadYear()
+    {
+        Console.Write("Please enter a Year? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static sDate ReadFullDate()
+    {
+        sDate date;
+        date.Day = ReadDay();
+        date.Month = ReadMonth();
+        date.Year = ReadYear();
+        return date;
+    }
+
+
+    static bool IsDate1EqualDate2(sDate Date1, sDate Date2)
+    {
+        return (Date1.Year == Date2.Year) ? ((Date1.Month == Date2.Month) ? (Date1.Day == Date2.Day) ? true : false : false) : false;
+
+    }
+
+    static bool IsDate1BeforeDate2(sDate Date1, sDate Date2)
+    {
+        return ((Date1.Year < Date2.Year) ? true : (Date1.Year == Date2.Year) ? (Date1.Month < Date2.Month) ? true : (Date1.Month == Date2.Month) ? (Date1.Day < Date2.Day) : false : false);
+
+    }
+
+    static bool IsDate1AfterDate2(sDate Date1, sDate Date2)
+    {
+        return (!IsDate1BeforeDate2(Date1,Date2)) && (!IsDate1EqualDate2(Date1, Date2)) ;
+    }
+
+    static enDateCompare ComapreDates(sDate date1, sDate date2)
+    {
+        if (IsDate1BeforeDate2(date1, date2))
+            return enDateCompare.Before;
+        else if (IsDate1EqualDate2(date1, date2))
+            return enDateCompare.Equal;
+
+        return enDateCompare.After;
+    }
+    static void Main(string[] args)
+    {
+        Console.Write("Enter Date1:");
+        sDate Date1 = ReadFullDate();
+
+        Console.Write("\nEnter Date2:");
+        sDate Date2 = ReadFullDate();
+
+        Console.WriteLine("\nCompare Results: " + (int) (ComapreDates(Date1,Date2)));
+
+        Console.ReadKey();
+    }
+}
+```
+
+## Problem 87
+**Write a program to read Two Periods and check if they overlap or not.**
+
+```c#
+using System;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
+
+struct stDate
+{
+    public short Year;
+    public short Month;
+    public short Day;
+}
+
+struct stPeriod
+{
+    public stDate StartDate;
+    public stDate EndDate;
+}
+enum enDateCompare { Before = -1 , Equal = 0 , After = 1  };
+
+class Program
+{
+
+    static short ReadDay()
+    {
+        Console.Write("\nPlease enter a Day? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static short ReadMonth()
+    {
+        Console.Write("Please enter a Month? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static short ReadYear()
+    {
+        Console.Write("Please enter a Year? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static stDate ReadFullDate()
+    {
+        stDate date;
+        date.Day = ReadDay();
+        date.Month = ReadMonth();
+        date.Year = ReadYear();
+        return date;
+    }
+
+
+    static bool IsDate1EqualDate2(stDate Date1, stDate Date2)
+    {
+        return (Date1.Year == Date2.Year) ? ((Date1.Month == Date2.Month) ? (Date1.Day == Date2.Day) ? true : false : false) : false;
+
+    }
+
+    static bool IsDate1BeforeDate2(stDate Date1, stDate Date2)
+    {
+        return ((Date1.Year < Date2.Year) ? true : (Date1.Year == Date2.Year) ? (Date1.Month < Date2.Month) ? true : (Date1.Month == Date2.Month) ? (Date1.Day < Date2.Day) : false : false);
+
+    }
+
+    static bool IsDate1AfterDate2(stDate Date1, stDate Date2)
+    {
+        return (!IsDate1BeforeDate2(Date1,Date2)) && (!IsDate1EqualDate2(Date1, Date2)) ;
+    }
+
+    static enDateCompare ComapreDates(stDate date1, stDate date2)
+    {
+        if (IsDate1BeforeDate2(date1, date2))
+            return enDateCompare.Before;
+        else if (IsDate1EqualDate2(date1, date2))
+            return enDateCompare.Equal;
+
+        return enDateCompare.After;
+    }
+
+    static bool IsPeriodOverLap(stPeriod Period1, stPeriod Period2)
+    {
+        if((ComapreDates(Period2.EndDate,Period1.StartDate) == enDateCompare.Before || ComapreDates(Period2.StartDate, Period1.EndDate) == enDateCompare.After))
+        {
+                return false;
+        }
+        return true;
+    }
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Enter Period 1:");
+        Console.WriteLine("Enter Start Date:");
+        stPeriod Period1 = new stPeriod();
+        Period1.StartDate = ReadFullDate();
+        Console.WriteLine("\nEnter End Date:");
+        Period1.EndDate = ReadFullDate();
+
+        Console.WriteLine("\nEnter Period 2:");
+        Console.WriteLine("Enter Start Date:");
+        stPeriod Period2 = new stPeriod();
+        Period2.StartDate = ReadFullDate();
+        Console.WriteLine("\nEnter End Date:");
+        Period2.EndDate = ReadFullDate();
+
+        if (IsPeriodOverLap(Period1, Period2))
+            Console.WriteLine("\nYes, Periods OverLap");
+        else
+            Console.WriteLine("\nNo, Is NOT Periods OverLap");
+
+        Console.ReadKey();
+    }
+}
+```
+
+## Problem 88
+**Write a program to read a Period and calculate period length in days.**
+
+```c#
+using System;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Security.Policy;
+
+struct stDate
+{
+    public short Year;
+    public short Month;
+    public short Day;
+}
+
+struct stPeriod
+{
+    public stDate StartDate;
+    public stDate EndDate;
+}
+enum enDateCompare { Before = -1 , Equal = 0 , After = 1  };
+
+class Program
+{
+
+    static short ReadDay()
+    {
+        Console.Write("\nPlease enter a Day? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static short ReadMonth()
+    {
+        Console.Write("Please enter a Month? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static short ReadYear()
+    {
+        Console.Write("Please enter a Year? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static stDate ReadFullDate()
+    {
+        stDate date;
+        date.Day = ReadDay();
+        date.Month = ReadMonth();
+        date.Year = ReadYear();
+        return date;
+    }
+
+    static bool LeapYear(int Number)
+    {
+        return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+    }
+
+    static int NumberofDaysInMonths(short Number, short Year)
+    {
+        if (Number > 12 || Number < 0)
+            return 0;
+        if (Number == 2)
+        {
+            return LeapYear(Year) ? 29 : 28;
+        }
+
+        short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+        for (short i = 0; i < arr.Length; i++)
+        {
+            if (Number == arr[i])
+                return 31;
+        }
+        return 30;
+    }
+
+    static bool IsDate1EqualDate2(stDate Date1, stDate Date2)
+    {
+        return (Date1.Year == Date2.Year) ? ((Date1.Month == Date2.Month) ? (Date1.Day == Date2.Day) ? true : false : false) : false;
+
+    }
+
+    static bool IsDate1BeforeDate2(stDate Date1, stDate Date2)
+    {
+        return ((Date1.Year < Date2.Year) ? true : (Date1.Year == Date2.Year) ? (Date1.Month < Date2.Month) ? true : (Date1.Month == Date2.Month) ? (Date1.Day < Date2.Day) : false : false);
+
+    }
+
+    static bool IsDate1AfterDate2(stDate Date1, stDate Date2)
+    {
+        return (!IsDate1BeforeDate2(Date1,Date2)) && (!IsDate1EqualDate2(Date1, Date2)) ;
+    }
+
+    static enDateCompare ComapreDates(stDate date1, stDate date2)
+    {
+        if (IsDate1BeforeDate2(date1, date2))
+            return enDateCompare.Before;
+        else if (IsDate1EqualDate2(date1, date2))
+            return enDateCompare.Equal;
+
+        return enDateCompare.After;
+    }
+    static bool IsLastMonthInYear(short Month)
+    {
+        return Month == 12;
+    }
+
+    static int NumberOfDaysFromTheBeginingOfTheYear(short Year, short Month, short Day)
+    {
+        int TotalDays = 0;
+
+        for (short i = 1; i < Month; i++)
+            TotalDays += NumberofDaysInMonths(i, Year);
+
+        TotalDays += Day;
+
+        return TotalDays;
+    }
+    static bool IsLastDayInMonth(stDate Date)
+    {
+        return Date.Day == NumberofDaysInMonths(Date.Month, Date.Year);
+    }
+    static stDate IncreaseDateByOneDay(stDate Date)
+    {
+        if (IsLastMonthInYear(Date.Month))
+        {
+            if (IsLastDayInMonth(Date))
+            {
+                Date.Day = 1;
+                Date.Month = 1;
+                Date.Year++;
+            }
+            else
+            {
+                Date.Day++;
+            }
+        }
+        else if (IsLastDayInMonth(Date))
+        {
+            Date.Day = 1;
+            Date.Month++;
+        }
+        else
+            Date.Day++;
+        return Date;
+    }
+    static short GetDifferenceInDays(stDate Date1, stDate Date2, bool IncludeEndDay = false)
+    {
+        short Days = 0;
+
+        while (IsDate1BeforeDate2(Date1, Date2))
+        {
+            Days++;
+            Date1 = IncreaseDateByOneDay(Date1);
+        }
+
+
+        return IncludeEndDay ? ++Days : Days;
+    }
+
+    static bool IsPeriodOverLap(stPeriod Period1, stPeriod Period2)
+    {
+        if((ComapreDates(Period2.EndDate,Period1.StartDate) == enDateCompare.Before || ComapreDates(Period2.StartDate, Period1.EndDate) == enDateCompare.After))
+        {
+                return false;
+        }
+        return true;
+    }
+
+    static stPeriod ReadFullPeriod()
+    {
+        Console.WriteLine("Enter Start Date:");
+        stPeriod Period = new stPeriod();
+        Period.StartDate = ReadFullDate();
+        Console.WriteLine("\nEnter End Date:");
+        Period.EndDate = ReadFullDate();
+
+        return Period;
+    }
+
+    static short PeriodLength(stPeriod Period , bool IncludeEndDate = false)
+    {
+        return GetDifferenceInDays(Period.StartDate,Period.EndDate,IncludeEndDate);
+    }
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Enter Period 1:");
+        stPeriod Period = ReadFullPeriod();
+
+        Console.WriteLine("\nPeriod Length is: " + PeriodLength(Period));
+        Console.WriteLine("Period Length (Including End Date) is: " + PeriodLength(Period,true));
+        Console.ReadKey();
+    }
+}
+```
+
+## Problem 89
+**Write a program to read a Period and Date, then check if date is within this period or not.**
+
+```c#
+
+```
