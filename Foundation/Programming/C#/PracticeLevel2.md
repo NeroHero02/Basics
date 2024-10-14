@@ -8639,5 +8639,523 @@ class Program
 **Write a program to read a Period and Date, then check if date is within this period or not.**
 
 ```c#
+using System;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Security.Policy;
+
+struct stDate
+{
+    public short Year;
+    public short Month;
+    public short Day;
+}
+
+struct stPeriod
+{
+    public stDate StartDate;
+    public stDate EndDate;
+}
+enum enDateCompare { Before = -1 , Equal = 0 , After = 1  };
+
+class Program
+{
+
+    static short ReadDay()
+    {
+        Console.Write("\nPlease enter a Day? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static short ReadMonth()
+    {
+        Console.Write("Please enter a Month? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static short ReadYear()
+    {
+        Console.Write("Please enter a Year? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static stDate ReadFullDate()
+    {
+        stDate date;
+        date.Day = ReadDay();
+        date.Month = ReadMonth();
+        date.Year = ReadYear();
+        return date;
+    }
+
+    static bool LeapYear(int Number)
+    {
+        return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+    }
+
+    static int NumberofDaysInMonths(short Number, short Year)
+    {
+        if (Number > 12 || Number < 0)
+            return 0;
+        if (Number == 2)
+        {
+            return LeapYear(Year) ? 29 : 28;
+        }
+
+        short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+        for (short i = 0; i < arr.Length; i++)
+        {
+            if (Number == arr[i])
+                return 31;
+        }
+        return 30;
+    }
+
+    static bool IsDate1EqualDate2(stDate Date1, stDate Date2)
+    {
+        return (Date1.Year == Date2.Year) ? ((Date1.Month == Date2.Month) ? (Date1.Day == Date2.Day) ? true : false : false) : false;
+
+    }
+
+    static bool IsDate1BeforeDate2(stDate Date1, stDate Date2)
+    {
+        return ((Date1.Year < Date2.Year) ? true : (Date1.Year == Date2.Year) ? (Date1.Month < Date2.Month) ? true : (Date1.Month == Date2.Month) ? (Date1.Day < Date2.Day) : false : false);
+
+    }
+
+    static bool IsDate1AfterDate2(stDate Date1, stDate Date2)
+    {
+        return (!IsDate1BeforeDate2(Date1,Date2)) && (!IsDate1EqualDate2(Date1, Date2)) ;
+    }
+
+    static enDateCompare ComapreDates(stDate date1, stDate date2)
+    {
+        if (IsDate1BeforeDate2(date1, date2))
+            return enDateCompare.Before;
+        else if (IsDate1EqualDate2(date1, date2))
+            return enDateCompare.Equal;
+
+        return enDateCompare.After;
+    }
+    static bool IsLastMonthInYear(short Month)
+    {
+        return Month == 12;
+    }
+
+    static int NumberOfDaysFromTheBeginingOfTheYear(short Year, short Month, short Day)
+    {
+        int TotalDays = 0;
+
+        for (short i = 1; i < Month; i++)
+            TotalDays += NumberofDaysInMonths(i, Year);
+
+        TotalDays += Day;
+
+        return TotalDays;
+    }
+    static bool IsLastDayInMonth(stDate Date)
+    {
+        return Date.Day == NumberofDaysInMonths(Date.Month, Date.Year);
+    }
+    static stDate IncreaseDateByOneDay(stDate Date)
+    {
+        if (IsLastMonthInYear(Date.Month))
+        {
+            if (IsLastDayInMonth(Date))
+            {
+                Date.Day = 1;
+                Date.Month = 1;
+                Date.Year++;
+            }
+            else
+            {
+                Date.Day++;
+            }
+        }
+        else if (IsLastDayInMonth(Date))
+        {
+            Date.Day = 1;
+            Date.Month++;
+        }
+        else
+            Date.Day++;
+        return Date;
+    }
+    
+    static bool isDateInPeriod(stPeriod Period , stDate date2 )
+    {
+        if (ComapreDates(Period.StartDate,date2) == enDateCompare.Before && ComapreDates(Period.EndDate,date2) == enDateCompare.After)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    static stPeriod ReadFullPeriod()
+    {
+        Console.WriteLine("Enter Start Date:");
+        stPeriod Period = new stPeriod();
+        Period.StartDate = ReadFullDate();
+        Console.WriteLine("\nEnter End Date:");
+        Period.EndDate = ReadFullDate();
+
+        return Period;
+    }
+
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Enter Period 1:");
+        stPeriod Period = ReadFullPeriod();
+
+        Console.WriteLine("Enter Date to check:");
+        stDate Date = ReadFullDate();
+
+        if (isDateInPeriod(Period, Date))
+            Console.WriteLine("\nYes,Date is within period");
+        else
+            Console.WriteLine("\nNo, Date is NOT within period");
+        Console.ReadKey();
+    }
+}
+```
+
+## Problem 90
+**Write a program to read a two periods then count overlap days.**
+
+```c#
+using System;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Security.Policy;
+
+struct stDate
+{
+    public short Year;
+    public short Month;
+    public short Day;
+}
+
+struct stPeriod
+{
+    public stDate StartDate;
+    public stDate EndDate;
+}
+enum enDateCompare { Before = -1 , Equal = 0 , After = 1  };
+
+class Program
+{
+
+    static short ReadDay()
+    {
+        Console.Write("\nPlease enter a Day? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static short ReadMonth()
+    {
+        Console.Write("Please enter a Month? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static short ReadYear()
+    {
+        Console.Write("Please enter a Year? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static stDate ReadFullDate()
+    {
+        stDate date;
+        date.Day = ReadDay();
+        date.Month = ReadMonth();
+        date.Year = ReadYear();
+        return date;
+    }
+
+    static bool LeapYear(int Number)
+    {
+        return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+    }
+
+    static int NumberofDaysInMonths(short Number, short Year)
+    {
+        if (Number > 12 || Number < 0)
+            return 0;
+        if (Number == 2)
+        {
+            return LeapYear(Year) ? 29 : 28;
+        }
+
+        short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+        for (short i = 0; i < arr.Length; i++)
+        {
+            if (Number == arr[i])
+                return 31;
+        }
+        return 30;
+    }
+
+    static bool IsDate1EqualDate2(stDate Date1, stDate Date2)
+    {
+        return (Date1.Year == Date2.Year) ? ((Date1.Month == Date2.Month) ? (Date1.Day == Date2.Day) ? true : false : false) : false;
+
+    }
+
+    static bool IsDate1BeforeDate2(stDate Date1, stDate Date2)
+    {
+        return ((Date1.Year < Date2.Year) ? true : (Date1.Year == Date2.Year) ? (Date1.Month < Date2.Month) ? true : (Date1.Month == Date2.Month) ? (Date1.Day < Date2.Day) : false : false);
+
+    }
+
+    static bool IsDate1AfterDate2(stDate Date1, stDate Date2)
+    {
+        return (!IsDate1BeforeDate2(Date1,Date2)) && (!IsDate1EqualDate2(Date1, Date2)) ;
+    }
+
+    static enDateCompare ComapreDates(stDate date1, stDate date2)
+    {
+        if (IsDate1BeforeDate2(date1, date2))
+            return enDateCompare.Before;
+        else if (IsDate1EqualDate2(date1, date2))
+            return enDateCompare.Equal;
+
+        return enDateCompare.After;
+    }
+    static bool IsLastMonthInYear(short Month)
+    {
+        return Month == 12;
+    }
+
+    static int NumberOfDaysFromTheBeginingOfTheYear(short Year, short Month, short Day)
+    {
+        int TotalDays = 0;
+
+        for (short i = 1; i < Month; i++)
+            TotalDays += NumberofDaysInMonths(i, Year);
+
+        TotalDays += Day;
+
+        return TotalDays;
+    }
+    static bool IsLastDayInMonth(stDate Date)
+    {
+        return Date.Day == NumberofDaysInMonths(Date.Month, Date.Year);
+    }
+    static stDate IncreaseDateByOneDay(stDate Date)
+    {
+        if (IsLastMonthInYear(Date.Month))
+        {
+            if (IsLastDayInMonth(Date))
+            {
+                Date.Day = 1;
+                Date.Month = 1;
+                Date.Year++;
+            }
+            else
+            {
+                Date.Day++;
+            }
+        }
+        else if (IsLastDayInMonth(Date))
+        {
+            Date.Day = 1;
+            Date.Month++;
+        }
+        else
+            Date.Day++;
+        return Date;
+    }
+    
+    static bool isDateInPeriod(stDate Date , stPeriod Period)
+    {
+        return !(ComapreDates(Date, Period.StartDate) == enDateCompare.Before || ComapreDates(Date, Period.EndDate) == enDateCompare.After);
+    }
+
+    static stPeriod ReadFullPeriod()
+    {
+        Console.WriteLine("Enter Start Date:");
+        stPeriod Period = new stPeriod();
+        Period.StartDate = ReadFullDate();
+        Console.WriteLine("\nEnter End Date:");
+        Period.EndDate = ReadFullDate();
+
+        return Period;
+    }
+    static bool IsPeriodOverLap(stPeriod Period1, stPeriod Period2)
+    {
+        if ((ComapreDates(Period2.EndDate, Period1.StartDate) == enDateCompare.Before || ComapreDates(Period2.StartDate, Period1.EndDate) == enDateCompare.After))
+        {
+            return false;
+        }
+        return true;
+    }
+
+    static short GetDifferenceInDays(stDate Date1, stDate Date2, bool IncludeEndDay = false)
+    {
+        short Days = 0;
+
+        while (IsDate1BeforeDate2(Date1, Date2))
+        {
+            Days++;
+            Date1 = IncreaseDateByOneDay(Date1);
+        }
+
+
+        return IncludeEndDay ? ++Days : Days;
+    }
+    static short PeriodLength(stPeriod Period, bool IncludeEndDate = false)
+    {
+        return GetDifferenceInDays(Period.StartDate, Period.EndDate, IncludeEndDate);
+    }
+
+    static int CountOverLap(stPeriod Period1, stPeriod Period2)
+    {
+        int Period1Length = PeriodLength(Period1,true);
+        int Period2Length = PeriodLength(Period2,true);
+        int OverLapDays = 0;
+
+        if (!IsPeriodOverLap(Period1, Period2))
+            return 0;
+
+        if(Period1Length < Period2Length)
+        {
+            while(IsDate1BeforeDate2(Period1.StartDate, Period1.EndDate))
+            {
+                if (isDateInPeriod(Period1.StartDate, Period2))
+                    OverLapDays++;
+
+                Period1.StartDate = IncreaseDateByOneDay(Period1.StartDate);
+            }
+        }
+        else
+        {
+            while(IsDate1BeforeDate2(Period2.StartDate, Period2.EndDate))
+            {
+                if (isDateInPeriod(Period2.StartDate, Period1))
+                    OverLapDays++;
+
+                Period2.StartDate = IncreaseDateByOneDay(Period2.StartDate);
+            }
+        }
+
+        return OverLapDays;
+    }
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Enter Period 1:");
+        stPeriod Period1 = ReadFullPeriod();
+
+        Console.WriteLine("Enter Period 2:");
+        stPeriod Period2 = ReadFullPeriod();
+
+        Console.WriteLine("\nOverLap Days Count Is: " + CountOverLap(Period1,Period2));
+
+        Console.ReadKey();
+    }
+}
+```
+
+## Problem 91
+**Write a program to read Date and write a function to validate this date.**
+
+```c#
+using System;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Security.Policy;
+
+struct stDate
+{
+    public short Year;
+    public short Month;
+    public short Day;
+}
+
+struct stPeriod
+{
+    public stDate StartDate;
+    public stDate EndDate;
+}
+enum enDateCompare { Before = -1 , Equal = 0 , After = 1  };
+
+class Program
+{
+
+    static short ReadDay()
+    {
+        Console.Write("\nPlease enter a Day? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static short ReadMonth()
+    {
+        Console.Write("Please enter a Month? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static short ReadYear()
+    {
+        Console.Write("Please enter a Year? ");
+        return short.Parse(Console.ReadLine());
+    }
+
+    static stDate ReadFullDate()
+    {
+        stDate date;
+        date.Day = ReadDay();
+        date.Month = ReadMonth();
+        date.Year = ReadYear();
+        return date;
+    }
+
+    static bool LeapYear(int Number)
+    {
+        return ((Number % 400 == 0) || (Number % 100 != 0 && Number % 4 == 0) ? true : false);
+    }
+
+    static int NumberofDaysInMonths(short Number, short Year)
+    {
+        if (Number > 12 || Number < 0)
+            return 0;
+        if (Number == 2)
+        {
+            return LeapYear(Year) ? 29 : 28;
+        }
+
+        short[] arr = { 1, 3, 5, 7, 8, 10, 12 };
+        for (short i = 0; i < arr.Length; i++)
+        {
+            if (Number == arr[i])
+                return 31;
+        }
+        return 30;
+    }
+
+    static bool isValidDate(stDate date)
+    {
+        if (date.Month <= 12 && date.Month >= 1)
+        {
+            if (date.Day >= 1 && NumberofDaysInMonths(date.Month, date.Year) >= date.Day)
+                return true;
+        }
+        return false;
+    }
+    static void Main(string[] args)
+    {
+        stDate Date = ReadFullDate();
+
+        if(isValidDate(Date))
+         Console.WriteLine("\nYes, date is a valide date");
+        else
+         Console.WriteLine("\nNo, date is NOT a valide date");
+
+        Console.ReadKey();
+    }
+}
+```
+
+## Problem 92
+**Write a program to Read Date String, Convert it to date structure, Print Day, Month, Year separately, Then convert Date Structure to string and print it on the screen.**  
+**Note: Write the following functions:**  
+**StringToDate,DateToString**
+
+```c#
 
 ```
