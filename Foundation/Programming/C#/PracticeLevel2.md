@@ -9157,5 +9157,159 @@ class Program
 **StringToDate,DateToString**
 
 ```c#
+using System;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Security.Policy;
 
+struct stDate
+{
+    public short Year;
+    public short Month;
+    public short Day;
+}
+
+
+enum enDateCompare { Before = -1 , Equal = 0 , After = 1  };
+
+class Program
+{
+
+    static string ReadStringDate(string Message)
+    {
+        Console.Write(Message);
+        return Console.ReadLine();
+    }
+
+    static stDate StringToDate(string StringDate)
+    {
+        string[] Splits = StringDate.Split(new string[] { "/" }, StringSplitOptions.None);
+
+        stDate Date = new stDate();
+        Date.Day = Convert.ToInt16(Splits[0]);
+        Date.Month = Convert.ToInt16(Splits[1]);
+        Date.Year = Convert.ToInt16(Splits[2]);
+
+        return Date;
+
+    }
+
+    static string DateToString(stDate Date)
+    {
+        string sDate = "";
+
+        sDate += Date.Day + "/";
+        sDate += Date.Month + "/";
+        sDate += Date.Year;
+
+        return sDate;
+    }
+    static void Main(string[] args)
+    {
+
+        string DateString = ReadStringDate("\nPlease Enter Date dd/mm/yyyy? ");
+
+        stDate Date = StringToDate(DateString);
+        Console.WriteLine("\nDay:" + Date.Day);
+        Console.WriteLine("Month:" + Date.Month);
+        Console.WriteLine("Year:"  + Date.Year + "\n");
+
+        Console.WriteLine("You Entered: " + DateToString(Date));
+
+        Console.ReadKey();
+    }
+}
+```
+
+
+## Problem 93
+**Write a program to read Date and write a function to format that date.**
+
+```c#
+using System;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Security.Policy;
+
+struct stDate
+{
+    public short Year;
+    public short Month;
+    public short Day;
+}
+
+
+enum enDateCompare { Before = -1 , Equal = 0 , After = 1  };
+
+class Program
+{
+
+    static string ReadStringDate(string Message)
+    {
+        Console.Write(Message);
+        return Console.ReadLine();
+    }
+
+    static string ReplaceWordInString(string S1, string StringToReplace, string sReplaceTo)
+    {
+        int pos = S1.IndexOf(StringToReplace);
+
+        while (pos != -1) 
+        {
+            S1 = S1.Remove(pos, StringToReplace.Length).Insert(pos, sReplaceTo);
+            pos = S1.IndexOf(StringToReplace, pos + sReplaceTo.Length);
+        }
+
+        return S1;
+    }
+
+    static string FormatDate(stDate Date, string DateFormat = "dd/mm/yyyy")
+    {
+        string FormattedDateString = "";
+
+        FormattedDateString = ReplaceWordInString(DateFormat, "dd" , Date.Day.ToString());
+        FormattedDateString = ReplaceWordInString(FormattedDateString, "mm" , Date.Month.ToString());
+        FormattedDateString = ReplaceWordInString(FormattedDateString, "yyyy" , Date.Year.ToString());
+
+        return FormattedDateString;
+
+    }
+    static stDate StringToDate(string StringDate)
+    {
+        string[] Splits = StringDate.Split(new string[] { "/" }, StringSplitOptions.None);
+
+        stDate Date = new stDate();
+        Date.Day = Convert.ToInt16(Splits[0]);
+        Date.Month = Convert.ToInt16(Splits[1]);
+        Date.Year = Convert.ToInt16(Splits[2]);
+
+        return Date;
+
+    }
+
+    static string DateToString(stDate Date)
+    {
+        string sDate = "";
+
+        sDate += Date.Day + "/";
+        sDate += Date.Month + "/";
+        sDate += Date.Year;
+
+        return sDate;
+    }
+    static void Main(string[] args)
+    {
+
+        string dateString = ReadStringDate("\nPlease Enter Date (dd/mm/yyyy): ");
+
+        stDate date = StringToDate(dateString);
+
+        Console.WriteLine("\n" + FormatDate(date));
+        Console.WriteLine("\n" + FormatDate(date, "yyyy/dd/mm"));
+        Console.WriteLine("\n" + FormatDate(date, "mm/dd/yyyy"));
+        Console.WriteLine("\n" + FormatDate(date, "mm-dd-yyyy"));
+        Console.WriteLine("\n" + FormatDate(date, "dd-mm-yyyy"));
+        Console.WriteLine("\n" + FormatDate(date, "Day:dd, Month:mm, Year:yyyy"));
+
+        Console.ReadKey();
+    }
+}
 ```
