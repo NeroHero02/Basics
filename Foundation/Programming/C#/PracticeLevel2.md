@@ -9313,3 +9313,1239 @@ class Program
     }
 }
 ```
+
+## Problem 94
+**Project1: Bank Project**
+
+```c#
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static string ClientsFileName = "MyClient/Clients.txt";
+        static string UserFileName = "Users.txt";
+        static double TotalBalancesClients = 0;
+        enum enMainMenueOptions { eListClient = 1, eAddNewClient = 2, eDeleteClient = 3, eUpdateClient = 4, eFindClient = 5, eTransaction = 6, eManageUsers = 7,eLogout = 8 };
+        enum enTransactionMenueOptions { eDeposit = 1, eWithdraw = 2, eTotalBalances = 3, eMainMenue = 4 };
+
+        enum enManageUserOptions { eListUsers = 1, eAddNewUser = 2 , eDeleteUser = 3, eUpdateUser = 4, eFindUser = 5, eMainMenu = 6};
+
+        enum enMainMenuePermission { eAll = -1 , eListClient = 1, eAddNewClient = 2 , eDeleteClient = 4 , eUpdateClient = 8 , eFindClient = 16 , eTransaction = 32 , eManageUsers = 64 };
+
+        static stUsers CurrentUser;
+        struct sClient
+        {
+            public string AccountNumber;
+            public string PinCode;
+            public string Name;
+            public string Phone;
+            public double AccountBalance;         
+        }
+
+        struct stUsers
+        {
+            public string Username;
+            public string Password;
+            public int Permission;
+
+            public stUsers (string Username, string Password)
+            {
+                this.Username = Username;
+                this.Password = Password;
+                this.Permission = 0;
+            }
+        }
+
+        static string ReadClientAccountNumber()
+        {
+            Console.Write("Please Enter AccountNumber?");
+            string AccountNumber = Console.ReadLine();
+
+            return AccountNumber;
+        }
+
+        static string ReadUseruserName()
+        {
+            Console.Write("Please Enter Username?");
+            string Username = Console.ReadLine();
+
+            return Username;
+        }
+        static sClient ReadNewClient(string AccountNumber)
+        {
+            sClient nClient = new sClient();
+
+            //Console.WriteLine("Please Enter Client Data:");
+
+            
+            nClient.AccountNumber = AccountNumber;
+
+            Console.Write("Enter PinCode?");
+            nClient.PinCode = Console.ReadLine();
+
+            Console.Write("Enter Name?");
+            nClient.Name = Console.ReadLine();
+
+            Console.Write("Enter Phone?");
+            nClient.Phone = Console.ReadLine();
+
+            Console.Write("Enter Account Balance?");
+            nClient.AccountBalance = Convert.ToInt32(Console.ReadLine());
+
+            return nClient;
+
+        }
+
+        static string ConvertRecordUserToLine(stUsers User, string Seperator = "#//#")
+        {
+            string stUserRecord = "";
+
+            stUserRecord += User.Username + Seperator;
+            stUserRecord += User.Password + Seperator;
+            stUserRecord += User.Permission;
+
+            return stUserRecord;
+        }
+
+        static string ConvertRecordToLine(sClient Client, string Seperator = "#//#")
+        {
+            string stClientRecord = "";
+
+            stClientRecord += Client.AccountNumber + Seperator;
+            stClientRecord += Client.PinCode + Seperator;
+            stClientRecord += Client.Name + Seperator;
+            stClientRecord += Client.Phone + Seperator;
+            stClientRecord += Client.AccountBalance;
+
+            return stClientRecord;
+        }
+        static void AddDataLineToFile(string FileName, string Line)
+        {
+            using (StreamWriter stWriter = new StreamWriter(FileName, true))
+            { 
+            stWriter.WriteLine(Line);
+            stWriter.Close();
+            }
+        }
+        static void AddNewClient()
+        {
+            sClient stClient = new sClient();
+            Console.Write("\nEnter Account number?");
+            do { 
+            
+            string AccountNumber = Console.ReadLine();
+            if (!(SearchForAccountInFile(AccountNumber)))
+            {
+                stClient = ReadNewClient(AccountNumber);
+                AddDataLineToFile(ClientsFileName, ConvertRecordToLine(stClient));
+                break;
+            }
+            else
+            {
+                Console.Write("Client with [" + AccountNumber + "] already exists, Enter Another Account Number?");
+            }
+        }while(true);
+            
+        }
+
+        static stUsers ReadNewUser(string Username)
+        {
+            stUsers User = new stUsers();
+
+            User.Username = Username;
+
+            Console.Write("Enter Password?");
+            User.Password = Console.ReadLine();
+
+            Console.Write("Do you want to give full access? y/n?");
+            char Access = Convert.ToChar(Console.ReadLine());
+
+            if (Char.ToUpper(Access) == 'Y')
+            {
+                User.Permission = (int)enMainMenuePermission.eAll;
+            }
+            else
+            {
+                Console.WriteLine("Do you want to give access to :\n");
+
+                Console.WriteLine("Show Client List? y/n?");
+                Access = Convert.ToChar(Console.ReadLine());
+                if (Char.ToUpper(Access) == 'Y')
+                    User.Permission |= (int)enMainMenuePermission.eListClient;
+                Console.WriteLine("Add New Client? y/n?");
+                Access = Convert.ToChar(Console.ReadLine());
+                if (Char.ToUpper(Access) == 'Y')
+                    User.Permission |= (int)enMainMenuePermission.eAddNewClient;
+                Console.WriteLine("Delete Client? y/n?");
+                Access = Convert.ToChar(Console.ReadLine());
+                if (Char.ToUpper(Access) == 'Y')
+                    User.Permission |= (int)enMainMenuePermission.eDeleteClient;
+                Console.WriteLine("Update Client? y/n?");
+                Access = Convert.ToChar(Console.ReadLine());
+                if (Char.ToUpper(Access) == 'Y')
+                    User.Permission |= (int)enMainMenuePermission.eUpdateClient;
+                Console.WriteLine("Find Client? y/n?");
+                Access = Convert.ToChar(Console.ReadLine());
+                if (Char.ToUpper(Access) == 'Y')
+                    User.Permission |= (int)enMainMenuePermission.eFindClient;
+                Console.WriteLine("Transaction? y/n?");
+                Access = Convert.ToChar(Console.ReadLine());
+                if (Char.ToUpper(Access) == 'Y')
+                    User.Permission |= (int)enMainMenuePermission.eTransaction;
+                Console.WriteLine("Manage User? y/n?");
+                Access = Convert.ToChar(Console.ReadLine());
+                if (Char.ToUpper(Access) == 'Y')
+                    User.Permission |= (int)enMainMenuePermission.eManageUsers;
+
+            }
+
+            return User;
+
+        }
+        static bool SearchForUserInFile(string Username) // check found or not
+        {
+            using (StreamReader st = new StreamReader(UserFileName))
+            {
+                string Line = st.ReadLine();
+                while (Line != null)
+                {
+                    if (Line.Contains(Username))
+                    {
+                        stUsers User = ConvertLineUserToRecord(Line);
+                        if (User.Username == Username)
+                            return true;
+
+                    }
+                    Line = st.ReadLine();
+                }
+            }
+            return false;
+        }
+        static void AddNewUser()
+        {
+            stUsers User = new stUsers();
+            Console.Write("\nEnter Username?");
+            do
+            {
+
+                string Username = Console.ReadLine();
+                if (!(SearchForUserInFile(Username)))
+                {
+                    User = ReadNewUser(Username);
+                    AddDataLineToFile(UserFileName, ConvertRecordUserToLine(User));
+                    break;
+                }
+                else
+                {
+                    Console.Write("User with [" + Username + "] already exists, Enter Another Username?");
+                }
+            } while (true);
+
+        }
+
+        static void AddUsers()
+        {
+            char AddMore;
+            do
+            {
+                Console.WriteLine("Adding New User:");
+                AddNewUser();
+                Console.Write("User Added Successfully, do you want to add more Users? (Y/N)");
+                AddMore = Convert.ToChar(Console.ReadLine());
+            } while (char.ToUpper(AddMore) == 'Y');
+        }
+        static void AddClients()
+        {
+
+            char AddMore;
+            do
+            {
+                Console.WriteLine("Adding New Client:");
+                AddNewClient();
+                Console.Write("Client Added Successfully, do you want to add more Clients? (Y/N)");
+                AddMore = Convert.ToChar(Console.ReadLine());
+            } while (char.ToUpper(AddMore) == 'Y');
+
+        }
+
+        static List<string> SplitString(string Input,string Seperator)
+        {
+            string[] Splits = Input.Split(new string[] { Seperator }, StringSplitOptions.None);
+
+
+            return new List<string>(Splits);
+        }
+        static sClient ConvertLineToRecord(string Line, string Seperator = "#//#")
+        {
+            sClient Client = new sClient();
+
+            List<string> vClientData = new List<string>();
+            vClientData = SplitString(Line, Seperator);
+
+            Client.AccountNumber = (string)vClientData[0];
+            Client.PinCode = (string)vClientData[1];
+            Client.Name = (string)vClientData[2];
+            Client.Phone = (string)vClientData[3];
+            double.TryParse(vClientData[4], out Client.AccountBalance);
+
+
+
+            return Client;
+        }
+
+        
+
+        static void PrintHeaderShowClient()
+        {
+
+            Console.Write($"{" ",35}");
+            Console.Write("Client List(" + CountLineInFile(ClientsFileName) + ") Client(s).\n\n");
+            Console.WriteLine(new string('_', 90));
+            Console.WriteLine("\n| Account Number    | Pin Code   | Client Name" + ($"{" ",20}") + "| Phone      | Balance");
+            Console.WriteLine(new string('_', 90) + "\n");
+
+        }
+        static void PrintFooterShowClient()
+        {
+            Console.WriteLine("\n" + new string('_', 90));
+        }
+        static void PrintClients(sClient Client)
+        {
+            Console.WriteLine(string.Format("|{0,-19}|", " " + Client.AccountNumber) + string.Format("{0,-12}|", " " + Client.PinCode) + string.Format("{0,-32}", " " + Client.Name) + string.Format("|{0,-12}|", " " + Client.Phone) + string.Format("{0,-8}", " " + Client.AccountBalance));
+        }
+
+        static int CountLineInFile(string FileName)
+        {
+            using (StreamReader st = new StreamReader(FileName)) { 
+            string line = st.ReadLine();
+            int count = 0;
+            while (line != null)
+            {
+                line = st.ReadLine();
+                count++;
+            }
+            
+            return count;
+            }
+        }
+
+        static void ReadLineFromFile()
+        {
+            using (StreamReader st = new StreamReader(ClientsFileName))
+            { 
+            string Line = st.ReadLine();
+
+            while (Line != null)
+            {
+                PrintClients(ConvertLineToRecord(Line));
+                Line = st.ReadLine();
+            }
+
+            }
+
+        }
+
+        static void ReadClientsFromFileForBalances()
+        {
+            using (StreamReader st = new StreamReader(ClientsFileName))
+            {
+                string Line = st.ReadLine();
+
+                while (Line != null)
+                {
+                    PrintBalance(ConvertLineToRecord(Line));
+                    Line = st.ReadLine();
+                }
+
+            }
+
+        }
+        static bool SearchForAccountInFile(string AccountNumber) // check found or not
+        {
+            using (StreamReader st = new StreamReader(ClientsFileName))
+            {
+                string Line = st.ReadLine();
+                while (Line != null)
+                {
+                    if (Line.Contains(AccountNumber))
+                    {
+                        sClient Client = ConvertLineToRecord(Line);
+                        if (Client.AccountNumber == AccountNumber)
+                        return true;
+                        
+                    }
+                    Line = st.ReadLine();
+                }
+            }
+            return false;
+        }
+
+        static sClient? SearchForAccountInFileAndReturn(string AccountNumber) { 
+            using (StreamReader st = new StreamReader(ClientsFileName))
+            {
+                string Line = st.ReadLine();
+                while (Line != null)
+                {
+                    if (Line.Contains(AccountNumber))
+                    {
+                        sClient Client = ConvertLineToRecord(Line);
+                        if (Client.AccountNumber == AccountNumber)
+                            return Client;
+
+                    }
+                    Line = st.ReadLine();
+                }
+            }
+            return null;
+        }
+
+
+        static void SearchForAccount(string AccountNumber) // search and print
+        {
+            using (StreamReader st = new StreamReader(ClientsFileName))
+            { 
+            string Line = st.ReadLine();
+            while (Line != null)
+            {
+                if (Line.Contains(AccountNumber))
+                {
+                        sClient Client = ConvertLineToRecord(Line);
+                        if (Client.AccountNumber == AccountNumber)
+                        { 
+                            PrintClientCard(ConvertLineToRecord(Line));
+                        return;
+                        }
+                    }
+                Line = st.ReadLine();
+            }
+                Console.WriteLine("\nClient with Account Number(" + AccountNumber + ") NOT Found!");
+            }
+        }
+        static int ReadDepositAmount()
+        {
+            Console.WriteLine("Please Enter Deposit Amount?");
+            int Amount = Convert.ToInt32(Console.ReadLine());
+
+            return Amount;
+        }
+
+        static int ReadWithdrawAmount()
+        {
+            Console.WriteLine("Please Enter Withdraw Amount?");
+            int Amount = Convert.ToInt32(Console.ReadLine());
+
+            return Amount;
+        }
+        static void DepsoitClient(string AccountNumber)
+        {
+            if (!(SearchForAccountInFile(AccountNumber)))
+            {
+                Console.WriteLine("\nClient with [" + AccountNumber + "] does not exist.");
+                AccountNumber = ReadClientAccountNumber();
+            }
+
+            SearchForAccount(AccountNumber);
+
+            int DepositAmount = ReadDepositAmount();
+
+            Console.Write("Are you sure you want perform this transaction? (Y/N) ?");
+            char Transaction = Convert.ToChar(Console.ReadLine());
+
+            if (char.ToUpper(Transaction) == 'Y')
+            {
+                List<string> Lines = new List<string>(File.ReadAllLines(ClientsFileName));
+                using (StreamWriter st = new StreamWriter(ClientsFileName))
+                {
+                    foreach (string Line in Lines)
+                    {
+                        if (!(Line.Contains(AccountNumber)))
+                        {
+                            st.WriteLine(Line);
+                        }
+                        else
+                        {
+                            sClient nClient = new sClient();
+                            nClient = ConvertLineToRecord(Line);
+                            nClient.AccountBalance += DepositAmount;
+
+                            st.WriteLine(ConvertRecordToLine(nClient));
+
+                            Console.WriteLine("\n\nDone Sucessfully news Balance is : " + nClient.AccountBalance);
+
+                        }
+                    }
+                }
+            }
+
+        }
+
+        static void WithdrawClient(string AccountNumber)
+        {
+            sClient Client = new sClient();
+            object ns = SearchForAccountInFileAndReturn(AccountNumber);
+             if (ns == null)
+            {
+                Console.WriteLine("\nClient with [" + AccountNumber + "] does not exist.");
+                ns = SearchForAccountInFileAndReturn(AccountNumber);
+            }
+            Client = (sClient)(ns);
+            SearchForAccount(AccountNumber);
+
+            int Withdraw = ReadWithdrawAmount();
+
+            if (Withdraw > Client.AccountBalance)
+            {
+                Console.WriteLine("Amount Exceeds the balance, you can withdraw up to : " + Client.AccountBalance);
+                Console.Write("Please Enter Another Amount ?");
+                Withdraw = Convert.ToInt32(Console.ReadLine());
+            }
+
+            Console.Write("Are you sure you want perform this transaction? (Y/N) ?");
+            char Transaction = Convert.ToChar(Console.ReadLine());
+
+            if (char.ToUpper(Transaction) == 'Y')
+            {
+                List<string> Lines = new List<string>(File.ReadAllLines(ClientsFileName));
+                using (StreamWriter st = new StreamWriter(ClientsFileName))
+                {
+                    foreach (string Line in Lines)
+                    {
+                        if (!(Line.Contains(AccountNumber)))
+                        {
+                            st.WriteLine(Line);
+                        }
+                        else
+                        {
+                            Client = ConvertLineToRecord(Line);
+                            Client.AccountBalance -= Withdraw;
+
+                            st.WriteLine(ConvertRecordToLine(Client));
+
+                            Console.WriteLine("\n\nDone Sucessfully news Balance is : " + Client.AccountBalance);
+
+                        }
+                    }
+                }
+            }
+
+
+        }
+            
+
+        
+        static void DeleteClient(string AccountNumber)
+        {
+            if (!(SearchForAccountInFile(AccountNumber)))
+            {
+                Console.WriteLine("\nClient with Account Number(" + AccountNumber + ") NOT Found!");
+                return;
+            }
+            SearchForAccount(AccountNumber);
+            Console.Write("Are you sure you want delete this client? (Y/N) ?");
+            char Deleted = Convert.ToChar(Console.ReadLine());
+            if (char.ToUpper(Deleted) == 'Y')
+            {
+                List<string> Lines = new List<string>(File.ReadAllLines(ClientsFileName));
+                using (StreamWriter st = new StreamWriter(ClientsFileName))
+                {
+                    foreach (string Line in Lines)
+                    {
+                        if (!(Line.Contains(AccountNumber)))
+                        {
+                            st.WriteLine(Line);
+                        }
+                    }
+                }
+
+                Console.WriteLine("\nClient Deleted Successfully.");
+            }
+
+        }
+        static void PrintUserCard(stUsers User)
+        {
+            Console.WriteLine("\nThe Following are the user details:");
+            Console.WriteLine(new string('-', 35));
+            Console.WriteLine("Username: " + User.Username);
+            Console.WriteLine("Password: " + User.Password);
+            Console.WriteLine("Permission: " + User.Permission);
+            Console.WriteLine(new string('-', 35) + "\n\n");
+
+        }
+        static void SearchForUser(string Username) // search and print
+        {
+            using (StreamReader st = new StreamReader(UserFileName))
+            {
+                string Line = st.ReadLine();
+                while (Line != null)
+                {
+                    if (Line.Contains(Username))
+                    {
+                        stUsers User = ConvertLineUserToRecord(Line);
+                        if (User.Username == Username)
+                        {
+                            PrintUserCard(User);
+                            return;
+                        }
+                    }
+                    Line = st.ReadLine();
+                }
+                Console.WriteLine("\nUser with Username(" + Username + ") NOT Found!");
+            }
+        }
+
+        static void DeleteUser(string Username)
+        {
+            if (Username == "Admin")
+            {
+                Console.WriteLine("You Cannot Delete This User");
+                return;
+            }
+            if (!(SearchForUserInFile(Username)))
+            {
+                Console.WriteLine("\nUser with Username(" + Username + ") NOT Found!");
+                return;
+            }   
+            
+            SearchForUser(Username);
+            Console.Write("Are you sure you want delete this user? (Y/N) ?");
+            char Deleted = Convert.ToChar(Console.ReadLine());
+            if (char.ToUpper(Deleted) == 'Y')
+            {
+                List<string> Lines = new List<string>(File.ReadAllLines(UserFileName));
+                using (StreamWriter st = new StreamWriter(UserFileName))
+                {
+                    foreach (string Line in Lines)
+                    {
+                        if (!(Line.Contains(Username)))
+                        {
+                            st.WriteLine(Line);
+                        }
+                    }
+                }
+
+                Console.WriteLine("\nUser Deleted Successfully.");
+            }
+
+        }
+
+        static void PrintClientCard(sClient Client)
+        {
+            Console.WriteLine("\nThe Following are the client details:");
+            Console.WriteLine(new string('-',35));
+            Console.WriteLine("Account Number: " + Client.AccountNumber);
+            Console.WriteLine("PinCode: " + Client.PinCode);
+            Console.WriteLine("Name: " + Client.Name);
+            Console.WriteLine("Phone: " + Client.Phone);
+            Console.WriteLine("Account Balance: " + Client.AccountBalance);
+            Console.WriteLine(new string('-', 35) + "\n\n");
+
+        }
+        static string ReadDataUpdated(sClient nClient)
+        {
+
+            Console.Write("Enter PinCode?");
+            nClient.PinCode = Console.ReadLine();
+
+            Console.Write("Enter Name?");
+            nClient.Name = Console.ReadLine();
+
+            Console.Write("Enter Phone?");
+            nClient.Phone = Console.ReadLine();
+
+            Console.Write("Enter Account Balance?");
+            nClient.AccountBalance = Convert.ToInt32(Console.ReadLine());
+
+            return ConvertRecordToLine(nClient);
+
+        }
+        static void UpdateClient(string AccountNumber)
+        {
+            if (!(SearchForAccountInFile(AccountNumber)))
+            {
+                Console.WriteLine("\nClient with Account Number(" + AccountNumber + ") NOT Found!");
+                return;
+            }
+            SearchForAccount(AccountNumber);
+
+            Console.Write("\n\nAre you sure you want update this client? (Y/N) ? ");
+            char Update = Convert.ToChar(Console.ReadLine());
+            Console.WriteLine("\n");
+            if (char.ToUpper(Update) == 'Y')
+            {
+                List<string> Lines = new List<string>(File.ReadAllLines(ClientsFileName));
+                using (StreamWriter st = new StreamWriter(ClientsFileName))
+                {
+                    foreach (string Line in Lines)
+                    {
+                        if (!(Line.Contains(AccountNumber)))
+                        {
+                            st.WriteLine(Line);
+                        }
+                        else
+                        {
+                            st.WriteLine(ReadDataUpdated(ConvertLineToRecord(Line)));
+                        }
+                    }
+                }
+
+                Console.WriteLine("\nClient Updated Successfully.\n\n");
+            }
+
+        }
+
+        static short ReadMainMenueOption()
+        {
+            Console.Write("Choose what do you want to do? [1 to 8]?");
+            short Option = Convert.ToByte(Console.ReadLine());
+            return Option;
+        }
+     
+        static short ReadTransactionMenueOption()
+        {
+            Console.Write("Choose what do you want to do? [1 to 4]?");
+            short Option = Convert.ToByte(Console.ReadLine());
+            return Option;
+        }
+
+        static short ReadManageUserMenueOption()
+        {
+            Console.Write("Choose what do you want to do? [1 to 6]?");
+            short Option = Convert.ToByte(Console.ReadLine());
+            return Option;
+        }
+        static void GoBackToTransactionMenue()
+        {
+            Console.Write("\n\nPress any key to go back to Main Menue...");
+            Console.ReadKey();
+            ShowTransactionMenue();
+        }
+        static void GoBackToManageUserMenue()
+        {
+            Console.Write("\n\nPress any key to go back to Main Menue...");
+            Console.ReadKey();
+            ShowManageMenue();
+        }
+        static void GoBackToMainMenu()
+        {
+            Console.Write("\n\nPress any key to go back to Main Menue...");
+            Console.ReadKey();
+            ShowMainMenue();
+        }
+
+        static void ShowAllClientsScreen()
+        {
+            PrintHeaderShowClient();
+            ReadLineFromFile();
+            PrintFooterShowClient();
+        }
+
+        static void ShowAddNewClientsScreen()
+        {
+            
+            Console.WriteLine(new string('-', 35));
+            Console.WriteLine(String.Format($"{"Add New Clients Screen",28}"));
+            Console.WriteLine(new string('-', 35) + "\n");
+            AddClients();
+        }
+
+        
+        static void ShowDeleteClientsScreen()
+        {
+            Console.WriteLine(new string('-', 35));
+            Console.WriteLine(String.Format($"{"Delete Client Screen",28}"));
+            Console.WriteLine(new string('-', 35) + "\n");
+            DeleteClient(ReadClientAccountNumber());
+        }
+
+
+        static void ShowDeleteUsersScreen()
+        {
+            Console.WriteLine(new string('-', 35));
+            Console.WriteLine(String.Format($"{"Delete User Screen",28}"));
+            Console.WriteLine(new string('-', 35) + "\n");
+            DeleteUser(ReadUseruserName());
+        }
+
+        static void ShowUpdateClientsScreen()
+        {
+            Console.WriteLine(new string('-', 35));
+            Console.WriteLine(String.Format($"{"Update Client Info Screen",28}"));
+            Console.WriteLine(new string('-', 35) + "\n");
+            UpdateClient(ReadClientAccountNumber());
+        }
+        static void UpdateUser(string Username)
+        {
+            if (Username == "Admin" && CurrentUser.Username != "Admin")
+            {
+                Console.WriteLine("You Cannot Update This User");
+                return;
+            }
+            if (!(SearchForUserInFile(Username)))
+            {
+                Console.WriteLine("\nUser with Username (" + Username + ") NOT Found!");
+                return;
+            }
+
+            SearchForUser(Username);
+
+            Console.Write("\n\nAre you sure you want update this user? (Y/N) ? ");
+            char Update = Convert.ToChar(Console.ReadLine());
+            Console.WriteLine("\n");
+            if (char.ToUpper(Update) == 'Y')
+            {
+                List<string> Lines = new List<string>(File.ReadAllLines(UserFileName));
+                using (StreamWriter st = new StreamWriter(UserFileName))
+                {
+                    foreach (string Line in Lines)
+                    {
+                        if (!(Line.Contains(Username)))
+                        {
+                            st.WriteLine(Line);
+                        }
+                        else
+                        {
+                            st.WriteLine(ConvertRecordUserToLine(ReadNewUser(Username)));
+                        }
+                    }
+                }
+
+                Console.WriteLine("\nUser Updated Successfully.\n\n");
+            }
+
+        }
+        static void ShowUpdateUsersScreen()
+        {
+            Console.WriteLine(new string('-', 35));
+            Console.WriteLine(String.Format($"{"Update Users Screen",28}"));
+            Console.WriteLine(new string('-', 35) + "\n");
+            UpdateUser(ReadUseruserName());
+        }
+
+        static void ShowFindClientsScreen()
+        {
+            Console.WriteLine(new string('-', 35));
+            Console.WriteLine(String.Format($"{"Find Client Screen",28}"));
+            Console.WriteLine(new string('-', 35) + "\n");
+            SearchForAccount(ReadClientAccountNumber());
+        }
+
+        static void ShowFindUsersScreen()
+        {
+            Console.WriteLine(new string('-', 35));
+            Console.WriteLine(String.Format($"{"Find User Screen",28}"));
+            Console.WriteLine(new string('-', 35) + "\n");
+            SearchForUser(ReadUseruserName());
+        }
+
+        static void ShowManageUserScreen()
+        {
+            Console.WriteLine(new string('-', 35));
+            Console.WriteLine(String.Format($"{"Add New Clients Screen",28}"));
+            Console.WriteLine(new string('-', 35) + "\n");
+
+        }
+
+        static void ShowExitScreen()
+        {
+            Console.WriteLine(new string('-', 35));
+            Console.WriteLine(String.Format($"{"Programs Ends :-)",28}"));
+            Console.WriteLine(new string('-', 35) + "\n");
+            Console.Write("\n\nWaiting for 3 seconds...");
+            Thread.Sleep(3000);
+        }
+        static void ShowLoginScreen()
+        {
+            Console.WriteLine(new string('-', 35));
+            Console.WriteLine(String.Format($"{"Login Screen",23}"));
+            Console.WriteLine(new string('-', 35) + "\n");
+        }
+
+        static void ShowDepositScreen()
+        {
+            Console.WriteLine(new string('-', 35));
+            Console.WriteLine(String.Format($"{"Deposit Screen",28}"));
+            Console.WriteLine(new string('-', 35) + "\n");
+            DepsoitClient(ReadClientAccountNumber());
+        }
+
+        static void ShowWithdrawScreen()
+        {
+            Console.WriteLine(new string('-', 35));
+            Console.WriteLine(String.Format($"{"Withdraw Screen",28}"));
+            Console.WriteLine(new string('-', 35) + "\n");
+            WithdrawClient(ReadClientAccountNumber());
+        }
+
+        static double TotalBalance(sClient Client)
+        {
+            return Client.AccountBalance;
+        }
+        static void PrintBalance(sClient Client)
+        {
+            
+            Console.WriteLine(string.Format("|{0,-19}|", " " + Client.AccountNumber)  + string.Format("{0,-32}", " " + Client.Name) +  string.Format("{0,-30}", " " + "                "+  Client.AccountBalance));
+            TotalBalancesClients += Client.AccountBalance;
+        }
+        static void ShowTotalBalanceScreen()
+        {
+            Console.Write($"{" ",35}");
+            Console.Write("Clients List(" + CountLineInFile(ClientsFileName) + ") Client(s).\n\n");
+            Console.WriteLine(new string('_', 90));
+            Console.WriteLine("\n| Account Number    | Client Name" + ($"{" ",35}") + "| Balance");
+            Console.WriteLine(new string('_', 90) + "\n");
+            ReadClientsFromFileForBalances();
+            Console.WriteLine("\n\n" + new string('_', 90) + "\n");
+            Console.WriteLine(String.Format($"{"Total Balances: ",70}") + TotalBalancesClients);
+        }
+
+        static void PrintUsers(stUsers User)
+        {
+
+            Console.WriteLine(string.Format("|{0,-19}|", " " + User.Username) + string.Format("{0,-32}", " " + User.Password) + string.Format("{0,-30}", " " + "                " + User.Permission));
+        }
+        static void ReadUserFromFile()
+        {
+            using (StreamReader st = new StreamReader(UserFileName))
+            {
+                string Line = st.ReadLine();
+
+                while (Line != null)
+                {
+                    PrintUsers(ConvertLineUserToRecord(Line));
+                    Line = st.ReadLine();
+                }
+
+            }
+
+        }
+        static void ShowAcessDeinedScreen()
+        {
+            Console.WriteLine(new string('-', 38));
+            Console.WriteLine("Acess Denied,\nYou don't Have Permission To Do this,\nPlease Conact Your Admin.");
+            Console.WriteLine(new string('-', 38));
+            GoBackToMainMenu();
+        }
+        static void ShowListUsersScreen()
+        {
+            Console.Write($"{" ",35}");
+            Console.Write("Users List(" + CountLineInFile(UserFileName) + ") User(s).\n\n");
+            Console.WriteLine(new string('_', 90));
+            Console.WriteLine("\n| User Name         | Password" + ($"{" ",35}") + "| Permission");
+            Console.WriteLine(new string('_', 90) + "\n");
+            ReadUserFromFile();
+            Console.WriteLine("\n\n" + new string('_', 90) + "\n");
+        }
+       
+        static void ShowAddUserScreen()
+        {
+            Console.WriteLine(new string('-', 38));
+            Console.WriteLine("Add New User Screen");
+            Console.WriteLine(new string('-', 38));
+
+            AddUsers();
+        }
+        static void PerformManageUserOption(enManageUserOptions ManageUserOption)
+        {
+            switch (ManageUserOption)
+            {
+                case enManageUserOptions.eListUsers:
+                    Console.Clear();
+                    ShowListUsersScreen();
+                    GoBackToManageUserMenue();
+                    break;
+                case enManageUserOptions.eAddNewUser:
+                    Console.Clear();
+                    ShowAddUserScreen();
+                    GoBackToMainMenu();
+                    break;
+                case enManageUserOptions.eDeleteUser:
+                    Console.Clear();
+                    ShowDeleteUsersScreen();
+                    GoBackToManageUserMenue();
+                    break;
+                case enManageUserOptions.eUpdateUser:
+                    Console.Clear();
+                    ShowUpdateUsersScreen();
+                    GoBackToManageUserMenue();
+                    break;
+                case enManageUserOptions.eFindUser:
+                    Console.Clear();
+                    ShowFindUsersScreen();
+                    GoBackToManageUserMenue();
+                    break;
+                case enManageUserOptions.eMainMenu:
+                    ShowMainMenue();
+                    break;
+
+            }
+        }
+        static void PerfromMainMenueOption(enTransactionMenueOptions TransactionMenueOption)
+        {
+            switch(TransactionMenueOption)
+            {
+                case enTransactionMenueOptions.eDeposit:
+                    Console.Clear();
+                    ShowDepositScreen();
+                    GoBackToTransactionMenue();
+                    break;
+                case enTransactionMenueOptions.eWithdraw:
+                    Console.Clear();
+                    ShowWithdrawScreen();
+                    GoBackToMainMenu();
+                    break;
+                case enTransactionMenueOptions.eTotalBalances:
+                    Console.Clear();
+                    ShowTotalBalanceScreen();
+                    GoBackToTransactionMenue();
+                    break;
+                case enTransactionMenueOptions.eMainMenue:
+                    ShowMainMenue();
+                    break;
+            }
+        } 
+        static void PerfromMainMenueOption(enMainMenueOptions MainMenueOption)
+        {
+            switch (MainMenueOption)
+            {
+                case enMainMenueOptions.eListClient:
+                    Console.Clear();
+                    if ((CurrentUser.Permission & (int)enMainMenuePermission.eListClient) != 0)
+                    {
+                        ShowAllClientsScreen();
+                    }
+                    else
+                    {
+                        ShowAcessDeinedScreen();
+                    }
+                    GoBackToMainMenu();
+                    break;
+                case enMainMenueOptions.eAddNewClient:
+                    Console.Clear();
+                    if ((CurrentUser.Permission & (int)enMainMenuePermission.eAddNewClient) != 0)
+                    {
+                        ShowAddNewClientsScreen();
+                    }
+                    else
+                    {
+                        ShowAcessDeinedScreen();
+                    }
+                    
+                    GoBackToMainMenu();
+                    break;
+
+                case enMainMenueOptions.eDeleteClient:
+                    Console.Clear();
+                    if ((CurrentUser.Permission & (int)enMainMenuePermission.eDeleteClient) != 0)
+                    {
+                        ShowDeleteClientsScreen();
+                    }
+                    else
+                    {
+                        ShowAcessDeinedScreen();
+                    }
+                    
+                    GoBackToMainMenu();
+                    break;
+                case enMainMenueOptions.eUpdateClient:
+                    Console.Clear();
+                    if ((CurrentUser.Permission & (int)enMainMenuePermission.eUpdateClient) != 0)
+                    {
+                        ShowUpdateClientsScreen();
+                    }
+                    else
+                    {
+                        ShowAcessDeinedScreen();
+                    }
+
+                    GoBackToMainMenu();
+                    break;
+                case enMainMenueOptions.eFindClient:
+                    Console.Clear();
+                    if ((CurrentUser.Permission & (int)enMainMenuePermission.eFindClient) != 0)
+                    {
+                        ShowFindClientsScreen();
+                    }
+                    else
+                    {
+                        ShowAcessDeinedScreen();
+                    }
+                    GoBackToMainMenu();
+                    break;
+                case enMainMenueOptions.eTransaction:
+                    Console.Clear();
+                    if ((CurrentUser.Permission & (int)enMainMenuePermission.eTransaction) != 0)
+                    {
+                        ShowTransactionMenue();
+                    }
+                    else
+                    {
+                        ShowAcessDeinedScreen();
+                    }
+                    break;
+                case enMainMenueOptions.eManageUsers:
+                    Console.Clear();
+                    if ((CurrentUser.Permission & (int)enMainMenuePermission.eManageUsers) != 0)
+                    {
+                        ShowManageMenue();
+                    }
+                    else
+                    {
+                        ShowAcessDeinedScreen();
+                    } 
+                    break;
+                case enMainMenueOptions.eLogout:
+                    Console.Clear();
+                    Login();
+                    break;
+            }
+
+        }
+
+        static void ShowManageMenue()
+        {
+            Console.Clear();
+            Console.WriteLine(new string('=', 40));
+            Console.WriteLine(String.Format($"{"Manage Users Menue Screen",32}"));
+            Console.WriteLine(new string('=', 40));
+
+            Console.WriteLine(new string(' ', 6) + "[1] List Users.");
+            Console.WriteLine(new string(' ', 6) + "[2] Add New User.");
+            Console.WriteLine(new string(' ', 6) + "[3] Delete User.");
+            Console.WriteLine(new string(' ', 6) + "[4] Update User.");
+            Console.WriteLine(new string(' ', 6) + "[5] Find User.");
+            Console.WriteLine(new string(' ', 6) + "[6] Main Menue.");
+
+            Console.WriteLine(new string('=', 40));
+
+            PerformManageUserOption((enManageUserOptions)(ReadManageUserMenueOption()));
+
+        }
+
+        static void ShowTransactionMenue()
+        {
+            Console.Clear();
+            Console.WriteLine(new string('=', 40));
+            Console.WriteLine(String.Format($"{"Transactions Menue Screen",32}"));
+            Console.WriteLine(new string('=', 40));
+
+            Console.WriteLine(new string(' ', 6) + "[1] Deposit.");
+            Console.WriteLine(new string(' ', 6) + "[2] Withdraw.");
+            Console.WriteLine(new string(' ', 6) + "[3] Total Balances.");
+            Console.WriteLine(new string(' ', 6) + "[4] Main Menue.");
+
+            Console.WriteLine(new string('=', 40));
+
+            PerfromMainMenueOption((enTransactionMenueOptions)(ReadTransactionMenueOption()));
+        }
+        static void ShowMainMenue()
+        {
+            Console.Clear();
+            Console.WriteLine(new string('=', 40));
+            Console.WriteLine(String.Format($"{"Main Menue Screen",28}"));
+            Console.WriteLine(new string('=', 40));
+
+            Console.WriteLine(new string(' ', 6) + "[1] Show Client List.");
+            Console.WriteLine(new string(' ', 6) + "[2] Add New Client.");
+            Console.WriteLine(new string(' ', 6) + "[3] Delete Client.");
+            Console.WriteLine(new string(' ', 6) + "[4] Update Client Info.");
+            Console.WriteLine(new string(' ', 6) + "[5] Find Client.");
+            Console.WriteLine(new string(' ', 6) + "[6] Transaction.");
+            Console.WriteLine(new string(' ', 6) + "[7] Manage Users.");
+            Console.WriteLine(new string(' ', 6) + "[8] Logout.");
+
+            Console.WriteLine(new string('=', 40));
+
+            PerfromMainMenueOption((enMainMenueOptions)ReadMainMenueOption());
+        }
+        static string ReadUsername()
+        {
+            Console.Write("Enter UserName?");
+            return Console.ReadLine();
+        }
+
+        static string ReadPassword()
+        {
+            Console.Write("Enter Password?");
+            return Console.ReadLine();
+        }
+
+        static stUsers ConvertLineUserToRecord(string Line, string Seperator = "#//#")
+        {
+            stUsers User = new stUsers();
+
+            List<string> vClientData = new List<string>();
+            vClientData = SplitString(Line, Seperator);
+
+            User.Username = (string)vClientData[0];
+            User.Password = (string)vClientData[1];
+            User.Permission = Convert.ToInt32(vClientData[2]); 
+
+
+            return User;
+        }
+
+        static bool IsUserExists(string Username , string Password)
+        {
+           stUsers User = new stUsers();
+            using (StreamReader st = new StreamReader(UserFileName))
+            {
+                string Line = st.ReadLine();
+
+                while (Line != null)
+                {
+                    User = ConvertLineUserToRecord(Line);
+                    if (Username == User.Username && Password == User.Password)
+                    {
+                        CurrentUser.Username = Username;
+                        CurrentUser.Password = Password;
+                        CurrentUser.Permission = User.Permission;
+                        return true;
+                    }
+                    Line = st.ReadLine();
+                }
+
+            }
+            return false;
+        }
+        static void Login()
+        {
+            ShowLoginScreen();
+            string Username;
+            string Password; 
+            while (true)
+            {
+                Username = ReadUsername();
+                Password = ReadPassword();
+                if (IsUserExists(Username,Password))
+                {   
+                    break;
+                }
+                else
+                {
+                    Console.Clear();
+                    ShowLoginScreen();
+                    Console.Write("Invalid Username/Password!\n");
+                }
+            }
+            ShowMainMenue();
+        }
+        
+        static void Main(string[] args)
+        {
+             Login();
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+## Problem 95 
+**ATM System**
+
+```c#
+
+```
