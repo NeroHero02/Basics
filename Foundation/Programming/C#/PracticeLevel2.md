@@ -10547,5 +10547,384 @@ namespace ConsoleApp2
 **ATM System**
 
 ```c#
+using Microsoft.Win32;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
+
+namespace ATMSystem
+{
+    internal class Program
+    {
+        static string ClientsFileName = "MyClient/Clients.txt";
+        static stClient CurrentClient;
+
+        enum enMainMenueOptions { eQuickWithdraw = 1, eNormalWithdraw = 2, eDeposit = 3, eCheckBalance = 4, eLogout = 5};
+        struct stClient
+        {
+            public string AccountNumber;
+            public string PinCode;
+            public string Name;
+            public string Phone;
+            public double AccountBalance;
+        }
+
+        static short ReadMainMenueOption()
+        {
+            Console.Write("Choose what do you want to do? [1 to 5]?");
+            short Option = Convert.ToByte(Console.ReadLine());
+            return Option;
+        }
+
+        static short ReadQuickWithdrawOption()
+        {
+            short Option;
+            do
+            {
+                Console.Write("Choose what to withdraw from? [1 to 8]?");
+                Option = Convert.ToByte(Console.ReadLine());
+            } while (Option < 1 || Option > 9);
+            return Option;
+        }
+        static double ReadDepositAmount()
+        {
+            double Option;
+            do
+            {
+                Console.Write("Enter a positive Deposit Amount?");
+                Option = Convert.ToDouble(Console.ReadLine());
+            } while (Option < 0);
+
+            return Option;
+        }
+
+        static double ReadNormalWithdraw()
+        {
+            double NormalWithdraw;
+            do
+            {
+                Console.Write("Enter an amount multiple of 5's?");
+                NormalWithdraw = Convert.ToDouble(Console.ReadLine());
+            } while (NormalWithdraw % 5 != 0);
+
+            return NormalWithdraw;
+        }
+        static List<string> SplitString(string Line, string Seperator)
+        {
+            string[] Splits = Line.Split(new string[] { Seperator }, StringSplitOptions.None);
+
+
+            return new List<string>(Splits);
+        }
+        static stClient ConvertLineToRecord(string Line, string Seperator = "#//#")
+        {
+            stClient Client = new stClient();
+
+            List<string> vClientData = new List<string>();
+            vClientData = SplitString(Line, Seperator);
+
+            Client.AccountNumber = (string)vClientData[0];
+            Client.PinCode = (string)vClientData[1];
+            Client.Name = (string)vClientData[2];
+            Client.Phone = (string)vClientData[3];
+            double.TryParse(vClientData[4], out Client.AccountBalance);
+
+
+
+            return Client;
+        }
+
+        static string ConvertRecordToLine(stClient Client, string Seperator = "#//#")
+        {
+            string stClientRecord = "";
+
+            stClientRecord += Client.AccountNumber + Seperator;
+            stClientRecord += Client.PinCode + Seperator;
+            stClientRecord += Client.Name + Seperator;
+            stClientRecord += Client.Phone + Seperator;
+            stClientRecord += Client.AccountBalance;
+
+            return stClientRecord;
+        }
+
+        static List<stClient> LoadClientDataFromFile(string FileName)
+        {
+            List<stClient> lClient = new List<stClient>();
+
+                using (StreamReader stReader = new StreamReader(FileName))
+                {
+                    string Line = stReader.ReadLine();
+                    stClient Client;
+
+                    while (Line != null)
+                    {
+                        Client = ConvertLineToRecord(Line);
+                        lClient.Add(Client);
+                        Line = stReader.ReadLine();
+                    }
+                }
+            return lClient;
+        }
+        static bool FindClientByAccountNumberandPin(string AccountNumber, string Pin , ref stClient Client)
+        {
+            List<stClient> lClient = LoadClientDataFromFile(ClientsFileName);
+
+            foreach (stClient C in lClient)
+            {
+               if (C.AccountNumber == AccountNumber && C.PinCode == Pin)
+                {
+                    Client = C;
+                    return true;
+                }
+            }
+            return false;
+        }
+        static bool LoadClientinfo(string AccountNumber, string Pin)
+        {
+            if (FindClientByAccountNumberandPin(AccountNumber, Pin,ref CurrentClient))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        static short getQuickWithdrawAmount(short QuickWithdrawOption)
+        {
+            switch(QuickWithdrawOption)
+            {
+                case 1:
+                    return 20;
+                case 2:
+                    return 50;
+                case 3:
+                    return 100;
+                case 4:
+                    return 200;
+                case 5:
+                    return 400;
+                case 6:
+                    return 600;
+                case 7:
+                    return 800;
+                case 8:
+                    return 1000;
+                default:
+                    return 0;
+
+            }
+        }
+        static void GoBackToMainMenu()
+        {
+            Console.Write("\n\nPress any key to go back to Main Menue...");
+            Console.ReadKey();
+            ShowMainMenue();
+        }
+
+        static void PerfromQuickWithdrawOption(short QuickWithdrawOption)
+        {
+            if (QuickWithdrawOption == 9)
+            {
+                return;
+            }  
+
+            short WithdrawBalance = getQuickWithdrawAmount(QuickWithdrawOption);
+
+            if (WithdrawBalance > CurrentClient.AccountBalance)
+            {
+                Console.WriteLine("\nThe amount exceeds your balance, make another choice. \n");
+                Console.WriteLine("Press Any key to continue...");
+                Console.ReadKey();
+                ShowQuickWithdrawScreen();
+                return;
+            }
+            List<stClient> lClient = LoadClientDataFromFile(ClientsFileName);
+            DepositBalanceToClientByAccountNumber(CurrentClient.AccountNumber, WithdrawBalance * -1, lClient);
+
+        }
+        static void DepositBalanceToClientByAccountNumber(string AccountNumber , double DepositAmount, List<stClient> lClient)
+        {
+            string Line;
+            using (StreamWriter st = new StreamWriter(ClientsFileName))
+            {
+                foreach (stClient C in lClient)
+                {
+                    if (C.AccountNumber == AccountNumber)
+                    {
+                        stClient Client = C;
+                        Client.AccountBalance += DepositAmount;
+                        Line = ConvertRecordToLine(Client);
+                    }
+                    else
+                    {
+                        Line = ConvertRecordToLine(C);
+                    }
+                    st.WriteLine(Line);
+                }
+                st.Close();
+            }
+            CurrentClient.AccountBalance += DepositAmount;
+            Console.WriteLine("\n\nDone Sucessfully news Balance is : " + CurrentClient.AccountBalance);
+
+        }
+        static void PerfromDepositOption()
+        {
+            double DepositAmount = ReadDepositAmount();
+
+            List<stClient> lClient = LoadClientDataFromFile(ClientsFileName);
+            Console.Write("\nAre you sure you want perform this transaction? y/n?");
+            char Answer = Convert.ToChar(Console.ReadLine());
+            if (Char.ToUpper(Answer) == 'Y')
+            {
+                DepositBalanceToClientByAccountNumber(CurrentClient.AccountNumber, DepositAmount, lClient);
+            }
+        }
+        static void ShowDepsoitScreen()
+        {
+            Console.Clear();
+            Console.WriteLine(new string('=', 40));
+            Console.WriteLine(String.Format($"{"Depsoit Screen ",28}"));
+            Console.WriteLine(new string('=', 40));
+
+            PerfromDepositOption();
+
+        }
+        static void ShowQuickWithdrawScreen()
+        {
+            Console.Clear();
+            Console.WriteLine(new string('=', 40));
+            Console.WriteLine(String.Format($"{"Quick Withdraw ",28}"));
+            Console.WriteLine(new string('=', 40));
+
+            Console.WriteLine("      [1] 20         [2] 50");
+            Console.WriteLine("      [3] 100        [4] 200");
+            Console.WriteLine("      [5] 400        [6] 600");
+            Console.WriteLine("      [7] 800        [8] 1000");
+            Console.WriteLine("      [9] Exit");
+
+
+            Console.WriteLine(new string('=', 40));
+            getAccountBalance();
+
+            PerfromQuickWithdrawOption(ReadQuickWithdrawOption());
+        }
+
+        static void getAccountBalance()
+        {
+            Console.WriteLine("Your Balance is " + CurrentClient.AccountBalance);
+        }
+        static void ShowCheckBalanceScreen()
+        {
+
+            Console.WriteLine(new string('-', 35));
+            Console.WriteLine(String.Format($"{"Check Balance Screen",28}"));
+            Console.WriteLine(new string('-', 35) + "\n");
+
+            getAccountBalance();
+        }
+
+        static void ShowNormalWithdrawScreen()
+        {
+            Console.Clear();
+            Console.WriteLine(new string('=', 40));
+            Console.WriteLine(String.Format($"{"Normal Withdraw Screen",28}"));
+            Console.WriteLine(new string('=', 40));
+
+            List<stClient> lClient = LoadClientDataFromFile(ClientsFileName);
+            double Withdraw = ReadNormalWithdraw();
+            Console.Write("\nAre you sure you want perform this transaction? y/n?");
+            char Answer = Convert.ToChar(Console.ReadLine());
+            if (Char.ToUpper(Answer) == 'Y')
+            {
+                DepositBalanceToClientByAccountNumber(CurrentClient.AccountNumber, Withdraw * -1, lClient);
+            }
+
+        }
+        static void PerfromMainMenueOption(enMainMenueOptions MainMenueOption)
+        {
+            switch (MainMenueOption)
+            {
+                case enMainMenueOptions.eQuickWithdraw:
+                    Console.Clear();
+                    ShowQuickWithdrawScreen();
+                    GoBackToMainMenu();
+                    break;
+                case enMainMenueOptions.eNormalWithdraw:
+                    Console.Clear();
+                    ShowNormalWithdrawScreen();
+                    GoBackToMainMenu();
+                    break;
+
+                case enMainMenueOptions.eDeposit:
+                    Console.Clear();
+                    ShowDepsoitScreen();
+                    GoBackToMainMenu();
+                    break;
+                case enMainMenueOptions.eCheckBalance:
+                    Console.Clear();
+                    ShowCheckBalanceScreen();
+                    GoBackToMainMenu();
+                    break;       
+                case enMainMenueOptions.eLogout:
+                    Console.Clear();
+                    Login();
+                    break;
+            }
+
+        }
+
+        static void ShowMainMenue()
+        {
+            Console.Clear();
+            Console.WriteLine(new string('=', 43));
+            Console.WriteLine(String.Format($"{"ATM Main Menue Screen",31}"));
+            Console.WriteLine(new string('=', 43));
+
+            Console.WriteLine(new string(' ', 6) + "[1] Quick Withdraw.");
+            Console.WriteLine(new string(' ', 6) + "[2] Normal Withdraw.");
+            Console.WriteLine(new string(' ', 6) + "[3] Deposit.");
+            Console.WriteLine(new string(' ', 6) + "[4] Check Balance.");
+            Console.WriteLine(new string(' ', 6) + "[5] Logout.");
+
+            Console.WriteLine(new string('=', 40));
+
+            PerfromMainMenueOption((enMainMenueOptions)ReadMainMenueOption());
+
+        }
+        static void Login()
+        {
+            bool Loginfailed = false;
+            string AccountNumber, Pin;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine(new string('-', 35));
+                Console.WriteLine(String.Format($"{"Login Screen",23}"));
+                Console.WriteLine(new string('-', 35));
+
+                if (Loginfailed)
+                {
+                    Console.WriteLine("Invalid Account Number/PinCode!");
+                }
+
+                Console.Write("Enter AccountNumber?");
+                AccountNumber = Console.ReadLine();
+                Console.Write("Enter Pin?");
+                Pin = Console.ReadLine();
+
+                Loginfailed = !LoadClientinfo(AccountNumber, Pin);
+                
+            } while (Loginfailed);
+
+            ShowMainMenue();
+        }
+
+        static void Main(string[] args)
+        {
+            Login();
+        }
+    }
+}
 ```
