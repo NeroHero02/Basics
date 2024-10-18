@@ -1,5 +1,5 @@
 # Started 
-**In this section, we will solved 100 problem using C#.**  
+**In this section, we will solved 95 problem using C#.**  
 
 ## Problem 1
 **Write a program to fill a 3x3 matrix with random numbers.**
